@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>PROO C2S</title>
+    <style>
+        body { background: #1e3c72; color: white; text-align: center; padding-top: 100px; font-family: sans-serif; }
+        h1 { font-size: 3rem; margin-bottom: 20px; }
+        p { font-size: 1.5rem; }
+    </style>
+</head>
+<body>
+    <h1>PROO C2S</h1>
+    <p>الخدمات الاحترافية قريباً في جوجل</p>
+</body>
+</html>

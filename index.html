@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRO C2S | Recrutement, Travail Temporaire & Solutions RH au Maroc</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=13">
+</head>
+
+<body>
+
+<div id="toastNotification" class="toast-notification">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMsg">Message envoyé avec succès !</span>
+</div>
+
+<header id="main-header">
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#home"><img src="image/logo.png.png" alt="PRO C2S"></a>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#home">Accueil</a></li>
+            <li><a href="#simulateur">Entreprises</a></li>
+            <li><a href="#carrieres">Offres d'emploi</a></li>
+            <li><a href="#apropos">À propos</a></li>
+            <li><a href="#references">Références</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20d%C3%A9poser%20mon%20CV." target="_blank" class="btn-secondary-nav">
+                <i class="fa-solid fa-file-arrow-up"></i> Espace Candidat
+            </a>
+            <a href="#simulateur" class="btn">Besoin de recruter</a>
+        </div>
+
+        <button class="menu-toggle" aria-label="Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </nav>
+</header>
+
+<section class="hero reveal" id="home">
+    <div class="container hero-layout">
+        <div class="hero-text">
+            <span class="badge-crit"><i class="fa-solid fa-shield-check"></i> Partenaire Recrutement & Intérim</span>
+            <h1>Votre partenaire RH pour bâtir vos équipes de demain</h1>
+            <p>Spécialiste du recrutement et du travail temporaire au Maroc depuis 2017. Nous apportons des réponses rapides, flexibles et conformes à tous vos défis RH.</p>
+            
+            <div class="hero-actions">
+                <a href="#simulateur" class="btn btn-hero"><i class="fa-solid fa-building"></i> Vous recrutez ?</a>
+                <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20postuler%20chez%20PRO%20C2S." target="_blank" class="btn-outline-hero"><i class="fa-brands fa-whatsapp"></i> Déposer un CV</a>
+            </div>
+
+            <div class="hero-badges-row">
+                <div class="h-badge"><strong>24-48h</strong> <span>Réactivité</span></div>
+                <div class="h-sep"></div>
+                <div class="h-badge"><strong>100%</strong> <span>Conformité légale</span></div>
+                <div class="h-sep"></div>
+                <div class="h-badge"><strong>National</strong> <span>Toutes régions</span></div>
+            </div>
+        </div>
+
+        <div class="hero-illustration">
+            <svg viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="crit-illustration">
+                <rect x="60" y="150" width="170" height="170" rx="8" stroke="#1b5e20" stroke-width="2.5" stroke-dasharray="5 5" fill="#f4faf5"/>
+                <rect x="85" y="185" width="26" height="26" rx="4" stroke="#2e7d32" stroke-width="2" fill="#fff"/>
+                <rect x="130" y="185" width="26" height="26" rx="4" stroke="#2e7d32" stroke-width="2" fill="#fff"/>
+                <rect x="175" y="185" width="26" height="26" rx="4" stroke="#2e7d32" stroke-width="2" fill="#fff"/>
+                <rect x="85" y="235" width="26" height="26" rx="4" stroke="#2e7d32" stroke-width="2" fill="#fff"/>
+                <rect x="130" y="235" width="26" height="26" rx="4" stroke="#2e7d32" stroke-width="2" fill="#fff"/>
+                <rect x="175" y="235" width="26" height="26" rx="4" stroke="#2e7d32" stroke-width="2" fill="#fff"/>
+                <line x1="85" y1="150" x2="85" y2="100" stroke="#1b5e20" stroke-width="3.5" stroke-linecap="round"/>
+                <line x1="125" y1="150" x2="125" y2="85" stroke="#1b5e20" stroke-width="3.5" stroke-linecap="round"/>
+                <line x1="165" y1="150" x2="165" y2="110" stroke="#1b5e20" stroke-width="3.5" stroke-linecap="round"/>
+                <rect x="40" y="325" width="100" height="35" rx="4" stroke="#2e7d32" stroke-width="2.5" fill="#fff"/>
+                <path d="M50 360L75 325M80 360L105 325M110 360L135 325" stroke="#2e7d32" stroke-width="3"/>
+                <line x1="20" y1="365" x2="480" y2="365" stroke="#94a3b8" stroke-width="3" stroke-linecap="round"/>
+                <ellipse cx="340" cy="110" rx="18" ry="20" fill="#fff" stroke="#0f172a" stroke-width="2.5"/>
+                <path d="M318 105C318 88 362 88 362 105Z" fill="#2e7d32"/>
+                <rect x="314" y="103" width="52" height="6" rx="3" fill="#1b5e20"/>
+                <path d="M305 190L318 140C322 132 358 132 362 140L375 190Z" fill="#fff" stroke="#0f172a" stroke-width="2.5"/>
+                <path d="M322 135L305 230L335 230L340 170L345 230L375 230L358 135Z" fill="#2e7d32"/>
+                <path d="M310 160L285 185C280 225 345 225 355 185L330 160Z" fill="#ffffff" stroke="#0f172a" stroke-width="2.2"/>
+                <path d="M292 195Q320 188 348 195" stroke="#64748b" stroke-width="2" stroke-dasharray="3 3"/>
+                <line x1="325" y1="230" x2="325" y2="350" stroke="#0f172a" stroke-width="12" stroke-linecap="round"/>
+                <line x1="355" y1="230" x2="355" y2="350" stroke="#0f172a" stroke-width="12" stroke-linecap="round"/>
+                <path d="M315 355H335" stroke="#1e293b" stroke-width="10" stroke-linecap="round"/>
+                <path d="M348 355H368" stroke="#1e293b" stroke-width="10" stroke-linecap="round"/>
+            </svg>
+        </div>
+    </div>
+</section>
+
+<section class="split-section reveal">
+    <div class="container split-grid">
+        <div class="split-card client">
+            <span class="pill-badge"><i class="fa-solid fa-briefcase"></i> Entreprises</span>
+            <h3>Besoins urgents ou pics d'activité ?</h3>
+            <p>Difficulté à recruter rapidement, complexité juridique ou surcroît temporaire : bénéficiez d'une délégation réactive.</p>
+            <a href="#simulateur" class="btn-split-white">Estimer mon besoin RH <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="split-card candidate">
+            <span class="pill-badge green"><i class="fa-solid fa-user-check"></i> Candidats</span>
+            <h3>Trouvez votre prochaine mission</h3>
+            <p>Intérim et missions dans l'industrie, la logistique, le tertiaire et les services dans tout le Maroc.</p>
+            <a href="#carrieres" class="btn-split-green"><i class="fa-solid fa-briefcase"></i> Consulter les offres</a>
+        </div>
+    </div>
+</section>
+
+<!-- ================= LOGO MARQUEE ================= -->
+<section class="marquee-section reveal">
+    <div class="marquee-title">Ils nous accordent leur confiance au quotidien</div>
+    <div class="marquee-track">
+        <div class="marquee-item"><img src="image/BANK-AL-MAGHRIB.png.png" alt="Bank Al-Maghrib"></div>
+        <div class="marquee-item"><img src="image/CNSS-png.png" alt="CNSS"></div>
+        <div class="marquee-item"><img src="image/odco.png.png" alt="ODCO"></div>
+        <div class="marquee-item"><img src="image/chamber.png.png" alt="Chambre d'Agriculture"></div>
+        <div class="marquee-item"><img src="image/SIEMENS-GAMESA.png.jpeg" alt="Siemens Gamesa"></div>
+        <div class="marquee-item"><img src="image/simense.png.png" alt="Siemens Energy"></div>
+        <div class="marquee-item"><img src="image/ONSSA.png.png" alt="ONSSA"></div>
+        <div class="marquee-item"><img src="image/HESPRESS.png.jpeg" alt="Hespress"></div>
+        <div class="marquee-item"><img src="image/CHEIKH-ZAID.png.jpeg" alt="Hôpital Cheikh Zaid"></div>
+        <div class="marquee-item"><img src="image/AMDIE.png.jpeg" alt="AMDIE"></div>
+        <div class="marquee-item"><img src="image/ANLCA.png.jpeg" alt="ANLCA"></div>
+        <div class="marquee-item"><img src="image/CHU-OUJDA.png.png" alt="CHU Oujda"></div>
+
+        <div class="marquee-item"><img src="image/BANK-AL-MAGHRIB.png.png" alt="Bank Al-Maghrib"></div>
+        <div class="marquee-item"><img src="image/CNSS-png.png" alt="CNSS"></div>
+        <div class="marquee-item"><img src="image/odco.png.png" alt="ODCO"></div>
+        <div class="marquee-item"><img src="image/chamber.png.png" alt="Chambre d'Agriculture"></div>
+        <div class="marquee-item"><img src="image/SIEMENS-GAMESA.png.jpeg" alt="Siemens Gamesa"></div>
+        <div class="marquee-item"><img src="image/simense.png.png" alt="Siemens Energy"></div>
+        <div class="marquee-item"><img src="image/ONSSA.png.png" alt="ONSSA"></div>
+        <div class="marquee-item"><img src="image/HESPRESS.png.jpeg" alt="Hespress"></div>
+        <div class="marquee-item"><img src="image/CHEIKH-ZAID.png.jpeg" alt="Hôpital Cheikh Zaid"></div>
+        <div class="marquee-item"><img src="image/AMDIE.png.jpeg" alt="AMDIE"></div>
+        <div class="marquee-item"><img src="image/ANLCA.png.jpeg" alt="ANLCA"></div>
+        <div class="marquee-item"><img src="image/CHU-OUJDA.png.png" alt="CHU Oujda"></div>
+    </div>
+</section>
+
+<section class="simulator-section reveal" id="simulateur">
+    <div class="container">
+        <div class="simulator-box">
+            <div class="sim-info">
+                <span class="badge-crit" style="background: rgba(46, 125, 50, 0.3); color: #4ade80;">ESPACE ENTREPRISES</span>
+                <h2>Simulateur de délégation RH</h2>
+                <p>Estimez immédiatement la mise à disposition de vos équipes temporaires selon votre secteur et le volume souhaité.</p>
+                
+                <div class="sim-controls">
+                    <div class="sim-field">
+                        <label>Secteur d'activité :</label>
+                        <select id="simSector">
+                            <option value="Industrie & Production">Industrie & Production</option>
+                            <option value="Logistique & Transport">Logistique & Transport</option>
+                            <option value="BTP & Construction">BTP & Construction</option>
+                            <option value="Tertiaire & Administratif">Tertiaire & Administratif</option>
+                            <option value="Santé & Hygiène">Santé & Hygiène</option>
+                        </select>
+                    </div>
+
+                    <div class="sim-field">
+                        <label>Nombre de profils recherchés :</label>
+                        <input type="number" id="simCount" min="1" max="100" value="3">
+                    </div>
+                </div>
+            </div>
+
+            <div class="sim-summary">
+                <span>Délégation garantie sous</span>
+                <strong>24h à 48h</strong>
+                <a href="#" id="simWhatsAppBtn" target="_blank" class="btn" style="background: #25d366; width: 100%;">
+                    <i class="fa-brands fa-whatsapp"></i> Demander cette équipe
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="services reveal" id="services">
+    <div class="section-title">
+        <span>NOS SOLUTIONS RH</span>
+        <h2>Des services pensés pour votre croissance</h2>
+        <p>Une offre complète de prestations RH pour répondre avec agilité à tous vos défis opérationnels.</p>
+    </div>
+
+    <div class="container services-grid">
+        <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            <h3>Travail Temporaire & Intérim</h3>
+            <p>Délégation rapide de personnel compétent pour gérer vos imprévus, congés et surcroîts d'activité.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-user-plus"></i></div>
+            <h3>Recrutement CDI / CDD</h3>
+            <p>Sourcing sur-mesure, tests et sélection rigoureuse pour intégrer durablement vos futurs talents clés.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-users-gear"></i></div>
+            <h3>Mise à disposition de personnel</h3>
+            <p>Mise en place d'équipes opérationnelles prêtes à intervenir immédiatement sur vos sites.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+            <h3>Gestion Administrative & Paie</h3>
+            <p>Prise en charge intégrale des contrats, déclarations sociales et conformité juridique au Maroc.</p>
+        </div>
+    </div>
+</section>
+
+<section class="sectors reveal" id="sectors">
+    <div class="section-title">
+        <span>CHAMPS D'EXPERTISE</span>
+        <h2>Nos Secteurs d'Intervention</h2>
+        <p>Cliquez sur un secteur pour découvrir nos solutions sur-mesure et demander une délégation immédiate.</p>
+    </div>
+
+    <div class="container sectors-grid">
+        <div class="sector-card" data-title="Industrie & Production" data-desc="Mise à disposition de techniciens, opérateurs de production, agents de maintenance et caristes qualifiés pour vos lignes de fabrication et usines." data-wa="Bonjour PRO C2S, je souhaite demander une équipe dans le secteur: Industrie & Production">
+            <i class="fa-solid fa-industry"></i> <span>Industrie</span>
+        </div>
+        <div class="sector-card" data-title="BTP & Construction" data-desc="Délégation de main-d'œuvre qualifiée et manœuvres pour les chantiers de construction, VRD, électricité et gros œuvre." data-wa="Bonjour PRO C2S, je souhaite demander une équipe dans le secteur: BTP & Construction">
+            <i class="fa-solid fa-trowel-bricks"></i> <span>BTP & Construction</span>
+        </div>
+        <div class="sector-card" data-title="Logistique & Transport" data-desc="Fourniture de préparateurs de commandes, magasiniers, chauffeurs et gestionnaires de flux pour vos entrepôts et plateformes." data-wa="Bonjour PRO C2S, je souhaite demander une équipe dans le secteur: Logistique & Transport">
+            <i class="fa-solid fa-truck-ramp-box"></i> <span>Logistique</span>
+        </div>
+        <div class="sector-card" data-title="Tertiaire & Administratif" data-desc="Intérim et recrutement de profils administratifs, assistants, secrétaires et chargés de clientèle pour vos bureaux." data-wa="Bonjour PRO C2S, je souhaite demander une équipe dans le secteur: Tertiaire & Administratif">
+            <i class="fa-solid fa-building"></i> <span>Tertiaire</span>
+        </div>
+        <div class="sector-card" data-title="Informatique & Systèmes IT" data-desc="Délégation d'experts informatiques, techniciens support, développeurs et administrateurs réseaux pour vos projets numériques." data-wa="Bonjour PRO C2S, je souhaite demander une équipe dans le secteur: Informatique & Systèmes IT">
+            <i class="fa-solid fa-laptop-code"></i> <span>Informatique</span>
+        </div>
+        <div class="sector-card" data-title="Offshoring / Centres d'appel" data-desc="Délégation de téléconseillers bilingues, support technique et agents back-office pour vos centres de relation client." data-wa="Bonjour PRO C2S, je souhaite demander une équipe dans le secteur: Offshoring / Centres d'appel">
+            <i class="fa-solid fa-headset"></i> <span>Offshoring / Centres d'appel</span>
+        </div>
+        <div class="sector-card" data-title="Santé & Médical" data-desc="Personnel soignant de soutien, agents de brancardage et profils d'assistance médicale pour les cliniques et hôpitaux." data-wa="Bonjour PRO C2S, je souhaite demander une équipe dans le secteur: Santé & Médical">
+            <i class="fa-solid fa-heart-pulse"></i> <span>Santé & Médical</span>
+        </div>
+        <div class="sector-card" data-title="Hygiène & Nettoyage Pro" data-desc="Équipes spécialisées en propreté professionnelle, entretien des locaux industriels, tertiaires et sanitaires." data-wa="Bonjour PRO C2S, je souhaite demander une équipe dans le secteur: Hygiène & Nettoyage Pro">
+            <i class="fa-solid fa-broom"></i> <span>Hygiène & Nettoyage Pro</span>
+        </div>
+        <div class="sector-card" data-title="Animation Sportive" data-desc="Mise à disposition de moniteurs, coachs et animateurs sportifs qualifiés pour vos établissements, clubs et événements." data-wa="Bonjour PRO C2S, je souhaite demander une équipe dans le secteur: Animation Sportive">
+            <i class="fa-solid fa-dumbbell"></i> <span>Animation Sportive</span>
+        </div>
+    </div>
+</section>
+
+<section class="services reveal" id="apropos" style="background: #ffffff; padding: 90px 0;">
+    <div class="section-title">
+        <span>NOTRE HISTOIRE & VALEURS</span>
+        <h2>À Propos de PRO C2S</h2>
+        <p>Créée en 2017 à Rabat, PRO C2S s'engage au quotidien pour offrir aux entreprises et aux talents la flexibilité et la sécurité juridique qu'ils méritent.</p>
+    </div>
+    <div class="container services-grid">
+        <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-handshake"></i></div>
+            <h3>Proximité & Écoute</h3>
+            <p>Un interlocuteur RH dédié qui comprend vos exigences métier et s'adapte à vos urgences sur le terrain.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3>Conformité Rigoureuse</h3>
+            <p>Respect strict de la législation marocaine du travail, traçabilité totale et transparence contractuelle.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-gauge-high"></i></div>
+            <h3>Agilité Opérationnelle</h3>
+            <p>Capacité à déployer des collaborateurs qualifiés en quelques heures pour répondre à vos surcroîts d'activité.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon"><i class="fa-solid fa-user-gear"></i></div>
+            <h3>Suivi & Intégration</h3>
+            <p>Accompagnement continu de chaque intérimaire pour garantir une productivité immédiate sur vos sites.</p>
+        </div>
+    </div>
+</section>
+
+<section class="stats reveal">
+    <div class="container stats-grid">
+        <div class="stat-box">
+            <h2 class="counter" data-target="9" data-prefix="+" data-suffix="">0</h2>
+            <p>Années d'expérience</p>
+        </div>
+        <div class="stat-box">
+            <h2 class="counter" data-target="30" data-prefix="+" data-suffix="">0</h2>
+            <p>Entreprises partenaires</p>
+        </div>
+        <div class="stat-box">
+            <h2 class="counter" data-target="200" data-prefix="+" data-suffix="">0</h2>
+            <p>Intérimaires placés / an</p>
+        </div>
+        <div class="stat-box">
+            <h2 class="counter" data-target="95" data-suffix="%">0</h2>
+            <p>Taux de satisfaction</p>
+        </div>
+    </div>
+</section>
+
+<section class="references reveal" id="references">
+    <div class="section-title">
+        <span>ILS NOUS FONT CONFIANCE</span>
+        <h2>Nos Références Majeures</h2>
+        <p>Des institutions étatiques et des leaders industriels de premier plan font confiance à PRO C2S.</p>
+    </div>
+
+    <div class="container references-grid-crit">
+        <!-- 1. Bank Al-Maghrib -->
+        <div class="ref-card-crit bam">
+            <div>
+                <div class="ref-top-header"><span class="ref-badge">Banque Centrale</span><span class="ref-verify"><i class="fa-solid fa-circle-check"></i> Partenaire</span></div>
+                <div class="ref-logo-box"><img src="image/BANK-AL-MAGHRIB.png.png" alt="Bank Al-Maghrib"></div>
+                <div class="ref-title-group"><h3>Bank Al-Maghrib</h3><p>Délégation de profils d'appui, logistique et services généraux.</p></div>
+            </div>
+            <div class="ref-card-footer"><span><i class="fa-solid fa-location-dot"></i> Siège Rabat</span><span>Secteur Bancaire</span></div>
+        </div>
+
+        <!-- 2. CNSS -->
+        <div class="ref-card-crit cnss">
+            <div>
+                <div class="ref-top-header"><span class="ref-badge">Protection Sociale</span><span class="ref-verify"><i class="fa-solid fa-circle-check"></i> Partenaire</span></div>
+                <div class="ref-logo-box"><img src="image/CNSS-png.png" alt="CNSS"></div>
+                <div class="ref-title-group"><h3>CNSS</h3><p>Accompagnement continu et mise à disposition de personnel qualifié.</p></div>
+            </div>
+            <div class="ref-card-footer"><span><i class="fa-solid fa-location-dot"></i> Multi-sites</span><span>Secteur Public</span></div>
+        </div>
+
+        <!-- 3. ODCO -->
+        <div class="ref-card-crit amdie">
+            <div>
+                <div class="ref-top-header"><span class="ref-badge" style="background: #f0fdf4; color: #15803d;">Coopération</span><span class="ref-verify" style="color: #15803d;"><i class="fa-solid fa-circle-check"></i> Partenaire</span></div>
+                <div class="ref-logo-box"><img src="image/odco.png.png" alt="ODCO"></div>
+                <div class="ref-title-group"><h3>Office de Développement de la Coopération</h3><p>Partenaire institutionnel pour l'accompagnement des coopératives.</p></div>
+            </div>
+            <div class="ref-card-footer"><span><i class="fa-solid fa-location-dot"></i> Rabat</span><span>Établissement Public</span></div>
+        </div>
+
+        <!-- 4. Chambre d'Agriculture Drâa-Tafilalet -->
+        <div class="ref-card-crit chu">
+            <div>
+                <div class="ref-top-header"><span class="ref-badge" style="background: #fef3c7; color: #d97706;">Agriculture Régionale</span><span class="ref-verify" style="color: #d97706;"><i class="fa-solid fa-circle-check"></i> Partenaire</span></div>
+                <div class="ref-logo-box"><img src="image/chamber.png.png" alt="Chambre d'Agriculture Drâa-Tafilalet"></div>
+                <div class="ref-title-group"><h3>La Chambre d'Agriculture Drâa-Tafilalet</h3><p>Appui institutionnel et prestations de services pour le secteur agricole régional.</p></div>
+            </div>
+            <div class="ref-card-footer"><span><i class="fa-solid fa-location-dot"></i> Drâa-Tafilalet</span><span>Secteur Agricole</span></div>
+        </div>
+
+        <!-- 5. Siemens Gamesa -->
+        <div class="ref-card-crit siemens">
+            <div>
+                <div class="ref-top-header"><span class="ref-badge">Énergie & Industrie</span><span class="ref-verify"><i class="fa-solid fa-circle-check"></i> Partenaire</span></div>
+                <div class="ref-logo-box"><img src="image/SIEMENS-GAMESA.png.jpeg" alt="Siemens Gamesa"></div>
+                <div class="ref-title-group"><h3>Siemens Gamesa</h3><p>Techniciens d'appui, assistance logistique et maintenance sur sites.</p></div>
+            </div>
+            <div class="ref-card-footer"><span><i class="fa-solid fa-location-dot"></i> Tanger / Parcs</span><span>Énergies Renouvelables</span></div>
+        </div>
+
+        <!-- 6. Siemens Energy -->
+        <div class="ref-card-crit onssa">
+            <div>
+                <div class="ref-top-header"><span class="ref-badge" style="background: #e0f2fe; color: #0284c7;">Énergie & Transition</span><span class="ref-verify" style="color: #0284c7;"><i class="fa-solid fa-circle-check"></i> Partenaire</span></div>
+                <div class="ref-logo-box"><img src="image/simense.png.png" alt="Siemens Energy"></div>
+                <div class="ref-title-group"><h3>Siemens Energy</h3><p>Solutions globales pour la chaîne de valeur de l'énergie et projets industriels.</p></div>
+            </div>
+            <div class="ref-card-footer"><span><i class="fa-solid fa-location-dot"></i> National / Sites</span><span>Énergie & Industrie</span></div>
+        </div>
+
+        <!-- 7. ONSSA -->
+        <div class="ref-card-crit onssa">
+            <div>
+                <div class="ref-top-header"><span class="ref-badge">Sécurité Sanitaire</span><span class="ref-verify"><i class="fa-solid fa-circle-check"></i> Partenaire</span></div>
+                <div class="ref-logo-box"><img src="image/ONSSA.png.png" alt="ONSSA"></div>
+                <div class="ref-title-group"><h3>ONSSA</h3><p>Support opérationnel et mise en place d'équipes de terrain.</p></div>
+            </div>
+            <div class="ref-card-footer"><span><i class="fa-solid fa-location-dot"></i> Régions du Royaume</span><span>Établissement Public</span></div>
+        </div>
+
+        <!-- 8. Hespress -->
+        <div class="ref-card-crit hespress">
+            <div>
+                <div class="ref-top-header"><span class="ref-badge">Média & Presse</span><span class="ref-verify"><i class="fa-solid fa-circle-check"></i> Partenaire</span></div>
+                <div class="ref-logo-box"><img src="image/HESPRESS.png.jpeg" alt="Hespress"></div>
+                <div class="ref-title-group"><h3>Hespress</h3><p>Gestion déléguée, hygiène et services tertiaires.</p></div>
+            </div>
+            <div class="ref-card-footer"><span><i class="fa-solid fa-location-dot"></i> Siège Rabat</span><span>Médias & Numérique</span></div>
+        </div>
+
+        <!-- 9. Hôpital Cheikh Zaïd -->
+        <div class="ref-card-crit cheikh-zaid">
+            <div>
+                <div class="ref-top-header"><span class="ref-badge">Santé & CHU</span><span class="ref-verify"><i class="fa-solid fa-circle-check"></i> Partenaire</span></div>
+                <div class="ref-logo-box"><img src="image/CHEIKH-ZAID.png.jpeg" alt="Hôpital Universitaire Cheikh Zaid"></div>
+                <div class="ref-title-group"><h3>Hôpital Cheikh Zaïd</h3><p>Personnel qualifié et support logistique hospitalier.</p></div>
+            </div>
+            <div class="ref-card-footer"><span><i class="fa-solid fa-location-dot"></i> Rabat</span><span>Secteur Médical</span></div>
+        </div>
+
+        <!-- 10. AMDIE -->
+        <div class="ref-card-crit amdie">
+            <div>
+                <div class="ref-top-header"><span class="ref-badge">Investissement</span><span class="ref-verify"><i class="fa-solid fa-circle-check"></i> Partenaire</span></div>
+                <div class="ref-logo-box"><img src="image/AMDIE.png.jpeg" alt="AMDIE"></div>
+                <div class="ref-title-group"><h3>AMDIE</h3><p>Agence Marocaine de Développement des Investissements et des Exportations.</p></div>
+            </div>
+            <div class="ref-card-footer"><span><i class="fa-solid fa-location-dot"></i> Rabat</span><span>Agence Publique</span></div>
+        </div>
+
+        <!-- 11. ANLCA -->
+        <div class="ref-card-crit anlca">
+            <div>
+                <div class="ref-top-header"><span class="ref-badge">Lutte contre l'analphabétisme</span><span class="ref-verify"><i class="fa-solid fa-circle-check"></i> Partenaire</span></div>
+                <div class="ref-logo-box"><img src="image/ANLCA.png.jpeg" alt="ANLCA"></div>
+                <div class="ref-title-group"><h3>ANLCA</h3><p>Agence Nationale de Lutte Contre l'Analphabétisme - Support RH.</p></div>
+            </div>
+            <div class="ref-card-footer"><span><i class="fa-solid fa-location-dot"></i> National</span><span>Établissement Public</span></div>
+        </div>
+
+        <!-- 12. CHU Oujda -->
+        <div class="ref-card-crit chu">
+            <div>
+                <div class="ref-top-header"><span class="ref-badge">Santé Régionale</span><span class="ref-verify"><i class="fa-solid fa-circle-check"></i> Partenaire</span></div>
+                <div class="ref-logo-box"><img src="image/CHU-OUJDA.png.png" alt="CHU Oujda"></div>
+                <div class="ref-title-group"><h3>CHU Oujda</h3><p>Centre Hospitalier Universitaire - Prestations et support logistique.</p></div>
+            </div>
+            <div class="ref-card-footer"><span><i class="fa-solid fa-location-dot"></i> Oujda</span><span>Secteur Hospitalier</span></div>
+        </div>
+    </div>
+</section>
+
+<section class="job-section reveal" id="carrieres">
+    <div class="section-title">
+        <span>OPPORTUNITÉS DE CARRIÈRE</span>
+        <h2>Nos Dernières Missions d'Intérim</h2>
+        <p>Filtrez par pôle de compétences et cliquez sur une offre pour postuler en direct.</p>
+    </div>
+
+    <div class="job-filters-wrapper">
+        <button class="filter-btn active" data-filter="all"><i class="fa-solid fa-layer-group"></i> Toutes les offres</button>
+        <button class="filter-btn" data-filter="transport"><i class="fa-solid fa-van-shuttle"></i> Transport & Logistique</button>
+        <button class="filter-btn" data-filter="admin"><i class="fa-solid fa-briefcase"></i> Administration & IT</button>
+        <button class="filter-btn" data-filter="sante"><i class="fa-solid fa-heart-pulse"></i> Santé & Sport</button>
+    </div>
+
+    <div class="container job-grid">
+        <div class="job-card" data-category="admin" data-title="Assistant (e) administratif (ve)" data-type="Intérim" data-badge="interim" data-sector="Administration & Gestion RH" data-location="Tout le Maroc (Multi-villes)" data-desc="Gestion des courriers, accueil téléphonique, tenue des registres du personnel, préparation des contrats et support administratif." data-req="Bac+2 minimum en Gestion ou Bureautique." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Assistant(e) Administratif(ve)">
+            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Récent</span></div>
+            <div class="job-illustration-box">
+                <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="job-crit-svg">
+                    <rect x="25" y="78" width="150" height="6" rx="2" fill="#0f172a"/><line x1="45" y1="84" x2="45" y2="110" stroke="#0f172a" stroke-width="3"/><line x1="155" y1="84" x2="155" y2="110" stroke="#0f172a" stroke-width="3"/><rect x="55" y="46" width="38" height="26" rx="3" stroke="#0f172a" stroke-width="2.2" fill="#ffffff"/><rect x="59" y="50" width="30" height="18" fill="#e8f5e9"/><line x1="74" y1="72" x2="74" y2="78" stroke="#0f172a" stroke-width="2.5"/><line x1="66" y1="78" x2="82" y2="78" stroke="#0f172a" stroke-width="2.5"/><rect x="36" y="58" width="8" height="20" rx="1.5" fill="#2e7d32"/><rect x="42" y="62" width="6" height="16" rx="1" fill="#1b5e20"/><circle cx="125" cy="38" r="11" fill="#ffffff" stroke="#0f172a" stroke-width="2.2"/><path d="M116 35C116 26 134 26 134 35Z" fill="#2e7d32"/><path d="M112 55C112 49 138 49 138 55V78H112V55Z" fill="#2e7d32"/><rect x="110" y="56" width="30" height="22" rx="4" stroke="#0f172a" stroke-width="2.2" fill="#2e7d32"/><path d="M125 56L125 68" stroke="#ffffff" stroke-width="2"/><rect x="100" y="72" width="14" height="6" rx="1" fill="#ffffff" stroke="#0f172a" stroke-width="1.5"/>
+                </svg>
+            </div>
+            <h3>Assistant (e) administratif (ve)</h3>
+            <p class="job-sect"><i class="fa-solid fa-building"></i> Administration & Gestion RH</p>
+            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> Tout le Maroc</span><span><i class="fa-solid fa-graduation-cap"></i> Bac+2 en Gestion</span></div>
+            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+
+        <div class="job-card" data-category="transport" data-title="Chauffeur Professionnel" data-type="Intérim" data-badge="interim" data-sector="Transport & Logistique" data-location="Déploiement National" data-desc="Transport de personnel et de marchandises, conduite sécurisée de véhicules légers et autocars." data-req="Permis B, C ou D en cours de validité." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Chauffeur Professionnel">
+            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Urgent</span></div>
+            <div class="job-illustration-box">
+                <svg viewBox="0 0 210 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="job-crit-svg">
+                    <line x1="10" y1="100" x2="200" y2="100" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round"/><rect x="18" y="32" width="82" height="46" rx="5" stroke="#0f172a" stroke-width="2" fill="#f8fafc"/><rect x="23" y="38" width="18" height="14" rx="2" stroke="#2e7d32" stroke-width="1.6" fill="#e8f5e9"/><rect x="46" y="38" width="18" height="14" rx="2" stroke="#2e7d32" stroke-width="1.6" fill="#e8f5e9"/><path d="M69 38H88C94 38 98 44 98 52V62H69V38Z" stroke="#0f172a" stroke-width="1.6" fill="#ffffff"/><circle cx="36" cy="78" r="9" fill="#0f172a"/><circle cx="36" cy="78" r="3.5" fill="#ffffff"/><circle cx="82" cy="78" r="9" fill="#0f172a"/><circle cx="82" cy="78" r="3.5" fill="#ffffff"/><path d="M72 70L84 55H112L124 70H136C138.5 70 140 72 140 75V86H64V75C64 72 65.5 70 68 70H72Z" stroke="#0f172a" stroke-width="2" fill="#ffffff"/><circle cx="80" cy="88" r="10" fill="#0f172a"/><circle cx="80" cy="88" r="4" fill="#ffffff"/><circle cx="124" cy="88" r="10" fill="#0f172a"/><circle cx="124" cy="88" r="4" fill="#ffffff"/><circle cx="170" cy="38" r="10" fill="#ffffff" stroke="#0f172a" stroke-width="2.2"/><rect x="160" y="50" width="20" height="26" rx="4" fill="#2e7d32" stroke="#0f172a" stroke-width="2"/><line x1="165" y1="76" x2="165" y2="99" stroke="#0f172a" stroke-width="5" stroke-linecap="round"/><line x1="175" y1="76" x2="175" y2="99" stroke="#0f172a" stroke-width="5" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h3>Chauffeur Professionnel</h3>
+            <p class="job-sect"><i class="fa-solid fa-van-shuttle"></i> Transport & Logistique</p>
+            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> Déploiement National</span><span><i class="fa-solid fa-id-card"></i> Permis B / C / D</span></div>
+            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+
+        <div class="job-card" data-category="sante" data-title="Agent de Brancardage" data-type="Intérim" data-badge="interim" data-sector="Milieu Hospitalier & Médical" data-location="CHU & Hôpitaux du Maroc" data-desc="Prise en charge et transfert sécurisé des patients entre les services hospitaliers selon des protocoles d'hygiène stricts." data-req="Excellente condition physique et sens de l'écoute." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Agent de brancardage">
+            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Urgent</span></div>
+            <div class="job-illustration-box">
+                <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="job-crit-svg">
+                    <rect x="35" y="60" width="75" height="6" rx="3" fill="#2e7d32"/><line x1="42" y1="66" x2="42" y2="88" stroke="#0f172a" stroke-width="2.5"/><line x1="102" y1="66" x2="102" y2="88" stroke="#0f172a" stroke-width="2.5"/><circle cx="42" cy="91" r="5" fill="#0f172a"/><circle cx="102" cy="91" r="5" fill="#0f172a"/><rect x="32" y="52" width="16" height="8" rx="2" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/><circle cx="140" cy="38" r="10" fill="#ffffff" stroke="#0f172a" stroke-width="2.2"/><rect x="130" y="50" width="20" height="26" rx="3" fill="#2e7d32" stroke="#0f172a" stroke-width="2"/><line x1="135" y1="76" x2="132" y2="98" stroke="#0f172a" stroke-width="5" stroke-linecap="round"/><line x1="145" y1="76" x2="148" y2="98" stroke="#0f172a" stroke-width="5" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h3>Agent de brancardage</h3>
+            <p class="job-sect"><i class="fa-solid fa-heart-pulse"></i> Milieu Hospitalier & Médical</p>
+            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> CHU & Hôpitaux</span><span><i class="fa-solid fa-hands-holding-child"></i> Rigueur & empathie</span></div>
+            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+
+        <div class="job-card" data-category="admin" data-title="Support applicatif" data-type="Intérim" data-badge="interim" data-sector="Informatique & Systèmes IT" data-location="Tout le Maroc (Sur site / Hybride)" data-desc="Assistance technique aux utilisateurs, qualification des incidents informatiques niveau 1 & 2 et ticketing." data-req="Bac+2 ou Bac+3 en Informatique / Réseaux." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Support applicatif">
+            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Nouveau</span></div>
+            <div class="job-illustration-box">
+                <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="job-crit-svg">
+                    <rect x="35" y="32" width="60" height="42" rx="4" stroke="#0f172a" stroke-width="2.2" fill="#ffffff"/><rect x="40" y="37" width="50" height="32" rx="2" fill="#f1f5f9"/><line x1="65" y1="74" x2="65" y2="84" stroke="#0f172a" stroke-width="2.5"/><line x1="52" y1="84" x2="78" y2="84" stroke="#0f172a" stroke-width="2.5"/><circle cx="142" cy="42" r="11" fill="#ffffff" stroke="#0f172a" stroke-width="2.2"/><rect x="130" y="55" width="24" height="24" rx="4" fill="#2e7d32" stroke="#0f172a" stroke-width="2"/><line x1="135" y1="79" x2="135" y2="99" stroke="#0f172a" stroke-width="5" stroke-linecap="round"/><line x1="149" y1="79" x2="149" y2="99" stroke="#0f172a" stroke-width="5" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h3>Support applicatif</h3>
+            <p class="job-sect"><i class="fa-solid fa-code"></i> Informatique & Systèmes IT</p>
+            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> Sur site / Hybride</span><span><i class="fa-solid fa-laptop-code"></i> Bac+2 / Bac+3 Info</span></div>
+            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+
+        <div class="job-card" data-category="admin" data-title="Agent D'accueil" data-type="Intérim" data-badge="interim" data-sector="Accueil & Relations Entreprise" data-location="Échelle Nationale" data-desc="Accueil physique et téléphonique des visiteurs, distribution des badges d'accès et orientation." data-req="Excellente élocution et maîtrise du français." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Agent d'accueil">
+            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Récent</span></div>
+            <div class="job-illustration-box">
+                <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="job-crit-svg">
+                    <rect x="40" y="62" width="120" height="34" rx="6" stroke="#0f172a" stroke-width="2.2" fill="#f8fafc"/><circle cx="100" cy="83" r="6" stroke="#2e7d32" stroke-width="1.8" fill="#ffffff"/><circle cx="100" cy="36" r="11" fill="#ffffff" stroke="#0f172a" stroke-width="2.2"/><rect x="88" y="49" width="24" height="15" rx="3" fill="#2e7d32" stroke="#0f172a" stroke-width="2"/>
+                </svg>
+            </div>
+            <h3>Agent D'accueil</h3>
+            <p class="job-sect"><i class="fa-solid fa-handshake"></i> Accueil & Relations Entreprise</p>
+            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> Échelle Nationale</span><span><i class="fa-solid fa-comments"></i> Très bon français</span></div>
+            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+
+        <div class="job-card" data-category="sante" data-title="Moniteur de Sport" data-type="Intérim" data-badge="interim" data-sector="Coaching, Loisirs & Établissements" data-location="Présence Nationale" data-desc="Encadrement et animation de séances sportives, suivi personnalisé et ateliers de remise en forme." data-req="Diplôme d'éducateur ou CQP Sport." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Moniteur de Sport">
+            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Récent</span></div>
+            <div class="job-illustration-box">
+                <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="job-crit-svg">
+                    <line x1="20" y1="99" x2="180" y2="99" stroke="#e2e8f0" stroke-width="2"/><circle cx="48" cy="74" r="14" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/><circle cx="140" cy="36" r="10" fill="#ffffff" stroke="#0f172a" stroke-width="2.2"/><rect x="130" y="48" width="22" height="26" rx="4" fill="#2e7d32" stroke="#0f172a" stroke-width="2"/>
+                </svg>
+            </div>
+            <h3>Moniteur de Sport</h3>
+            <p class="job-sect"><i class="fa-solid fa-dumbbell"></i> Coaching, Loisirs & Établissements</p>
+            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> Toutes régions</span><span><i class="fa-solid fa-medal"></i> Diplôme Sport</span></div>
+            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+    </div>
+</section>
+
+<section class="faq-section reveal" id="faq">
+    <div class="section-title">
+        <span>QUESTIONS FRÉQUENTES</span>
+        <h2>Tout ce que vous devez savoir</h2>
+        <p>Des réponses claires pour les entreprises et les candidats sur le fonctionnement de PRO C2S.</p>
+    </div>
+
+    <div class="container faq-container">
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Quels sont les délais pour déléguer du personnel intérimaire ?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                <p>Grâce à notre vivier actif et réactif dans tout le Maroc, nous sommes capables de mettre à disposition des profils qualifiés sous un délai moyen de 24h à 48h selon la spécificité des postes.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Quelle est la conformité juridique des contrats au Maroc ?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                <p>PRO C2S applique rigoureusement le Code du Travail marocain. Nous prenons en charge la totalité des obligations légales : déclarations CNSS, contrats de mission, assurances AT et gestion de la paie sans aucun risque pour l'entreprise utilisatrice.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Comment un candidat peut-il postuler à une mission ?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                <p>C'est direct et instantané : il vous suffit de cliquer sur l'offre de votre choix et de transmettre votre CV par WhatsApp à notre équipe RH dédiée. Votre profil sera traité sous 24h.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>Intervenez-vous en dehors de l'axe Casablanca-Rabat ?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+                <p>Oui, PRO C2S déploie des équipes opérationnelles sur l'ensemble du territoire national : Tanger, Kénitra, Fès, Oujda, Marrakech, Agadir et les régions du Sud.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="job-modal-overlay" id="jobModal">
+    <div class="job-modal-content">
+        <button class="job-modal-close" id="closeModalBtn" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+        <span class="modal-header-badge" id="modalBadge">Intérim</span>
+        <h3 class="job-modal-title" id="modalTitle">Titre de l'offre</h3>
+        <p class="job-modal-sector" id="modalSector"><i class="fa-solid fa-briefcase"></i> Secteur</p>
+
+        <div class="modal-details-grid">
+            <div><i class="fa-solid fa-location-dot"></i> <strong>Lieu:</strong> <span id="modalLocation">Maroc</span></div>
+            <div><i class="fa-solid fa-graduation-cap"></i> <strong>Profil:</strong> <span id="modalReq">Diplôme</span></div>
+        </div>
+
+        <div class="modal-description">
+            <h4>Description du poste & Missions :</h4>
+            <p id="modalDesc"></p>
+        </div>
+
+        <a href="#" id="modalApplyBtn" target="_blank" class="btn-modal-apply">
+            <i class="fa-brands fa-whatsapp"></i> Postuler via WhatsApp
+        </a>
+    </div>
+</div>
+
+<section class="contact reveal" id="contact">
+    <div class="container contact-container">
+
+        <div class="contact-info">
+            <span class="badge-crit">CONTACT</span>
+            <h2>Parlons de votre projet</h2>
+            <p>Contactez-nous pour discuter de vos besoins et demander votre devis gratuit et personnalisé.</p>
+
+            <div class="contact-items">
+                <div class="contact-item">
+                    <i class="fa-solid fa-user"></i>
+                    <div>
+                        <strong>Contact</strong>
+                        <span>YOUSSEF NAJI</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <strong>Téléphone</strong>
+                        <span>06 63 44 98 24 / 05 20 70 48 30</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <strong>Email</strong>
+                        <span>procssentreprise@gmail.com</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <strong>Adresse</strong>
+                        <span>Imm. 69, 4ème Étage, Appt 04, Av. Patrice Lumumba, Hassan - Rabat</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-wrapper" style="margin-top: 25px; border-radius: 18px; overflow: hidden; border: 1px solid var(--border-color); height: 200px;">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.382878401314!2d-6.835489724285816!3d34.02120087316937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76b8826543d23%3A0x892a0fefc2aef89a!2sAvenue%20Patrice%20Lumumba%2C%20Rabat!5e0!3m2!1sfr!2sma!4v1726570000000!5m2!1sfr!2sma" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+
+        <form class="contact-form" id="contact-form">
+            <input type="text" name="user_name" placeholder="Nom complet" required>
+            <input type="email" name="user_email" placeholder="Adresse e-mail" required>
+            <input type="tel" name="user_phone" placeholder="Téléphone" required>
+            <textarea name="message" placeholder="Votre message" required></textarea>
+
+            <button type="submit" class="btn btn-submit">Envoyer</button>
+
+            <div class="cv-notice">
+                <p><i class="fa-solid fa-briefcase"></i> Vous souhaitez postuler ou envoyer un CV ?</p>
+                <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20postuler%20et%20vous%20envoyer%20mon%20CV." target="_blank" class="btn-cv-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> Envoyer mon CV via WhatsApp
+                </a>
+            </div>
+        </form>
+
+    </div>
+</section>
+
+<footer>
+    <div class="container footer-grid">
+        <div class="footer-about">
+            <h3>PRO C2S</h3>
+            <p>Société spécialisée en recrutement, intérim et propreté professionnelle créée en 2017. Votre partenaire pour construire vos équipes de demain.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Navigation</h4>
+            <p><a href="#home">Accueil</a></p>
+            <p><a href="#services">Services</a></p>
+            <p><a href="#sectors">Secteurs</a></p>
+            <p><a href="#process">Processus</a></p>
+            <p><a href="#references">Références</a></p>
+            <p><a href="#faq">FAQ</a></p>
+            <p><a href="#contact">Contact</a></p>
+        </div>
+        <div class="footer-contact">
+            <h4>Contact</h4>
+            <p><i class="fa-solid fa-location-dot"></i> Imm. 69, 4ème Étage, Appt 04, Hassan - Rabat</p>
+            <p><i class="fa-solid fa-phone"></i> 06 63 44 98 24 / 05 20 70 48 30</p>
+            <p><i class="fa-solid fa-envelope"></i> procssentreprise@gmail.com</p>
+        </div>
+    </div>
+    <div class="copyright">
+        © 2026 PRO C2S - Tous droits réservés.
+    </div>
+</footer>
+
+<button class="back-to-top" id="backToTopBtn" aria-label="Retour en haut">
+    <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<a href="https://wa.me/212663449824" class="whatsapp-btn" target="_blank" aria-label="WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+    (function() {
+        emailjs.init({
+            publicKey: "W70dwCkNbwmFHeSOA"
+        });
+    })();
+
+    const contactForm = document.getElementById("contact-form");
+    const submitBtn = contactForm.querySelector("button[type='submit']");
+    const toast = document.getElementById("toastNotification");
+    const toastMsg = document.getElementById("toastMsg");
+
+    function showToast(message, isError = false) {
+        toastMsg.innerText = message;
+        if(isError) {
+            toast.style.background = "#e11d48";
+        } else {
+            toast.style.background = "#1b5e20";
+        }
+        toast.classList.add("show");
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 4000);
+    }
+
+    contactForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const originalBtnText = submitBtn.innerText;
+        submitBtn.innerText = "Envoi en cours...";
+        submitBtn.disabled = true;
+
+        emailjs.sendForm(
+            "service_d9cvkm8",
+            "template_ob7d4cb",
+            this
+        )
+        .then(() => {
+            showToast("Votre message a été transmis avec succès !");
+            contactForm.reset();
+        })
+        .catch((error) => {
+            console.error("Détails EmailJS :", error);
+            showToast("Erreur lors de l'envoi de votre message.", true);
+        })
+        .finally(() => {
+            submitBtn.innerText = originalBtnText;
+            submitBtn.disabled = false;
+        });
+    });
+
+    const toggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+    if(toggle) {
+        toggle.addEventListener("click", () => {
+            navLinks.classList.toggle("open");
+        });
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("open");
+            });
+        });
+    }
+
+    const header = document.getElementById("main-header");
+    const backToTopBtn = document.getElementById("backToTopBtn");
+
+    window.addEventListener("scroll", () => {
+        if(window.scrollY > 50) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+
+        if(window.scrollY > 400) {
+            backToTopBtn.classList.add("show");
+        } else {
+            backToTopBtn.classList.remove("show");
+        }
+    });
+
+    backToTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    const revealElements = document.querySelectorAll(".reveal");
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add("active");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    const counters = document.querySelectorAll(".counter");
+    let countersStarted = false;
+
+    const statsSection = document.querySelector(".stats");
+    const statsObserver = new IntersectionObserver((entries) => {
+        if(entries[0].isIntersecting && !countersStarted) {
+            countersStarted = true;
+            counters.forEach(counter => {
+                const target = +counter.getAttribute("data-target");
+                const prefix = counter.getAttribute("data-prefix") || "";
+                const suffix = counter.getAttribute("data-suffix") || "";
+                const duration = 1600;
+                const increment = target / (duration / 16);
+                let current = 0;
+
+                const updateCounter = () => {
+                    current += increment;
+                    if(current < target) {
+                        counter.innerText = prefix + Math.ceil(current) + suffix;
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = prefix + target + suffix;
+                    }
+                };
+                updateCounter();
+            });
+        }
+    }, { threshold: 0.3 });
+
+    if(statsSection) {
+        statsObserver.observe(statsSection);
+    }
+
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    const allJobCards = document.querySelectorAll(".job-card");
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            filterBtns.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            const filterValue = btn.getAttribute("data-filter");
+
+            allJobCards.forEach(card => {
+                const category = card.getAttribute("data-category");
+                if (filterValue === "all" || category === filterValue) {
+                    card.classList.remove("hidden");
+                } else {
+                    card.classList.add("hidden");
+                }
+            });
+        });
+    });
+
+    const modal = document.getElementById("jobModal");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+
+    const modalTitle = document.getElementById("modalTitle");
+    const modalBadge = document.getElementById("modalBadge");
+    const modalSector = document.getElementById("modalSector");
+    const modalLocation = document.getElementById("modalLocation");
+    const modalReq = document.getElementById("modalReq");
+    const modalDesc = document.getElementById("modalDesc");
+    const modalApplyBtn = document.getElementById("modalApplyBtn");
+
+    allJobCards.forEach(card => {
+        card.addEventListener("click", () => {
+            const title = card.getAttribute("data-title");
+            const type = card.getAttribute("data-type");
+            const badgeClass = card.getAttribute("data-badge");
+            const sector = card.getAttribute("data-sector");
+            const location = card.getAttribute("data-location");
+            const req = card.getAttribute("data-req");
+            const desc = card.getAttribute("data-desc");
+            const waMsg = card.getAttribute("data-wa");
+
+            modalTitle.innerText = title;
+            modalBadge.innerText = type;
+            modalBadge.className = `modal-header-badge job-badge ${badgeClass}`;
+            modalSector.innerHTML = `<i class="fa-solid fa-briefcase"></i> ${sector}`;
+            modalLocation.innerText = location;
+            modalReq.innerText = req;
+            modalDesc.innerText = desc;
+            modalApplyBtn.href = `https://wa.me/212663449824?text=${encodeURIComponent(waMsg)}`;
+            modalApplyBtn.innerHTML = `<i class="fa-brands fa-whatsapp"></i> Postuler via WhatsApp`;
+
+            modal.classList.add("open");
+        });
+    });
+
+    const sectorCards = document.querySelectorAll(".sector-card");
+    sectorCards.forEach(card => {
+        card.addEventListener("click", () => {
+            const title = card.getAttribute("data-title");
+            const desc = card.getAttribute("data-desc");
+            const waMsg = card.getAttribute("data-wa");
+
+            modalTitle.innerText = title;
+            modalBadge.innerText = "Secteur d'Expertise";
+            modalBadge.className = "modal-header-badge job-badge interim";
+            modalSector.innerHTML = `<i class="fa-solid fa-circle-check"></i> PRO C2S Maroc`;
+            modalLocation.innerText = "Disponibilité Nationale";
+            modalReq.innerText = "Intervention Rapide (24h/48h)";
+            modalDesc.innerText = desc;
+            modalApplyBtn.href = `https://wa.me/212663449824?text=${encodeURIComponent(waMsg)}`;
+            modalApplyBtn.innerHTML = `<i class="fa-brands fa-whatsapp"></i> Demander du personnel dans ce secteur`;
+
+            modal.classList.add("open");
+        });
+    });
+
+    closeModalBtn.addEventListener("click", () => {
+        modal.classList.remove("open");
+    });
+
+    modal.addEventListener("click", (e) => {
+        if(e.target === modal) {
+            modal.classList.remove("open");
+        }
+    });
+
+    const simSector = document.getElementById("simSector");
+    const simCount = document.getElementById("simCount");
+    const simWhatsAppBtn = document.getElementById("simWhatsAppBtn");
+
+    function updateSimLink() {
+        const sector = simSector.value;
+        const count = simCount.value || 1;
+        const msg = `Bonjour PRO C2S, nous sommes une entreprise et nous souhaitons une délégation de ${count} profil(s) dans le secteur: ${sector}. Pouvez-vous nous transmettre une étude / devis ?`;
+        simWhatsAppBtn.href = `https://wa.me/212663449824?text=${encodeURIComponent(msg)}`;
+    }
+
+    if(simSector && simCount) {
+        simSector.addEventListener("change", updateSimLink);
+        simCount.addEventListener("input", updateSimLink);
+        updateSimLink();
+    }
+
+    const faqItems = document.querySelectorAll(".faq-item");
+    faqItems.forEach(item => {
+        const question = item.querySelector(".faq-question");
+        question.addEventListener("click", () => {
+            const isOpen = item.classList.contains("active");
+            faqItems.forEach(i => i.classList.remove("active"));
+            if(!isOpen) {
+                item.classList.add("active");
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
