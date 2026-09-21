@@ -780,12 +780,6 @@ header.scrolled .logo img {
   opacity: 0.92;
 }
 
-/* ================= RÉFÉRENCES ================= */
-.references {
-  padding: 95px 0;
-  background: #ffffff;
-}
-
 /* ================= OFFRES D'EMPLOI ================= */
 .job-section {
   padding: 95px 0;
@@ -1237,7 +1231,7 @@ header.scrolled .logo img {
   padding: 14px 16px;
   margin-bottom: 14px;
   background: #f8fafc;
-  border: 1px solid #cbd5e1;
+  border: 1.px solid #cbd5e1;
   border-radius: 12px;
   font-size: 14px;
   outline: none;
