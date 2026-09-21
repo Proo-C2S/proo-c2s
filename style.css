@@ -786,150 +786,6 @@ header.scrolled .logo img {
   background: #ffffff;
 }
 
-.references-grid-crit {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
-}
-
-.ref-card-crit {
-  background: #ffffff;
-  border-radius: 20px;
-  border: 1px solid var(--border-color);
-  padding: 28px 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
-  transition: all 0.35s ease;
-  overflow: hidden;
-}
-
-.ref-card-crit:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
-  border-color: var(--primary);
-}
-
-.ref-card-crit::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-}
-
-.ref-top-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
-}
-
-.ref-badge {
-  font-size: 11.5px;
-  font-weight: 700;
-  padding: 5px 12px;
-  border-radius: 30px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.ref-verify {
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-weight: 600;
-}
-
-.ref-logo-box {
-  height: 80px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 18px;
-}
-
-.ref-logo-box img {
-  max-height: 65px;
-  max-width: 190px;
-  object-fit: contain;
-  transition: transform 0.3s;
-}
-
-.ref-card-crit:hover .ref-logo-box img {
-  transform: scale(1.04);
-}
-
-.ref-title-group h3 {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--dark);
-  margin-bottom: 6px;
-}
-
-.ref-title-group p {
-  font-size: 13.5px;
-  color: var(--gray);
-  line-height: 1.6;
-}
-
-.ref-card-footer {
-  margin-top: 20px;
-  padding-top: 14px;
-  border-top: 1px dashed #f1f5f9;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 12.5px;
-  color: #64748b;
-}
-
-.ref-card-footer span {
-  font-weight: 600;
-}
-
-/* Couleurs par Partenaire */
-.ref-card-crit.bam::before { background: #6b21a8; }
-.ref-card-crit.bam .ref-badge { background: #f3e8ff; color: #6b21a8; }
-.ref-card-crit.bam .ref-verify { color: #6b21a8; }
-
-.ref-card-crit.cnss::before { background: #1d4ed8; }
-.ref-card-crit.cnss .ref-badge { background: #dbeafe; color: #1d4ed8; }
-.ref-card-crit.cnss .ref-verify { color: #1d4ed8; }
-
-.ref-card-crit.siemens::before { background: #0f766e; }
-.ref-card-crit.siemens .ref-badge { background: #ccfbf1; color: #0f766e; }
-.ref-card-crit.siemens .ref-verify { color: #0f766e; }
-
-.ref-card-crit.onssa::before { background: #0284c7; }
-.ref-card-crit.onssa .ref-badge { background: #e0f2fe; color: #0284c7; }
-.ref-card-crit.onssa .ref-verify { color: #0284c7; }
-
-.ref-card-crit.hespress::before { background: #2563eb; }
-.ref-card-crit.hespress .ref-badge { background: #eff6ff; color: #2563eb; }
-.ref-card-crit.hespress .ref-verify { color: #2563eb; }
-
-.ref-card-crit.cheikh-zaid::before { background: #059669; }
-.ref-card-crit.cheikh-zaid .ref-badge { background: #ecfdf5; color: #059669; }
-.ref-card-crit.cheikh-zaid .ref-verify { color: #059669; }
-
-.ref-card-crit.amdie::before { background: #15803d; }
-.ref-card-crit.amdie .ref-badge { background: #f0fdf4; color: #15803d; }
-.ref-card-crit.amdie .ref-verify { color: #15803d; }
-
-.ref-card-crit.anlca::before { background: #166534; }
-.ref-card-crit.anlca .ref-badge { background: #dcfce7; color: #166534; }
-.ref-card-crit.anlca .ref-verify { color: #166534; }
-
-.ref-card-crit.chu::before { background: #d97706; }
-.ref-card-crit.chu .ref-badge { background: #fef3c7; color: #d97706; }
-.ref-card-crit.chu .ref-verify { color: #d97706; }
-
 /* ================= OFFRES D'EMPLOI ================= */
 .job-section {
   padding: 95px 0;
@@ -1637,10 +1493,6 @@ footer {
   .process-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .references-grid-crit {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (max-width: 768px) {
@@ -1674,10 +1526,6 @@ footer {
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
     row-gap: 25px;
-  }
-
-  .references-grid-crit {
-    grid-template-columns: 1fr;
   }
 
   .footer-grid {
