@@ -84,6 +84,7 @@ document.querySelectorAll(".about,.services,.references,.contact").forEach(el=>{
     observer.observe(el);
 
 });
+
 // ==========================
 // Mobile Menu
 // ==========================
@@ -91,8 +92,29 @@ document.querySelectorAll(".about,.services,.references,.contact").forEach(el=>{
 const menuToggle = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector(".nav-links");
 
-menuToggle.addEventListener("click", () => {
+if(menuToggle && navLinks) {
+    menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+    });
+}
 
-    navLinks.classList.toggle("open");
+// ==========================
+// Cookie Consent Logic Pro
+// ==========================
+document.addEventListener("DOMContentLoaded", function() {
+    const cookieBanner = document.getElementById("cookieConsentBanner");
+    const acceptBtn = document.getElementById("acceptCookiesBtn");
 
+    if(cookieBanner && acceptBtn) {
+        // Vérifier si l'utilisateur a déjà accepté les cookies
+        if (localStorage.getItem("proC2sCookiesAccepted") === "true") {
+            cookieBanner.classList.add("hidden");
+        }
+
+        // Action au clic sur "Tout accepter"
+        acceptBtn.addEventListener("click", function() {
+            localStorage.setItem("proC2sCookiesAccepted", "true");
+            cookieBanner.classList.add("hidden");
+        });
+    }
 });
