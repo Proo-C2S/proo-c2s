@@ -72,22 +72,27 @@ if(menuToggle && navLinks) {
     });
 }
 
-// ==========================
-// Cookie Consent Logic (100% Fixed Class based)
-// ==========================
-window.addEventListener("DOMContentLoaded", function() {
+/* ==========================================
+   PRO C.2.S - SCRIPT.JS (Cookies Fix 100%)
+========================================== */
+
+document.addEventListener("DOMContentLoaded", function() {
+    const cookieBanner = document.getElementById("cookieConsentBanner");
     const acceptBtn = document.getElementById("acceptCookiesBtn");
 
-    // Ila kan 3ndo cookie m-sajl mn qbl
+    // 1. Ila kan msta3mil qbl wrak 3liha, mssaha f lahal
     if (localStorage.getItem("proC2sCookiesAccepted") === "true") {
-        document.body.classList.add("cookies-accepted");
+        if (cookieBanner) {
+            cookieBanner.style.display = "none";
+        }
     }
 
-    if (acceptBtn) {
+    // 2. Mli ywrak 3la Bouton "Tout accepter"
+    if (acceptBtn && cookieBanner) {
         acceptBtn.addEventListener("click", function(e) {
             e.preventDefault();
             localStorage.setItem("proC2sCookiesAccepted", "true");
-            document.body.classList.add("cookies-accepted");
+            cookieBanner.style.display = "none";
         });
     }
 });
