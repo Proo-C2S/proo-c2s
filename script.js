@@ -99,22 +99,22 @@ if(menuToggle && navLinks) {
 }
 
 // ==========================
-// Cookie Consent Logic Pro
+// Cookie Consent Logic Pro (Fix)
 // ==========================
 document.addEventListener("DOMContentLoaded", function() {
     const cookieBanner = document.getElementById("cookieConsentBanner");
     const acceptBtn = document.getElementById("acceptCookiesBtn");
 
-    if(cookieBanner && acceptBtn) {
-        // Vérifier si l'utilisateur a déjà accepté les cookies
+    if (cookieBanner && acceptBtn) {
+        // Ila kan 3ndo cookie m-sajl mn qbl, mssa7ha direct
         if (localStorage.getItem("proC2sCookiesAccepted") === "true") {
-            cookieBanner.classList.add("hidden");
+            cookieBanner.style.display = "none";
         }
 
-        // Action au clic sur "Tout accepter"
+        // Mli ywrek l-msta3mil 3la Bouton
         acceptBtn.addEventListener("click", function() {
             localStorage.setItem("proC2sCookiesAccepted", "true");
-            cookieBanner.classList.add("hidden");
+            cookieBanner.style.display = "none";
         });
     }
 });
