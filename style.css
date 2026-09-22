@@ -1,5 +1,5 @@
 /* ===================================================================
-   PRO C2S - STYLE CSS COMPLET (Design Inspiré Crit & Animations Pro)
+   PRO C2S - STYLE CSS COMPLET (Design Pro & Cookie Banner Fix 100%)
 =================================================================== */
 
 * {
@@ -1322,10 +1322,6 @@ footer {
   border: 1px solid rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(10px);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-body.cookies-accepted #cookieConsentBanner {
-  display: none !important;
 }
 
 .cookie-content {
