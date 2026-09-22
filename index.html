@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=21">
+    <link rel="stylesheet" href="style.css?v=22">
 </head>
 
 <body>
@@ -589,19 +589,25 @@
     </div>
 </footer>
 
-<!-- ================= COOKIE BANNER PRO ================= -->
-<div id="cookieConsentBanner" class="cookie-banner-pro" style="display: flex;">
-    <div class="cookie-content">
-        <i class="fa-solid fa-cookie-bite cookie-icon-pro"></i>
-        <div class="cookie-text">
-            <h4>Gestion des Cookies & Confidentialité</h4>
-            <p>Nous utilisons des cookies pour améliorer votre expérience sur notre site, mesurer l'audience et sécuriser nos services. En poursuivant, vous acceptez notre politique de cookies.</p>
+<!-- ================= COOKIE BANNER DIRECT (100% WORKING) ================= -->
+<div id="cookieBanner" style="position: fixed; bottom: 25px; left: 25px; right: 25px; max-width: 650px; margin: 0 auto; background: #0f172a; color: #ffffff; padding: 22px 26px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); display: flex; align-items: center; justify-content: space-between; gap: 20px; z-index: 10005; border: 1px solid rgba(255, 255, 255, 0.12);">
+    <div style="display: flex; align-items: flex-start; gap: 15px;">
+        <i class="fa-solid fa-cookie-bite" style="font-size: 26px; color: #4ade80; margin-top: 2px;"></i>
+        <div>
+            <h4 style="font-size: 15px; margin-bottom: 6px; color: #ffffff;">Gestion des Cookies & Confidentialité</h4>
+            <p style="font-size: 13px; color: #94a3b8; line-height: 1.5;">Nous utilisons des cookies pour améliorer votre expérience. En poursuivant, vous acceptez notre politique.</p>
         </div>
     </div>
-    <div class="cookie-actions">
-        <button id="acceptCookiesBtn" class="btn-cookie-accept">Tout accepter</button>
+    <div>
+        <button onclick="document.getElementById('cookieBanner').style.display='none'; localStorage.setItem('cookiesOK', 'true');" style="background: #2E7D32; color: #ffffff; border: none; padding: 10px 20px; border-radius: 12px; font-size: 13.5px; font-weight: 700; cursor: pointer; white-space: nowrap;">Tout accepter</button>
     </div>
 </div>
+
+<script>
+    if(localStorage.getItem('cookiesOK') === 'true') {
+        document.getElementById('cookieBanner').style.display = 'none';
+    }
+</script>
 
 <button class="back-to-top" id="backToTopBtn" aria-label="Retour en haut">
     <i class="fa-solid fa-arrow-up"></i>
