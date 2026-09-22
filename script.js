@@ -73,25 +73,21 @@ if(menuToggle && navLinks) {
 }
 
 // ==========================
-// Cookie Consent Logic (100% Fixed)
+// Cookie Consent Logic (100% Fixed Class based)
 // ==========================
 window.addEventListener("DOMContentLoaded", function() {
-    const cookieBanner = document.getElementById("cookieConsentBanner");
     const acceptBtn = document.getElementById("acceptCookiesBtn");
 
-    if (cookieBanner) {
-        // Ila kan wrak 3liha mn qbl, xedo direct
-        if (localStorage.getItem("proC2sCookiesAccepted") === "true") {
-            cookieBanner.style.setProperty("display", "none", "important");
-        }
+    // Ila kan 3ndo cookie m-sajl mn qbl
+    if (localStorage.getItem("proC2sCookiesAccepted") === "true") {
+        document.body.classList.add("cookies-accepted");
     }
 
-    if (acceptBtn && cookieBanner) {
+    if (acceptBtn) {
         acceptBtn.addEventListener("click", function(e) {
             e.preventDefault();
             localStorage.setItem("proC2sCookiesAccepted", "true");
-            // Force hide b display none important
-            cookieBanner.style.setProperty("display", "none", "important");
+            document.body.classList.add("cookies-accepted");
         });
     }
 });
