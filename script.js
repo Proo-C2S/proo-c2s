@@ -10,31 +10,20 @@
 const links = document.querySelectorAll(".nav-links a");
 
 window.addEventListener("scroll", () => {
-
     let current = "";
-
     document.querySelectorAll("section").forEach(section => {
-
         const sectionTop = section.offsetTop - 120;
-
         if (pageYOffset >= sectionTop) {
             current = section.getAttribute("id");
         }
-
     });
 
     links.forEach(link => {
-
         link.classList.remove("active");
-
         if(link.getAttribute("href") === "#" + current){
-
             link.classList.add("active");
-
         }
-
     });
-
 });
 
 // ==========================
@@ -44,17 +33,11 @@ window.addEventListener("scroll", () => {
 const header = document.querySelector("header");
 
 window.addEventListener("scroll", () => {
-
     if(window.scrollY > 80){
-
         header.style.boxShadow="0 10px 25px rgba(0,0,0,.12)";
-
     }else{
-
         header.style.boxShadow="0 5px 20px rgba(0,0,0,.08)";
-
     }
-
 });
 
 // ==========================
@@ -62,27 +45,18 @@ window.addEventListener("scroll", () => {
 // ==========================
 
 const observer = new IntersectionObserver((entries)=>{
-
     entries.forEach(entry=>{
-
         if(entry.isIntersecting){
-
             entry.target.classList.add("show");
-
         }
-
     });
-
 },{
     threshold:0.15
 });
 
 document.querySelectorAll(".about,.services,.references,.contact").forEach(el=>{
-
     el.classList.add("hidden");
-
     observer.observe(el);
-
 });
 
 // ==========================
@@ -99,22 +73,25 @@ if(menuToggle && navLinks) {
 }
 
 // ==========================
-// Cookie Consent Logic Pro (Fix)
+// Cookie Consent Logic (100% Fixed)
 // ==========================
-document.addEventListener("DOMContentLoaded", function() {
+window.addEventListener("DOMContentLoaded", function() {
     const cookieBanner = document.getElementById("cookieConsentBanner");
     const acceptBtn = document.getElementById("acceptCookiesBtn");
 
-    if (cookieBanner && acceptBtn) {
-        // Ila kan 3ndo cookie m-sajl mn qbl, mssa7ha direct
+    if (cookieBanner) {
+        // Ila kan wrak 3liha mn qbl, xedo direct
         if (localStorage.getItem("proC2sCookiesAccepted") === "true") {
-            cookieBanner.style.display = "none";
+            cookieBanner.style.setProperty("display", "none", "important");
         }
+    }
 
-        // Mli ywrek l-msta3mil 3la Bouton
-        acceptBtn.addEventListener("click", function() {
+    if (acceptBtn && cookieBanner) {
+        acceptBtn.addEventListener("click", function(e) {
+            e.preventDefault();
             localStorage.setItem("proC2sCookiesAccepted", "true");
-            cookieBanner.style.display = "none";
+            // Force hide b display none important
+            cookieBanner.style.setProperty("display", "none", "important");
         });
     }
 });
