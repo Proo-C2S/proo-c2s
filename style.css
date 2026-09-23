@@ -295,16 +295,25 @@ header.scrolled .logo img {
   background: #e2e8f0;
 }
 
-.crit-illustration {
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.05));
-  animation: floatIllustration 5s ease-in-out infinite alternate;
+.hero-illustration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes floatIllustration {
-  0% { transform: translateY(0px); }
-  100% { transform: translateY(-8px); }
+.hero-real-img {
+  width: 100%;
+  max-width: 480px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+  border: 3px solid rgba(46, 125, 50, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.hero-real-img:hover {
+  transform: translateY(-5px);
 }
 
 /* ================= BANNER BI-CIBLE ================= */
