@@ -1,5 +1,5 @@
 /* ===================================================================
-   PRO C2S - STYLE CSS COMPLET (Design Pro & Fond Vert Pastel Partout)
+   PRO C2S - STYLE CSS COMPLET (Design Pro, Hero Image Agrandi & Fond Vert Pastel)
 =================================================================== */
 
 * {
@@ -214,9 +214,9 @@ header.scrolled .logo img {
 
 .hero-layout {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1.1fr 1.1fr;
   align-items: center;
-  gap: 40px;
+  gap: 50px;
 }
 
 .hero-text h1 {
@@ -303,12 +303,12 @@ header.scrolled .logo img {
 
 .hero-real-img {
   width: 100%;
-  max-width: 480px;
-  height: 320px;
+  max-width: 580px;
+  height: 380px;
   object-fit: cover;
   border-radius: 24px;
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
-  border: 3px solid rgba(46, 125, 50, 0.15);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
+  border: 3px solid rgba(46, 125, 50, 0.2);
   transition: transform 0.3s ease;
 }
 
