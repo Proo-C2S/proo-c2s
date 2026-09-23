@@ -1,5 +1,5 @@
 /* ===================================================================
-   PRO C2S - STYLE CSS COMPLET (Design Pro & Cookie Banner Fix 100%)
+   PRO C2S - STYLE CSS COMPLET (Design Pro & Fond Vert Pastel Partout)
 =================================================================== */
 
 * {
@@ -16,8 +16,8 @@
   --primary-light: #43A047;
   --dark: #0f172a;
   --gray: #64748b;
-  --light-bg: #f8fafc;
-  --border-color: #e2e8f0;
+  --light-bg: #e8f5e9;
+  --border-color: #d4ebd6;
   --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 12px 32px rgba(15, 23, 42, 0.08);
   --shadow-lg: 0 20px 40px rgba(15, 23, 42, 0.12);
@@ -209,7 +209,7 @@ header.scrolled .logo img {
 /* ================= HERO ================= */
 .hero {
   padding: 165px 0 95px;
-  background: linear-gradient(180deg, #f4faf6 0%, #ffffff 100%);
+  background: linear-gradient(180deg, #f4faf6 0%, #e8f5e9 100%);
 }
 
 .hero-layout {
@@ -319,6 +319,7 @@ header.scrolled .logo img {
 /* ================= BANNER BI-CIBLE ================= */
 .split-section {
   padding: 20px 0 75px;
+  background: #e8f5e9;
 }
 
 .split-grid {
@@ -347,7 +348,7 @@ header.scrolled .logo img {
 }
 
 .split-card.candidate {
-  background: #f1f8f3;
+  background: #ffffff;
   border: 1.5px solid #d4ebd6;
   color: var(--dark);
 }
@@ -422,7 +423,7 @@ header.scrolled .logo img {
 /* ================= LOGO MARQUEE ================= */
 .marquee-section {
   padding: 40px 0;
-  background: #f8fafc;
+  background: #f1f8f3;
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
   overflow: hidden;
@@ -601,7 +602,7 @@ header.scrolled .logo img {
 /* ================= SERVICES ================= */
 .services {
   padding: 90px 0;
-  background: #ffffff;
+  background: #f1f8f3 !important;
 }
 
 .services-grid {
@@ -659,7 +660,7 @@ header.scrolled .logo img {
 /* ================= SECTEURS ================= */
 .sectors {
   padding: 90px 0;
-  background: var(--light-bg);
+  background: #e8f5e9;
 }
 
 .sectors-grid {
@@ -734,7 +735,7 @@ header.scrolled .logo img {
 /* ================= OFFRES D'EMPLOI ================= */
 .job-section {
   padding: 95px 0;
-  background: #fbfdfc;
+  background: #f1f8f3 !important;
   border-top: 1px solid var(--border-color);
 }
 
@@ -906,7 +907,7 @@ header.scrolled .logo img {
 /* ================= FAQ ================= */
 .faq-section {
   padding: 95px 0;
-  background: #ffffff;
+  background: #f1f8f3 !important;
 }
 
 .faq-container {
@@ -1106,7 +1107,7 @@ header.scrolled .logo img {
 /* ================= CONTACT ================= */
 .contact {
   padding: 95px 0;
-  background: var(--light-bg);
+  background: #e8f5e9;
 }
 
 .contact-container {
