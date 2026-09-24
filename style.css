@@ -1,5 +1,5 @@
 /* ===================================================================
-   PRO C2S - STYLE CSS COMPLET (Design Pro original + Support Langues)
+   PRO C2S - STYLE CSS COMPLET (Design Pro original + Google Translate)
 =================================================================== */
 
 * {
@@ -8,10 +8,6 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-[dir="rtl"] * {
-  font-family: 'Cairo', sans-serif !important;
 }
 
 :root {
@@ -52,31 +48,33 @@ ul {
   margin: auto;
 }
 
-/* ================= LANG SWITCHER STYLING ================= */
-.lang-switcher {
-  display: flex;
-  background: #f1f5f9;
+/* ================= GOOGLE TRANSLATE STYLING ================= */
+#google_translate_element {
+  display: inline-block;
+}
+.goog-te-combo {
+  padding: 8px 14px;
   border-radius: 20px;
-  padding: 3px;
-  border: 1px solid var(--border-color);
-}
-
-.lang-btn {
-  background: transparent;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 16px;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--gray);
+  border: 1.5px solid var(--border-color);
+  background: #ffffff;
+  color: var(--dark);
+  font-weight: 600;
+  font-size: 13.5px;
+  outline: none;
   cursor: pointer;
-  transition: 0.25s ease;
 }
-
-.lang-btn.active-lang {
-  background: var(--primary);
-  color: #ffffff;
-  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.25);
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+body {
+  top: 0 !important;
+}
+.goog-logo-link, .goog-te-gadget span {
+  display: none !important;
+}
+.goog-te-gadget {
+  color: transparent !important;
+  font-size: 0px !important;
 }
 
 /* ================= ANIMATIONS SCROLL (REVEAL) ================= */
@@ -1530,10 +1528,29 @@ footer {
   transform: translateY(-3px);
 }
 
-@media (max-width: 992px) {
-  .hero-layout,
-  .split-grid,
-  .contact-container {
-    grid-template-columns: 1fr;
-  }
+.toast-notification {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #1b5e20;
+  color: #ffffff;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 14.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  z-index: 10001;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast-notification.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
 }
