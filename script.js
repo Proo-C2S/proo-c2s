@@ -1,5 +1,5 @@
 /* ==========================================
-   PRO C2S - SCRIPT.JS (Traduction Intégrale)
+   PRO C2S - SCRIPT.JS (Multilingue Pro 100%)
 ========================================== */
 
 const translations = {
@@ -52,14 +52,6 @@ const translations = {
         sec_span: "CHAMPS D'EXPERTISE",
         sec_title: "Nos Secteurs d'Intervention",
         sec_desc: "Cliquez sur un secteur pour découvrir nos solutions sur-mesure et demander une délégation immédiate.",
-        sec_ind: "Industrie",
-        sec_btp: "BTP & Construction",
-        sec_log: "Logistique",
-        sec_ter: "Tertiaire",
-        sec_info: "Informatique",
-        sec_off: "Offshoring",
-        sec_san: "Santé & Médical",
-        sec_hyg: "Hygiène & Nettoyage",
         abt_span: "NOTRE HISTOIRE & VALEURS",
         abt_title: "À Propos de PRO C2S",
         abt_desc: "Créée en 2017 à Rabat, PRO C2S s'engage au quotidien pour offrir aux entreprises et aux talents la flexibilité et la sécurité juridique qu'ils méritent.",
@@ -82,17 +74,12 @@ const translations = {
         f_trans: "Transport & Logistique",
         f_admin: "Administration & IT",
         f_sante: "Santé & Sport",
-        job_badge_int: "Intérim",
-        badge_recent: "Récent",
-        badge_urgent: "Urgent",
-        btn_view_details: "Voir détails & Postuler",
+        t_span: "TÉMOIGNAGES CLIENTS",
+        t_title: "Ce que disent nos partenaires",
+        t_desc: "La satisfaction de nos entreprises clientes et de nos candidats est notre plus belle réussite.",
         faq_span: "QUESTIONS FRÉQUENTES",
         faq_title: "Tout ce que vous devez savoir",
         faq_desc: "Des réponses claires pour les entreprises et les candidats sur le fonctionnement de PRO C2S.",
-        q1: "Quels sont les délais pour déléguer du personnel intérimaire ?",
-        a1: "Grâce à notre vivier actif et réactif dans tout le Maroc, nous sommes capables de mettre à disposition des profils qualifiés sous un délai moyen de 24h à 48h selon la spécificité des postes.",
-        q2: "Quelle est la conformité juridique des contrats au Maroc ?",
-        a2: "PRO C2S applique rigoureusement le Code du Travail marocain. Nous prenons en charge la totalité des obligations légales : déclarations CNSS, contrats de mission, assurances AT et gestion de la paie sans aucun risque pour l'entreprise utilisatrice.",
         contact_badge: "CONTACT",
         contact_title: "Parlons de votre projet",
         contact_desc: "Contactez-nous pour discuter de vos besoins et demander votre devis gratuit et personnalisé.",
@@ -114,8 +101,7 @@ const translations = {
         footer_rights: "Tous droits réservés.",
         cookie_title: "Gestion des Cookies & Confidentialité",
         cookie_text: "Nous utilisons des cookies pour améliorer votre expérience.",
-        cookie_btn: "Tout accepter",
-        toast_success: "Message envoyé avec succès !"
+        cookie_btn: "Tout accepter"
     },
     en: {
         nav_home: "Home",
@@ -166,14 +152,6 @@ const translations = {
         sec_span: "FIELDS OF EXPERTISE",
         sec_title: "Our Sectors of Intervention",
         sec_desc: "Click on a sector to discover our custom solutions and request immediate delegation.",
-        sec_ind: "Industry",
-        sec_btp: "Construction",
-        sec_log: "Logistics",
-        sec_ter: "Tertiary",
-        sec_info: "IT & Systems",
-        sec_off: "Offshoring",
-        sec_san: "Health & Medical",
-        sec_hyg: "Hygiene & Cleaning",
         abt_span: "OUR HISTORY & VALUES",
         abt_title: "About PRO C2S",
         abt_desc: "Created in 2017 in Rabat, PRO C2S is committed daily to offering companies and talents the flexibility and legal security they deserve.",
@@ -196,17 +174,12 @@ const translations = {
         f_trans: "Transport & Logistics",
         f_admin: "Administration & IT",
         f_sante: "Health & Sport",
-        job_badge_int: "Interim",
-        badge_recent: "Recent",
-        badge_urgent: "Urgent",
-        btn_view_details: "View details & Apply",
+        t_span: "CLIENT TESTIMONIALS",
+        t_title: "What our partners say",
+        t_desc: "The satisfaction of our client companies and candidates is our greatest success.",
         faq_span: "FREQUENTLY ASKED QUESTIONS",
         faq_title: "Everything you need to know",
         faq_desc: "Clear answers for companies and candidates on how PRO C2S works.",
-        q1: "What are the timeframes for delegating temporary staff?",
-        a1: "Thanks to our active and reactive pool across Morocco, we are able to provide qualified profiles within an average of 24h to 48h.",
-        q2: "What is the legal compliance of contracts in Morocco?",
-        a2: "PRO C2S rigorously applies Moroccan Labor Law. We handle all legal obligations: CNSS declarations, mission contracts, AT insurance and payroll without risk.",
         contact_badge: "CONTACT",
         contact_title: "Let's talk about your project",
         contact_desc: "Contact us to discuss your needs and request your free and personalized quote.",
@@ -228,8 +201,7 @@ const translations = {
         footer_rights: "All rights reserved.",
         cookie_title: "Cookies & Privacy Management",
         cookie_text: "We use cookies to improve your experience.",
-        cookie_btn: "Accept all",
-        toast_success: "Message sent successfully!"
+        cookie_btn: "Accept all"
     },
     ar: {
         nav_home: "الرئيسية",
@@ -280,14 +252,6 @@ const translations = {
         sec_span: "مجالات الخبرة",
         sec_title: "قطاعات تدخلنا",
         sec_desc: "انقر على أي قطاع لاكتشاف حلولنا المخصصة وطلب تفويض فوري.",
-        sec_ind: "الصناعة",
-        sec_btp: "البناء والأشغال الكبرى",
-        sec_log: "اللوجستيك",
-        sec_ter: "الخدمات الإدارية",
-        sec_info: "تقنيات المعلومات",
-        sec_off: "مراكز الاتصال",
-        sec_san: "الصحة والطب",
-        sec_hyg: "النظافة المهنية",
         abt_span: "تاريخنا وقيمنا",
         abt_title: "حول PRO C2S",
         abt_desc: "أنشئت في 2017 بالرباط، تلتزم PRO C2S يومياً بتقديم المرونة والأمان القانوني الذي يستحقه الشركاء والمواهب.",
@@ -310,17 +274,12 @@ const translations = {
         f_trans: "النقل واللوجستيك",
         f_admin: "الإدارة وتقنيات المعلومات",
         f_sante: "الصحة والرياضة",
-        job_badge_int: "مؤقت",
-        badge_recent: "حديث",
-        badge_urgent: "عاجل",
-        btn_view_details: "عرض التفاصيل والتقدم",
+        t_span: "آراء العملاء",
+        t_title: "ما يقوله شركاؤنا",
+        t_desc: "رضا شركاتنا العميلة ومرشحينا هو أعظم نجاح لنا.",
         faq_span: "الأسئلة الشائعة",
         faq_title: "كل ما تحتاج إلى معرفته",
         faq_desc: "إجابات واضحة للشركات والمرشحين حول كيفية عمل PRO C2S.",
-        q1: "ما هي المهل الزمنية لتفويض الموظفين المؤقتين؟",
-        a1: "بفضل قاعدتنا النشطة في جميع أنحاء المغرب، نحن قادرون على توفير ملفات تعريف مؤهلة في غضون 24 إلى 48 ساعة.",
-        q2: "ما مدى الامتثال القانوني للعقود في المغرب؟",
-        a2: "تطبق PRO C2S قانون الشغل المغربي بصرامة. نتولى بالكامل التزامات CNSS وعقود المهمة والتأمين.",
         contact_badge: "اتصل بنا",
         contact_title: "دعنا نتحدث عن مشروعك",
         contact_desc: "اتصل بنا لمناقشة احتياجاتك وطلب عرض سعر مجاني ومخصص.",
@@ -342,8 +301,7 @@ const translations = {
         footer_rights: "جميع الحقوق محفوظة.",
         cookie_title: "إدارة ملفات تعريف الارتباط والخصوصية",
         cookie_text: "نحن نستخدم ملفات تعريف الارتباط لتحسين تجربتك.",
-        cookie_btn: "قبول الكل",
-        toast_success: "تم إرسال رسالتك بنجاح!"
+        cookie_btn: "قبول الكل"
     }
 };
 
@@ -366,13 +324,6 @@ function changeLanguage(lang) {
         const key = el.getAttribute("data-key");
         if (translations[lang] && translations[lang][key]) {
             el.innerText = translations[lang][key];
-        }
-    });
-
-    document.querySelectorAll("[data-ph]").forEach(el => {
-        const phKey = el.getAttribute("data-ph");
-        if (translations[lang] && translations[lang][phKey]) {
-            el.placeholder = translations[lang][phKey];
         }
     });
 }
