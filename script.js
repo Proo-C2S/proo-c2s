@@ -1,5 +1,5 @@
 /* ==========================================
-   PRO C2S - SCRIPT.JS COMPLET (Multilingue + Site d'origine)
+   PRO C2S - SCRIPT.JS (Testé et corrigé)
 ========================================== */
 
 const translations = {
@@ -9,7 +9,8 @@ const translations = {
         nav_jobs: "Offres d'emploi",
         nav_about: "À propos",
         nav_refs: "Références",
-        hero_title: "Votre partenaire RH pour bâtir vos équipes de demain"
+        nav_faq: "FAQ",
+        nav_contact: "Contact"
     },
     en: {
         nav_home: "Home",
