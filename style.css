@@ -1,5 +1,5 @@
 /* ===================================================================
-   PRO C2S - STYLE CSS COMPLET (Design Pro original + Google Translate)
+   PRO C2S - STYLE CSS COMPLET (Design Pro, Hero & Témoignages Pro)
 =================================================================== */
 
 * {
@@ -46,35 +46,6 @@ ul {
   width: 90%;
   max-width: 1220px;
   margin: auto;
-}
-
-/* ================= GOOGLE TRANSLATE STYLING ================= */
-#google_translate_element {
-  display: inline-block;
-}
-.goog-te-combo {
-  padding: 8px 14px;
-  border-radius: 20px;
-  border: 1.5px solid var(--border-color);
-  background: #ffffff;
-  color: var(--dark);
-  font-weight: 600;
-  font-size: 13.5px;
-  outline: none;
-  cursor: pointer;
-}
-.goog-te-banner-frame.skiptranslate {
-  display: none !important;
-}
-body {
-  top: 0 !important;
-}
-.goog-logo-link, .goog-te-gadget span {
-  display: none !important;
-}
-.goog-te-gadget {
-  color: transparent !important;
-  font-size: 0px !important;
 }
 
 /* ================= ANIMATIONS SCROLL (REVEAL) ================= */
@@ -1553,4 +1524,94 @@ footer {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .job-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .simulator-box {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-layout,
+  .split-grid,
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .hero-text p {
+    margin: 0 auto 30px;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .services-grid,
+  .sectors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-actions,
+  .nav-links {
+    display: none;
+  }
+
+  .nav-links.open {
+    display: flex;
+    position: absolute;
+    top: 85px;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 0;
+    gap: 18px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  }
+
+  .job-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 25px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cookie-banner-pro {
+    flex-direction: column;
+    align-items: flex-start;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .btn-cookie-accept {
+    width: 100%;
+    text-align: center;
+  }
 }
