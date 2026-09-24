@@ -1,5 +1,5 @@
 /* ==========================================
-   PRO C2S - SCRIPT.JS (Multilingue Pro 100%)
+   PRO C2S - SCRIPT.JS COMPLET (Multilingue)
 ========================================== */
 
 const translations = {
