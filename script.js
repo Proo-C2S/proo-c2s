@@ -1,5 +1,5 @@
 /* ==========================================
-   PRO C2S - SCRIPT.JS COMPLET (Multilingue)
+   PRO C2S - SCRIPT.JS COMPLET (Multilingue Corrigé)
 ========================================== */
 
 const translations = {
@@ -77,9 +77,21 @@ const translations = {
         t_span: "TÉMOIGNAGES CLIENTS",
         t_title: "Ce que disent nos partenaires",
         t_desc: "La satisfaction de nos entreprises clientes et de nos candidats est notre plus belle réussite.",
+        t1_text: "PRO C2S nous a sauvé la mise lors d'un pic d'activité inattendu. Des profils qualifiés et opérationnels délégués en moins de 48h. Un vrai partenaire de confiance !",
+        t1_auth: "Responsable RH, Secteur Industriel",
+        t2_text: "Grâce à PRO C2S, j'ai trouvé une mission d'intérim rapidement avec un suivi professionnel et qui respecte toujours les délais de paiement et ne prend pas de retard dans ses règlements. Je recommande vivement !",
+        t2_auth: "Intérimaire en Logistique",
         faq_span: "QUESTIONS FRÉQUENTES",
         faq_title: "Tout ce que vous devez savoir",
         faq_desc: "Des réponses claires pour les entreprises et les candidats sur le fonctionnement de PRO C2S.",
+        q1: "Quels sont les délais pour déléguer du personnel intérimaire ?",
+        a1: "Grâce à notre vivier actif et réactif dans tout le Maroc, nous sommes capables de mettre à disposition des profils qualifiés sous un délai moyen de 24h à 48h selon la spécificité des postes.",
+        q2: "Quelle est la conformité juridique des contrats au Maroc ?",
+        a2: "PRO C2S applique rigoureusement le Code du Travail marocain. Nous prenons en charge la totalité des obligations légales : déclarations CNSS, contrats de mission, assurances AT et gestion de la paie sans aucun risque pour l'entreprise utilisatrice.",
+        q3: "Comment un candidat peut-il postuler à une mission ?",
+        a3: "C'est direct et instantané : il vous suffit de cliquer sur l'offre de votre choix et de transmettre votre CV par WhatsApp à notre équipe RH dédiée. Votre profil sera traité sous 24h.",
+        q4: "Intervenez-vous en dehors de l'axe Casablanca-Rabat ?",
+        a4: "Oui, PRO C2S déploie des équipes opérationnelles sur l'ensemble du territoire national : Tanger, Kénitra, Fès, Oujda, Marrakech, Agadir et les régions du Sud.",
         contact_badge: "CONTACT",
         contact_title: "Parlons de votre projet",
         contact_desc: "Contactez-nous pour discuter de vos besoins et demander votre devis gratuit et personnalisé.",
@@ -99,9 +111,15 @@ const translations = {
         footer_nav: "Navigation",
         footer_contact: "Contact",
         footer_rights: "Tous droits réservés.",
+        footer_privacy: "Politique de confidentialité",
         cookie_title: "Gestion des Cookies & Confidentialité",
         cookie_text: "Nous utilisons des cookies pour améliorer votre expérience.",
-        cookie_btn: "Tout accepter"
+        cookie_btn: "Tout accepter",
+        toast_success: "Message envoyé avec succès !",
+        m_loc: "Lieu:",
+        m_prof: "Profil:",
+        m_desc_title: "Description du poste & Missions :",
+        m_apply: "Postuler via WhatsApp"
     },
     en: {
         nav_home: "Home",
@@ -177,9 +195,21 @@ const translations = {
         t_span: "CLIENT TESTIMONIALS",
         t_title: "What our partners say",
         t_desc: "The satisfaction of our client companies and candidates is our greatest success.",
+        t1_text: "PRO C2S saved us during an unexpected activity peak. Qualified and operational profiles delegated in less than 48h. A true trusted partner!",
+        t1_auth: "HR Manager, Industrial Sector",
+        t2_text: "Thanks to PRO C2S, I quickly found a temporary mission with professional monitoring. Highly recommend!",
+        t2_auth: "Logistics Temp",
         faq_span: "FREQUENTLY ASKED QUESTIONS",
         faq_title: "Everything you need to know",
         faq_desc: "Clear answers for companies and candidates on how PRO C2S works.",
+        q1: "What are the timeframes for delegating temporary staff?",
+        a1: "Thanks to our active and reactive pool across Morocco, we are able to provide qualified profiles within an average of 24h to 48h.",
+        q2: "What is the legal compliance of contracts in Morocco?",
+        a2: "PRO C2S rigorously applies Moroccan Labor Law. We handle all legal obligations: CNSS declarations, mission contracts, AT insurance and payroll without risk.",
+        q3: "How can a candidate apply for a mission?",
+        a3: "It's direct and instant: simply click on the offer of your choice and send your CV via WhatsApp to our dedicated HR team.",
+        q4: "Do you operate outside the Casablanca-Rabat axis?",
+        a4: "Yes, PRO C2S deploys operational teams across the entire national territory: Tangier, Kenitra, Fes, Oujda, Marrakech, Agadir and southern regions.",
         contact_badge: "CONTACT",
         contact_title: "Let's talk about your project",
         contact_desc: "Contact us to discuss your needs and request your free and personalized quote.",
@@ -199,9 +229,15 @@ const translations = {
         footer_nav: "Navigation",
         footer_contact: "Contact",
         footer_rights: "All rights reserved.",
+        footer_privacy: "Privacy Policy",
         cookie_title: "Cookies & Privacy Management",
         cookie_text: "We use cookies to improve your experience.",
-        cookie_btn: "Accept all"
+        cookie_btn: "Accept all",
+        toast_success: "Message sent successfully!",
+        m_loc: "Location:",
+        m_prof: "Profile:",
+        m_desc_title: "Job description & Missions:",
+        m_apply: "Apply via WhatsApp"
     },
     ar: {
         nav_home: "الرئيسية",
@@ -277,9 +313,21 @@ const translations = {
         t_span: "آراء العملاء",
         t_title: "ما يقوله شركاؤنا",
         t_desc: "رضا شركاتنا العميلة ومرشحينا هو أعظم نجاح لنا.",
+        t1_text: "أنقذتنا PRO C2S خلال فترة ذروة نشاط غير متوقعة. كفاءات تم تفويضها في أقل من 48 ساعة. شريك موثوق حقاً!",
+        t1_auth: "مسؤول الموارد البشرية، قطاع الصناعة",
+        t2_text: "بفضل PRO C2S، وجدت مهمة مؤقتة بسرعة مع متابعة احترافية واحترام مواعيد الأداء. أنصح بشدة!",
+        t2_auth: "عامل مؤقت في اللوجستيك",
         faq_span: "الأسئلة الشائعة",
         faq_title: "كل ما تحتاج إلى معرفته",
         faq_desc: "إجابات واضحة للشركات والمرشحين حول كيفية عمل PRO C2S.",
+        q1: "ما هي المهل الزمنية لتفويض الموظفين المؤقتين؟",
+        a1: "بفضل قاعدتنا النشطة في جميع أنحاء المغرب، نحن قادرون على توفير ملفات تعريف مؤهلة في غضون 24 إلى 48 ساعة.",
+        q2: "ما مدى الامتثال القانوني للعقود في المغرب؟",
+        a2: "تطبق PRO C2S قانون الشغل المغربي بصرامة. نتولى بالكامل التزامات CNSS وعقود المهمة والتأمين.",
+        q3: "كيف يمكن للمرشح التقدم بطلب للحصول على مهمة؟",
+        a3: "الأمر مباشر وفوري: ما عليك سوى النقر على العرض الذي تختاره وإرسال سيرتك الذاتية عبر واتساب.",
+        q4: "هل تدخلون خارج محور الدار البيضاء-الرباط؟",
+        a4: "نعم، تنشر PRO C2S فرقاً تشغيلية في جميع أنحاء التراب الوطني: طنجة، القنيطرة، فاس، وجدة، مراكش، أكادير ومناطق الجنوب.",
         contact_badge: "اتصل بنا",
         contact_title: "دعنا نتحدث عن مشروعك",
         contact_desc: "اتصل بنا لمناقشة احتياجاتك وطلب عرض سعر مجاني ومخصص.",
@@ -299,9 +347,15 @@ const translations = {
         footer_nav: "التنقل",
         footer_contact: "اتصل بنا",
         footer_rights: "جميع الحقوق محفوظة.",
+        footer_privacy: "سياسة الخصوصية",
         cookie_title: "إدارة ملفات تعريف الارتباط والخصوصية",
         cookie_text: "نحن نستخدم ملفات تعريف الارتباط لتحسين تجربتك.",
-        cookie_btn: "قبول الكل"
+        cookie_btn: "قبول الكل",
+        toast_success: "تم إرسال رسالتك بنجاح!",
+        m_loc: "المكان:",
+        m_prof: "الملف المطلوب:",
+        m_desc_title: "وصف الوظيفة والمهام:",
+        m_apply: "التقدم عبر واتساب"
     }
 };
 
@@ -324,6 +378,13 @@ function changeLanguage(lang) {
         const key = el.getAttribute("data-key");
         if (translations[lang] && translations[lang][key]) {
             el.innerText = translations[lang][key];
+        }
+    });
+
+    document.querySelectorAll("[data-ph]").forEach(el => {
+        const phKey = el.getAttribute("data-ph");
+        if (translations[lang] && translations[lang][phKey]) {
+            el.placeholder = translations[lang][phKey];
         }
     });
 }
