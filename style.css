@@ -1,5 +1,5 @@
 /* ===================================================================
-   PRO C2S - STYLE CSS COMPLET (Design Pro original + Support RTL Arabe)
+   PRO C2S - STYLE CSS COMPLET (Design Pro original)
 =================================================================== */
 
 * {
@@ -8,35 +8,6 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-[dir="rtl"] {
-  direction: rtl;
-  text-align: right;
-}
-
-[dir="rtl"] * {
-  font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif !important;
-}
-
-[dir="rtl"] .navbar,
-[dir="rtl"] .nav-links,
-[dir="rtl"] .nav-actions,
-[dir="rtl"] .hero-actions,
-[dir="rtl"] .hero-badges-row,
-[dir="rtl"] .job-top,
-[dir="rtl"] .job-info,
-[dir="rtl"] .contact-item,
-[dir="rtl"] .cookie-banner-pro {
-  direction: rtl;
-  text-align: right;
-}
-
-[dir="rtl"] .job-card h3,
-[dir="rtl"] .job-sect,
-[dir="rtl"] .section-title,
-[dir="rtl"] .contact-info {
-  text-align: right;
 }
 
 :root {
@@ -66,33 +37,6 @@ ul { list-style: none; }
   width: 90%;
   max-width: 1220px;
   margin: auto;
-}
-
-/* LANG SWITCHER */
-.lang-switcher {
-  display: flex;
-  gap: 3px;
-  background: #f1f5f9;
-  padding: 3px;
-  border-radius: 20px;
-  border: 1px solid var(--border-color);
-}
-
-.lang-btn {
-  background: transparent;
-  border: none;
-  padding: 5px 10px;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  border-radius: 15px;
-  color: var(--gray);
-  transition: 0.2s;
-}
-
-.lang-btn.active-lang {
-  background: var(--primary);
-  color: #fff;
 }
 
 /* ANIMATIONS */
