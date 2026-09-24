@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
@@ -13,16 +13,16 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=28">
+    <link rel="stylesheet" href="style.css?v=33">
 </head>
 
 <body>
 
 <div id="toastNotification" class="toast-notification">
     <i class="fa-solid fa-circle-check"></i>
-    <span id="toastMsg">Message envoyé avec succès !</span>
+    <span id="toastMsg" data-key="toast_success">Message envoyé avec succès !</span>
 </div>
 
 <header id="main-header">
@@ -32,20 +32,27 @@
         </div>
 
         <ul class="nav-links">
-            <li><a href="#home">Accueil</a></li>
-            <li><a href="#simulateur">Entreprises</a></li>
-            <li><a href="#carrieres">Offres d'emploi</a></li>
-            <li><a href="#apropos">À propos</a></li>
-            <li><a href="#references">Références</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#home" data-key="nav_home">Accueil</a></li>
+            <li><a href="#simulateur" data-key="nav_companies">Entreprises</a></li>
+            <li><a href="#carrieres" data-key="nav_jobs">Offres d'emploi</a></li>
+            <li><a href="#apropos" data-key="nav_about">À propos</a></li>
+            <li><a href="#references" data-key="nav_refs">Références</a></li>
+            <li><a href="#faq" data-key="nav_faq">FAQ</a></li>
+            <li><a href="#contact" data-key="nav_contact">Contact</a></li>
         </ul>
 
         <div class="nav-actions">
+            <!-- Sélecteur de Langues -->
+            <div class="lang-switcher">
+                <button onclick="changeLanguage('fr')" class="lang-btn active-lang" id="btn-fr">FR</button>
+                <button onclick="changeLanguage('en')" class="lang-btn" id="btn-en">EN</button>
+                <button onclick="changeLanguage('ar')" class="lang-btn" id="btn-ar">AR</button>
+            </div>
+
             <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20d%C3%A9poser%20mon%20CV." target="_blank" class="btn-secondary-nav">
-                <i class="fa-solid fa-file-arrow-up"></i> Espace Candidat
+                <i class="fa-solid fa-file-arrow-up"></i> <span data-key="nav_candidate">Espace Candidat</span>
             </a>
-            <a href="#simulateur" class="btn">Besoin de recruter</a>
+            <a href="#simulateur" class="btn" data-key="nav_recruit">Besoin de recruter</a>
         </div>
 
         <button class="menu-toggle" aria-label="Menu">
@@ -57,21 +64,21 @@
 <section class="hero reveal" id="home">
     <div class="container hero-layout">
         <div class="hero-text">
-            <span class="badge-crit"><i class="fa-solid fa-shield-check"></i> Partenaire Recrutement & Intérim</span>
-            <h1>Votre partenaire RH pour bâtir vos équipes de demain</h1>
-            <p>Spécialiste du recrutement et du travail temporaire au Maroc depuis 2017. Nous apportons des réponses rapides, flexibles et conformes à tous vos défis RH.</p>
+            <span class="badge-crit"><i class="fa-solid fa-shield-check"></i> <span data-key="hero_badge">Partenaire Recrutement & Intérim</span></span>
+            <h1 data-key="hero_title">Votre partenaire RH pour bâtir vos équipes de demain</h1>
+            <p data-key="hero_desc">Spécialiste du recrutement et du travail temporaire au Maroc depuis 2017. Nous apportons des réponses rapides, flexibles et conformes à tous vos défis RH.</p>
             
             <div class="hero-actions">
-                <a href="#simulateur" class="btn btn-hero"><i class="fa-solid fa-building"></i> Vous recrutez ?</a>
-                <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20postuler%20chez%20PRO%20C2S." target="_blank" class="btn-outline-hero"><i class="fa-brands fa-whatsapp"></i> Déposer un CV</a>
+                <a href="#simulateur" class="btn btn-hero"><i class="fa-solid fa-building"></i> <span data-key="hero_btn_recruit">Vous recrutez ?</span></a>
+                <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20postuler%20chez%20PRO%20C2S." target="_blank" class="btn-outline-hero"><i class="fa-brands fa-whatsapp"></i> <span data-key="hero_btn_cv">Déposer un CV</span></a>
             </div>
 
             <div class="hero-badges-row">
-                <div class="h-badge"><strong>24-48h</strong> <span>Réactivité</span></div>
+                <div class="h-badge"><strong>24-48h</strong> <span data-key="badge_speed">Réactivité</span></div>
                 <div class="h-sep"></div>
-                <div class="h-badge"><strong>100%</strong> <span>Conformité légale</span></div>
+                <div class="h-badge"><strong>100%</strong> <span data-key="badge_legal">Conformité légale</span></div>
                 <div class="h-sep"></div>
-                <div class="h-badge"><strong>National</strong> <span>Toutes régions</span></div>
+                <div class="h-badge"><strong data-key="badge_nat_val">National</strong> <span data-key="badge_nat">Toutes régions</span></div>
             </div>
         </div>
 
@@ -84,23 +91,23 @@
 <section class="split-section reveal">
     <div class="container split-grid">
         <div class="split-card client">
-            <span class="pill-badge"><i class="fa-solid fa-briefcase"></i> Entreprises</span>
-            <h3>Besoins urgents ou pics d'activité ?</h3>
-            <p>Difficulté à recruter rapidement, complexité juridique ou surcroît temporaire : bénéficiez d'une délégation réactive.</p>
-            <a href="#simulateur" class="btn-split-white">Estimer mon besoin RH <i class="fa-solid fa-arrow-right"></i></a>
+            <span class="pill-badge"><i class="fa-solid fa-briefcase"></i> <span data-key="split_client_tag">Entreprises</span></span>
+            <h3 data-key="split_client_title">Besoins urgents ou pics d'activité ?</h3>
+            <p data-key="split_client_desc">Difficulté à recruter rapidement, complexité juridique ou surcroît temporaire : bénéficiez d'une délégation réactive.</p>
+            <a href="#simulateur" class="btn-split-white"><span data-key="split_client_btn">Estimer mon besoin RH</span> <i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <div class="split-card candidate">
-            <span class="pill-badge green"><i class="fa-solid fa-user-check"></i> Candidats</span>
-            <h3>Trouvez votre prochaine mission</h3>
-            <p>Intérim et missions dans l'industrie, la logistique, le tertiaire et les services dans tout le Maroc.</p>
-            <a href="#carrieres" class="btn-split-green"><i class="fa-solid fa-briefcase"></i> Consulter les offres</a>
+            <span class="pill-badge green"><i class="fa-solid fa-user-check"></i> <span data-key="split_cand_tag">Candidats</span></span>
+            <h3 data-key="split_cand_title">Trouvez votre prochaine mission</h3>
+            <p data-key="split_cand_desc">Intérim et missions dans l'industrie, la logistique, le tertiaire et les services dans tout le Maroc.</p>
+            <a href="#carrieres" class="btn-split-green"><i class="fa-solid fa-briefcase"></i> <span data-key="split_cand_btn">Consulter les offres</span></a>
         </div>
     </div>
 </section>
 
 <!-- ================= LOGO MARQUEE (REFERENCES) ================= -->
 <section class="marquee-section reveal" id="references">
-    <div class="marquee-title">Ils nous accordent leur confiance au quotidien</div>
+    <div class="marquee-title" data-key="refs_title">Ils nous accordent leur confiance au quotidien</div>
     <div class="marquee-track">
         <div class="marquee-item"><img src="image/BANK-AL-MAGHRIB.png.png" alt="Bank Al-Maghrib"></div>
         <div class="marquee-item"><img src="image/CNSS-png.png" alt="CNSS"></div>
@@ -134,13 +141,13 @@
     <div class="container">
         <div class="simulator-box">
             <div class="sim-info">
-                <span class="badge-crit" style="background: rgba(46, 125, 50, 0.3); color: #4ade80;">ESPACE ENTREPRISES</span>
-                <h2>Simulateur de délégation RH</h2>
-                <p>Estimez immédiatement la mise à disposition de vos équipes temporaires selon votre secteur et le volume souhaité.</p>
+                <span class="badge-crit" style="background: rgba(46, 125, 50, 0.3); color: #4ade80;" data-key="sim_badge">ESPACE ENTREPRISES</span>
+                <h2 data-key="sim_title">Simulateur de délégation RH</h2>
+                <p data-key="sim_desc">Estimez immédiatement la mise à disposition de vos équipes temporaires selon votre secteur et le volume souhaité.</p>
                 
                 <div class="sim-controls">
                     <div class="sim-field">
-                        <label>Secteur d'activité :</label>
+                        <label data-key="sim_label_sector">Secteur d'activité :</label>
                         <select id="simSector">
                             <option value="Industrie & Production">Industrie & Production</option>
                             <option value="Logistique & Transport">Logistique & Transport</option>
@@ -151,17 +158,17 @@
                     </div>
 
                     <div class="sim-field">
-                        <label>Nombre de profils recherchés :</label>
+                        <label data-key="sim_label_count">Nombre de profils recherchés :</label>
                         <input type="number" id="simCount" min="1" max="100" value="3">
                     </div>
                 </div>
             </div>
 
             <div class="sim-summary">
-                <span>Délégation garantie sous</span>
+                <span data-key="sim_guarantee">Délégation garantie sous</span>
                 <strong>24h à 48h</strong>
                 <a href="#" id="simWhatsAppBtn" target="_blank" class="btn" style="background: #25d366; width: 100%;">
-                    <i class="fa-brands fa-whatsapp"></i> Demander cette équipe
+                    <i class="fa-brands fa-whatsapp"></i> <span data-key="sim_btn_whatsapp">Demander cette équipe</span>
                 </a>
             </div>
         </div>
@@ -170,31 +177,31 @@
 
 <section class="services reveal" id="services">
     <div class="section-title">
-        <span>NOS SOLUTIONS RH</span>
-        <h2>Des services pensés pour votre croissance</h2>
-        <p>Une offre complète de prestations RH pour répondre avec agilité à tous vos défis opérationnels.</p>
+        <span data-key="serv_span">NOS SOLUTIONS RH</span>
+        <h2 data-key="serv_title">Des services pensés pour votre croissance</h2>
+        <p data-key="serv_desc">Une offre complète de prestations RH pour répondre avec agilité à tous vos défis opérationnels.</p>
     </div>
 
     <div class="container services-grid">
         <div class="card">
             <div class="card-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
-            <h3>Travail Temporaire & Intérim</h3>
-            <p>Délégation rapide de personnel compétent pour gérer vos imprévus, congés et surcroîts d'activité.</p>
+            <h3 data-key="s1_title">Travail Temporaire & Intérim</h3>
+            <p data-key="s1_desc">Délégation rapide de personnel compétent pour gérer vos imprévus, congés et surcroîts d'activité.</p>
         </div>
         <div class="card">
             <div class="card-icon"><i class="fa-solid fa-user-plus"></i></div>
-            <h3>Recrutement CDI / CDD</h3>
-            <p>Sourcing sur-mesure, tests et sélection rigoureuse pour intégrer durablement vos futurs talents clés.</p>
+            <h3 data-key="s2_title">Recrutement CDI / CDD</h3>
+            <p data-key="s2_desc">Sourcing sur-mesure, tests et sélection rigoureuse pour intégrer durablement vos futurs talents clés.</p>
         </div>
         <div class="card">
             <div class="card-icon"><i class="fa-solid fa-users-gear"></i></div>
-            <h3>Mise à disposition de personnel</h3>
-            <p>Mise en place d'équipes opérationnelles prêtes à intervenir immédiatement sur vos sites.</p>
+            <h3 data-key="s3_title">Mise à disposition de personnel</h3>
+            <p data-key="s3_desc">Mise en place d'équipes opérationnelles prêtes à intervenir immédiatement sur vos sites.</p>
         </div>
         <div class="card">
             <div class="card-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
-            <h3>Gestion Administrative & Paie</h3>
-            <p>Prise en charge intégrale des contrats, déclarations sociales et conformité juridique au Maroc.</p>
+            <h3 data-key="s4_title">Gestion Administrative & Paie</h3>
+            <p data-key="s4_desc">Prise en charge intégrale des contrats, déclarations sociales et conformité juridique au Maroc.</p>
         </div>
     </div>
 </section>
@@ -401,7 +408,7 @@
     </div>
 </section>
 
-<!-- SECTION TÉMOIGNAGES -->
+<!-- ================= SECTION TÉMOIGNAGES ================= -->
 <section class="testimonials-section reveal" id="temoignages">
     <div class="section-title">
         <span>TÉMOIGNAGES CLIENTS</span>
@@ -565,6 +572,7 @@
                 </div>
             </div>
 
+            <!-- Google Maps -->
             <div class="map-wrapper" style="margin-top: 25px; border-radius: 18px; overflow: hidden; border: 1px solid var(--border-color); height: 200px;">
                 <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.382878401314!2d-6.835489724285816!3d34.02120087316937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76b8826543d23%3A0x892a0fefc2aef89a!2sAvenue%20Patrice%20Lumumba%2C%20Rabat!5e0!3m2!1sfr!2sma!4v1726570000000!5m2!1sfr!2sma" 
@@ -578,17 +586,18 @@
         </div>
 
         <form class="contact-form" id="contact-form">
-            <input type="text" name="user_name" placeholder="Nom complet" required>
-            <input type="email" name="user_email" placeholder="Adresse e-mail" required>
-            <input type="tel" name="user_phone" placeholder="Téléphone" required>
-            <textarea name="message" placeholder="Votre message" required></textarea>
+            <input type="text" name="user_name" placeholder="Nom complet" data-ph="form_name" required>
+            <input type="email" name="user_email" placeholder="Adresse e-mail" data-ph="form_email" required>
+            <input type="tel" name="user_phone" placeholder="Téléphone" data-ph="form_phone" required>
+            <textarea name="message" placeholder="Votre message" data-ph="form_msg" required></textarea>
 
-            <button type="submit" class="btn btn-submit">Envoyer</button>
+            <button type="submit" class="btn btn-submit" data-key="form_btn">Envoyer</button>
 
+            <!-- Bouton WhatsApp -->
             <div class="cv-notice">
-                <p><i class="fa-solid fa-briefcase"></i> Vous souhaitez postuler ou envoyer un CV ?</p>
+                <p><i class="fa-solid fa-briefcase"></i> <span data-key="cv_notice_txt">Vous souhaitez postuler ou envoyer un CV ?</span></p>
                 <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20postuler%20et%20vous%20envoyer%20mon%20CV." target="_blank" class="btn-cv-whatsapp">
-                    <i class="fa-brands fa-whatsapp"></i> Envoyer mon CV via WhatsApp
+                    <i class="fa-brands fa-whatsapp"></i> <span data-key="cv_notice_btn">Envoyer mon CV via WhatsApp</span>
                 </a>
             </div>
         </form>
@@ -600,26 +609,26 @@
     <div class="container footer-grid">
         <div class="footer-about">
             <h3>PRO C2S</h3>
-            <p>Société spécialisée en recrutement, intérim et propreté professionnelle créée en 2017. Votre partenaire pour construire vos équipes de demain.</p>
+            <p data-key="footer_desc">Société spécialisée en recrutement, intérim et propreté professionnelle créée en 2017. Votre partenaire pour construire vos équipes de demain.</p>
         </div>
         <div class="footer-links">
-            <h4>Navigation</h4>
-            <p><a href="#home">Accueil</a></p>
-            <p><a href="#services">Services</a></p>
-            <p><a href="#sectors">Secteurs</a></p>
-            <p><a href="#references">Références</a></p>
-            <p><a href="#faq">FAQ</a></p>
-            <p><a href="#contact">Contact</a></p>
+            <h4 data-key="footer_nav">Navigation</h4>
+            <p><a href="#home" data-key="nav_home">Accueil</a></p>
+            <p><a href="#services" data-key="nav_serv">Services</a></p>
+            <p><a href="#sectors" data-key="nav_sect">Secteurs</a></p>
+            <p><a href="#references" data-key="nav_refs">Références</a></p>
+            <p><a href="#faq" data-key="nav_faq">FAQ</a></p>
+            <p><a href="#contact" data-key="nav_contact">Contact</a></p>
         </div>
         <div class="footer-contact">
-            <h4>Contact</h4>
-            <p><i class="fa-solid fa-location-dot"></i> Imm. 69, 4ème Étage, Hassan - Rabat</p>
+            <h4 data-key="footer_contact">Contact</h4>
+            <p><i class="fa-solid fa-location-dot"></i> <span data-key="c_addr_val">Imm. 69, 4ème Étage, Hassan - Rabat</span></p>
             <p><i class="fa-solid fa-phone"></i> 06 63 44 98 24 / 05 20 70 48 30</p>
             <p><i class="fa-solid fa-envelope"></i> procssentreprise@gmail.com</p>
         </div>
     </div>
     <div class="copyright">
-        © 2026 PRO C2S - Tous droits réservés. | <a href="#" id="openPrivacyModal" style="color: #81c784; text-decoration: underline;">Politique de confidentialité</a>
+        © 2026 PRO C2S - <span data-key="footer_rights">Tous droits réservés.</span> | <a href="#" id="openPrivacyModal" style="color: #81c784; text-decoration: underline;" data-key="footer_privacy">Politique de confidentialité</a>
     </div>
 </footer>
 
@@ -627,12 +636,12 @@
     <div class="cookie-content">
         <i class="fa-solid fa-cookie-bite cookie-icon-pro"></i>
         <div class="cookie-text">
-            <h4>Gestion des Cookies & Confidentialité</h4>
-            <p>Nous utilisons des cookies pour améliorer votre expérience. En poursuivant, vous acceptez notre <a href="#" id="openPrivacyLink" style="color: #4ade80; text-decoration: underline;">politique de cookies</a>.</p>
+            <h4 data-key="cookie_title">Gestion des Cookies & Confidentialité</h4>
+            <p><span data-key="cookie_text">Nous utilisons des cookies pour améliorer votre expérience. En poursuivant, vous acceptez notre politique.</span></p>
         </div>
     </div>
     <div class="cookie-actions">
-        <button id="acceptCookiesBtn" class="btn-cookie-accept">Tout accepter</button>
+        <button id="acceptCookiesBtn" class="btn-cookie-accept" data-key="cookie_btn">Tout accepter</button>
     </div>
 </div>
 
