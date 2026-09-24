@@ -1,5 +1,5 @@
 /* ===================================================================
-   PRO C2S - STYLE CSS COMPLET (Design Pro original + Google Translate)
+   PRO C2S - STYLE CSS COMPLET (Design Pro original)
 =================================================================== */
 
 * {
@@ -46,35 +46,6 @@ ul {
   width: 90%;
   max-width: 1220px;
   margin: auto;
-}
-
-/* ================= GOOGLE TRANSLATE STYLING ================= */
-#google_translate_element {
-  display: inline-block;
-}
-.goog-te-combo {
-  padding: 8px 14px;
-  border-radius: 20px;
-  border: 1.5px solid var(--border-color);
-  background: #ffffff;
-  color: var(--dark);
-  font-weight: 600;
-  font-size: 13.5px;
-  outline: none;
-  cursor: pointer;
-}
-.goog-te-banner-frame.skiptranslate {
-  display: none !important;
-}
-body {
-  top: 0 !important;
-}
-.goog-logo-link, .goog-te-gadget span {
-  display: none !important;
-}
-.goog-te-gadget {
-  color: transparent !important;
-  font-size: 0px !important;
 }
 
 /* ================= ANIMATIONS SCROLL (REVEAL) ================= */
