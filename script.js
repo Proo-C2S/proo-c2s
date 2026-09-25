@@ -1,5 +1,5 @@
 /* ==========================================
-   PRO C2S - SCRIPT.JS COMPLET (Mis à jour)
+   PRO C2S - SCRIPT.JS (WhatsApp Intégré)
 ========================================== */
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -269,7 +269,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // Contact EmailJS
+    // Contact EmailJS (Original)
     const contactForm = document.getElementById("contact-form");
     if(contactForm) {
         if (typeof emailjs !== 'undefined') {
@@ -299,23 +299,37 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Candidate Form Handler
+    // Candidate Form -> Redirection WhatsApp Direct
     const candidateForm = document.getElementById("candidate-form");
     if(candidateForm) {
         candidateForm.addEventListener("submit", function(e) {
             e.preventDefault();
-            showToast("Candidature envoyée avec succès ! Notre RH vous contactera.");
+            const name = this.querySelector("[name='candidate_name']").value;
+            const email = this.querySelector("[name='candidate_email']").value;
+            const phone = this.querySelector("[name='candidate_phone']").value;
+            const spec = this.querySelector("[name='candidate_speciality']").value;
+
+            const waText = `*Nouvelle Candidature - PRO C2S*%0A- Nom: ${name}%0A- Email: ${email}%0A- Téléphone: ${phone}%0A- Spécialité: ${spec}`;
+            
+            window.open(`https://wa.me/212663449824?text=${encodeURIComponent(waText)}`, '_blank');
             if(candidateModal) candidateModal.classList.remove("open");
             candidateForm.reset();
         });
     }
 
-    // Company Form Handler
+    // Company Form -> Redirection WhatsApp Direct (Devis)
     const companyForm = document.getElementById("company-form");
     if(companyForm) {
         companyForm.addEventListener("submit", function(e) {
             e.preventDefault();
-            showToast("Demande de devis transmise avec succès !");
+            const compName = this.querySelector("[name='company_name']").value;
+            const respName = this.querySelector("[name='resp_name']").value;
+            const phone = this.querySelector("[name='company_phone']").value;
+            const needs = this.querySelector("[name='company_needs']").value;
+
+            const waText = `*Demande de Devis Entreprise - PRO C2S*%0A- Entreprise: ${compName}%0A- Responsable: ${respName}%0A- Téléphone: ${phone}%0A- Besoins: ${needs}`;
+            
+            window.open(`https://wa.me/212663449824?text=${encodeURIComponent(waText)}`, '_blank');
             if(companyModal) companyModal.classList.remove("open");
             companyForm.reset();
         });
