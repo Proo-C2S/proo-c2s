@@ -599,7 +599,7 @@ header.scrolled .logo img {
   line-height: 1.6;
 }
 
-/* ================= SERVICES ================= */
+/* ================= SERVICES (MÉTHODE ALIGNEMENT DES HAUTEURS) ================= */
 .services {
   padding: 90px 0;
   background: #f1f8f3 !important;
@@ -609,6 +609,7 @@ header.scrolled .logo img {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+  align-items: stretch; /* ⬅️ Hada howa el-hal: kaykhalI ga3 les cartes yakhdo nafs el-hauteur */
 }
 
 .card {
@@ -618,6 +619,9 @@ header.scrolled .logo img {
   padding: 34px 24px;
   transition: all 0.35s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  display: flex; /* ⬅️ Flex bach nkdro ndirou justify-content ila bghina */
+  flex-direction: column;
+  height: 100%; /* ⬅️ Ykonou 100% f height dyal el-grille */
 }
 
 .card:hover {
@@ -655,6 +659,7 @@ header.scrolled .logo img {
   font-size: 14px;
   color: var(--gray);
   line-height: 1.6;
+  flex-grow: 1; /* ⬅️ Bach t-pousse el-content mzyan ila kayn chi bouton ltaht */
 }
 
 /* ================= SECTEURS ================= */
