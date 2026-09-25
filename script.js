@@ -1,5 +1,5 @@
 /* ==========================================
-   PRO C2S - SCRIPT.JS COMPLET (Avec Article Modal)
+   PRO C2S - SCRIPT.JS COMPLET (Avec Recherche & Modals)
 ========================================== */
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -158,6 +158,25 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         });
     });
+
+    // Recherche Rapide par Mots-Clés f Offres d'Emploi
+    const jobSearchInput = document.getElementById("jobSearchInput");
+    if(jobSearchInput) {
+        jobSearchInput.addEventListener("input", (e) => {
+            const term = e.target.value.toLowerCase().trim();
+            allJobCards.forEach(card => {
+                const title = card.querySelector("h3").innerText.toLowerCase();
+                const sector = card.querySelector(".job-sect").innerText.toLowerCase();
+                const desc = card.getAttribute("data-desc").toLowerCase();
+
+                if(title.includes(term) || sector.includes(term) || desc.includes(term)) {
+                    card.classList.remove("hidden");
+                } else {
+                    card.classList.add("hidden");
+                }
+            });
+        });
+    }
 
     const modal = document.getElementById("jobModal");
     const closeModalBtn = document.getElementById("closeModalBtn");
