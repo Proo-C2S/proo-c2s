@@ -1,5 +1,5 @@
 /* ==========================================
-   PRO C2S - SCRIPT.JS COMPLET (Avec Recherche & Modals)
+   PRO C2S - SCRIPT.JS COMPLET (Recherche & 4 Articles)
 ========================================== */
 
 document.addEventListener("DOMContentLoaded", function() {
