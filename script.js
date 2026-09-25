@@ -1,5 +1,5 @@
 /* ==========================================
-   PRO C2S - SCRIPT.JS COMPLET (Original + Blog)
+   PRO C2S - SCRIPT.JS COMPLET (Avec Article Modal)
 ========================================== */
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if(statsSection) statsObserver.observe(statsSection);
 
-    // Job Filters & Modal
+    // Job Filters & Modal Offres
     const filterBtns = document.querySelectorAll(".filter-btn");
     const allJobCards = document.querySelectorAll(".job-card");
 
@@ -187,6 +187,37 @@ document.addEventListener("DOMContentLoaded", function() {
     if(closeModalBtn && modal) {
         closeModalBtn.addEventListener("click", () => modal.classList.remove("open"));
         modal.addEventListener("click", (e) => { if(e.target === modal) modal.classList.remove("open"); });
+    }
+
+    // Article Modal (Blog Reading)
+    const articleModal = document.getElementById("articleModal");
+    const closeArticleModalBtn = document.getElementById("closeArticleModalBtn");
+    const articleModalTitle = document.getElementById("articleModalTitle");
+    const articleModalBadge = document.getElementById("articleModalBadge");
+    const articleModalDesc = document.getElementById("articleModalDesc");
+    const articleModalWaBtn = document.getElementById("articleModalWaBtn");
+    const articleCards = document.querySelectorAll(".article-card");
+
+    articleCards.forEach(card => {
+        const readBtn = card.querySelector(".btn-read-article");
+        readBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const title = card.getAttribute("data-title");
+            const category = card.getAttribute("data-category");
+            const content = card.getAttribute("data-content");
+
+            articleModalTitle.innerText = title;
+            articleModalBadge.innerText = category;
+            articleModalDesc.innerText = content;
+            articleModalWaBtn.href = `https://wa.me/212663449824?text=${encodeURIComponent("Bonjour, j'ai lu votre article '" + title + "' et je souhaite en savoir plus.")}`;
+            
+            if(articleModal) articleModal.classList.add("open");
+        });
+    });
+
+    if(closeArticleModalBtn && articleModal) {
+        closeArticleModalBtn.addEventListener("click", () => articleModal.classList.remove("open"));
+        articleModal.addEventListener("click", (e) => { if(e.target === articleModal) articleModal.classList.remove("open"); });
     }
 
     // Simulator
