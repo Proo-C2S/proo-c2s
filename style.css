@@ -599,7 +599,7 @@ header.scrolled .logo img {
   line-height: 1.6;
 }
 
-/* ================= SERVICES (MÉTHODE ALIGNEMENT DES HAUTEURS) ================= */
+/* ================= SERVICES ================= */
 .services {
   padding: 90px 0;
   background: #f1f8f3 !important;
@@ -609,7 +609,7 @@ header.scrolled .logo img {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  align-items: stretch; /* ⬅️ Hada howa el-hal: kaykhalI ga3 les cartes yakhdo nafs el-hauteur */
+  align-items: stretch;
 }
 
 .card {
@@ -619,9 +619,9 @@ header.scrolled .logo img {
   padding: 34px 24px;
   transition: all 0.35s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
-  display: flex; /* ⬅️ Flex bach nkdro ndirou justify-content ila bghina */
+  display: flex;
   flex-direction: column;
-  height: 100%; /* ⬅️ Ykonou 100% f height dyal el-grille */
+  height: 100%;
 }
 
 .card:hover {
@@ -659,7 +659,7 @@ header.scrolled .logo img {
   font-size: 14px;
   color: var(--gray);
   line-height: 1.6;
-  flex-grow: 1; /* ⬅️ Bach t-pousse el-content mzyan ila kayn chi bouton ltaht */
+  flex-grow: 1;
 }
 
 /* ================= SECTEURS ================= */
@@ -964,6 +964,37 @@ header.scrolled .logo img {
   font-size: 13.5px;
   color: var(--primary);
   font-weight: 600;
+}
+
+/* ================= BLOG & CONSEILS (ALIGNEMENT DES CARTES) ================= */
+.blog-grid, .articles-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.blog-card, .article-card {
+  background: #ffffff;
+  border: 1.5px solid var(--border-color);
+  border-radius: 20px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  transition: all 0.35s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.blog-card:hover, .article-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.blog-content, .article-content {
+  flex-grow: 1;
 }
 
 /* ================= FAQ ================= */
@@ -1533,7 +1564,9 @@ footer {
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 1024px) {
-  .job-grid {
+  .job-grid,
+  .blog-grid,
+  .articles-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   .simulator-box {
@@ -1592,7 +1625,9 @@ footer {
 
   .services-grid,
   .sectors-grid,
-  .job-grid {
+  .job-grid,
+  .blog-grid,
+  .articles-grid {
     grid-template-columns: 1fr;
   }
 
