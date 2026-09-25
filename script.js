@@ -1,5 +1,5 @@
 /* ==========================================
-   PRO C2S - SCRIPT.JS COMPLET (Original)
+   PRO C2S - SCRIPT.JS COMPLET (Mis à jour)
 ========================================== */
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -77,6 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Modal Politique
     const privacyModal = document.getElementById("privacyModal");
     const openPrivacyModal = document.getElementById("openPrivacyModal");
+    const openPrivacyLink = document.getElementById("openPrivacyLink");
     const closePrivacyBtn = document.getElementById("closePrivacyBtn");
 
     function togglePrivacyModal(e) {
@@ -85,11 +86,49 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     if(openPrivacyModal) openPrivacyModal.addEventListener("click", togglePrivacyModal);
+    if(openPrivacyLink) openPrivacyLink.addEventListener("click", togglePrivacyModal);
     if(closePrivacyBtn) closePrivacyBtn.addEventListener("click", togglePrivacyModal);
     
     if(privacyModal) {
         privacyModal.addEventListener("click", (e) => {
             if(e.target === privacyModal) privacyModal.classList.remove("open");
+        });
+    }
+
+    // Modals Candidat & Entreprise
+    const candidateModal = document.getElementById("candidateModal");
+    const openCandidateModalNav = document.getElementById("openCandidateModalNav");
+    const openCandidateModalHero = document.getElementById("openCandidateModalHero");
+    const closeCandidateModalBtn = document.getElementById("closeCandidateModalBtn");
+
+    function toggleCandidateModal(e) {
+        if(e) e.preventDefault();
+        if(candidateModal) candidateModal.classList.toggle("open");
+    }
+
+    if(openCandidateModalNav) openCandidateModalNav.addEventListener("click", toggleCandidateModal);
+    if(openCandidateModalHero) openCandidateModalHero.addEventListener("click", toggleCandidateModal);
+    if(closeCandidateModalBtn) closeCandidateModalBtn.addEventListener("click", toggleCandidateModal);
+    if(candidateModal) {
+        candidateModal.addEventListener("click", (e) => {
+            if(e.target === candidateModal) candidateModal.classList.remove("open");
+        });
+    }
+
+    const companyModal = document.getElementById("companyModal");
+    const openCompanyFormBtn = document.getElementById("openCompanyFormBtn");
+    const closeCompanyModalBtn = document.getElementById("closeCompanyModalBtn");
+
+    function toggleCompanyModal(e) {
+        if(e) e.preventDefault();
+        if(companyModal) companyModal.classList.toggle("open");
+    }
+
+    if(openCompanyFormBtn) openCompanyFormBtn.addEventListener("click", toggleCompanyModal);
+    if(closeCompanyModalBtn) closeCompanyModalBtn.addEventListener("click", toggleCompanyModal);
+    if(companyModal) {
+        companyModal.addEventListener("click", (e) => {
+            if(e.target === companyModal) companyModal.classList.remove("open");
         });
     }
 
@@ -217,8 +256,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Contact EmailJS
-    const contactForm = document.getElementById("contact-form");
+    // Toast Notification helper
     const toast = document.getElementById("toastNotification");
     const toastMsg = document.getElementById("toastMsg");
 
@@ -231,6 +269,8 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    // Contact EmailJS
+    const contactForm = document.getElementById("contact-form");
     if(contactForm) {
         if (typeof emailjs !== 'undefined') {
             emailjs.init({ publicKey: "W70dwCkNbwmFHeSOA" });
@@ -256,6 +296,28 @@ document.addEventListener("DOMContentLoaded", function() {
                     submitBtn.innerText = originalText;
                     submitBtn.disabled = false;
                 });
+        });
+    }
+
+    // Candidate Form Handler
+    const candidateForm = document.getElementById("candidate-form");
+    if(candidateForm) {
+        candidateForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            showToast("Candidature envoyée avec succès ! Notre RH vous contactera.");
+            if(candidateModal) candidateModal.classList.remove("open");
+            candidateForm.reset();
+        });
+    }
+
+    // Company Form Handler
+    const companyForm = document.getElementById("company-form");
+    if(companyForm) {
+        companyForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            showToast("Demande de devis transmise avec succès !");
+            if(companyModal) companyModal.classList.remove("open");
+            companyForm.reset();
         });
     }
 });

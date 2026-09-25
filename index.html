@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=28">
+    <link rel="stylesheet" href="style.css?v=29">
 </head>
 
 <body>
@@ -42,7 +42,7 @@
         </ul>
 
         <div class="nav-actions">
-            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20d%C3%A9poser%20mon%20CV." target="_blank" class="btn-secondary-nav">
+            <a href="#" id="openCandidateModalNav" class="btn-secondary-nav">
                 <i class="fa-solid fa-file-arrow-up"></i> Espace Candidat
             </a>
             <a href="#simulateur" class="btn">Besoin de recruter</a>
@@ -63,7 +63,7 @@
             
             <div class="hero-actions">
                 <a href="#simulateur" class="btn btn-hero"><i class="fa-solid fa-building"></i> Vous recrutez ?</a>
-                <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20postuler%20chez%20PRO%20C2S." target="_blank" class="btn-outline-hero"><i class="fa-brands fa-whatsapp"></i> Déposer un CV</a>
+                <a href="#" id="openCandidateModalHero" class="btn-outline-hero"><i class="fa-solid fa-file-lines"></i> Déposer un CV Pro</a>
             </div>
 
             <div class="hero-badges-row">
@@ -160,9 +160,12 @@
             <div class="sim-summary">
                 <span>Délégation garantie sous</span>
                 <strong>24h à 48h</strong>
-                <a href="#" id="simWhatsAppBtn" target="_blank" class="btn" style="background: #25d366; width: 100%;">
-                    <i class="fa-brands fa-whatsapp"></i> Demander cette équipe
+                <a href="#" id="simWhatsAppBtn" target="_blank" class="btn" style="background: #25d366; width: 100%; margin-bottom: 12px;">
+                    <i class="fa-brands fa-whatsapp"></i> Demander via WhatsApp
                 </a>
+                <button type="button" id="openCompanyFormBtn" class="btn-outline-hero" style="width: 100%; border-color: rgba(255,255,255,0.3); color: #fff;">
+                    <i class="fa-solid fa-file-contract"></i> Demande de Devis Formulaire
+                </button>
             </div>
         </div>
     </div>
@@ -489,6 +492,7 @@
     </div>
 </section>
 
+<!-- MODAL OFFRE -->
 <div class="job-modal-overlay" id="jobModal">
     <div class="job-modal-content">
         <button class="job-modal-close" id="closeModalBtn" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
@@ -512,6 +516,49 @@
     </div>
 </div>
 
+<!-- MODAL ESPACE CANDIDAT (DEPOT CV PRO) -->
+<div class="job-modal-overlay" id="candidateModal">
+    <div class="job-modal-content">
+        <button class="job-modal-close" id="closeCandidateModalBtn" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+        <span class="modal-header-badge" style="background:#e8f5e9; color:#1b5e20;">Espace Candidat</span>
+        <h3 class="job-modal-title">Déposez votre CV chez PRO C2S</h3>
+        <p class="job-modal-sector">Remplissez ce formulaire rapide pour figurer dans notre vivier d'intérim.</p>
+
+        <form id="candidate-form" style="margin-top: 15px;">
+            <input type="text" name="candidate_name" placeholder="Nom et Prénom" required style="width:100%; padding:12px; margin-bottom:12px; border:1px solid #cbd5e1; border-radius:10px;">
+            <input type="email" name="candidate_email" placeholder="Adresse e-mail" required style="width:100%; padding:12px; margin-bottom:12px; border:1px solid #cbd5e1; border-radius:10px;">
+            <input type="tel" name="candidate_phone" placeholder="Numéro de téléphone" required style="width:100%; padding:12px; margin-bottom:12px; border:1px solid #cbd5e1; border-radius:10px;">
+            <select name="candidate_speciality" style="width:100%; padding:12px; margin-bottom:14px; border:1px solid #cbd5e1; border-radius:10px; background:#fff;">
+                <option value="Transport & Logistique">Transport & Logistique</option>
+                <option value="Administration & Gestion">Administration & Gestion</option>
+                <option value="Industrie & Production">Industrie & Production</option>
+                <option value="Santé & Médical">Santé & Médical</option>
+                <option value="Autre spécialité">Autre spécialité</option>
+            </select>
+            <button type="submit" class="btn" style="width:100%; justify-content:center; padding:14px; border-radius:10px;">Envoyer ma candidature</button>
+        </form>
+    </div>
+</div>
+
+<!-- MODAL ESPACE ENTREPRISE (DEVIS) -->
+<div class="job-modal-overlay" id="companyModal">
+    <div class="job-modal-content">
+        <button class="job-modal-close" id="closeCompanyModalBtn" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+        <span class="modal-header-badge" style="background:#0f172a; color:#4ade80;">Espace Entreprise</span>
+        <h3 class="job-modal-title">Demande de Devis ou Délégation</h3>
+        <p class="job-modal-sector">Exprimez vos besoins en personnel temporaire ou recrutement.</p>
+
+        <form id="company-form" style="margin-top: 15px;">
+            <input type="text" name="company_name" placeholder="Nom de l'entreprise" required style="width:100%; padding:12px; margin-bottom:12px; border:1px solid #cbd5e1; border-radius:10px;">
+            <input type="text" name="resp_name" placeholder="Nom du responsable RH / Contact" required style="width:100%; padding:12px; margin-bottom:12px; border:1px solid #cbd5e1; border-radius:10px;">
+            <input type="tel" name="company_phone" placeholder="Téléphone professionnel" required style="width:100%; padding:12px; margin-bottom:12px; border:1px solid #cbd5e1; border-radius:10px;">
+            <textarea name="company_needs" placeholder="Détails des profils et volume recherché..." required style="width:100%; padding:12px; margin-bottom:14px; border:1px solid #cbd5e1; border-radius:10px; height:90px; resize:none;"></textarea>
+            <button type="submit" class="btn" style="width:100%; justify-content:center; padding:14px; border-radius:10px; background:#0f172a;">Envoyer la demande</button>
+        </form>
+    </div>
+</div>
+
+<!-- MODAL POLITIQUE -->
 <div class="job-modal-overlay" id="privacyModal">
     <div class="job-modal-content">
         <button class="job-modal-close" id="closePrivacyBtn" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
@@ -600,7 +647,7 @@
     <div class="container footer-grid">
         <div class="footer-about">
             <h3>PRO C2S</h3>
-            <p>Société spécialisée en recrutement, intérim  créée en 2017. Votre partenaire pour construire vos équipes de demain.</p>
+            <p>Société spécialisée en recrutement, intérim créée en 2017. Votre partenaire pour construire vos équipes de demain.</p>
         </div>
         <div class="footer-links">
             <h4>Navigation</h4>
