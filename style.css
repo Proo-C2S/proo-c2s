@@ -27,6 +27,7 @@ body {
   background: #e8f5e9;
   color: var(--dark);
   overflow-x: hidden;
+  padding-top: 85px;
 }
 
 img {
@@ -208,7 +209,7 @@ header.scrolled .logo img {
 
 /* ================= HERO ================= */
 .hero {
-  padding: 165px 0 95px;
+  padding: 95px 0 95px;
   background: linear-gradient(180deg, #f4faf6 0%, #e8f5e9 100%);
 }
 
@@ -1600,7 +1601,7 @@ footer {
 
 @media (max-width: 768px) {
   body {
-    padding-top: 75px;
+    padding-top: 75px !important;
   }
 
   .navbar {
