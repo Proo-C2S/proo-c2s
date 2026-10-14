@@ -1599,6 +1599,14 @@ footer {
 }
 
 @media (max-width: 768px) {
+  body {
+    padding-top: 75px;
+  }
+
+  .navbar {
+    height: 75px !important;
+  }
+
   .menu-toggle {
     display: block;
   }
@@ -1610,16 +1618,20 @@ footer {
 
   .nav-links.open {
     display: flex;
-    position: absolute;
-    top: 85px;
+    position: fixed;
+    top: 75px;
     left: 0;
     width: 100%;
+    height: calc(100vh - 75px);
     background: #ffffff;
     flex-direction: column;
     align-items: center;
-    padding: 25px 0;
-    gap: 18px;
+    justify-content: flex-start;
+    padding: 30px 0;
+    gap: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    overflow-y: auto;
+    z-index: 9998;
   }
 
   .services-grid,
