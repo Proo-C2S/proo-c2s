@@ -27,7 +27,6 @@ body {
   background: #e8f5e9;
   color: var(--dark);
   overflow-x: hidden;
-  padding-top: 85px;
 }
 
 img {
@@ -209,7 +208,7 @@ header.scrolled .logo img {
 
 /* ================= HERO ================= */
 .hero {
-  padding: 95px 0 95px;
+  padding: 165px 0 95px;
   background: linear-gradient(180deg, #f4faf6 0%, #e8f5e9 100%);
 }
 
@@ -1601,7 +1600,11 @@ footer {
 
 @media (max-width: 768px) {
   body {
-    padding-top: 75px !important;
+    padding-top: 85px !important;
+  }
+
+  header {
+    height: 75px !important;
   }
 
   .navbar {
@@ -1609,16 +1612,15 @@ footer {
   }
 
   .menu-toggle {
-    display: block;
+    display: block !important;
   }
 
-  .nav-actions,
   .nav-links {
     display: none;
   }
 
   .nav-links.open {
-    display: flex;
+    display: flex !important;
     position: fixed;
     top: 75px;
     left: 0;
@@ -1639,20 +1641,20 @@ footer {
   .sectors-grid,
   .job-grid,
   .articles-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 
   .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
     row-gap: 25px;
   }
 
   .footer-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 
   .modal-details-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 
   .cookie-banner-pro {
