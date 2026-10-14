@@ -1677,22 +1677,3 @@ footer {
   }
 }
 
-/* ================= FIX NAVBAR ALIGNMENT PRO ================= */
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.nav-links {
-  display: flex;
-  gap: 24px;
-  margin: 0 auto;
-}
-
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-left: auto;
-}
