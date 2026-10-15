@@ -40,6 +40,28 @@
             flex-direction: column;
             flex-grow: 1;
         }
+        .pro-feature-card {
+            background: #fff;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1.5px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+        .pro-feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.06);
+        }
+        .pro-feature-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .pro-feature-content {
+            padding: 20px;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -123,7 +145,7 @@
     </div>
 </section>
 
-<!-- ================= SECTION PRO : POURQUOI CHOISIR PRO C2S EN INTÉRIM ================= -->
+<!-- ================= SECTION PRO : POURQUOI CHOISIR PRO C2S (AVEC IMAGES) ================= -->
 <section style="padding: 70px 0; background: #f8fafc; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
     <div class="container">
         <div class="section-title">
@@ -133,37 +155,39 @@
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin-top: 40px;">
-            <div style="background: #fff; padding: 30px; border-radius: 16px; border: 1.5px solid var(--border-color); text-align: center;">
-                <div style="width: 50px; height: 50px; background: #e8f5e9; color: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin: 0 auto 20px;">
-                    <i class="fa-solid fa-bolt"></i>
+            
+            <div class="pro-feature-card">
+                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80" alt="Réactivité 24-48h" class="pro-feature-img">
+                <div class="pro-feature-content">
+                    <h3 style="font-size: 17px; color: var(--dark); margin-bottom: 8px;">Réactivité 24-48h</h3>
+                    <p style="font-size: 13px; color: var(--gray); line-height: 1.6;">Mobilisation et mise à disposition rapide de profils opérationnels dans tout le Maroc.</p>
                 </div>
-                <h3 style="font-size: 17px; color: var(--dark); margin-bottom: 10px;">Réactivité 24-48h</h3>
-                <p style="font-size: 13.5px; color: var(--gray); line-height: 1.6;">Mobilisation et mise à disposition rapide de profils opérationnels dans tout le Maroc.</p>
             </div>
 
-            <div style="background: #fff; padding: 30px; border-radius: 16px; border: 1.5px solid var(--border-color); text-align: center;">
-                <div style="width: 50px; height: 50px; background: #e8f5e9; color: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin: 0 auto 20px;">
-                    <i class="fa-solid fa-file-shield"></i>
+            <div class="pro-feature-card">
+                <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=600&q=80" alt="Sécurité Juridique" class="pro-feature-img">
+                <div class="pro-feature-content">
+                    <h3 style="font-size: 17px; color: var(--dark); margin-bottom: 8px;">Sécurité Juridique</h3>
+                    <p style="font-size: 13px; color: var(--gray); line-height: 1.6;">Maîtrise totale du Code du Travail marocain et conformité stricte des contrats.</p>
                 </div>
-                <h3 style="font-size: 17px; color: var(--dark); margin-bottom: 10px;">Sécurité Juridique</h3>
-                <p style="font-size: 13.5px; color: var(--gray); line-height: 1.6;">Maîtrise totale du Code du Travail marocain et conformité stricte des contrats.</p>
             </div>
 
-            <div style="background: #fff; padding: 30px; border-radius: 16px; border: 1.5px solid var(--border-color); text-align: center;">
-                <div style="width: 50px; height: 50px; background: #e8f5e9; color: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin: 0 auto 20px;">
-                    <i class="fa-solid fa-users-rectangle"></i>
+            <div class="pro-feature-card">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="Vivier Qualifié" class="pro-feature-img">
+                <div class="pro-feature-content">
+                    <h3 style="font-size: 17px; color: var(--dark); margin-bottom: 8px;">Vivier Qualifié</h3>
+                    <p style="font-size: 13px; color: var(--gray); line-height: 1.6;">Base de données riche de talents évalués, formés et prêts à intégrer vos équipes.</p>
                 </div>
-                <h3 style="font-size: 17px; color: var(--dark); margin-bottom: 10px;">Vivier Qualifié</h3>
-                <p style="font-size: 13.5px; color: var(--gray); line-height: 1.6;">Base de données riche de talents évalués, formés et prêts à intégrer vos équipes.</p>
             </div>
 
-            <div style="background: #fff; padding: 30px; border-radius: 16px; border: 1.5px solid var(--border-color); text-align: center;">
-                <div style="width: 50px; height: 50px; background: #e8f5e9; color: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin: 0 auto 20px;">
-                    <i class="fa-solid fa-headset"></i>
+            <div class="pro-feature-card">
+                <img src="https://images.unsplash.com/photo-1556742049-0a67d553c2a5?auto=format&fit=crop&w=600&q=80" alt="Interlocuteur Dédié" class="pro-feature-img">
+                <div class="pro-feature-content">
+                    <h3 style="font-size: 17px; color: var(--dark); margin-bottom: 8px;">Interlocuteur Dédié</h3>
+                    <p style="font-size: 13px; color: var(--gray); line-height: 1.6;">Un chargé de compte RH à vos côtés pour assurer un suivi personnalisé et de proximité.</p>
                 </div>
-                <h3 style="font-size: 17px; color: var(--dark); margin-bottom: 10px;">Interlocuteur Dédié</h3>
-                <p style="font-size: 13.5px; color: var(--gray); line-height: 1.6;">Un chargé de compte RH à vos côtés pour assurer un suivi personnalisé et de proximité.</p>
             </div>
+
         </div>
     </div>
 </section>
