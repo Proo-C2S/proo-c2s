@@ -1681,5 +1681,12 @@ footer {
     grid-template-columns: 1fr !important;
   }
 }
+/* Fix responsive pour les grilles sur mobile dans toutes les pages */
+@media (max-width: 992px) {
+  .services-grid,
+  .domains-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
 }
 
