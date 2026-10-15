@@ -12,19 +12,14 @@
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
         }
-        .floating-box {
-            animation: floatBadge 4s ease-in-out infinite;
-        }
-        .floating-box-delayed {
-            animation: floatBadge 5s ease-in-out infinite 2s;
-        }
+        .floating-box { animation: floatBadge 4s ease-in-out infinite; }
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .animate-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
+        .animate-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .card { transition: all 0.3s ease; }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
     </style>
 </head>
 <body>
@@ -44,55 +39,36 @@
     </nav>
 </header>
 
-<!-- Hero Section avec style moderne et éléments flottants -->
 <section class="hero animate-up" style="padding: 140px 0 70px; background: linear-gradient(135deg, #f4faf6 0%, #e8f5e9 100%); position: relative; overflow: hidden;">
     <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
         
-        <!-- Text à gauche -->
         <div style="flex: 1; min-width: 300px; text-align: left;">
             <span class="badge-crit" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(46, 125, 50, 0.15); color: #2e7d32; padding: 6px 14px; border-radius: 20px; font-weight: 600; margin-bottom: 20px;">
                 <i class="fa-solid fa-users-gear"></i> Pôle Intérim & Recrutement
             </span>
-            <h1 style="font-size: 38px; margin-bottom: 20px; color: #0f172a; font-weight: 800; line-height: 1.2;">Travail Temporaire, Intérim & Recrutement CDD / CDI</h1>
-            <p style="font-size: 17px; color: #64748b; line-height: 1.7; margin-bottom: 30px;">La solution flexible et complète pour faire face à vos pics d'activité, remplacements urgents, ainsi que pour intégrer durablement vos talents en contrats CDD ou CDI.</p>
+            <h1 style="font-size: 38px; margin-bottom: 20px; color: #0f172a; font-weight: 800; line-height: 1.2;">Travail Temporaire, Intérim & CDD / CDI</h1>
+            <p style="font-size: 17px; color: #64748b; line-height: 1.7; margin-bottom: 30px;">La solution flexible et complète pour faire face à vos pics d'activité, remplacements urgents, et intégration de talents en CDD ou CDI.</p>
             
             <a href="https://wa.me/212663449824?text=Bonjour%20PRO%20C2S,%20je%20souhaite%20demander%20des%20profils%20en%20Intérim." target="_blank" class="btn" style="background: #25d366; padding: 15px 30px; font-size: 16px; border-radius: 30px; display: inline-flex; align-items: center; gap: 10px;">
                 <i class="fa-brands fa-whatsapp"></i> Demander du personnel
             </a>
         </div>
 
-        <!-- Image avec Badges Flottants (Style PRO) à droite -->
         <div style="flex: 1; min-width: 300px; position: relative; display: flex; justify-content: center; align-items: center;">
-            <div style="position: relative; width: 100%; max-width: 420px; height: 420px; display: flex; align-items: center; justify-content: center;">
-                
-                <!-- Cercle décoratif de fond -->
+            <div style="position: relative; width: 100%; max-width: 420px; height: 420px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
                 <div style="position: absolute; width: 320px; height: 320px; background: rgba(46, 125, 50, 0.08); border-radius: 50%; z-index: 1;"></div>
 
-                <!-- Image Professionnelle -->
-                <img src="image/hero-rh.jpg.png" alt="Intérim PRO C2S" style="width: 100%; max-height: 400px; object-fit: contain; position: relative; z-index: 2; border-radius: 20px;">
-
-                <!-- Badge Flottant 1 (Haut Gauche) -->
-                <div class="floating-box" style="position: absolute; top: 30px; left: -10px; background: #ffffff; padding: 12px 18px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); z-index: 3; display: flex; align-items: center; gap: 12px; border: 1px solid rgba(0,0,0,0.04);">
-                    <div style="width: 36px; height: 36px; background: #e8f5e9; color: #2e7d32; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px;">
-                        <i class="fa-solid fa-bolt"></i>
-                    </div>
-                    <div>
-                        <strong style="display: block; font-size: 15px; color: #0f172a;">24h - 48h</strong>
-                        <span style="font-size: 12px; color: #64748b;">Délégation rapide</span>
-                    </div>
+                <!-- تصويرة خاصة بالإنطيريم وتحتها الكتابة -->
+                <img src="image/hero-rh.jpg.png" alt="Intérim & Recrutement" style="width: 100%; max-height: 280px; object-fit: cover; position: relative; z-index: 2; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                <div style="position: relative; z-index: 3; margin-top: 15px; text-align: center; background: #ffffff; padding: 10px 20px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); width: 85%;">
+                    <strong style="font-size: 14px; color: #0f172a; display: block;">Délégation Réactive 24h/48h</strong>
+                    <span style="font-size: 12px; color: #64748b;">Conforme au Code du Travail</span>
                 </div>
 
-                <!-- Badge Flottant 2 (Bas Droite) -->
-                <div class="floating-box-delayed" style="position: absolute; bottom: 40px; right: -10px; background: #ffffff; padding: 12px 18px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); z-index: 3; display: flex; align-items: center; gap: 12px; border: 1px solid rgba(0,0,0,0.04);">
-                    <div style="width: 36px; height: 36px; background: #e8f5e9; color: #2e7d32; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px;">
-                        <i class="fa-solid fa-user-check"></i>
-                    </div>
-                    <div>
-                        <strong style="display: block; font-size: 15px; color: #0f172a;">100%</strong>
-                        <span style="font-size: 12px; color: #64748b;">Conforme Code du Travail</span>
-                    </div>
+                <div class="floating-box" style="position: absolute; top: 10px; left: -10px; background: #ffffff; padding: 10px 15px; border-radius: 14px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); z-index: 4; display: flex; align-items: center; gap: 10px;">
+                    <i class="fa-solid fa-users-gear" style="color: #2e7d32; font-size: 18px;"></i>
+                    <span style="font-size: 13px; font-weight: 600; color: #0f172a;">Intérim & CDD/CDI</span>
                 </div>
-
             </div>
         </div>
 
@@ -107,25 +83,21 @@
         </div>
 
         <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-            
-            <div class="card" style="transition: all 0.3s ease;">
+            <div class="card">
                 <div class="card-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
                 <h3>Travail Temporaire & Intérim</h3>
                 <p>Mise à disposition rapide d'agents et d'ouvriers qualifiés pour vos missions temporaires sous un délai de 24h à 48h.</p>
             </div>
-
-            <div class="card" style="transition: all 0.3s ease;">
+            <div class="card">
                 <div class="card-icon"><i class="fa-solid fa-user-plus"></i></div>
                 <h3>Recrutement CDD / CDI</h3>
                 <p>Sourcing sur-mesure, entretiens et sélection rigoureuse pour intégrer durablement vos futurs collaborateurs en contrats à durée déterminée ou indéterminée.</p>
             </div>
-
-            <div class="card" style="transition: all 0.3s ease;">
+            <div class="card">
                 <div class="card-icon"><i class="fa-solid fa-file-contract"></i></div>
                 <h3>Gestion Administrative & Paie</h3>
                 <p>Prise en charge intégrale de la rédaction des contrats, bulletins de paie et conformité légale totale selon le Code du Travail marocain.</p>
             </div>
-
         </div>
     </div>
 </section>
