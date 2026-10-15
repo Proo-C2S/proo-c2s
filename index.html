@@ -16,6 +16,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="style.css?v=999">
+
+    <!-- Style Zayd dyal Les Animations Pro (Floating Badges) -->
+    <style>
+        @keyframes floatBadge {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating-box {
+            animation: floatBadge 4s ease-in-out infinite;
+        }
+        .floating-box-delayed {
+            animation: floatBadge 5s ease-in-out infinite 2s;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+    </style>
 </head>
 
 <body>
@@ -52,32 +74,68 @@
     </nav>
 </header>
 
-<section class="hero reveal" id="home">
-    <div class="container hero-layout">
-        <div class="hero-text">
-            <span class="badge-crit"><i class="fa-solid fa-shield-check"></i> Partenaire Recrutement & Intérim</span>
-            <h1>Votre partenaire RH pour bâtir vos équipes de demain</h1>
-            <p>Spécialiste du recrutement et du travail temporaire au Maroc depuis 2017. Nous apportons des réponses rapides, flexibles et conformes à tous vos défis RH.</p>
+<!-- ================= HERO SECTION (المعدلة والمتحركة الاحترافية) ================= -->
+<section class="hero animate-up" id="home" style="padding: 140px 0 80px; background: linear-gradient(135deg, #f4faf6 0%, #e8f5e9 100%); position: relative; overflow: hidden;">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
+        
+        <!-- Text à gauche -->
+        <div style="flex: 1; min-width: 320px; text-align: left;">
+            <span class="badge-crit" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(46, 125, 50, 0.15); color: #2e7d32; padding: 6px 16px; border-radius: 20px; font-weight: 600; margin-bottom: 20px;">
+                <i class="fa-solid fa-shield-check"></i> Partenaire Recrutement & Intérim
+            </span>
+            <h1 style="font-size: 42px; margin-bottom: 20px; color: #0f172a; font-weight: 800; line-height: 1.2;">Votre partenaire RH pour bâtir vos équipes de demain</h1>
+            <p style="font-size: 17px; color: #64748b; line-height: 1.7; margin-bottom: 30px;">Spécialiste du recrutement et du travail temporaire au Maroc depuis 2017. Nous apportons des réponses rapides, flexibles et conformes à tous vos défis RH.</p>
             
-            <div class="hero-actions">
-                <a href="#simulateur" class="btn btn-hero"><i class="fa-solid fa-building"></i> Vous recrutez ?</a>
-                <a href="#carrieres" class="btn-outline-hero"><i class="fa-solid fa-briefcase"></i> Consulter les offres</a>
+            <div class="hero-actions" style="display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 35px;">
+                <a href="#simulateur" class="btn btn-hero" style="padding: 14px 28px; border-radius: 30px;"><i class="fa-solid fa-building"></i> Vous recrutez ?</a>
+                <a href="#carrieres" class="btn-outline-hero" style="padding: 14px 28px; border-radius: 30px;"><i class="fa-solid fa-briefcase"></i> Consulter les offres</a>
             </div>
 
-            <div class="hero-badges-row">
-                <div class="h-badge"><strong>24-48h</strong> <span>Réactivité</span></div>
-                <div class="h-sep"></div>
-                <div class="h-badge"><strong>100%</strong> <span>Conformité légale</span></div>
-                <div class="h-sep"></div>
-                <div class="h-badge"><strong>National</strong> <span>Toutes régions</span></div>
+            <div class="hero-badges-row" style="display: flex; align-items: center; gap: 20px; background: #ffffff; padding: 15px 25px; border-radius: 16px; box-shadow: 0 5px 20px rgba(0,0,0,0.04); max-width: 480px; border: 1px solid rgba(0,0,0,0.03);">
+                <div class="h-badge"><strong>24-48h</strong> <span style="display: block; font-size: 12px; color: #64748b;">Réactivité</span></div>
+                <div class="h-sep" style="width: 1px; height: 30px; background: #e2e8f0;"></div>
+                <div class="h-badge"><strong>100%</strong> <span style="display: block; font-size: 12px; color: #64748b;">Conformité</span></div>
+                <div class="h-sep" style="width: 1px; height: 30px; background: #e2e8f0;"></div>
+                <div class="h-badge"><strong>National</strong> <span style="display: block; font-size: 12px; color: #64748b;">Toutes régions</span></div>
             </div>
         </div>
 
-        <div class="hero-illustration">
-            <img src="image/hero-rh.jpg.png" alt="PRO C2S Solutions RH" class="hero-real-img">
+        <!-- Illustration avec Badges Flottants à droite -->
+        <div style="flex: 1; min-width: 320px; position: relative; display: flex; justify-content: center; align-items: center;">
+            <div style="position: relative; width: 100%; max-width: 440px; height: 440px; display: flex; align-items: center; justify-content: center;">
+                
+                <div style="position: absolute; width: 340px; height: 340px; background: rgba(46, 125, 50, 0.08); border-radius: 50%; z-index: 1;"></div>
+
+                <img src="image/hero-rh.jpg.png" alt="PRO C2S Solutions RH" style="width: 100%; max-height: 380px; object-fit: contain; position: relative; z-index: 2; border-radius: 20px;">
+
+                <!-- Badge Flottant 1 (Haut Gauche) -->
+                <div class="floating-box" style="position: absolute; top: 20px; left: -10px; background: #ffffff; padding: 14px 20px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); z-index: 3; display: flex; align-items: center; gap: 12px; border: 1px solid rgba(0,0,0,0.04);">
+                    <div style="width: 40px; height: 40px; background: #e8f5e9; color: #2e7d32; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px;">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div>
+                        <strong style="display: block; font-size: 16px; color: #0f172a;">12000+</strong>
+                        <span style="font-size: 12px; color: #64748b;">Candidats satisfaits</span>
+                    </div>
+                </div>
+
+                <!-- Badge Flottant 2 (Bas Droite) -->
+                <div class="floating-box-delayed" style="position: absolute; bottom: 30px; right: -10px; background: #ffffff; padding: 14px 20px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); z-index: 3; display: flex; align-items: center; gap: 12px; border: 1px solid rgba(0,0,0,0.04);">
+                    <div style="width: 40px; height: 40px; background: #e8f5e9; color: #2e7d32; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px;">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <div>
+                        <strong style="display: block; font-size: 16px; color: #0f172a;">Offres d'emploi</strong>
+                        <span style="font-size: 12px; color: #64748b;">Missions continues</span>
+                    </div>
+                </div>
+
+            </div>
         </div>
+
     </div>
 </section>
+<!-- ================= END HERO ================= -->
 
 <!-- ================= 3 DOMAINES (Avec Flexbox pour aligner les boutons) ================= -->
 <section class="reveal" style="padding: 60px 0; background: #ffffff;">
