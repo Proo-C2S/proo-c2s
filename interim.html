@@ -6,47 +6,6 @@
     <title>Pôle Intérim & Recrutement | PRO C2S</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <style>
-        @keyframes floatBadge {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        .floating-box { animation: floatBadge 4s ease-in-out infinite; }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-up { animation: fadeInUp 0.8s ease-out forwards; }
-        .card { 
-            transition: all 0.3s ease; 
-            overflow: hidden; 
-            display: flex; 
-            flex-direction: column; 
-            background: #ffffff;
-            border: 1.5px solid var(--border-color);
-            border-radius: 20px;
-            padding: 0;
-            text-align: left;
-        }
-        .card:hover { 
-            transform: translateY(-8px); 
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08); 
-        }
-        .card-img-top {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-top-left-radius: 18px;
-            border-top-right-radius: 18px;
-        }
-        .card-body-content {
-            padding: 25px 20px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-    </style>
 </head>
 <body>
 
@@ -65,85 +24,36 @@
     </nav>
 </header>
 
-<section class="hero animate-up" style="padding: 140px 0 70px; background: linear-gradient(135deg, #f4faf6 0%, #e8f5e9 100%); position: relative; overflow: hidden;">
-    <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
-        
-        <div style="flex: 1; min-width: 300px; text-align: left;">
-            <span class="badge-crit" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(46, 125, 50, 0.15); color: #2e7d32; padding: 6px 14px; border-radius: 20px; font-weight: 600; margin-bottom: 20px;">
-                <i class="fa-solid fa-users-gear"></i> Pôle Intérim & Recrutement
-            </span>
-            <h1 style="font-size: 38px; margin-bottom: 20px; color: #0f172a; font-weight: 800; line-height: 1.2;">Travail Temporaire, Intérim & CDD / CDI</h1>
-            <p style="font-size: 17px; color: #64748b; line-height: 1.7; margin-bottom: 30px;">La solution flexible et complète pour faire face à vos pics d'activité, remplacements urgents, et intégration de talents en CDD ou CDI.</p>
-            
-            <a href="https://wa.me/212663449824?text=Bonjour%20PRO%20C2S,%20je%20souhaite%20demander%20des%20profils%20en%20Intérim." target="_blank" class="btn" style="background: #25d366; padding: 15px 30px; font-size: 16px; border-radius: 30px; display: inline-flex; align-items: center; gap: 10px;">
-                <i class="fa-brands fa-whatsapp"></i> Demander du personnel
-            </a>
-        </div>
-
-        <div style="flex: 1; min-width: 300px; position: relative; display: flex; justify-content: center; align-items: center;">
-            <div style="position: relative; width: 100%; max-width: 420px; height: 420px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                <div style="position: absolute; width: 320px; height: 320px; background: rgba(46, 125, 50, 0.08); border-radius: 50%; z-index: 1;"></div>
-
-                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80" alt="Intérim & Recrutement" style="width: 100%; max-height: 260px; object-fit: cover; position: relative; z-index: 2; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
-                
-                <div style="position: relative; z-index: 3; margin-top: 15px; text-align: center; background: #ffffff; padding: 12px 20px; border-radius: 14px; box-shadow: 0 10px 25px rgba(0,0,0,0.06); width: 90%; border: 1px solid rgba(0,0,0,0.04);">
-                    <strong style="font-size: 14px; color: #0f172a; display: block;">Délégation Réactive 24h/48h</strong>
-                    <span style="font-size: 12px; color: #64748b;">Conforme au Code du Travail</span>
-                </div>
-
-                <div class="floating-box" style="position: absolute; top: 10px; left: -10px; background: #ffffff; padding: 10px 15px; border-radius: 14px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); z-index: 4; display: flex; align-items: center; gap: 10px;">
-                    <i class="fa-solid fa-users-gear" style="color: #2e7d32; font-size: 18px;"></i>
-                    <span style="font-size: 13px; font-weight: 600; color: #0f172a;">Intérim & CDD/CDI</span>
-                </div>
-            </div>
-        </div>
-
+<section class="hero animate-up" style="padding: 140px 0 70px; background: linear-gradient(135deg, #f4faf6 0%, #e8f5e9 100%);">
+    <div class="container" style="text-align: center; max-width: 800px;">
+        <span class="badge-crit" style="background: rgba(46, 125, 50, 0.15); color: #2e7d32; padding: 6px 16px; border-radius: 20px; font-weight: 600;">
+            <i class="fa-solid fa-users-gear"></i> Pôle Intérim & Travail Temporaire
+        </span>
+        <h1 style="font-size: 38px; margin: 20px 0; color: #0f172a; font-weight: 800;">Délégation de personnel & Gestion des pics d'activité</h1>
+        <p style="font-size: 16px; color: #64748b; line-height: 1.7;">Nous apportons des solutions rapides, flexibles et 100% conformes au Code du Travail marocain pour vos besoins temporaires ou permanents.</p>
     </div>
 </section>
 
-<section class="services animate-up" style="padding: 80px 0; animation-delay: 0.2s;">
-    <div class="container">
-        <div class="section-title">
-            <h2>Nos Solutions Intérim & Recrutement</h2>
-            <p>Une réactivité garantie pour répondre à tous vos besoins en personnel qualifié sur le terrain.</p>
+<section style="padding: 60px 0; background: #fff;">
+    <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+        <div style="background: #f8fafc; padding: 30px; border-radius: 16px; border: 1.5px solid var(--border-color);">
+            <h3 style="color: var(--dark); margin-bottom: 12px;"><i class="fa-solid fa-clock-rotate-left" style="color: var(--primary);"></i> Travail Temporaire</h3>
+            <p style="color: var(--gray); font-size: 14px; line-height: 1.6;">Réponse immédiate sous 24h/48h pour faire face à vos surcroîts de travail ou remplacements.</p>
         </div>
-
-        <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
-            
-            <!-- Carte 1 -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=600&q=80" alt="Travail Temporaire & Intérim" class="card-img-top">
-                <div class="card-body-content">
-                    <h3 style="font-size: 19px; color: var(--dark); margin-bottom: 10px;">Travail Temporaire & Intérim</h3>
-                    <p style="font-size: 14px; color: var(--gray); line-height: 1.6;">Mise à disposition rapide d'agents et d'ouvriers qualifiés pour vos missions temporaires sous un délai de 24h à 48h.</p>
-                </div>
-            </div>
-
-            <!-- Carte 2 -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Recrutement CDD / CDI" class="card-img-top">
-                <div class="card-body-content">
-                    <h3 style="font-size: 19px; color: var(--dark); margin-bottom: 10px;">Recrutement CDD / CDI</h3>
-                    <p style="font-size: 14px; color: var(--gray); line-height: 1.6;">Sourcing sur-mesure, entretiens et sélection rigoureuse pour intégrer durablement vos futurs collaborateurs en contrats à durée déterminée ou indéterminée.</p>
-                </div>
-            </div>
-
-            <!-- Carte 3 -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="Gestion Administrative & Paie" class="card-img-top">
-                <div class="card-body-content">
-                    <h3 style="font-size: 19px; color: var(--dark); margin-bottom: 10px;">Gestion Administrative & Paie</h3>
-                    <p style="font-size: 14px; color: var(--gray); line-height: 1.6;">Prise en charge intégrale de la rédaction des contrats, bulletins de paie et conformité légale totale selon le Code du Travail marocain.</p>
-                </div>
-            </div>
-
+        <div style="background: #f8fafc; padding: 30px; border-radius: 16px; border: 1.5px solid var(--border-color);">
+            <h3 style="color: var(--dark); margin-bottom: 12px;"><i class="fa-solid fa-user-plus" style="color: var(--primary);"></i> Recrutement CDD / CDI</h3>
+            <p style="color: var(--gray); font-size: 14px; line-height: 1.6;">Sourcing rigoureux et sélection sur-mesure pour intégrer durablement vos futurs talents.</p>
+        </div>
+        <div style="background: #f8fafc; padding: 30px; border-radius: 16px; border: 1.5px solid var(--border-color);">
+            <h3 style="color: var(--dark); margin-bottom: 12px;"><i class="fa-solid fa-shield-halved" style="color: var(--primary);"></i> Conformité Sociale</h3>
+            <p style="color: var(--gray); font-size: 14px; line-height: 1.6;">Prise en charge intégrale de la paie, déclarations CNSS et gestion administrative.</p>
         </div>
     </div>
 </section>
 
 <footer>
-    <div class="container copyright" style="border: none;">
-        © 2026 PRO C2S - Pôle Intérim & Recrutement. Tous droits réservés.
+    <div class="container copyright" style="border: none; text-align: center; padding: 30px 0;">
+        © 2026 PRO C2S - Pôle Intérim. Tous droits réservés.
     </div>
 </footer>
 

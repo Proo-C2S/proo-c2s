@@ -3,50 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pôle Nettoyage | PRO C2S</title>
+    <title>Pôle Nettoyage & Propreté | PRO C2S</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <style>
-        @keyframes floatBadge {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        .floating-box { animation: floatBadge 4s ease-in-out infinite; }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-up { animation: fadeInUp 0.8s ease-out forwards; }
-        .card { 
-            transition: all 0.3s ease; 
-            overflow: hidden; 
-            display: flex; 
-            flex-direction: column; 
-            background: #ffffff;
-            border: 1.5px solid var(--border-color);
-            border-radius: 20px;
-            padding: 0;
-            text-align: left;
-        }
-        .card:hover { 
-            transform: translateY(-8px); 
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08); 
-        }
-        .card-img-top {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-top-left-radius: 18px;
-            border-top-right-radius: 18px;
-        }
-        .card-body-content {
-            padding: 25px 20px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-    </style>
 </head>
 <body>
 
@@ -65,84 +24,35 @@
     </nav>
 </header>
 
-<section class="hero animate-up" style="padding: 140px 0 70px; background: linear-gradient(135deg, #f4faf6 0%, #e8f5e9 100%); position: relative; overflow: hidden;">
-    <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
-        
-        <div style="flex: 1; min-width: 300px; text-align: left;">
-            <span class="badge-crit" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(46, 125, 50, 0.15); color: #2e7d32; padding: 6px 14px; border-radius: 20px; font-weight: 600; margin-bottom: 20px;">
-                <i class="fa-solid fa-broom"></i> Pôle Nettoyage
-            </span>
-            <h1 style="font-size: 38px; margin-bottom: 20px; color: #0f172a; font-weight: 800; line-height: 1.2;">Services de Nettoyage Professionnel & Hygiène</h1>
-            <p style="font-size: 17px; color: #64748b; line-height: 1.7; margin-bottom: 30px;">Des prestations de propreté sur mesure pour garantir un environnement de travail impeccable et sain dans vos bureaux et locaux industriels.</p>
-            
-            <a href="https://wa.me/212663449824?text=Bonjour%20PRO%20C2S,%20je%20souhaite%20demander%20un%20devis%20pour%20le%20nettoyage." target="_blank" class="btn" style="background: #25d366; padding: 15px 30px; font-size: 16px; border-radius: 30px; display: inline-flex; align-items: center; gap: 10px;">
-                <i class="fa-brands fa-whatsapp"></i> Demander un devis Nettoyage
-            </a>
-        </div>
-
-        <div style="flex: 1; min-width: 300px; position: relative; display: flex; justify-content: center; align-items: center;">
-            <div style="position: relative; width: 100%; max-width: 420px; height: 420px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                <div style="position: absolute; width: 320px; height: 320px; background: rgba(46, 125, 50, 0.08); border-radius: 50%; z-index: 1;"></div>
-
-                <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80" alt="Nettoyage Professionnel" style="width: 100%; max-height: 260px; object-fit: cover; position: relative; z-index: 2; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
-                
-                <div style="position: relative; z-index: 3; margin-top: 15px; text-align: center; background: #ffffff; padding: 12px 20px; border-radius: 14px; box-shadow: 0 10px 25px rgba(0,0,0,0.06); width: 90%; border: 1px solid rgba(0,0,0,0.04);">
-                    <strong style="font-size: 14px; color: #0f172a; display: block;">Entretien & Hygiène Garantie</strong>
-                    <span style="font-size: 12px; color: #64748b;">Matériel professionnel et équipes formées</span>
-                </div>
-
-                <div class="floating-box" style="position: absolute; top: 10px; left: -10px; background: #ffffff; padding: 10px 15px; border-radius: 14px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); z-index: 4; display: flex; align-items: center; gap: 10px;">
-                    <i class="fa-solid fa-spray-can-sparkles" style="color: #2e7d32; font-size: 18px;"></i>
-                    <span style="font-size: 13px; font-weight: 600; color: #0f172a;">Désinfection totale</span>
-                </div>
-            </div>
-        </div>
-
+<section class="hero animate-up" style="padding: 140px 0 70px; background: linear-gradient(135deg, #f4faf6 0%, #e8f5e9 100%);">
+    <div class="container" style="text-align: center; max-width: 800px;">
+        <span class="badge-crit" style="background: rgba(46, 125, 50, 0.15); color: #2e7d32; padding: 6px 16px; border-radius: 20px; font-weight: 600;">
+            <i class="fa-solid fa-broom"></i> Pôle Nettoyage & Propreté Professionnelle
+        </span>
+        <h1 style="font-size: 38px; margin: 20px 0; color: #0f172a; font-weight: 800;">Entretien, hygiène et propreté pour entreprises</h1>
+        <p style="font-size: 16px; color: #64748b; line-height: 1.7;">Des prestations rigoureuses et des équipes spécialisées pour garantir un cadre de travail sain et impeccable dans vos locaux tertiaires et industriels.</p>
     </div>
 </section>
 
-<section class="services animate-up" style="padding: 80px 0; animation-delay: 0.2s;">
-    <div class="container">
-        <div class="section-title">
-            <h2>Nos Prestations de Nettoyage</h2>
-            <p>Un savoir-faire professionnel et du matériel adapté pour un entretien irréprochable de vos espaces.</p>
+<section style="padding: 60px 0; background: #fff;">
+    <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+        <div style="background: #f8fafc; padding: 30px; border-radius: 16px; border: 1.5px solid var(--border-color);">
+            <h3 style="color: var(--dark); margin-bottom: 12px;"><i class="fa-solid fa-building-user" style="color: var(--primary);"></i> Entretien des Bureaux</h3>
+            <p style="color: var(--gray); font-size: 14px; line-height: 1.6;">Nettoyage régulier et maintenance de la propreté de vos espaces de travail administratifs.</p>
         </div>
-
-        <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
-            
-            <!-- Carte 1 -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" alt="Entretien de Bureaux" class="card-img-top">
-                <div class="card-body-content">
-                    <h3 style="font-size: 19px; color: var(--dark); margin-bottom: 10px;">Entretien de Bureaux</h3>
-                    <p style="font-size: 14px; color: var(--gray); line-height: 1.6;">Nettoyage régulier des espaces de travail, salles de réunion, vitrerie et dépoussiérage du mobilier professionnel.</p>
-                </div>
-            </div>
-
-            <!-- Carte 2 -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80" alt="Nettoyage Industriel" class="card-img-top">
-                <div class="card-body-content">
-                    <h3 style="font-size: 19px; color: var(--dark); margin-bottom: 10px;">Nettoyage Industriel</h3>
-                    <p style="font-size: 14px; color: var(--gray); line-height: 1.6;">Intervention spécialisée pour l'entretien des entrepôts, usines et zones logistiques selon des normes strictes.</p>
-                </div>
-            </div>
-
-            <!-- Carte 3 -->
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=600&q=80" alt="Désinfection & Hygiène" class="card-img-top">
-                <div class="card-body-content">
-                    <h3 style="font-size: 19px; color: var(--dark); margin-bottom: 10px;">Désinfection & Hygiène</h3>
-                    <p style="font-size: 14px; color: var(--gray); line-height: 1.6;">Protocoles rigoureux de désinfection des surfaces et des espaces sanitaires pour protéger la santé de vos équipes.</p>
-                </div>
-            </div>
-
+        <div style="background: #f8fafc; padding: 30px; border-radius: 16px; border: 1.5px solid var(--border-color);">
+            <h3 style="color: var(--dark); margin-bottom: 12px;"><i class="fa-solid fa-industry" style="color: var(--primary);"></i> Nettoyage Industriel</h3>
+            <p style="color: var(--gray); font-size: 14px; line-height: 1.6;">Interventions spécialisées pour les usines, entrepôts et zones logistiques avec équipements adaptés.</p>
+        </div>
+        <div style="background: #f8fafc; padding: 30px; border-radius: 16px; border: 1.5px solid var(--border-color);">
+            <h3 style="color: var(--dark); margin-bottom: 12px;"><i class="fa-solid fa-pump-soap" style="color: var(--primary);"></i> Désinfection & Hygiène</h3>
+            <p style="color: var(--gray); font-size: 14px; line-height: 1.6;">Protocoles stricts de désinfection pour assurer la sécurité sanitaire de vos collaborateurs et visiteurs.</p>
         </div>
     </div>
 </section>
 
 <footer>
-    <div class="container copyright" style="border: none;">
+    <div class="container copyright" style="border: none; text-align: center; padding: 30px 0;">
         © 2026 PRO C2S - Pôle Nettoyage. Tous droits réservés.
     </div>
 </footer>
