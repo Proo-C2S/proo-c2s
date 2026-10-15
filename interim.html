@@ -18,8 +18,34 @@
             to { opacity: 1; transform: translateY(0); }
         }
         .animate-up { animation: fadeInUp 0.8s ease-out forwards; }
-        .card { transition: all 0.3s ease; }
-        .card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+        .card { 
+            transition: all 0.3s ease; 
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column; 
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            border-radius: 20px;
+            padding: 0;
+            text-align: left;
+        }
+        .card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08); 
+        }
+        .card-img-top {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-top-left-radius: 18px;
+            border-top-right-radius: 18px;
+        }
+        .card-body-content {
+            padding: 25px 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
     </style>
 </head>
 <body>
@@ -82,22 +108,35 @@
             <p>Une réactivité garantie pour répondre à tous vos besoins en personnel qualifié sur le terrain.</p>
         </div>
 
-        <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+            
+            <!-- Carte 1 -->
             <div class="card">
-                <div class="card-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
-                <h3>Travail Temporaire & Intérim</h3>
-                <p>Mise à disposition rapide d'agents et d'ouvriers qualifiés pour vos missions temporaires sous un délai de 24h à 48h.</p>
+                <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=600&q=80" alt="Travail Temporaire & Intérim" class="card-img-top">
+                <div class="card-body-content">
+                    <h3 style="font-size: 19px; color: var(--dark); margin-bottom: 10px;">Travail Temporaire & Intérim</h3>
+                    <p style="font-size: 14px; color: var(--gray); line-height: 1.6;">Mise à disposition rapide d'agents et d'ouvriers qualifiés pour vos missions temporaires sous un délai de 24h à 48h.</p>
+                </div>
             </div>
+
+            <!-- Carte 2 -->
             <div class="card">
-                <div class="card-icon"><i class="fa-solid fa-user-plus"></i></div>
-                <h3>Recrutement CDD / CDI</h3>
-                <p>Sourcing sur-mesure, entretiens et sélection rigoureuse pour intégrer durablement vos futurs collaborateurs en contrats à durée déterminée ou indéterminée.</p>
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Recrutement CDD / CDI" class="card-img-top">
+                <div class="card-body-content">
+                    <h3 style="font-size: 19px; color: var(--dark); margin-bottom: 10px;">Recrutement CDD / CDI</h3>
+                    <p style="font-size: 14px; color: var(--gray); line-height: 1.6;">Sourcing sur-mesure, entretiens et sélection rigoureuse pour intégrer durablement vos futurs collaborateurs en contrats à durée déterminée ou indéterminée.</p>
+                </div>
             </div>
+
+            <!-- Carte 3 -->
             <div class="card">
-                <div class="card-icon"><i class="fa-solid fa-file-contract"></i></div>
-                <h3>Gestion Administrative & Paie</h3>
-                <p>Prise en charge intégrale de la rédaction des contrats, bulletins de paie et conformité légale totale selon le Code du Travail marocain.</p>
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="Gestion Administrative & Paie" class="card-img-top">
+                <div class="card-body-content">
+                    <h3 style="font-size: 19px; color: var(--dark); margin-bottom: 10px;">Gestion Administrative & Paie</h3>
+                    <p style="font-size: 14px; color: var(--gray); line-height: 1.6;">Prise en charge intégrale de la rédaction des contrats, bulletins de paie et conformité légale totale selon le Code du Travail marocain.</p>
+                </div>
             </div>
+
         </div>
     </div>
 </section>
