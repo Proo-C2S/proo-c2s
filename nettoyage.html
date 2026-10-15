@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
+        @keyframes floatBadge {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating-box {
+            animation: floatBadge 4s ease-in-out infinite;
+        }
+        .floating-box-delayed {
+            animation: floatBadge 5s ease-in-out infinite 2s;
+        }
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -40,11 +51,56 @@
     </nav>
 </header>
 
-<section class="hero animate-up" style="padding: 140px 0 70px; background: linear-gradient(135deg, #f4faf6 0%, #e8f5e9 100%);">
-    <div class="container" style="text-align: center; max-width: 900px;">
-        <span class="badge-crit"><i class="fa-solid fa-broom"></i> Pôle Nettoyage</span>
-        <h1 style="font-size: 38px; margin-bottom: 20px;">Services de Nettoyage Professionnel</h1>
-        <p style="font-size: 17px; color: var(--gray); line-height: 1.7;">Des prestations de nettoyage sur mesure pour garantir un environnement de travail impeccable, sain et accueillant dans vos bureaux et locaux.</p>
+<!-- Hero Section avec style moderne et éléments flottants -->
+<section class="hero animate-up" style="padding: 140px 0 70px; background: linear-gradient(135deg, #f4faf6 0%, #e8f5e9 100%); position: relative; overflow: hidden;">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
+        
+        <!-- Text à gauche -->
+        <div style="flex: 1; min-width: 300px; text-align: left;">
+            <span class="badge-crit" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(46, 125, 50, 0.15); color: #2e7d32; padding: 6px 14px; border-radius: 20px; font-weight: 600; margin-bottom: 20px;">
+                <i class="fa-solid fa-broom"></i> Pôle Nettoyage
+            </span>
+            <h1 style="font-size: 38px; margin-bottom: 20px; color: #0f172a; font-weight: 800; line-height: 1.2;">Services de Nettoyage Professionnel</h1>
+            <p style="font-size: 17px; color: #64748b; line-height: 1.7; margin-bottom: 30px;">Des prestations de nettoyage sur mesure pour garantir un environnement de travail impeccable, sain et accueillant dans vos bureaux et locaux.</p>
+            
+            <a href="https://wa.me/212663449824?text=Bonjour%20PRO%20C2S,%20je%20souhaite%20demander%20un%20devis%20pour%20le%20nettoyage." target="_blank" class="btn" style="background: #25d366; padding: 15px 30px; font-size: 16px; border-radius: 30px; display: inline-flex; align-items: center; gap: 10px;">
+                <i class="fa-brands fa-whatsapp"></i> Demander un devis Nettoyage
+            </a>
+        </div>
+
+        <!-- Image avec Badges Flottants à droite -->
+        <div style="flex: 1; min-width: 300px; position: relative; display: flex; justify-content: center; align-items: center;">
+            <div style="position: relative; width: 100%; max-width: 420px; height: 420px; display: flex; align-items: center; justify-content: center;">
+                
+                <div style="position: absolute; width: 320px; height: 320px; background: rgba(46, 125, 50, 0.08); border-radius: 50%; z-index: 1;"></div>
+
+                <img src="image/hero-rh.jpg.png" alt="Nettoyage PRO C2S" style="width: 100%; max-height: 400px; object-fit: contain; position: relative; z-index: 2; border-radius: 20px;">
+
+                <!-- Badge Flottant 1 -->
+                <div class="floating-box" style="position: absolute; top: 30px; left: -10px; background: #ffffff; padding: 12px 18px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); z-index: 3; display: flex; align-items: center; gap: 12px; border: 1px solid rgba(0,0,0,0.04);">
+                    <div style="width: 36px; height: 36px; background: #e8f5e9; color: #2e7d32; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px;">
+                        <i class="fa-solid fa-spray-can-sparkles"></i>
+                    </div>
+                    <div>
+                        <strong style="display: block; font-size: 15px; color: #0f172a;">Hygiène & Propreté</strong>
+                        <span style="font-size: 12px; color: #64748b;">Standards professionnels</span>
+                    </div>
+                </div>
+
+                <!-- Badge Flottant 2 -->
+                <div class="floating-box-delayed" style="position: absolute; bottom: 40px; right: -10px; background: #ffffff; padding: 12px 18px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); z-index: 3; display: flex; align-items: center; gap: 12px; border: 1px solid rgba(0,0,0,0.04);">
+                    <div style="width: 36px; height: 36px; background: #e8f5e9; color: #2e7d32; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px;">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+                    <div>
+                        <strong style="display: block; font-size: 15px; color: #0f172a;">Bureaux & Usines</strong>
+                        <span style="font-size: 12px; color: #64748b;">Entretien sur-mesure</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 </section>
 
@@ -75,12 +131,6 @@
                 <p>Protocoles rigoureux de désinfection des surfaces et des espaces sanitaires pour protéger la santé de vos équipes.</p>
             </div>
 
-        </div>
-
-        <div style="text-align: center; margin-top: 50px;">
-            <a href="https://wa.me/212663449824?text=Bonjour%20PRO%20C2S,%20je%20souhaite%20demander%20un%20devis%20pour%20le%20nettoyage." target="_blank" class="btn" style="background: #25d366; padding: 15px 35px; font-size: 16px;">
-                <i class="fa-brands fa-whatsapp"></i> Demander un devis Nettoyage
-            </a>
         </div>
     </div>
 </section>
