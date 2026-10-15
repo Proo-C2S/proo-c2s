@@ -9,7 +9,7 @@
     <meta name="keywords" content="recrutement maroc, intérim rabat, travail temporaire, pro c2s, agence intérim maroc">
 
     <!-- Favicon dyal Google -->
-    <link rel="icon" type="image/png" href="image/favicon.png.png">
+    <link rel="icon" type="image/png" href="image/logo.png.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,18 +17,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="style.css?v=999">
 
-    <!-- Style Zayd dyal Les Animations Pro (Floating Badges) -->
+    <!-- CSS Zayd dyal Animations w UI المتحركة الفاجرة -->
     <style>
-        @keyframes floatBadge {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0px); }
+        @keyframes floatSlow {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
         }
-        .floating-box {
-            animation: floatBadge 4s ease-in-out infinite;
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(46, 125, 50, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(46, 125, 50, 0); }
         }
-        .floating-box-delayed {
-            animation: floatBadge 5s ease-in-out infinite 2s;
+        .floating-card-1 {
+            animation: floatSlow 5s ease-in-out infinite;
+        }
+        .floating-card-2 {
+            animation: floatSlow 6s ease-in-out infinite 1s;
+        }
+        .pulsing-badge {
+            animation: pulseGlow 2.5s infinite;
         }
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
@@ -74,59 +82,86 @@
     </nav>
 </header>
 
-<!-- ================= HERO SECTION (المعدلة والمتحركة الاحترافية) ================= -->
-<section class="hero animate-up" id="home" style="padding: 140px 0 80px; background: linear-gradient(135deg, #f4faf6 0%, #e8f5e9 100%); position: relative; overflow: hidden;">
-    <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
+<!-- ================= HERO SECTION DYNAMIQUE & INTERACTIVE ================= -->
+<section class="hero animate-up" id="home" style="padding: 140px 0 90px; background: linear-gradient(135deg, #f4faf6 0%, #e8f5e9 100%); position: relative; overflow: hidden;">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 50px;">
         
         <!-- Text à gauche -->
         <div style="flex: 1; min-width: 320px; text-align: left;">
-            <span class="badge-crit" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(46, 125, 50, 0.15); color: #2e7d32; padding: 6px 16px; border-radius: 20px; font-weight: 600; margin-bottom: 20px;">
-                <i class="fa-solid fa-shield-check"></i> Partenaire Recrutement & Intérim
+            <span class="badge-crit" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(46, 125, 50, 0.15); color: #2e7d32; padding: 8px 18px; border-radius: 20px; font-weight: 600; margin-bottom: 20px;">
+                <i class="fa-solid fa-bolt pulsing-badge" style="background: #2e7d32; color: #fff; padding: 6px; border-radius: 50%; font-size: 11px;"></i> Agence de Recrutement & Intérim Leader
             </span>
             <h1 style="font-size: 42px; margin-bottom: 20px; color: #0f172a; font-weight: 800; line-height: 1.2;">Votre partenaire RH pour bâtir vos équipes de demain</h1>
-            <p style="font-size: 17px; color: #64748b; line-height: 1.7; margin-bottom: 30px;">Spécialiste du recrutement et du travail temporaire au Maroc depuis 2017. Nous apportons des réponses rapides, flexibles et conformes à tous vos défis RH.</p>
+            <p style="font-size: 17px; color: #64748b; line-height: 1.7; margin-bottom: 30px;">Spécialiste du recrutement, de l'intérim et de la propreté professionnelle au Maroc depuis 2017. Des solutions ultra-réactives, flexibles et sur-mesure.</p>
             
             <div class="hero-actions" style="display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 35px;">
-                <a href="#simulateur" class="btn btn-hero" style="padding: 14px 28px; border-radius: 30px;"><i class="fa-solid fa-building"></i> Vous recrutez ?</a>
+                <a href="#simulateur" class="btn btn-hero" style="padding: 14px 28px; border-radius: 30px; box-shadow: 0 10px 20px rgba(46,125,50,0.2);"><i class="fa-solid fa-building"></i> Vous recrutez ?</a>
                 <a href="#carrieres" class="btn-outline-hero" style="padding: 14px 28px; border-radius: 30px;"><i class="fa-solid fa-briefcase"></i> Consulter les offres</a>
             </div>
 
-            <div class="hero-badges-row" style="display: flex; align-items: center; gap: 20px; background: #ffffff; padding: 15px 25px; border-radius: 16px; box-shadow: 0 5px 20px rgba(0,0,0,0.04); max-width: 480px; border: 1px solid rgba(0,0,0,0.03);">
-                <div class="h-badge"><strong>24-48h</strong> <span style="display: block; font-size: 12px; color: #64748b;">Réactivité</span></div>
+            <div class="hero-badges-row" style="display: flex; align-items: center; gap: 20px; background: #ffffff; padding: 16px 25px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); max-width: 480px; border: 1px solid rgba(0,0,0,0.04);">
+                <div class="h-badge"><strong style="color: #2e7d32; font-size: 18px;">24-48h</strong> <span style="display: block; font-size: 12px; color: #64748b;">Délégation rapide</span></div>
                 <div class="h-sep" style="width: 1px; height: 30px; background: #e2e8f0;"></div>
-                <div class="h-badge"><strong>100%</strong> <span style="display: block; font-size: 12px; color: #64748b;">Conformité</span></div>
+                <div class="h-badge"><strong style="color: #2e7d32; font-size: 18px;">100%</strong> <span style="display: block; font-size: 12px; color: #64748b;">Code du Travail</span></div>
                 <div class="h-sep" style="width: 1px; height: 30px; background: #e2e8f0;"></div>
-                <div class="h-badge"><strong>National</strong> <span style="display: block; font-size: 12px; color: #64748b;">Toutes régions</span></div>
+                <div class="h-badge"><strong style="color: #2e7d32; font-size: 18px;">National</strong> <span style="display: block; font-size: 12px; color: #64748b;">Toutes régions</span></div>
             </div>
         </div>
 
-        <!-- Illustration avec Badges Flottants à droite -->
+        <!-- Animation / Éléments Graphiques et Cartes Flottantes à droite (Remplace la photo statique par du pur dynamisme) -->
         <div style="flex: 1; min-width: 320px; position: relative; display: flex; justify-content: center; align-items: center;">
-            <div style="position: relative; width: 100%; max-width: 440px; height: 440px; display: flex; align-items: center; justify-content: center;">
+            <div style="position: relative; width: 100%; max-width: 450px; height: 420px; display: flex; align-items: center; justify-content: center;">
                 
-                <div style="position: absolute; width: 340px; height: 340px; background: rgba(46, 125, 50, 0.08); border-radius: 50%; z-index: 1;"></div>
+                <!-- Cercle lumineux de fond animé -->
+                <div style="position: absolute; width: 360px; height: 360px; background: radial-gradient(circle, rgba(46, 125, 50, 0.15) 0%, rgba(46, 125, 50, 0.02) 70%); border-radius: 50%; z-index: 1;"></div>
 
-                <img src="image/hero-rh.jpg.png" alt="PRO C2S Solutions RH" style="width: 100%; max-height: 380px; object-fit: contain; position: relative; z-index: 2; border-radius: 20px;">
-
-                <!-- Badge Flottant 1 (Haut Gauche) -->
-                <div class="floating-box" style="position: absolute; top: 20px; left: -10px; background: #ffffff; padding: 14px 20px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); z-index: 3; display: flex; align-items: center; gap: 12px; border: 1px solid rgba(0,0,0,0.04);">
-                    <div style="width: 40px; height: 40px; background: #e8f5e9; color: #2e7d32; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px;">
-                        <i class="fa-solid fa-users"></i>
+                <!-- Central Glassmorphism Card (Carte Principale Animée) -->
+                <div class="floating-card-1" style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 30px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); width: 100%; max-width: 340px; position: relative; z-index: 2; border: 1.5px solid rgba(46, 125, 50, 0.15);">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <div style="width: 50px; height: 50px; background: #2e7d32; color: #ffffff; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px;">
+                            <i class="fa-solid fa-users-viewfinder"></i>
+                        </div>
+                        <div>
+                            <span style="font-size: 12px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">PRO C2S Hub RH</span>
+                            <h4 style="font-size: 17px; color: #0f172a; margin: 0;">Sélection & Intérim</h4>
+                        </div>
                     </div>
-                    <div>
-                        <strong style="display: block; font-size: 16px; color: #0f172a;">12000+</strong>
-                        <span style="font-size: 12px; color: #64748b;">Candidats satisfaits</span>
+                    
+                    <div style="background: #f8fafc; padding: 14px; border-radius: 12px; margin-bottom: 15px; border: 1px solid #e2e8f0;">
+                        <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px; color: #64748b;">
+                            <span>Taux de placement</span>
+                            <strong style="color: #2e7d32;">98.5%</strong>
+                        </div>
+                        <div style="width: 100%; height: 6px; background: #e2e8f0; border-radius: 3px; overflow: hidden;">
+                            <div style="width: 98.5%; height: 100%; background: #2e7d32; border-radius: 3px;"></div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: #0f172a; font-weight: 600;">
+                        <span><i class="fa-solid fa-circle-check" style="color: #2e7d32;"></i> Profils vérifiés</span>
+                        <span style="color: #64748b; font-weight: 400;"><i class="fa-solid fa-clock"></i> 24h/48h</span>
                     </div>
                 </div>
 
-                <!-- Badge Flottant 2 (Bas Droite) -->
-                <div class="floating-box-delayed" style="position: absolute; bottom: 30px; right: -10px; background: #ffffff; padding: 14px 20px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); z-index: 3; display: flex; align-items: center; gap: 12px; border: 1px solid rgba(0,0,0,0.04);">
-                    <div style="width: 40px; height: 40px; background: #e8f5e9; color: #2e7d32; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px;">
-                        <i class="fa-solid fa-briefcase"></i>
+                <!-- Badge Flottant Haut Gauche -->
+                <div class="floating-card-2" style="position: absolute; top: 10px; left: -15px; background: #ffffff; padding: 12px 18px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); z-index: 3; display: flex; align-items: center; gap: 12px; border: 1px solid rgba(0,0,0,0.04);">
+                    <div style="width: 38px; height: 38px; background: #e8f5e9; color: #2e7d32; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px;">
+                        <i class="fa-solid fa-shield-halved"></i>
                     </div>
                     <div>
-                        <strong style="display: block; font-size: 16px; color: #0f172a;">Offres d'emploi</strong>
-                        <span style="font-size: 12px; color: #64748b;">Missions continues</span>
+                        <strong style="display: block; font-size: 14px; color: #0f172a;">100% Légal</strong>
+                        <span style="font-size: 11px; color: #64748b;">Code du Travail</span>
+                    </div>
+                </div>
+
+                <!-- Badge Flottant Bas Droite -->
+                <div class="floating-card-1" style="position: absolute; bottom: 15px; right: -15px; background: #ffffff; padding: 12px 18px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); z-index: 3; display: flex; align-items: center; gap: 12px; border: 1px solid rgba(0,0,0,0.04);">
+                    <div style="width: 38px; height: 38px; background: #e8f5e9; color: #2e7d32; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px;">
+                        <i class="fa-solid fa-star" style="color: #f59e0b;"></i>
+                    </div>
+                    <div>
+                        <strong style="display: block; font-size: 14px; color: #0f172a;">+12 000 Talents</strong>
+                        <span style="font-size: 11px; color: #64748b;">Base qualifiée</span>
                     </div>
                 </div>
 
@@ -137,7 +172,7 @@
 </section>
 <!-- ================= END HERO ================= -->
 
-<!-- ================= 3 DOMAINES (Avec Flexbox pour aligner les boutons) ================= -->
+<!-- ================= 3 DOMAINES ================= -->
 <section class="reveal" style="padding: 60px 0; background: #ffffff;">
     <div class="container">
         <div class="section-title" style="margin-bottom: 35px;">
