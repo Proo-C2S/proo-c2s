@@ -6,6 +6,22 @@
     <title>Pôle Intérim & Recrutement | PRO C2S</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .card {
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+    </style>
 </head>
 <body>
 
@@ -24,7 +40,7 @@
     </nav>
 </header>
 
-<section class="hero" style="padding: 140px 0 70px; background: linear-gradient(135deg, #f4faf6 0%, #e8f5e9 100%);">
+<section class="hero animate-up" style="padding: 140px 0 70px; background: linear-gradient(135deg, #f4faf6 0%, #e8f5e9 100%);">
     <div class="container" style="text-align: center; max-width: 900px;">
         <span class="badge-crit"><i class="fa-solid fa-users-gear"></i> Pôle Intérim & Recrutement</span>
         <h1 style="font-size: 38px; margin-bottom: 20px;">Travail Temporaire, Intérim & Recrutement CDD / CDI</h1>
@@ -32,7 +48,7 @@
     </div>
 </section>
 
-<section class="services" style="padding: 80px 0;">
+<section class="services animate-up" style="padding: 80px 0; animation-delay: 0.2s;">
     <div class="container">
         <div class="section-title">
             <h2>Nos Solutions Intérim & Recrutement</h2>
