@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="style.css?v=999">
 
-    <!-- CSS Zayd dyal Animations w Les Badges Flottants لي كيتحرّكوا -->
+    <!-- CSS Zayd dyal Animations w Les Badges Flottants li kaythrko -->
     <style>
         @keyframes floatBadge {
             0% { transform: translateY(0px); }
@@ -74,7 +74,7 @@
     </nav>
 </header>
 
-<!-- ================= HERO SECTION (التصويرة الأصلية الاحترافية مع الحركات والبادجز) ================= -->
+<!-- ================= HERO SECTION (تصويرة دايرة احترافية من الإنترنت + Badges متحركة) ================= -->
 <section class="hero animate-up" id="home" style="padding: 140px 0 90px; background: linear-gradient(135deg, #f4faf6 0%, #e8f5e9 100%); position: relative; overflow: hidden;">
     <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
         
@@ -100,17 +100,20 @@
             </div>
         </div>
 
-        <!-- التصويرة الاحترافية الحقيقية فـ اليمين مع Badges متحركين كيف بغيتي -->
+        <!-- التصويرة الدايرة الاحترافية والمتحركة فـ اليمين -->
         <div style="flex: 1; min-width: 320px; position: relative; display: flex; justify-content: center; align-items: center;">
             <div style="position: relative; width: 100%; max-width: 440px; height: 440px; display: flex; align-items: center; justify-content: center;">
                 
-                <div style="position: absolute; width: 340px; height: 340px; background: rgba(46, 125, 50, 0.08); border-radius: 50%; z-index: 1;"></div>
+                <!-- Cercle décoratif de fond -->
+                <div style="position: absolute; width: 360px; height: 360px; background: rgba(46, 125, 50, 0.08); border-radius: 50%; z-index: 1;"></div>
 
-                <!-- التصويرة الأصلية واضحة -->
-                <img src="image/hero-rh.jpg.png" alt="PRO C2S Solutions RH" style="width: 100%; max-height: 380px; object-fit: contain; position: relative; z-index: 2; border-radius: 20px;">
+                <!-- التصويرة الاحترافية المدورة (Cercle / Object-fit cover) بحال ديال الانفورماتيك -->
+                <div style="width: 330px; height: 330px; border-radius: 50%; overflow: hidden; position: relative; z-index: 2; box-shadow: 0 15px 35px rgba(0,0,0,0.12); border: 4px solid #ffffff;">
+                    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80" alt="PRO C2S Solutions RH" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
 
-                <!-- Badge Flottant 1 (Haut Gauche - كيتعرّض للحركة) -->
-                <div class="floating-box" style="position: absolute; top: 20px; left: -10px; background: #ffffff; padding: 14px 20px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); z-index: 3; display: flex; align-items: center; gap: 12px; border: 1px solid rgba(0,0,0,0.04);">
+                <!-- Badge Flottant 1 (Haut Gauche) -->
+                <div class="floating-box" style="position: absolute; top: 30px; left: -10px; background: #ffffff; padding: 14px 20px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); z-index: 3; display: flex; align-items: center; gap: 12px; border: 1px solid rgba(0,0,0,0.04);">
                     <div style="width: 40px; height: 40px; background: #e8f5e9; color: #2e7d32; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px;">
                         <i class="fa-solid fa-users"></i>
                     </div>
@@ -120,8 +123,8 @@
                     </div>
                 </div>
 
-                <!-- Badge Flottant 2 (Bas Droite - كيتعرّض للحركة) -->
-                <div class="floating-box-delayed" style="position: absolute; bottom: 30px; right: -10px; background: #ffffff; padding: 14px 20px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); z-index: 3; display: flex; align-items: center; gap: 12px; border: 1px solid rgba(0,0,0,0.04);">
+                <!-- Badge Flottant 2 (Bas Droite) -->
+                <div class="floating-box-delayed" style="position: absolute; bottom: 40px; right: -10px; background: #ffffff; padding: 14px 20px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); z-index: 3; display: flex; align-items: center; gap: 12px; border: 1px solid rgba(0,0,0,0.04);">
                     <div style="width: 40px; height: 40px; background: #e8f5e9; color: #2e7d32; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px;">
                         <i class="fa-solid fa-briefcase"></i>
                     </div>
