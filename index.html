@@ -39,7 +39,7 @@
         }
         @keyframes scrollMarquee {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            100% { transform: translateX(calc(-50% - 12.5px)); }
         }
     </style>
 </head>
@@ -192,63 +192,71 @@
 </section>
 <!-- ================= END 3 DOMAINES ================= -->
 
-<!-- ================= SECTION ANIMÉE (Bande Défilante Interactive des Expertises) ================= -->
+<!-- ================= SECTION ANIMÉE (Bande Défilante Interactive sans vide) ================= -->
 <section class="reveal" style="padding: 45px 0; background: #ffffff; overflow: hidden; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
     <div style="text-align: center; margin-bottom: 20px;">
         <span style="font-size: 12.5px; font-weight: 700; color: #2e7d32; text-transform: uppercase; letter-spacing: 1.5px;">Écosystème Professionnel PRO C2S</span>
     </div>
     
-    <div style="display: flex; width: max-content; animation: scrollMarquee 25s linear infinite; gap: 25px; align-items: center;">
-        <!-- Eléments de la bande 1 -->
-        <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
-            <i class="fa-solid fa-users-gear" style="color: #2e7d32;"></i>
-            <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Intérim & Travail Temporaire</span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
-            <i class="fa-solid fa-laptop-code" style="color: #2e7d32;"></i>
-            <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Mise à disposition IT</span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
-            <i class="fa-solid fa-broom" style="color: #2e7d32;"></i>
-            <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Nettoyage & Propreté</span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
-            <i class="fa-solid fa-code" style="color: #2e7d32;"></i>
-            <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Développement Full-Stack</span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
-            <i class="fa-solid fa-network-wired" style="color: #2e7d32;"></i>
-            <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Ingénierie Réseaux</span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
-            <i class="fa-solid fa-file-invoice-dollar" style="color: #2e7d32;"></i>
-            <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Gestion Paie & CNSS</span>
-        </div>
+    <div style="position: relative; width: 100%; overflow: hidden; display: flex;">
+        <div style="display: flex; width: max-content; animation: scrollMarquee 20s linear infinite; gap: 25px; align-items: center;">
+            
+            <!-- Groupe 1 (Original) -->
+            <div style="display: flex; gap: 25px; align-items: center;">
+                <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
+                    <i class="fa-solid fa-users-gear" style="color: #2e7d32;"></i>
+                    <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Intérim & Travail Temporaire</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
+                    <i class="fa-solid fa-laptop-code" style="color: #2e7d32;"></i>
+                    <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Mise à disposition IT</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
+                    <i class="fa-solid fa-broom" style="color: #2e7d32;"></i>
+                    <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Nettoyage & Propreté</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
+                    <i class="fa-solid fa-code" style="color: #2e7d32;"></i>
+                    <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Développement Full-Stack</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
+                    <i class="fa-solid fa-network-wired" style="color: #2e7d32;"></i>
+                    <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Ingénierie Réseaux</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
+                    <i class="fa-solid fa-file-invoice-dollar" style="color: #2e7d32;"></i>
+                    <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Gestion Paie & CNSS</span>
+                </div>
+            </div>
 
-        <!-- Eléments répétés pour fluidité infinie -->
-        <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
-            <i class="fa-solid fa-users-gear" style="color: #2e7d32;"></i>
-            <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Intérim & Travail Temporaire</span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
-            <i class="fa-solid fa-laptop-code" style="color: #2e7d32;"></i>
-            <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Mise à disposition IT</span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
-            <i class="fa-solid fa-broom" style="color: #2e7d32;"></i>
-            <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Nettoyage & Propreté</span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
-            <i class="fa-solid fa-code" style="color: #2e7d32;"></i>
-            <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Développement Full-Stack</span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
-            <i class="fa-solid fa-network-wired" style="color: #2e7d32;"></i>
-            <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Ingénierie Réseaux</span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
-            <i class="fa-solid fa-file-invoice-dollar" style="color: #2e7d32;"></i>
-            <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Gestion Paie & CNSS</span>
+            <!-- Groupe 2 (Duplicata parfait pour la boucle continue sans vide) -->
+            <div style="display: flex; gap: 25px; align-items: center;">
+                <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
+                    <i class="fa-solid fa-users-gear" style="color: #2e7d32;"></i>
+                    <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Intérim & Travail Temporaire</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
+                    <i class="fa-solid fa-laptop-code" style="color: #2e7d32;"></i>
+                    <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Mise à disposition IT</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
+                    <i class="fa-solid fa-broom" style="color: #2e7d32;"></i>
+                    <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Nettoyage & Propreté</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
+                    <i class="fa-solid fa-code" style="color: #2e7d32;"></i>
+                    <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Développement Full-Stack</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
+                    <i class="fa-solid fa-network-wired" style="color: #2e7d32;"></i>
+                    <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Ingénierie Réseaux</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 12px 22px; border-radius: 50px; border: 1.5px solid var(--border-color); white-space: nowrap;">
+                    <i class="fa-solid fa-file-invoice-dollar" style="color: #2e7d32;"></i>
+                    <span style="font-weight: 600; color: #0f172a; font-size: 14px;">Gestion Paie & CNSS</span>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
