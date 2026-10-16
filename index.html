@@ -6,10 +6,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PRO C2S | Recrutement, Travail Temporaire & Solutions RH au Maroc</title>
     <meta name="description" content="Spécialiste du recrutement, travail temporaire, intérim et propreté professionnelle au Maroc depuis 2017. Rabat, Casablanca, Tanger.">
-    <meta name="keywords" content="recrutement maroc, intérim rabat, travail temporaire, pro c2s, agence intérim maroc">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#2e7d32">
+    <link rel="canonical" href="https://proo-c2s.github.io/proo-c2s/">
 
-    <!-- Favicon dyal Google -->
+    <!-- Open Graph / Réseaux sociaux / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_MA">
+    <meta property="og:site_name" content="PRO C2S">
+    <meta property="og:title" content="PRO C2S | Recrutement, Travail Temporaire & Solutions RH au Maroc">
+    <meta property="og:description" content="Recrutement, intérim et délégation de personnel au Maroc depuis 2017. Profils qualifiés sous 24 à 48h, conformité totale au Code du Travail.">
+    <meta property="og:url" content="https://proo-c2s.github.io/proo-c2s/">
+    <meta property="og:image" content="https://proo-c2s.github.io/proo-c2s/image/logo.png.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="PRO C2S | Recrutement & Travail Temporaire au Maroc">
+    <meta name="twitter:description" content="Recrutement, intérim et délégation de personnel au Maroc depuis 2017.">
+
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="image/logo.png.png">
+    <link rel="apple-touch-icon" href="image/logo.png.png">
+
+    <!-- Données structurées (Google) : entreprise -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EmploymentAgency",
+      "name": "PRO C2S",
+      "description": "Spécialiste du recrutement, du travail temporaire, de l'intérim et de la propreté professionnelle au Maroc depuis 2017.",
+      "url": "https://proo-c2s.github.io/proo-c2s/",
+      "logo": "https://proo-c2s.github.io/proo-c2s/image/logo.png.png",
+      "image": "https://proo-c2s.github.io/proo-c2s/image/logo.png.png",
+      "foundingDate": "2017",
+      "telephone": "+212663449824",
+      "email": "procssentreprise@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Imm. 69, 4ème Étage, Appt 04, Av. Patrice Lumumba, Hassan",
+        "addressLocality": "Rabat",
+        "addressCountry": "MA"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": 34.0212, "longitude": -6.8355 },
+      "areaServed": { "@type": "Country", "name": "Maroc" },
+      "knowsAbout": ["Recrutement", "Travail temporaire", "Intérim", "Mise à disposition de profils informatiques", "Nettoyage professionnel"]
+    }
+    </script>
+
+    <!-- Données structurées (Google) : FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quels sont les délais pour déléguer du personnel intérimaire ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Grâce à notre vivier actif et réactif dans tout le Maroc, nous mettons à disposition des profils qualifiés sous un délai moyen de 24h à 48h selon la spécificité des postes." }
+        },
+        {
+          "@type": "Question",
+          "name": "Quelle est la conformité juridique des contrats au Maroc ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "PRO C2S applique le Code du Travail marocain et prend en charge les obligations légales : déclarations CNSS, contrats de mission, assurances accidents du travail et gestion de la paie." }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment un candidat peut-il postuler à une mission ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Il suffit de cliquer sur l'offre de son choix et de transmettre son CV par WhatsApp à notre équipe RH. Le profil est traité sous 24h." }
+        },
+        {
+          "@type": "Question",
+          "name": "Intervenez-vous en dehors de l'axe Casablanca-Rabat ?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Oui, PRO C2S intervient sur l'ensemble du territoire national : Tanger, Kénitra, Fès, Oujda, Marrakech, Agadir et les régions du Sud." }
+        }
+      ]
+    }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,8 +87,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="style.css?v=999">
 
-    <!-- CSS Zayd dyal Animations w Les Badges Flottants w Job Images -->
+    <!-- Animations, badges flottants et visuels des offres -->
     <style>
+        .skip-link { position: absolute; left: -9999px; top: 0; background: #2e7d32; color: #fff; padding: 10px 16px; z-index: 10000; border-radius: 0 0 8px 0; }
+        .skip-link:focus { left: 0; }
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid #2e7d32; outline-offset: 2px; }
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; counter-reset: step; }
+        .process-step { position: relative; background: #f8fafc; border: 1.5px solid var(--border-color); border-radius: 20px; padding: 30px 22px 24px; text-align: left; }
+        .process-step::before { counter-increment: step; content: counter(step); position: absolute; top: -16px; left: 22px; width: 36px; height: 36px; border-radius: 50%; background: var(--primary); color: #fff; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+        .process-step h3 { font-size: 17px; color: var(--dark); margin-bottom: 8px; }
+        .process-step p { font-size: 14px; color: var(--gray); line-height: 1.6; }
+        @media (prefers-reduced-motion: reduce) { .floating-box, .floating-box-delayed, .animate-up { animation: none !important; } }
         @keyframes floatBadge {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-12px); }
@@ -59,6 +138,8 @@
 
 <body>
 
+<a href="#home" class="skip-link">Aller au contenu</a>
+
 <div id="toastNotification" class="toast-notification">
     <i class="fa-solid fa-circle-check"></i>
     <span id="toastMsg">Message envoyé avec succès !</span>
@@ -98,7 +179,7 @@
         <!-- Text à gauche -->
         <div style="flex: 1; min-width: 320px; text-align: left;">
             <span class="badge-crit" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(46, 125, 50, 0.15); color: #2e7d32; padding: 6px 16px; border-radius: 20px; font-weight: 600; margin-bottom: 20px;">
-                <i class="fa-solid fa-shield-check"></i> Partenaire Recrutement & Intérim
+                <i class="fa-solid fa-shield-halved"></i> Partenaire Recrutement & Intérim
             </span>
             <h1 style="font-size: 42px; margin-bottom: 20px; color: #0f172a; font-weight: 800; line-height: 1.2;">Votre partenaire RH pour bâtir vos équipes de demain</h1>
             <p style="font-size: 17px; color: #64748b; line-height: 1.7; margin-bottom: 30px;">Spécialiste du recrutement et du travail temporaire au Maroc depuis 2017. Nous apportons des réponses rapides, flexibles et conformes à tous vos défis RH.</p>
@@ -155,7 +236,7 @@
 <!-- ================= END HERO ================= -->
 
 <!-- ================= 3 DOMAINES ================= -->
-<section class="reveal" style="padding: 60px 0; background: #ffffff;">
+<section class="reveal" id="services" style="padding: 60px 0; background: #ffffff;">
     <div class="container">
         <div class="section-title" style="margin-bottom: 35px;">
             <span>NOS DOMAINES D'EXPERTISE</span>
@@ -205,6 +286,35 @@
 </section>
 <!-- ================= END 3 DOMAINES ================= -->
 
+<!-- ================= PROCESSUS ================= -->
+<section class="reveal" id="processus" style="padding: 70px 0; background: #f4faf6;">
+    <div class="container">
+        <div class="section-title" style="margin-bottom: 45px;">
+            <span>COMMENT ÇA MARCHE</span>
+            <h2>Votre besoin RH en 4 étapes</h2>
+            <p>Un parcours simple, de votre demande jusqu'au suivi de la mission.</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-step">
+                <h3>Votre besoin</h3>
+                <p>Vous nous décrivez le poste, le nombre de profils et la durée de la mission, par formulaire, téléphone ou WhatsApp.</p>
+            </div>
+            <div class="process-step">
+                <h3>Sélection</h3>
+                <p>Nous identifions et présélectionnons les profils adaptés à votre activité dans notre vivier.</p>
+            </div>
+            <div class="process-step">
+                <h3>Mise à disposition</h3>
+                <p>Les collaborateurs sont délégués sous 24 à 48h. Contrats de mission et déclarations CNSS sont pris en charge.</p>
+            </div>
+            <div class="process-step">
+                <h3>Suivi</h3>
+                <p>Un interlocuteur dédié suit la mission et assure la gestion administrative et la paie.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="split-section reveal">
     <div class="container split-grid">
         <div class="split-card client">
@@ -226,31 +336,31 @@
 <section class="marquee-section reveal" id="references">
     <div class="marquee-title">Ils nous accordent leur confiance au quotidien</div>
     <div class="marquee-track">
-        <div class="marquee-item"><img src="image/BANK-AL-MAGHRIB.png.png" alt="Bank Al-Maghrib"></div>
-        <div class="marquee-item"><img src="image/CNSS-png.png" alt="CNSS"></div>
-        <div class="marquee-item"><img src="image/odco.png.png" alt="ODCO"></div>
-        <div class="marquee-item"><img src="image/chamber.png.png" alt="Chambre d'Agriculture"></div>
-        <div class="marquee-item"><img src="image/SIEMENS-GAMESA.png.jpeg" alt="Siemens Gamesa"></div>
-        <div class="marquee-item"><img src="image/simense.png.png" alt="Siemens Energy"></div>
-        <div class="marquee-item"><img src="image/ONSSA.png.png" alt="ONSSA"></div>
-        <div class="marquee-item"><img src="image/HESPRESS.png.jpeg" alt="Hespress"></div>
-        <div class="marquee-item"><img src="image/CHEIKH-ZAID.png.jpeg" alt="Hôpital Cheikh Zaid"></div>
-        <div class="marquee-item"><img src="image/AMDIE.png.jpeg" alt="AMDIE"></div>
-        <div class="marquee-item"><img src="image/ANLCA.png.jpeg" alt="ANLCA"></div>
-        <div class="marquee-item"><img src="image/CHU-OUJDA.png.png" alt="CHU Oujda"></div>
+        <div class="marquee-item"><img loading="lazy" src="image/BANK-AL-MAGHRIB.png.png" alt="Bank Al-Maghrib"></div>
+        <div class="marquee-item"><img loading="lazy" src="image/CNSS-png.png" alt="CNSS"></div>
+        <div class="marquee-item"><img loading="lazy" src="image/odco.png.png" alt="ODCO"></div>
+        <div class="marquee-item"><img loading="lazy" src="image/chamber.png.png" alt="Chambre d'Agriculture"></div>
+        <div class="marquee-item"><img loading="lazy" src="image/SIEMENS-GAMESA.png.jpeg" alt="Siemens Gamesa"></div>
+        <div class="marquee-item"><img loading="lazy" src="image/simense.png.png" alt="Siemens Energy"></div>
+        <div class="marquee-item"><img loading="lazy" src="image/ONSSA.png.png" alt="ONSSA"></div>
+        <div class="marquee-item"><img loading="lazy" src="image/HESPRESS.png.jpeg" alt="Hespress"></div>
+        <div class="marquee-item"><img loading="lazy" src="image/CHEIKH-ZAID.png.jpeg" alt="Hôpital Cheikh Zaid"></div>
+        <div class="marquee-item"><img loading="lazy" src="image/AMDIE.png.jpeg" alt="AMDIE"></div>
+        <div class="marquee-item"><img loading="lazy" src="image/ANLCA.png.jpeg" alt="ANLCA"></div>
+        <div class="marquee-item"><img loading="lazy" src="image/CHU-OUJDA.png.png" alt="CHU Oujda"></div>
 
-        <div class="marquee-item"><img src="image/BANK-AL-MAGHRIB.png.png" alt="Bank Al-Maghrib"></div>
-        <div class="marquee-item"><img src="image/CNSS-png.png" alt="CNSS"></div>
-        <div class="marquee-item"><img src="image/odco.png.png" alt="ODCO"></div>
-        <div class="marquee-item"><img src="image/chamber.png.png" alt="Chambre d'Agriculture"></div>
-        <div class="marquee-item"><img src="image/SIEMENS-GAMESA.png.jpeg" alt="Siemens Gamesa"></div>
-        <div class="marquee-item"><img src="image/simense.png.png" alt="Siemens Energy"></div>
-        <div class="marquee-item"><img src="image/ONSSA.png.png" alt="ONSSA"></div>
-        <div class="marquee-item"><img src="image/HESPRESS.png.jpeg" alt="Hespress"></div>
-        <div class="marquee-item"><img src="image/CHEIKH-ZAID.png.jpeg" alt="Hôpital Cheikh Zaid"></div>
-        <div class="marquee-item"><img src="image/AMDIE.png.jpeg" alt="AMDIE"></div>
-        <div class="marquee-item"><img src="image/ANLCA.png.jpeg" alt="ANLCA"></div>
-        <div class="marquee-item"><img src="image/CHU-OUJDA.png.png" alt="CHU Oujda"></div>
+        <div class="marquee-item" aria-hidden="true"><img src="image/BANK-AL-MAGHRIB.png.png" alt=""></div>
+        <div class="marquee-item" aria-hidden="true"><img src="image/CNSS-png.png" alt=""></div>
+        <div class="marquee-item" aria-hidden="true"><img src="image/odco.png.png" alt=""></div>
+        <div class="marquee-item" aria-hidden="true"><img src="image/chamber.png.png" alt=""></div>
+        <div class="marquee-item" aria-hidden="true"><img src="image/SIEMENS-GAMESA.png.jpeg" alt=""></div>
+        <div class="marquee-item" aria-hidden="true"><img src="image/simense.png.png" alt=""></div>
+        <div class="marquee-item" aria-hidden="true"><img src="image/ONSSA.png.png" alt=""></div>
+        <div class="marquee-item" aria-hidden="true"><img src="image/HESPRESS.png.jpeg" alt=""></div>
+        <div class="marquee-item" aria-hidden="true"><img src="image/CHEIKH-ZAID.png.jpeg" alt=""></div>
+        <div class="marquee-item" aria-hidden="true"><img src="image/AMDIE.png.jpeg" alt=""></div>
+        <div class="marquee-item" aria-hidden="true"><img src="image/ANLCA.png.jpeg" alt=""></div>
+        <div class="marquee-item" aria-hidden="true"><img src="image/CHU-OUJDA.png.png" alt=""></div>
     </div>
 </section>
 
@@ -284,7 +394,7 @@
             <div class="sim-summary">
                 <span>Délégation garantie sous</span>
                 <strong>24h à 48h</strong>
-                <a href="#" id="simWhatsAppBtn" target="_blank" class="btn" style="background: #25d366; width: 100%;">
+                <a href="#" id="simWhatsAppBtn" target="_blank" rel="noopener noreferrer" class="btn" style="background: #25d366; width: 100%;">
                     <i class="fa-brands fa-whatsapp"></i> Demander cette équipe
                 </a>
             </div>
@@ -546,7 +656,7 @@
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
             </div>
-            <p>"Grâce à PRO C2S, j'ai trouvé une mission d'intérim rapidement avec un suivi professionnel et qui respecte toujours les délais de paiement et ne prend pas de retard dans ses règlements. Je recommande vivement !"</p>
+            <p>"Grâce à PRO C2S, j'ai trouvé une mission d'intérim rapidement. Le suivi est professionnel et les paiements sont toujours effectués dans les délais. Je recommande vivement !"</p>
             <div class="t-author">
                 <strong>Karima Bennani</strong>
                 <span>Intérimaire en Logistique</span>
@@ -631,7 +741,7 @@
             <p id="articleModalDesc" style="font-size: 15px; line-height: 1.8; color: var(--gray); margin-bottom: 25px;"></p>
         </div>
 
-        <a href="#" id="articleModalWaBtn" target="_blank" class="btn" style="background: #25d366; width: 100%; justify-content: center; border-radius: 12px; padding: 14px;">
+        <a href="#" id="articleModalWaBtn" target="_blank" rel="noopener noreferrer" class="btn" style="background: #25d366; width: 100%; justify-content: center; border-radius: 12px; padding: 14px;">
             <i class="fa-brands fa-whatsapp"></i> Discuter de ce sujet sur WhatsApp
         </a>
     </div>
@@ -701,7 +811,7 @@
             <p id="modalDesc"></p>
         </div>
 
-        <a href="#" id="modalApplyBtn" target="_blank" class="btn-modal-apply">
+        <a href="#" id="modalApplyBtn" target="_blank" rel="noopener noreferrer" class="btn-modal-apply">
             <i class="fa-brands fa-whatsapp"></i> Postuler via WhatsApp
         </a>
     </div>
@@ -717,6 +827,12 @@
             <p>Les cookies sont de petits fichiers textes stockés sur votre navigateur pour améliorer votre navigation, mesurer l'audience de notre site web et sécuriser nos services de recrutement.</p>
             <h4 style="margin-top: 15px;">2. Données collectées</h4>
             <p>Les informations transmises via nos formulaires de contact ou nos liens WhatsApp (Noms, e-mails, téléphones, CV) sont strictement réservées à notre département RH pour le traitement de vos demandes professionnelles.</p>
+            <h4 style="margin-top: 15px;">3. Finalité et durée de conservation</h4>
+            <p>Vos données sont utilisées uniquement pour répondre à votre demande, étudier votre candidature ou vous mettre en relation avec nos clients. Elles sont conservées le temps nécessaire à ces finalités, puis supprimées ou archivées conformément aux obligations légales.</p>
+            <h4 style="margin-top: 15px;">4. Services tiers</h4>
+            <p>Ce site fait appel à des services tiers : EmailJS (envoi du formulaire de contact), WhatsApp (échanges et envoi de CV), Google Maps et Google Fonts (affichage). Ces services peuvent déposer leurs propres cookies ou traiter votre adresse IP.</p>
+            <h4 style="margin-top: 15px;">5. Vos droits</h4>
+            <p>Conformément à la loi n° 09-08 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel, vous disposez d'un droit d'accès, de rectification et d'opposition. Pour l'exercer, écrivez-nous à <a href="mailto:procssentreprise@gmail.com">procssentreprise@gmail.com</a>. Vous pouvez également saisir la CNDP (<a href="https://www.cndp.ma" target="_blank" rel="noopener noreferrer">www.cndp.ma</a>).</p>
         </div>
     </div>
 </div>
@@ -741,14 +857,14 @@
                     <i class="fa-solid fa-phone"></i>
                     <div>
                         <strong>Téléphone</strong>
-                        <span>06 63 44 98 24 / 05 20 70 48 30</span>
+                        <span><a href="tel:+212663449824" style="color: inherit;">06 63 44 98 24</a> / <a href="tel:+212520704830" style="color: inherit;">05 20 70 48 30</a></span>
                     </div>
                 </div>
                 <div class="contact-item">
                     <i class="fa-solid fa-envelope"></i>
                     <div>
                         <strong>Email</strong>
-                        <span>procssentreprise@gmail.com</span>
+                        <span><a href="mailto:procssentreprise@gmail.com" style="color: inherit;">procssentreprise@gmail.com</a></span>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -761,7 +877,7 @@
             </div>
 
             <div class="map-wrapper" style="margin-top: 25px; border-radius: 18px; overflow: hidden; border: 1px solid var(--border-color); height: 200px;">
-                <iframe 
+                <iframe title="Localisation de PRO C2S à Rabat" 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.382878401314!2d-6.835489724285816!3d34.02120087316937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76b8826543d23%3A0x892a0fefc2aef89a!2sAvenue%20Patrice%20Lumumba%2C%20Rabat!5e0!3m2!1sfr!2sma!4v1726570000000!5m2!1sfr!2sma" 
                     width="100%" 
                     height="100%" 
@@ -773,16 +889,18 @@
         </div>
 
         <form class="contact-form" id="contact-form">
-            <input type="text" name="user_name" placeholder="Nom complet" required>
-            <input type="email" name="user_email" placeholder="Adresse e-mail" required>
-            <input type="tel" name="user_phone" placeholder="Téléphone" required>
-            <textarea name="message" placeholder="Votre message" required></textarea>
+            <input type="text" name="user_name" placeholder="Nom complet" aria-label="Nom complet" autocomplete="name" required>
+            <input type="email" name="user_email" placeholder="Adresse e-mail" aria-label="Adresse e-mail" autocomplete="email" required>
+            <input type="tel" name="user_phone" placeholder="Téléphone" aria-label="Téléphone" autocomplete="tel" required>
+            <textarea name="message" placeholder="Votre message" aria-label="Votre message" required></textarea>
+
+            <p style="font-size: 12px; color: #64748b; line-height: 1.5; margin: 4px 0 10px;">En envoyant ce formulaire, vous acceptez que vos données soient utilisées pour répondre à votre demande. Voir notre <a href="#" id="openPrivacyForm" style="text-decoration: underline;">politique de confidentialité</a>.</p>
 
             <button type="submit" class="btn btn-submit">Envoyer</button>
 
             <div class="cv-notice">
                 <p><i class="fa-solid fa-briefcase"></i> Vous souhaitez postuler ou envoyer un CV ?</p>
-                <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20postuler%20et%20vous%20envoyer%20mon%20CV." target="_blank" class="btn-cv-whatsapp">
+                <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20postuler%20et%20vous%20envoyer%20mon%20CV." target="_blank" rel="noopener noreferrer" class="btn-cv-whatsapp">
                     <i class="fa-brands fa-whatsapp"></i> Envoyer mon CV via WhatsApp
                 </a>
             </div>
@@ -806,16 +924,17 @@
             <p><a href="#actualites">Actualités</a></p>
             <p><a href="#faq">FAQ</a></p>
             <p><a href="#contact">Contact</a></p>
+            <p><a href="mentions-legales.html">Mentions légales</a></p>
         </div>
         <div class="footer-contact">
             <h4>Contact</h4>
             <p><i class="fa-solid fa-location-dot"></i> Imm. 69, 4ème Étage, Hassan - Rabat</p>
-            <p><i class="fa-solid fa-phone"></i> 06 63 44 98 24 / 05 20 70 48 30</p>
-            <p><i class="fa-solid fa-envelope"></i> procssentreprise@gmail.com</p>
+            <p><i class="fa-solid fa-phone"></i> <a href="tel:+212663449824">06 63 44 98 24</a> / <a href="tel:+212520704830">05 20 70 48 30</a></p>
+            <p><i class="fa-solid fa-envelope"></i> <a href="mailto:procssentreprise@gmail.com">procssentreprise@gmail.com</a></p>
         </div>
     </div>
     <div class="copyright">
-        © 2026 PRO C2S - Tous droits réservés. | <a href="#" id="openPrivacyModal" style="color: #81c784; text-decoration: underline;">Politique de confidentialité</a>
+        © 2026 PRO C2S - Tous droits réservés. | <a href="mentions-legales.html" style="color: #81c784; text-decoration: underline;">Mentions légales</a> | <a href="#" id="openPrivacyModal" style="color: #81c784; text-decoration: underline;">Politique de confidentialité</a>
     </div>
 </footer>
 
@@ -836,11 +955,20 @@
     <i class="fa-solid fa-arrow-up"></i>
 </button>
 
-<a href="https://wa.me/212663449824" class="whatsapp-btn" target="_blank" aria-label="WhatsApp">
+<a href="https://wa.me/212663449824" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="script.js"></script>
+<script>
+    (function () {
+        var link = document.getElementById('openPrivacyForm');
+        var opener = document.getElementById('openPrivacyModal');
+        if (link && opener) {
+            link.addEventListener('click', function (e) { e.preventDefault(); opener.click(); });
+        }
+    })();
+</script>
 </body>
 </html>
