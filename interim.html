@@ -8,15 +8,6 @@
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="theme-color" content="#2e7d32">
     <link rel="canonical" href="https://proo-c2s.github.io/proo-c2s/interim.html">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="fr_MA">
-    <meta property="og:site_name" content="PRO C2S">
-    <meta property="og:title" content="Intérim & Travail Temporaire au Maroc | PRO C2S">
-    <meta property="og:description" content="Travail temporaire, intérim et recrutement CDI/CDD au Maroc. Délégation de personnel qualifié sous 24 à 48h, conforme au Code du Travail. PRO C2S, Rabat.">
-    <meta property="og:url" content="https://proo-c2s.github.io/proo-c2s/interim.html">
-    <meta property="og:image" content="https://proo-c2s.github.io/proo-c2s/image/logo.png.png">
-    <link rel="icon" type="image/png" href="image/logo.png.png">
-    <link rel="apple-touch-icon" href="image/logo.png.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
@@ -25,58 +16,30 @@
             to { opacity: 1; transform: translateY(0); }
         }
         .animate-up { animation: fadeInUp 0.8s ease-out forwards; }
-        .card { 
-            transition: all 0.3s ease; 
-            overflow: hidden; 
-            display: flex; 
-            flex-direction: column; 
-            background: #ffffff;
-            border: 1.5px solid var(--border-color);
+        .lang-switcher {
+            display: flex;
+            gap: 4px;
+            background: #f1f5f9;
+            padding: 4px;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            padding: 6px 14px;
             border-radius: 20px;
-            padding: 0;
-            text-align: left;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--gray);
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
-        .card:hover { 
-            transform: translateY(-8px); 
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08); 
+        .lang-btn.active {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(46, 125, 50, 0.2);
         }
-        .card-img-top {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-top-left-radius: 18px;
-            border-top-right-radius: 18px;
-        }
-        .card-body-content {
-            padding: 25px 20px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-        .pro-feature-card {
-            background: #fff;
-            border-radius: 18px;
-            overflow: hidden;
-            border: 1.5px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            transition: all 0.3s ease;
-        }
-        .pro-feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.06);
-        }
-        .pro-feature-img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-        .pro-feature-content {
-            padding: 20px;
-            text-align: left;
-        }
-        a:focus-visible, button:focus-visible { outline: 3px solid #2e7d32; outline-offset: 2px; }
-        @media (prefers-reduced-motion: reduce) { .floating-box, .animate-up { animation: none !important; } }
     </style>
 </head>
 <body>
@@ -87,138 +50,32 @@
             <a href="index.html"><img src="image/logo.png.png" alt="PRO C2S"></a>
         </div>
         <ul class="nav-links">
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="interim.html" style="color: var(--primary);">Intérim</a></li>
-            <li><a href="informatique.html">Informatique</a></li>
-            <li><a href="nettoyage.html">Nettoyage</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="index.html" data-i18n="nav_home">Accueil</a></li>
+            <li><a href="interim.html" style="color: var(--primary);" data-i18n="nav_interim">Intérim</a></li>
+            <li><a href="informatique.html" data-i18n="nav_info">Informatique</a></li>
+            <li><a href="nettoyage.html" data-i18n="nav_clean">Nettoyage</a></li>
+            <li><a href="index.html#contact" data-i18n="nav_contact">Contact</a></li>
         </ul>
+        <div class="nav-actions" style="display: flex; align-items: center; gap: 12px;">
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="fr">FR</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+        </div>
     </nav>
 </header>
 
 <section class="hero animate-up" style="padding: 140px 0 70px; background: linear-gradient(135deg, #f4faf6 0%, #e8f5e9 100%); position: relative; overflow: hidden;">
     <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
-        
         <div style="flex: 1; min-width: 300px; text-align: left;">
             <span class="badge-crit" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(46, 125, 50, 0.15); color: #2e7d32; padding: 6px 14px; border-radius: 20px; font-weight: 600; margin-bottom: 20px;">
-                <i class="fa-solid fa-users-gear"></i> Pôle Intérim & Recrutement
+                <i class="fa-solid fa-users-gear"></i> <span data-i18n="int_badge">Pôle Intérim & Recrutement</span>
             </span>
-            <h1 style="font-size: 38px; margin-bottom: 20px; color: #0f172a; font-weight: 800; line-height: 1.2;">Travail Temporaire & Délégation de Personnel</h1>
-            <p style="font-size: 17px; color: #64748b; line-height: 1.7; margin-bottom: 30px;">Nous apportons des solutions rapides, flexibles et 100% conformes au Code du Travail marocain pour vos besoins urgents et pics d'activité.</p>
-            
+            <h1 style="font-size: 38px; margin-bottom: 20px; color: #0f172a; font-weight: 800; line-height: 1.2;" data-i18n="int_title">Travail Temporaire & Délégation de Personnel</h1>
+            <p style="font-size: 17px; color: #64748b; line-height: 1.7; margin-bottom: 30px;" data-i18n="int_desc">Nous apportons des solutions rapides, flexibles et 100% conformes au Code du Travail marocain pour vos besoins urgents et pics d'activité.</p>
             <a href="index.html#contact" class="btn" style="background: var(--primary); padding: 14px 28px; font-size: 15px; border-radius: 30px; display: inline-flex; align-items: center; gap: 10px; color: #fff; text-decoration: none;">
-                <i class="fa-solid fa-envelope"></i> Contactez-nous pour recruter
+                <i class="fa-solid fa-envelope"></i> <span data-i18n="int_btn">Contactez-nous pour recruter</span>
             </a>
-        </div>
-
-        <div style="flex: 1; min-width: 300px; position: relative; display: flex; justify-content: center; align-items: center;">
-            <div style="position: relative; width: 100%; max-width: 420px; height: 420px; display: flex; align-items: center; justify-content: center;">
-                <div style="position: absolute; width: 320px; height: 320px; background: rgba(46, 125, 50, 0.08); border-radius: 50%; z-index: 1;"></div>
-                <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=800&q=80" alt="Intérim et Recrutement" style="width: 330px; height: 330px; object-fit: cover; border-radius: 50%; position: relative; z-index: 2; border: 4px solid #fff; box-shadow: 0 15px 35px rgba(0,0,0,0.12);">
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<!-- ================= CARTES PRINCIPALES ================= -->
-<section class="services animate-up" style="padding: 80px 0; animation-delay: 0.2s;">
-    <div class="container">
-        <div class="section-title">
-            <span>NOS PRESTATIONS RH</span>
-            <h2>Nos Solutions en Intérim & RH</h2>
-            <p>Une offre complète de prestations pour garantir la continuité et la performance de vos opérations.</p>
-        </div>
-
-        <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px;">
-            
-            <div class="card">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=600&q=80" alt="Travail Temporaire" class="card-img-top">
-                <div class="card-body-content">
-                    <h3 style="font-size: 19px; color: var(--dark); margin-bottom: 10px;">Travail Temporaire & Intérim</h3>
-                    <p style="font-size: 14px; color: var(--gray); line-height: 1.6;">Délégation rapide de personnel qualifié pour gérer vos imprévus, congés et surcroîts d'activité dans l'industrie et le tertiaire.</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80" alt="Recrutement" class="card-img-top">
-                <div class="card-body-content">
-                    <h3 style="font-size: 19px; color: var(--dark); margin-bottom: 10px;">Recrutement CDI / CDD</h3>
-                    <p style="font-size: 14px; color: var(--gray); line-height: 1.6;">Sourcing sur-mesure, entretiens et sélection rigoureuse pour intégrer durablement vos futurs collaborateurs clés.</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="Gestion Paie" class="card-img-top">
-                <div class="card-body-content">
-                    <h3 style="font-size: 19px; color: var(--dark); margin-bottom: 10px;">Gestion Administrative & Paie</h3>
-                    <p style="font-size: 14px; color: var(--gray); line-height: 1.6;">Prise en charge intégrale des contrats de mission, déclarations sociales (CNSS) et respect total de la législation.</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- ================= SECTION PRO : POURQUOI CHOISIR PRO C2S (IMAGES CORPORATE & PRO) ================= -->
-<section style="padding: 70px 0; background: #f8fafc; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
-    <div class="container">
-        <div class="section-title">
-            <span>NOTRE VALEUR AJOUTÉE</span>
-            <h2>Pourquoi les entreprises choisissent PRO C2S ?</h2>
-            <p>Notre engagement est de vous offrir la flexibilité opérationnelle sans les contraintes de gestion lourdes.</p>
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin-top: 40px;">
-            
-            <!-- 1. Réactivité 24-48h (Image d'une horloge élégante et travail rapide) -->
-            <div class="pro-feature-card">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=600&q=80" alt="Réactivité 24-48h" class="pro-feature-img">
-                <div class="pro-feature-content">
-                    <h3 style="font-size: 17px; color: var(--dark); margin-bottom: 8px;">Réactivité 24-48h</h3>
-                    <p style="font-size: 13px; color: var(--gray); line-height: 1.6;">Mobilisation et mise à disposition rapide de profils opérationnels dans tout le Maroc.</p>
-                </div>
-            </div>
-
-            <!-- 2. Sécurité Juridique (Image de bureau exécutif, contrats et signature pro) -->
-            <div class="pro-feature-card">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" alt="Sécurité Juridique" class="pro-feature-img">
-                <div class="pro-feature-content">
-                    <h3 style="font-size: 17px; color: var(--dark); margin-bottom: 8px;">Sécurité Juridique</h3>
-                    <p style="font-size: 13px; color: var(--gray); line-height: 1.6;">Maîtrise totale du Code du Travail marocain et conformité stricte des contrats.</p>
-                </div>
-            </div>
-
-            <!-- 3. Vivier Qualifié (Image de professionnels souriants et qualifiés en entreprise) -->
-            <div class="pro-feature-card">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=600&q=80" alt="Vivier Qualifié" class="pro-feature-img">
-                <div class="pro-feature-content">
-                    <h3 style="font-size: 17px; color: var(--dark); margin-bottom: 8px;">Vivier Qualifié</h3>
-                    <p style="font-size: 13px; color: var(--gray); line-height: 1.6;">Base de données riche de talents évalués, formés et prêts à intégrer vos équipes.</p>
-                </div>
-            </div>
-
-            <!-- 4. Interlocuteur Dédié (Image d'une conseillère RH professionnelle et souriante) -->
-            <div class="pro-feature-card">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1573497491765-dccce02b29df?auto=format&fit=crop&w=600&q=80" alt="Interlocuteur Dédié" class="pro-feature-img">
-                <div class="pro-feature-content">
-                    <h3 style="font-size: 17px; color: var(--dark); margin-bottom: 8px;">Interlocuteur Dédié</h3>
-                    <p style="font-size: 13px; color: var(--gray); line-height: 1.6;">Un chargé de compte RH à vos côtés pour assurer un suivi personnalisé et de proximité.</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- ================= APPEL À L'ACTION ================= -->
-<section style="padding: 60px 0; background: #e8f5e9; text-align: center;">
-    <div class="container">
-        <h2 style="font-size: 28px; color: #0f172a; margin-bottom: 12px;">Un besoin en recrutement ou en intérim ?</h2>
-        <p style="font-size: 16px; color: #64748b; margin-bottom: 25px;">Décrivez-nous votre besoin, notre équipe vous répond rapidement.</p>
-        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-            <a href="index.html#contact" class="btn" style="padding: 14px 28px; border-radius: 30px;"><i class="fa-solid fa-envelope"></i> Nous contacter</a>
-            <a href="https://wa.me/212663449824?text=Bonjour%20PRO%20C2S%2C%20je%20souhaite%20des%20informations%20sur%20vos%20services%20d%27int%C3%A9rim%20et%20de%20recrutement." target="_blank" rel="noopener noreferrer" class="btn" style="background: #25d366; padding: 14px 28px; border-radius: 30px;"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
         </div>
     </div>
 </section>
@@ -227,31 +84,57 @@
     <div class="container footer-grid">
         <div class="footer-about">
             <h3>PRO C2S</h3>
-            <p>Société spécialisée en recrutement, intérim créée en 2017. Votre partenaire pour construire vos équipes de demain.</p>
-        </div>
-        <div class="footer-links">
-            <h4>Navigation</h4>
-            <p><a href="index.html">Accueil</a></p>
-            <p><a href="interim.html">Intérim</a></p>
-            <p><a href="informatique.html">Informatique</a></p>
-            <p><a href="nettoyage.html">Nettoyage</a></p>
-            <p><a href="index.html#contact">Contact</a></p>
-        </div>
-        <div class="footer-contact">
-            <h4>Contact</h4>
-            <p><i class="fa-solid fa-location-dot"></i> Imm. 69, 4ème Étage, Hassan - Rabat</p>
-            <p><i class="fa-solid fa-phone"></i> <a href="tel:+212663449824">06 63 44 98 24</a> / <a href="tel:+212520704830">05 20 70 48 30</a></p>
-            <p><i class="fa-solid fa-envelope"></i> <a href="mailto:procssentreprise@gmail.com">procssentreprise@gmail.com</a></p>
+            <p data-i18n="f_about">Société spécialisée en recrutement, intérim créée en 2017. Votre partenaire pour construire vos équipes de demain.</p>
         </div>
     </div>
-    <div class="copyright">
-        © 2026 PRO C2S - Pôle Intérim & Recrutement. Tous droits réservés. | <a href="mentions-legales.html" style="color: #81c784; text-decoration: underline;">Mentions légales</a>
+    <div class="copyright" data-i18n="copyright">
+        © 2026 PRO C2S - Tous droits réservés.
     </div>
 </footer>
 
-<a href="https://wa.me/212663449824?text=Bonjour%20PRO%20C2S%2C%20je%20souhaite%20des%20informations%20sur%20vos%20services%20d%27int%C3%A9rim%20et%20de%20recrutement." class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Contacter PRO C2S sur WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-</a>
+<script>
+    const translations = {
+        fr: {
+            nav_home: "Accueil",
+            nav_interim: "Intérim",
+            nav_info: "Informatique",
+            nav_clean: "Nettoyage",
+            nav_contact: "Contact",
+            int_badge: "Pôle Intérim & Recrutement",
+            int_title: "Travail Temporaire & Délégation de Personnel",
+            int_desc: "Nous apportons des solutions rapides, flexibles et 100% conformes au Code du Travail marocain pour vos besoins urgents et pics d'activité.",
+            int_btn: "Contactez-nous pour recruter",
+            f_about: "Société spécialisée en recrutement, intérim créée en 2017. Votre partenaire pour construire vos équipes de demain.",
+            copyright: "© 2026 PRO C2S - Tous droits réservés."
+        },
+        en: {
+            nav_home: "Home",
+            nav_interim: "Temp Work",
+            nav_info: "IT Services",
+            nav_clean: "Cleaning",
+            nav_contact: "Contact",
+            int_badge: "Temp Work & Recruitment Division",
+            int_title: "Temporary Work & Staff Delegation",
+            int_desc: "We provide fast, flexible solutions 100% compliant with Moroccan Labor Law for your urgent needs and activity peaks.",
+            int_btn: "Contact us to recruit",
+            f_about: "Company specialized in recruitment and temp work founded in 2017. Your partner to build tomorrow's teams.",
+            copyright: "© 2026 PRO C2S - All rights reserved."
+        }
+    };
 
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang');
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
