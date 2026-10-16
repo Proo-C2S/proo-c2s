@@ -133,6 +133,31 @@
         .job-card:hover .job-illustration-box img {
             transform: scale(1.05);
         }
+        /* Styles pour le sélecteur de langue (FR / EN) */
+        .lang-switcher {
+            display: flex;
+            gap: 4px;
+            background: #f1f5f9;
+            padding: 4px;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--gray);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .lang-btn.active {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(46, 125, 50, 0.2);
+        }
     </style>
 </head>
 
@@ -152,18 +177,23 @@
         </div>
 
         <ul class="nav-links">
-            <li><a href="#home">Accueil</a></li>
-            <li><a href="#simulateur">Entreprises</a></li>
-            <li><a href="#carrieres">Offres d'emploi</a></li>
-            <li><a href="#apropos">À propos</a></li>
-            <li><a href="#references">Références</a></li>
-            <li><a href="#actualites">Actualités</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#home" data-i18n="nav_home">Accueil</a></li>
+            <li><a href="#simulateur" data-i18n="nav_companies">Entreprises</a></li>
+            <li><a href="#carrieres" data-i18n="nav_jobs">Offres d'emploi</a></li>
+            <li><a href="#apropos" data-i18n="nav_about">À propos</a></li>
+            <li><a href="#references" data-i18n="nav_refs">Références</a></li>
+            <li><a href="#actualites" data-i18n="nav_news">Actualités</a></li>
+            <li><a href="#faq" data-i18n="nav_faq">FAQ</a></li>
+            <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
         </ul>
 
-        <div class="nav-actions">
-            <a href="#simulateur" class="btn">Besoin de recruter</a>
+        <div class="nav-actions" style="display: flex; align-items: center; gap: 12px;">
+            <!-- Bouton Sélecteur de Langue (FR / EN) -->
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="fr">FR</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+            <a href="#simulateur" class="btn" data-i18n="nav_cta">Besoin de recruter</a>
         </div>
 
         <button class="menu-toggle" aria-label="Menu">
@@ -179,22 +209,22 @@
         <!-- Text à gauche -->
         <div style="flex: 1; min-width: 320px; text-align: left;">
             <span class="badge-crit" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(46, 125, 50, 0.15); color: #2e7d32; padding: 6px 16px; border-radius: 20px; font-weight: 600; margin-bottom: 20px;">
-                <i class="fa-solid fa-shield-halved"></i> Partenaire Recrutement & Intérim
+                <i class="fa-solid fa-shield-halved"></i> <span data-i18n="hero_badge">Partenaire Recrutement & Intérim</span>
             </span>
-            <h1 style="font-size: 42px; margin-bottom: 20px; color: #0f172a; font-weight: 800; line-height: 1.2;">Votre partenaire RH pour bâtir vos équipes de demain</h1>
-            <p style="font-size: 17px; color: #64748b; line-height: 1.7; margin-bottom: 30px;">Spécialiste du recrutement et du travail temporaire au Maroc depuis 2017. Nous apportons des réponses rapides, flexibles et conformes à tous vos défis RH.</p>
+            <h1 style="font-size: 42px; margin-bottom: 20px; color: #0f172a; font-weight: 800; line-height: 1.2;" data-i18n="hero_title">Votre partenaire RH pour bâtir vos équipes de demain</h1>
+            <p style="font-size: 17px; color: #64748b; line-height: 1.7; margin-bottom: 30px;" data-i18n="hero_desc">Spécialiste du recrutement et du travail temporaire au Maroc depuis 2017. Nous apportons des réponses rapides, flexibles et conformes à tous vos défis RH.</p>
             
             <div class="hero-actions" style="display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 35px;">
-                <a href="#simulateur" class="btn btn-hero" style="padding: 14px 28px; border-radius: 30px;"><i class="fa-solid fa-building"></i> Vous recrutez ?</a>
-                <a href="#carrieres" class="btn-outline-hero" style="padding: 14px 28px; border-radius: 30px;"><i class="fa-solid fa-briefcase"></i> Consulter les offres</a>
+                <a href="#simulateur" class="btn btn-hero" style="padding: 14px 28px; border-radius: 30px;"><i class="fa-solid fa-building"></i> <span data-i18n="hero_btn1">Vous recrutez ?</span></a>
+                <a href="#carrieres" class="btn-outline-hero" style="padding: 14px 28px; border-radius: 30px;"><i class="fa-solid fa-briefcase"></i> <span data-i18n="hero_btn2">Consulter les offres</span></a>
             </div>
 
             <div class="hero-badges-row" style="display: flex; align-items: center; gap: 20px; background: #ffffff; padding: 15px 25px; border-radius: 16px; box-shadow: 0 5px 20px rgba(0,0,0,0.04); max-width: 480px; border: 1px solid rgba(0,0,0,0.03);">
-                <div class="h-badge"><strong>24-48h</strong> <span style="display: block; font-size: 12px; color: #64748b;">Réactivité</span></div>
+                <div class="h-badge"><strong>24-48h</strong> <span style="display: block; font-size: 12px; color: #64748b;" data-i18n="badge_react">Réactivité</span></div>
                 <div class="h-sep" style="width: 1px; height: 30px; background: #e2e8f0;"></div>
-                <div class="h-badge"><strong>100%</strong> <span style="display: block; font-size: 12px; color: #64748b;">Conformité</span></div>
+                <div class="h-badge"><strong>100%</strong> <span style="display: block; font-size: 12px; color: #64748b;" data-i18n="badge_conf">Conformité</span></div>
                 <div class="h-sep" style="width: 1px; height: 30px; background: #e2e8f0;"></div>
-                <div class="h-badge"><strong>National</strong> <span style="display: block; font-size: 12px; color: #64748b;">Toutes régions</span></div>
+                <div class="h-badge"><strong data-i18n="badge_nat_val">National</strong> <span style="display: block; font-size: 12px; color: #64748b;" data-i18n="badge_nat">Toutes régions</span></div>
             </div>
         </div>
 
@@ -214,7 +244,7 @@
                     </div>
                     <div>
                         <strong style="display: block; font-size: 16px; color: #0f172a;">12000+</strong>
-                        <span style="font-size: 12px; color: #64748b;">Candidats satisfaits</span>
+                        <span style="font-size: 12px; color: #64748b;" data-i18n="float_cand">Candidats satisfaits</span>
                     </div>
                 </div>
 
@@ -223,8 +253,8 @@
                         <i class="fa-solid fa-briefcase"></i>
                     </div>
                     <div>
-                        <strong style="display: block; font-size: 16px; color: #0f172a;">Offres d'emploi</strong>
-                        <span style="font-size: 12px; color: #64748b;">Missions continues</span>
+                        <strong style="display: block; font-size: 16px; color: #0f172a;" data-i18n="float_jobs">Offres d'emploi</strong>
+                        <span style="font-size: 12px; color: #64748b;" data-i18n="float_missions">Missions continues</span>
                     </div>
                 </div>
 
@@ -239,9 +269,9 @@
 <section class="reveal" id="services" style="padding: 60px 0; background: #ffffff;">
     <div class="container">
         <div class="section-title" style="margin-bottom: 35px;">
-            <span>NOS DOMAINES D'EXPERTISE</span>
-            <h2>Nos Pôles de Services pour Entreprises</h2>
-            <p>Découvrez nos solutions ciblées en Intérim, Informatique et Nettoyage.</p>
+            <span data-i18n="dom_span">NOS DOMAINES D'EXPERTISE</span>
+            <h2 data-i18n="dom_title">Nos Pôles de Services pour Entreprises</h2>
+            <p data-i18n="dom_desc">Découvrez nos solutions ciblées en Intérim, Informatique et Nettoyage.</p>
         </div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
             
@@ -251,10 +281,10 @@
                     <div style="width: 55px; height: 55px; background: #e8f5e9; color: var(--primary); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 20px;">
                         <i class="fa-solid fa-users-gear"></i>
                     </div>
-                    <h3 style="font-size: 19px; color: var(--dark); margin-bottom: 10px;">Intérim</h3>
-                    <p style="font-size: 14px; color: var(--gray); line-height: 1.6; margin-bottom: 20px;">Travail temporaire et délégation de personnel qualifié pour répondre à vos besoins urgents et pics d'activité.</p>
+                    <h3 style="font-size: 19px; color: var(--dark); margin-bottom: 10px;" data-i18n="d1_title">Intérim</h3>
+                    <p style="font-size: 14px; color: var(--gray); line-height: 1.6; margin-bottom: 20px;" data-i18n="d1_desc">Travail temporaire et délégation de personnel qualifié pour répondre à vos besoins urgents et pics d'activité.</p>
                 </div>
-                <a href="interim.html" class="btn" style="padding: 10px 20px; font-size: 13.5px; width: 100%; justify-content: center; margin-top: auto;">En savoir plus <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="interim.html" class="btn" style="padding: 10px 20px; font-size: 13.5px; width: 100%; justify-content: center; margin-top: auto;"><span data-i18n="more_btn">En savoir plus</span> <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <!-- Bloc 2: Informatique -->
@@ -263,10 +293,10 @@
                     <div style="width: 55px; height: 55px; background: #e8f5e9; color: var(--primary); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 20px;">
                         <i class="fa-solid fa-laptop-code"></i>
                     </div>
-                    <h3 style="font-size: 19px; color: var(--dark); margin-bottom: 10px;">Informatique</h3>
-                    <p style="font-size: 13.5px; color: var(--gray); line-height: 1.5; margin-bottom: 20px;">Mise à disposition de profils informatiques : développeurs full-stack, ingénieurs réseaux, techniciens, digitalisation et gestion de projet.</p>
+                    <h3 style="font-size: 19px; color: var(--dark); margin-bottom: 10px;" data-i18n="d2_title">Informatique</h3>
+                    <p style="font-size: 13.5px; color: var(--gray); line-height: 1.5; margin-bottom: 20px;" data-i18n="d2_desc">Mise à disposition de profils informatiques : développeurs full-stack, ingénieurs réseaux, techniciens, digitalisation et gestion de projet.</p>
                 </div>
-                <a href="informatique.html" class="btn" style="padding: 10px 20px; font-size: 13.5px; width: 100%; justify-content: center; margin-top: auto;">En savoir plus <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="informatique.html" class="btn" style="padding: 10px 20px; font-size: 13.5px; width: 100%; justify-content: center; margin-top: auto;"><span data-i18n="more_btn">En savoir plus</span> <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <!-- Bloc 3: Nettoyage -->
@@ -275,10 +305,10 @@
                     <div style="width: 55px; height: 55px; background: #e8f5e9; color: var(--primary); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 20px;">
                         <i class="fa-solid fa-broom"></i>
                     </div>
-                    <h3 style="font-size: 19px; color: var(--dark); margin-bottom: 10px;">Nettoyage</h3>
-                    <p style="font-size: 14px; color: var(--gray); line-height: 1.6; margin-bottom: 20px;">Entretien professionnel des locaux, nettoyage industriel, désinfection et hygiène pour entreprises.</p>
+                    <h3 style="font-size: 19px; color: var(--dark); margin-bottom: 10px;" data-i18n="d3_title">Nettoyage</h3>
+                    <p style="font-size: 14px; color: var(--gray); line-height: 1.6; margin-bottom: 20px;" data-i18n="d3_desc">Entretien professionnel des locaux, nettoyage industriel, désinfection et hygiène pour entreprises.</p>
                 </div>
-                <a href="nettoyage.html" class="btn" style="padding: 10px 20px; font-size: 13.5px; width: 100%; justify-content: center; margin-top: auto;">En savoir plus <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="nettoyage.html" class="btn" style="padding: 10px 20px; font-size: 13.5px; width: 100%; justify-content: center; margin-top: auto;"><span data-i18n="more_btn">En savoir plus</span> <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
         </div>
@@ -290,26 +320,26 @@
 <section class="reveal" id="processus" style="padding: 70px 0; background: #f4faf6;">
     <div class="container">
         <div class="section-title" style="margin-bottom: 45px;">
-            <span>COMMENT ÇA MARCHE</span>
-            <h2>Votre besoin RH en 4 étapes</h2>
-            <p>Un parcours simple, de votre demande jusqu'au suivi de la mission.</p>
+            <span data-i18n="proc_span">COMMENT ÇA MARCHE</span>
+            <h2 data-i18n="proc_title">Votre besoin RH en 4 étapes</h2>
+            <p data-i18n="proc_desc">Un parcours simple, de votre demande jusqu'au suivi de la mission.</p>
         </div>
         <div class="process-grid">
             <div class="process-step">
-                <h3>Votre besoin</h3>
-                <p>Vous nous décrivez le poste, le nombre de profils et la durée de la mission, par formulaire, téléphone ou WhatsApp.</p>
+                <h3 data-i18n="p1_t">Votre besoin</h3>
+                <p data-i18n="p1_d">Vous nous décrivez le poste, le nombre de profils et la durée de la mission, par formulaire, téléphone ou WhatsApp.</p>
             </div>
             <div class="process-step">
-                <h3>Sélection</h3>
-                <p>Nous identifions et présélectionnons les profils adaptés à votre activité dans notre vivier.</p>
+                <h3 data-i18n="p2_t">Sélection</h3>
+                <p data-i18n="p2_d">Nous identifions et présélectionnons les profils adaptés à votre activité dans notre vivier.</p>
             </div>
             <div class="process-step">
-                <h3>Mise à disposition</h3>
-                <p>Les collaborateurs sont délégués sous 24 à 48h. Contrats de mission et déclarations CNSS sont pris en charge.</p>
+                <h3 data-i18n="p3_t">Mise à disposition</h3>
+                <p data-i18n="p3_d">Les collaborateurs sont délégués sous 24 à 48h. Contrats de mission et déclarations CNSS sont pris en charge.</p>
             </div>
             <div class="process-step">
-                <h3>Suivi</h3>
-                <p>Un interlocuteur dédié suit la mission et assure la gestion administrative et la paie.</p>
+                <h3 data-i18n="p4_t">Suivi</h3>
+                <p data-i18n="p4_d">Un interlocuteur dédié suit la mission et assure la gestion administrative et la paie.</p>
             </div>
         </div>
     </div>
@@ -318,23 +348,23 @@
 <section class="split-section reveal">
     <div class="container split-grid">
         <div class="split-card client">
-            <span class="pill-badge"><i class="fa-solid fa-briefcase"></i> Entreprises</span>
-            <h3>Besoins urgents ou pics d'activité ?</h3>
-            <p>Difficulté à recruter rapidement, complexité juridique ou surcroît temporaire : bénéficiez d'une délégation réactive.</p>
-            <a href="#simulateur" class="btn-split-white">Estimer mon besoin RH <i class="fa-solid fa-arrow-right"></i></a>
+            <span class="pill-badge"><i class="fa-solid fa-briefcase"></i> <span data-i18n="split_c_badge">Entreprises</span></span>
+            <h3 data-i18n="split_c_title">Besoins urgents ou pics d'activité ?</h3>
+            <p data-i18n="split_c_desc">Difficulté à recruter rapidement, complexité juridique ou surcroît temporaire : bénéficiez d'une délégation réactive.</p>
+            <a href="#simulateur" class="btn-split-white"><span data-i18n="split_c_btn">Estimer mon besoin RH</span> <i class="fa-solid fa-arrow-right"></i></a>
         </div>
         <div class="split-card candidate">
-            <span class="pill-badge green"><i class="fa-solid fa-user-check"></i> Candidats</span>
-            <h3>Trouvez votre prochaine mission</h3>
-            <p>Intérim et missions dans l'industrie, la logistique, le tertiaire et les services dans tout le Maroc.</p>
-            <a href="#carrieres" class="btn-split-green"><i class="fa-solid fa-briefcase"></i> Consulter les offres</a>
+            <span class="pill-badge green"><i class="fa-solid fa-user-check"></i> <span data-i18n="split_cand_badge">Candidats</span></span>
+            <h3 data-i18n="split_cand_title">Trouvez votre prochaine mission</h3>
+            <p data-i18n="split_cand_desc">Intérim et missions dans l'industrie, la logistique, le tertiaire et les services dans tout le Maroc.</p>
+            <a href="#carrieres" class="btn-split-green"><i class="fa-solid fa-briefcase"></i> <span data-i18n="split_cand_btn">Consulter les offres</span></a>
         </div>
     </div>
 </section>
 
 <!-- ================= LOGO MARQUEE (REFERENCES) ================= -->
 <section class="marquee-section reveal" id="references">
-    <div class="marquee-title">Ils nous accordent leur confiance au quotidien</div>
+    <div class="marquee-title" data-i18n="ref_title">Ils nous accordent leur confiance au quotidien</div>
     <div class="marquee-track">
         <div class="marquee-item"><img loading="lazy" src="image/BANK-AL-MAGHRIB.png.png" alt="Bank Al-Maghrib"></div>
         <div class="marquee-item"><img loading="lazy" src="image/CNSS-png.png" alt="CNSS"></div>
@@ -368,104 +398,67 @@
     <div class="container">
         <div class="simulator-box">
             <div class="sim-info">
-                <span class="badge-crit" style="background: rgba(46, 125, 50, 0.3); color: #4ade80;">ESPACE ENTREPRISES</span>
-                <h2>Simulateur de délégation RH</h2>
-                <p>Estimez immédiatement la mise à disposition de vos équipes temporaires selon votre secteur et le volume souhaité.</p>
+                <span class="badge-crit" style="background: rgba(46, 125, 50, 0.3); color: #4ade80;" data-i18n="sim_badge">ESPACE ENTREPRISES</span>
+                <h2 data-i18n="sim_title">Simulateur de délégation RH</h2>
+                <p data-i18n="sim_desc">Estimez immédiatement la mise à disposition de vos équipes temporaires selon votre secteur et le volume souhaité.</p>
                 
                 <div class="sim-controls">
                     <div class="sim-field">
-                        <label>Secteur d'activité :</label>
+                        <label data-i18n="sim_lbl1">Secteur d'activité :</label>
                         <select id="simSector">
-                            <option value="Industrie & Production">Industrie & Production</option>
-                            <option value="Logistique & Transport">Logistique & Transport</option>
-                            <option value="BTP & Construction">BTP & Construction</option>
-                            <option value="Tertiaire & Administratif">Tertiaire & Administratif</option>
-                            <option value="Santé & Hygiène">Santé & Hygiène</option>
+                            <option value="Industrie & Production" data-i18n="sec_1">Industrie & Production</option>
+                            <option value="Logistique & Transport" data-i18n="sec_2">Logistique & Transport</option>
+                            <option value="BTP & Construction" data-i18n="sec_3">BTP & Construction</option>
+                            <option value="Tertiaire & Administratif" data-i18n="sec_4">Tertiaire & Administratif</option>
+                            <option value="Santé & Hygiène" data-i18n="sec_5">Santé & Hygiène</option>
                         </select>
                     </div>
 
                     <div class="sim-field">
-                        <label>Nombre de profils recherchés :</label>
+                        <label data-i18n="sim_lbl2">Nombre de profils recherchés :</label>
                         <input type="number" id="simCount" min="1" max="100" value="3">
                     </div>
                 </div>
             </div>
 
             <div class="sim-summary">
-                <span>Délégation garantie sous</span>
+                <span data-i18n="sim_guar">Délégation garantie sous</span>
                 <strong>24h à 48h</strong>
                 <a href="#" id="simWhatsAppBtn" target="_blank" rel="noopener noreferrer" class="btn" style="background: #25d366; width: 100%;">
-                    <i class="fa-brands fa-whatsapp"></i> Demander cette équipe
+                    <i class="fa-brands fa-whatsapp"></i> <span data-i18n="sim_btn">Demander cette équipe</span>
                 </a>
             </div>
         </div>
     </div>
 </section>
 
-<section class="sectors reveal" id="sectors">
-    <div class="section-title">
-        <span>CHAMPS D'EXPERTISE</span>
-        <h2>Nos Secteurs d'Intervention</h2>
-        <p>Cliquez sur un secteur pour découvrir nos solutions sur-mesure et demander une délégation immédiate.</p>
-    </div>
-
-    <div class="container sectors-grid">
-        <div class="sector-card" data-title="Industrie & Production" data-desc="Mise à disposition de techniciens, opérateurs de production, agents de maintenance et caristes qualifiés pour vos lignes de fabrication et usines." data-wa="Bonjour PRO C2S, je souhaite demander une équipe dans le secteur: Industrie & Production">
-            <i class="fa-solid fa-industry"></i> <span>Industrie</span>
-        </div>
-        <div class="sector-card" data-title="BTP & Construction" data-desc="Délégation de main-d'œuvre qualifiée et manœuvres pour les chantiers de construction, VRD, électricité et gros œuvre." data-wa="Bonjour PRO C2S, je souhaite demander une équipe dans le secteur: BTP & Construction">
-            <i class="fa-solid fa-trowel-bricks"></i> <span>BTP & Construction</span>
-        </div>
-        <div class="sector-card" data-title="Logistique & Transport" data-desc="Fourniture de préparateurs de commandes, magasiniers, chauffeurs et gestionnaires de flux pour vos entrepôts et plateformes." data-wa="Bonjour PRO C2S, je souhaite demander une équipe dans le secteur: Logistique & Transport">
-            <i class="fa-solid fa-truck-ramp-box"></i> <span>Logistique</span>
-        </div>
-        <div class="sector-card" data-title="Tertiaire & Administratif" data-desc="Intérim et recrutement de profils administratifs, assistants, secrétaires et chargés de clientèle pour vos bureaux." data-wa="Bonjour PRO C2S, je souhaite demander une équipe dans le secteur: Tertiaire & Administratif">
-            <i class="fa-solid fa-building"></i> <span>Tertiaire</span>
-        </div>
-        <div class="sector-card" data-title="Informatique & Systèmes IT" data-desc="Délégation d'experts informatiques, techniciens support, développeurs et administrateurs réseaux pour vos projets numériques." data-wa="Bonjour PRO C2S, je souhaite demander une équipe dans le secteur: Informatique & Systèmes IT">
-            <i class="fa-solid fa-laptop-code"></i> <span>Informatique</span>
-        </div>
-        <div class="sector-card" data-title="Offshoring / Centres d'appel" data-desc="Délégation de téléconseillers bilingues, support technique et agents back-office pour vos centres de relation client." data-wa="Bonjour PRO C2S, je souhaite demander une équipe dans le secteur: Offshoring / Centres d'appel">
-            <i class="fa-solid fa-headset"></i> <span>Offshoring / Centres d'appel</span>
-        </div>
-        <div class="sector-card" data-title="Santé & Médical" data-desc="Personnel soignant de soutien, agents de brancardage et profils d'assistance médicale pour les cliniques et hôpitaux." data-wa="Bonjour PRO C2S, je souhaite demander une équipe dans le secteur: Santé & Médical">
-            <i class="fa-solid fa-heart-pulse"></i> <span>Santé & Médical</span>
-        </div>
-        <div class="sector-card" data-title="Hygiène & Nettoyage Pro" data-desc="Équipes spécialisées en propreté professionnelle, entretien des locaux industriels, tertiaires et sanitaires." data-wa="Bonjour PRO C2S, je souhaite demander une équipe dans le secteur: Hygiène & Nettoyage Pro">
-            <i class="fa-solid fa-broom"></i> <span>Hygiène & Nettoyage Pro</span>
-        </div>
-        <div class="sector-card" data-title="Animation Sportive" data-desc="Mise à disposition de moniteurs, coachs et animateurs sportifs qualifiés pour vos établissements, clubs et événements." data-wa="Bonjour PRO C2S, je souhaite demander une équipe dans le secteur: Animation Sportive">
-            <i class="fa-solid fa-dumbbell"></i> <span>Animation Sportive</span>
-        </div>
-    </div>
-</section>
-
+<!-- À propos & Stats -->
 <section class="services reveal" id="apropos" style="background: #e8f5e9; padding: 90px 0;">
     <div class="section-title">
-        <span>NOTRE HISTOIRE & VALEURS</span>
-        <h2>À Propos de PRO C2S</h2>
-        <p>Créée en 2017 à Rabat, PRO C2S s'engage au quotidien pour offrir aux entreprises et aux talents la flexibilité et la sécurité juridique qu'ils méritent.</p>
+        <span data-i18n="about_span">NOTRE HISTOIRE & VALEURS</span>
+        <h2 data-i18n="about_title">À Propos de PRO C2S</h2>
+        <p data-i18n="about_desc">Créée en 2017 à Rabat, PRO C2S s'engage au quotidien pour offrir aux entreprises et aux talents la flexibilité et la sécurité juridique qu'ils méritent.</p>
     </div>
     <div class="container services-grid">
         <div class="card">
             <div class="card-icon"><i class="fa-solid fa-handshake"></i></div>
-            <h3>Proximité & Écoute</h3>
-            <p>Un interlocuteur RH dédié qui comprend vos exigences métier et s'adapte à vos urgences sur le terrain.</p>
+            <h3 data-i18n="ab1_t">Proximité & Écoute</h3>
+            <p data-i18n="ab1_d">Un interlocuteur RH dédié qui comprend vos exigences métier et s'adapte à vos urgences sur le terrain.</p>
         </div>
         <div class="card">
             <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
-            <h3>Conformité Rigoureuse</h3>
-            <p>Respect strict de la législation marocaine du travail, traçabilité totale et transparence contractuelle.</p>
+            <h3 data-i18n="ab2_t">Conformité Rigoureuse</h3>
+            <p data-i18n="ab2_d">Respect strict de la législation marocaine du travail, traçabilité totale et transparence contractuelle.</p>
         </div>
         <div class="card">
             <div class="card-icon"><i class="fa-solid fa-gauge-high"></i></div>
-            <h3>Agilité Opérationnelle</h3>
-            <p>Capacité à déployer des collaborateurs qualifiés en quelques heures pour répondre à vos surcroîts d'activité.</p>
+            <h3 data-i18n="ab3_t">Agilité Opérationnelle</h3>
+            <p data-i18n="ab3_d">Capacité à déployer des collaborateurs qualifiés en quelques heures pour répondre à vos surcroîts d'activité.</p>
         </div>
         <div class="card">
             <div class="card-icon"><i class="fa-solid fa-user-gear"></i></div>
-            <h3>Suivi & Intégration</h3>
-            <p>Accompagnement continu de chaque intérimaire pour garantir une productivité immédiate sur vos sites.</p>
+            <h3 data-i18n="ab4_t">Suivi & Intégration</h3>
+            <p data-i18n="ab4_d">Accompagnement continu de chaque intérimaire pour garantir une productivité immédiate sur vos sites.</p>
         </div>
     </div>
 </section>
@@ -474,389 +467,73 @@
     <div class="container stats-grid">
         <div class="stat-box">
             <h2 class="counter" data-target="9" data-prefix="+" data-suffix="">0</h2>
-            <p>Années d'expérience</p>
+            <p data-i18n="stat_1">Années d'expérience</p>
         </div>
         <div class="stat-box">
             <h2 class="counter" data-target="30" data-prefix="+" data-suffix="">0</h2>
-            <p>Entreprises partenaires</p>
+            <p data-i18n="stat_2">Entreprises partenaires</p>
         </div>
         <div class="stat-box">
             <h2 class="counter" data-target="200" data-prefix="+" data-suffix="">0</h2>
-            <p>Intérimaires placés / an</p>
+            <p data-i18n="stat_3">Intérimaires placés / an</p>
         </div>
         <div class="stat-box">
             <h2 class="counter" data-target="98" data-suffix="%">0</h2>
-            <p>Taux de satisfaction</p>
+            <p data-i18n="stat_4">Taux de satisfaction</p>
         </div>
     </div>
 </section>
 
-<section class="job-section reveal" id="carrieres">
-    <div class="section-title">
-        <span>OPPORTUNITÉS DE CARRIÈRE</span>
-        <h2>Nos Dernières Missions d'Intérim</h2>
-        <p>Filtrez par pôle de compétences ou recherchez directement un poste.</p>
-    </div>
-
-    <!-- Barre de Recherche & Filtres -->
-    <div class="job-filters-wrapper" style="flex-direction: column; align-items: center;">
-        <div class="job-search-box" style="width: 100%; max-width: 450px; margin-bottom: 18px;">
-            <input type="text" id="jobSearchInput" placeholder="🔍 Rechercher un poste..." style="width: 100%; padding: 13px 20px; border-radius: 40px; border: 1.5px solid var(--border-color); outline: none; font-size: 14.5px; background: #ffffff;">
-        </div>
-
-        <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
-            <button class="filter-btn active" data-filter="all"><i class="fa-solid fa-layer-group"></i> Toutes les offres</button>
-            <button class="filter-btn" data-filter="transport"><i class="fa-solid fa-van-shuttle"></i> Transport & Logistique</button>
-            <button class="filter-btn" data-filter="admin"><i class="fa-solid fa-briefcase"></i> Administration & IT</button>
-            <button class="filter-btn" data-filter="sante"><i class="fa-solid fa-heart-pulse"></i> Santé & Sport</button>
-        </div>
-    </div>
-
-    <div class="container job-grid">
-        
-        <!-- Offre 1: Assistant Administratif -->
-        <div class="job-card" data-category="admin" data-title="Assistant (e) administratif (ve)" data-type="Intérim" data-badge="interim" data-sector="Administration & Gestion RH" data-location="Maroc Entier (Toutes les régions)" data-desc="Gestion des courriers, accueil téléphonique, tenue des registres du personnel, préparation des contrats et support administratif." data-req="Bac+2 minimum en Gestion ou Bureautique." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Assistant(e) Administratif(ve)">
-            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Récent</span></div>
-            <div class="job-illustration-box">
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-            </div>
-            <h3>Assistant (e) administratif (ve)</h3>
-            <p class="job-sect"><i class="fa-solid fa-building"></i> Administration & Gestion RH</p>
-            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> Maroc Entier</span><span><i class="fa-solid fa-graduation-cap"></i> Bac+2 en Gestion</span></div>
-            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
-        </div>
-
-        <!-- Offre 2: Chauffeur Professionnel -->
-        <div class="job-card" data-category="transport" data-title="Chauffeur Professionnel" data-type="Intérim" data-badge="interim" data-sector="Transport & Logistique" data-location="Maroc Entier (Toutes les régions)" data-desc="Transport de personnel et de marchandises, conduite sécurisée de véhicules légers et autocars." data-req="Permis B, C ou D en cours de validité." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Chauffeur Professionnel">
-            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Urgent</span></div>
-            <div class="job-illustration-box">
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-            </div>
-            <h3>Chauffeur Professionnel</h3>
-            <p class="job-sect"><i class="fa-solid fa-van-shuttle"></i> Transport & Logistique</p>
-            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> Maroc Entier</span><span><i class="fa-solid fa-id-card"></i> Permis B / C / D</span></div>
-            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
-        </div>
-
-        <!-- Offre 3: Maître Nageur Sauveteur (MNS) -->
-        <div class="job-card" data-category="sante" data-title="Maître Nageur Sauveteur (MNS)" data-type="Intérim" data-badge="interim" data-sector="Sport, Loisirs & Tourisme" data-location="Maroc Entier (Toutes les régions)" data-desc="Surveillance des bassins et des espaces aquatiques, prévention des risques de noyade, sauvetage et application stricte des consignes de sécurité." data-req="Diplôme de Maître Nageur Sauveteur (BNSSA ou équivalent) et excellente condition physique." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Maître Nageur Sauveteur (MNS)">
-            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Urgent</span></div>
-            <div class="job-illustration-box">
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"></path><path d="M2 16h20"></path><path d="M2 8h20"></path><path d="M12 2v6"></path></svg>
-            </div>
-            <h3>Maître Nageur Sauveteur (MNS)</h3>
-            <p class="job-sect"><i class="fa-solid fa-person-swimming"></i> Sport, Loisirs & Tourisme</p>
-            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> Maroc Entier</span><span><i class="fa-solid fa-medal"></i> BNSSA / Certifié</span></div>
-            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
-        </div>
-
-        <!-- Offre 4: Agent de Brancardage -->
-        <div class="job-card" data-category="sante" data-title="Agent de Brancardage" data-type="Intérim" data-badge="interim" data-sector="Milieu Hospitalier & Médical" data-location="Maroc Entier (Toutes les régions)" data-desc="Prise en charge et transfert sécurisé des patients entre les services hospitaliers selon des protocoles d'hygiène stricts." data-req="Excellente condition physique et sens de l'écoute." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Agent de brancardage">
-            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Urgent</span></div>
-            <div class="job-illustration-box">
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="2" ry="2"></rect><line x1="12" y1="11" x2="12" y2="13"></line><line x1="11" y1="12" x2="13" y2="12"></line></svg>
-            </div>
-            <h3>Agent de brancardage</h3>
-            <p class="job-sect"><i class="fa-solid fa-heart-pulse"></i> Milieu Hospitalier & Médical</p>
-            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> Maroc Entier</span><span><i class="fa-solid fa-hands-holding-child"></i> Rigueur & empathie</span></div>
-            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
-        </div>
-
-        <!-- Offre 5: Support applicatif -->
-        <div class="job-card" data-category="admin" data-title="Support applicatif" data-type="Intérim" data-badge="interim" data-sector="Informatique & Systèmes IT" data-location="Maroc Entier (Toutes les régions)" data-desc="Assistance technique aux utilisateurs, qualification des incidents informatiques niveau 1 & 2 et ticketing." data-req="Bac+2 ou Bac+3 en Informatique / Réseaux." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Support applicatif">
-            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Nouveau</span></div>
-            <div class="job-illustration-box">
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-            </div>
-            <h3>Support applicatif</h3>
-            <p class="job-sect"><i class="fa-solid fa-code"></i> Informatique & Systèmes IT</p>
-            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> Maroc Entier</span><span><i class="fa-solid fa-laptop-code"></i> Bac+2 / Bac+3 Info</span></div>
-            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
-        </div>
-
-        <!-- Offre 6: Agent d'accueil -->
-        <div class="job-card" data-category="admin" data-title="Agent D'accueil" data-type="Intérim" data-badge="interim" data-sector="Accueil & Relations Entreprise" data-location="Maroc Entier (Toutes les régions)" data-desc="Accueil physique et téléphonique des visiteurs, distribution des badges d'accès et orientation." data-req="Excellente élocution et maîtrise du français." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Agent d'accueil">
-            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Récent</span></div>
-            <div class="job-illustration-box">
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            </div>
-            <h3>Agent D'accueil</h3>
-            <p class="job-sect"><i class="fa-solid fa-handshake"></i> Accueil & Relations Entreprise</p>
-            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> Maroc Entier</span><span><i class="fa-solid fa-comments"></i> Très bon français</span></div>
-            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
-        </div>
-
-        <!-- Offre 7: Moniteur de Sport -->
-        <div class="job-card" data-category="sante" data-title="Moniteur de Sport" data-type="Intérim" data-badge="interim" data-sector="Coaching, Loisirs & Établissements" data-location="Maroc Entier (Toutes les régions)" data-desc="Encadrement et animation de séances sportives, suivi personnalisé et ateliers de remise en forme." data-req="Diplôme d'éducateur ou CQP Sport." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Moniteur de Sport">
-            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Récent</span></div>
-            <div class="job-illustration-box">
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5h11M6.5 17.5h11M4 12h16"></path><circle cx="4" cy="12" r="2"></circle><circle cx="20" cy="12" r="2"></circle></svg>
-            </div>
-            <h3>Moniteur de Sport</h3>
-            <p class="job-sect"><i class="fa-solid fa-dumbbell"></i> Coaching, Loisirs & Établissements</p>
-            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> Maroc Entier</span><span><i class="fa-solid fa-medal"></i> Diplôme Sport</span></div>
-            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
-        </div>
-
-        <!-- Offre 8: Chargé(e) de la Paie & Administration -->
-        <div class="job-card" data-category="admin" data-title="Chargé(e) de la Paie & Administration" data-type="Intérim" data-badge="interim" data-sector="Gestion Sociale & Paie" data-location="Maroc Entier (Toutes les régions)" data-desc="Établissement des bulletins de paie, déclarations CNSS, gestion des congés et suivi des dossiers administratifs du personnel." data-req="Bac+3 en Gestion, Finance ou RH avec expérience exigée." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Chargé(e) de la Paie & Administration">
-            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Urgent</span></div>
-            <div class="job-illustration-box">
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
-            </div>
-            <h3>Chargé(e) de la Paie & Administration</h3>
-            <p class="job-sect"><i class="fa-solid fa-file-invoice-dollar"></i> Gestion Sociale & Paie</p>
-            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> Maroc Entier</span><span><i class="fa-solid fa-graduation-cap"></i> Bac+3 Gestion / Paie</span></div>
-            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
-        </div>
-
-        <!-- Offre 9: Responsable des Ressources Humaines (RRH) -->
-        <div class="job-card" data-category="admin" data-title="Responsable des Ressources Humaines (RRH)" data-type="Intérim" data-badge="interim" data-sector="Management & Stratégie RH" data-location="Maroc Entier (Toutes les régions)" data-desc="Pilotage de la stratégie RH, recrutement, gestion des relations sociales, formation et accompagnement des managers." data-req="Bac+5 en Ressources Humaines ou Management avec une solide expérience." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Responsable des Ressources Humaines (RRH)">
-            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Nouveau</span></div>
-            <div class="job-illustration-box">
-                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-            </div>
-            <h3>Responsable des Ressources Humaines</h3>
-            <p class="job-sect"><i class="fa-solid fa-users-gear"></i> Management & Stratégie RH</p>
-            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> Maroc Entier</span><span><i class="fa-solid fa-user-tie"></i> Bac+5 / Expérience</span></div>
-            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
-        </div>
-
-    </div>
-</section>
-
-<section class="testimonials-section reveal" id="temoignages">
-    <div class="section-title">
-        <span>TÉMOIGNAGES CLIENTS</span>
-        <h2>Ce que disent nos partenaires</h2>
-        <p>La satisfaction de nos entreprises clientes et de nos candidats est notre plus belle réussite.</p>
-    </div>
-
-    <div class="container testimonials-grid">
-        <div class="testimonial-card">
-            <div class="t-rating">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-            </div>
-            <p>"PRO C2S nous a sauvé la mise lors d'un pic d'activité inattendu. Des profils qualifiés et opérationnels délégués en moins de 48h. Un vrai partenaire de confiance !"</p>
-            <div class="t-author">
-                <strong>Rachid El Amrani</strong>
-                <span>Responsable RH, Secteur Industriel</span>
-            </div>
-        </div>
-
-        <div class="testimonial-card">
-            <div class="t-rating">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-            </div>
-            <p>"Grâce à PRO C2S, j'ai trouvé une mission d'intérim rapidement. Le suivi est professionnel et les paiements sont toujours effectués dans les délais. Je recommande vivement !"</p>
-            <div class="t-author">
-                <strong>Karima Bennani</strong>
-                <span>Intérimaire en Logistique</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="services reveal" id="actualites" style="background: #ffffff; padding: 95px 0;">
-    <div class="section-title">
-        <span>BLOG & CONSEILS</span>
-        <h2>Actualités & Expertise RH</h2>
-        <p>Restez informés des dernières actualités juridiques, du droit du travail et des conseils pour réussir vos recrutements au Maroc.</p>
-    </div>
-
-    <div class="container services-grid">
-        <div class="card article-card" 
-             data-title="Le Contrat de Travail Temporaire (Intérim) au Maroc" 
-             data-category="Droit du travail"
-             data-content="Le travail temporaire ou l'intérim est devenu une solution incontournable pour les entreprises marocaines qui font face à des pics d'activité ou à des remplacements urgents. Mais que dit exactement le Code du Travail marocain à ce sujet ? Une entreprise ne peut recourir à l'intérim que dans des cas précis : remplacement d'un salarié absent, surcroît temporaire d'activité, ou travaux urgents. PRO C2S garantit une conformité légale totale et une gestion simplifiée de la paie et des contrats.">
-            <div>
-                <span class="job-badge interim" style="margin-bottom: 15px; display: inline-block;">Droit du travail</span>
-                <h3 style="font-size: 18px; margin-bottom: 12px;">Le Contrat de Travail Temporaire (Intérim) au Maroc</h3>
-                <p style="font-size: 14px; color: var(--gray); line-height: 1.6; margin-bottom: 20px;">Tout savoir sur les cas de recours légaux, la durée maximale et les avantages de l'intérim selon le Code du Travail marocain.</p>
-            </div>
-            <button class="btn-job btn-read-article" style="margin-top: auto; border:none; width:100%; cursor:pointer;">
-                Lire l'article complet <i class="fa-solid fa-arrow-right"></i>
-            </button>
-        </div>
-
-        <div class="card article-card" 
-             data-title="Comment gérer un pic d'activité urgent en entreprise ?" 
-             data-category="Recrutement"
-             data-content="Face à une augmentation soudaine de la demande ou à des commandes exceptionnelles, les entreprises marocaines doivent réagir vite pour ne pas perdre de parts de marché. La délégation de personnel intérimaire en 24h/48h s'avère être la solution idéale. Elle permet d'absorber la charge de travail sans alourdir la masse salariale fixe à long terme, tout en garantissant une conformité totale avec le Code du Travail marocain. PRO C2S prend en charge tout le sourcing et la gestion administrative pour vous laisser vous concentrer sur votre cœur de métier.">
-            <div>
-                <span class="job-badge interim" style="margin-bottom: 15px; display: inline-block;">Recrutement</span>
-                <h3 style="font-size: 18px; margin-bottom: 12px;">Comment gérer un pic d'activité urgent en entreprise ?</h3>
-                <p style="font-size: 14px; color: var(--gray); line-height: 1.6; margin-bottom: 20px;">Découvrez comment la délégation de personnel qualifié en 24h/48h permet d'assurer la continuité de vos opérations sans stress.</p>
-            </div>
-            <button class="btn-job btn-read-article" style="margin-top: auto; border:none; width:100%; cursor:pointer;">
-                Lire l'article complet <i class="fa-solid fa-arrow-right"></i>
-            </button>
-        </div>
-
-        <div class="card article-card" 
-             data-title="Réussir sa mission d'intérim : Guide pour les candidats" 
-             data-category="Conseils Carrière"
-             data-content="Décrocher une mission d'intérim est une excellente opportunité pour développer ses compétences et élargir son réseau professionnel. Pour réussir dès les premiers jours, il est primordial d'adopter une attitude proactive, d'être ponctuel et de faire preuve d'écoute active. S'intégrer rapidement dans une nouvelle équipe d'entreprise demande de la souplesse et du sérieux. De nombreuses missions temporaires se transforment souvent en contrats durables pour les profils les plus investis et rigoureux.">
-            <div>
-                <span class="job-badge interim" style="margin-bottom: 15px; display: inline-block;">Conseils Carrière</span>
-                <h3 style="font-size: 18px; margin-bottom: 12px;">Réussir sa mission d'intérim : Guide pour les candidats</h3>
-                <p style="font-size: 14px; color: var(--gray); line-height: 1.6; margin-bottom: 20px;">Les bonnes pratiques pour s'intégrer rapidement dans une nouvelle équipe d'entreprise et transformer l'essai en opportunité.</p>
-            </div>
-            <button class="btn-job btn-read-article" style="margin-top: auto; border:none; width:100%; cursor:pointer;">
-                Lire l'article complet <i class="fa-solid fa-arrow-right"></i>
-            </button>
-        </div>
-
-        <div class="card article-card" 
-             data-title="La gestion administrative et la paie externalisée" 
-             data-category="Conformité RH"
-             data-content="La gestion de la paie, les déclarations CNSS, la rédaction des contrats et le suivi des congés représentent une charge administrative très lourde pour les entreprises. Externaliser ces processus auprès d'un partenaire spécialisé comme PRO C2S garantit une conformité juridique irréprochable avec les lois en vigueur au Maroc. Cela permet non seulement de réduire les risques d'erreurs et de litiges, mais aussi d'optimiser les coûts internes de gestion des ressources humaines.">
-            <div>
-                <span class="job-badge interim" style="margin-bottom: 15px; display: inline-block;">Conformité RH</span>
-                <h3 style="font-size: 18px; margin-bottom: 12px;">La gestion administrative et la paie externalisée</h3>
-                <p style="font-size: 14px; color: var(--gray); line-height: 1.6; margin-bottom: 20px;">Pourquoi de plus en plus d'entreprises confient la complexité des contrats et des déclarations sociales aux experts.</p>
-            </div>
-            <button class="btn-job btn-read-article" style="margin-top: auto; border:none; width:100%; cursor:pointer;">
-                Lire l'article complet <i class="fa-solid fa-arrow-right"></i>
-            </button>
-        </div>
-    </div>
-</section>
-
-<div class="job-modal-overlay" id="articleModal">
-    <div class="job-modal-content">
-        <button class="job-modal-close" id="closeArticleModalBtn" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
-        <span class="modal-header-badge job-badge interim" id="articleModalBadge">Catégorie</span>
-        <h3 class="job-modal-title" id="articleModalTitle" style="font-size: 22px; margin-bottom: 15px;">Titre de l'article</h3>
-        
-        <div class="modal-description" style="margin-top: 15px;">
-            <p id="articleModalDesc" style="font-size: 15px; line-height: 1.8; color: var(--gray); margin-bottom: 25px;"></p>
-        </div>
-
-        <a href="#" id="articleModalWaBtn" target="_blank" rel="noopener noreferrer" class="btn" style="background: #25d366; width: 100%; justify-content: center; border-radius: 12px; padding: 14px;">
-            <i class="fa-brands fa-whatsapp"></i> Discuter de ce sujet sur WhatsApp
-        </a>
-    </div>
-</div>
-
+<!-- Section FAQ -->
 <section class="faq-section reveal" id="faq">
     <div class="section-title">
-        <span>QUESTIONS FRÉQUENTES</span>
-        <h2>Tout ce que vous devez savoir</h2>
-        <p>Des réponses claires pour les entreprises et les candidats sur le fonctionnement de PRO C2S.</p>
+        <span data-i18n="faq_span">QUESTIONS FRÉQUENTES</span>
+        <h2 data-i18n="faq_title">Tout ce que vous devez savoir</h2>
+        <p data-i18n="faq_desc">Des réponses claires pour les entreprises et les candidats sur le fonctionnement de PRO C2S.</p>
     </div>
 
     <div class="container faq-container">
         <div class="faq-item">
             <button class="faq-question">
-                <span>Quels sont les délais pour déléguer du personnel intérimaire ?</span>
+                <span data-i18n="fq1_q">Quels sont les délais pour déléguer du personnel intérimaire ?</span>
                 <i class="fa-solid fa-chevron-down"></i>
             </button>
             <div class="faq-answer">
-                <p>Grâce à notre vivier actif et réactif dans tout le Maroc, nous sommes capables de mettre à disposition des profils qualifiés sous un délai moyen de 24h à 48h selon la spécificité des postes.</p>
+                <p data-i18n="fq1_a">Grâce à notre vivier actif et réactif dans tout le Maroc, nous sommes capables de mettre à disposition des profils qualifiés sous un délai moyen de 24h à 48h selon la spécificité des postes.</p>
             </div>
         </div>
         <div class="faq-item">
             <button class="faq-question">
-                <span>Quelle est la conformité juridique des contrats au Maroc ?</span>
+                <span data-i18n="fq2_q">Quelle est la conformité juridique des contrats au Maroc ?</span>
                 <i class="fa-solid fa-chevron-down"></i>
             </button>
             <div class="faq-answer">
-                <p>PRO C2S applique rigoureusement le Code du Travail marocain. Nous prenons en charge la totalité des obligations légales : déclarations CNSS, contrats de mission, assurances AT et gestion de la paie sans aucun risque pour l'entreprise utilisatrice.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question">
-                <span>Comment un candidat peut-il postuler à une mission ?</span>
-                <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-                <p>C'est direct et instantané : il vous suffit de cliquer sur l'offre de votre choix et de transmettre votre CV par WhatsApp à notre équipe RH dédiée. Votre profil sera traité sous 24h.</p>
-            </div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-question">
-                <span>Intervenez-vous en dehors de l'axe Casablanca-Rabat ?</span>
-                <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-answer">
-                <p>Oui, PRO C2S déploie des équipes opérationnelles sur l'ensemble du territoire national : Tanger, Kénitra, Fès, Oujda, Marrakech, Agadir et les régions du Sud.</p>
+                <p data-i18n="fq2_a">PRO C2S applique rigoureusement le Code du Travail marocain. Nous prenons en charge la totalité des obligations légales : déclarations CNSS, contrats de mission, assurances AT et gestion de la paie sans aucun risque pour l'entreprise utilisatrice.</p>
             </div>
         </div>
     </div>
 </section>
 
-<div class="job-modal-overlay" id="jobModal">
-    <div class="job-modal-content">
-        <button class="job-modal-close" id="closeModalBtn" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
-        <span class="modal-header-badge" id="modalBadge">Intérim</span>
-        <h3 class="job-modal-title" id="modalTitle">Titre de l'offre</h3>
-        <p class="job-modal-sector" id="modalSector"><i class="fa-solid fa-briefcase"></i> Secteur</p>
-
-        <div class="modal-details-grid">
-            <div><i class="fa-solid fa-location-dot"></i> <strong>Lieu:</strong> <span id="modalLocation">Maroc</span></div>
-            <div><i class="fa-solid fa-graduation-cap"></i> <strong>Profil:</strong> <span id="modalReq">Diplôme</span></div>
-        </div>
-
-        <div class="modal-description">
-            <h4>Description du poste & Missions :</h4>
-            <p id="modalDesc"></p>
-        </div>
-
-        <a href="#" id="modalApplyBtn" target="_blank" rel="noopener noreferrer" class="btn-modal-apply">
-            <i class="fa-brands fa-whatsapp"></i> Postuler via WhatsApp
-        </a>
-    </div>
-</div>
-
-<div class="job-modal-overlay" id="privacyModal">
-    <div class="job-modal-content">
-        <button class="job-modal-close" id="closePrivacyBtn" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
-        <h3 class="job-modal-title">Politique de Confidentialité & Cookies</h3>
-        <div class="modal-description" style="margin-top: 15px;">
-            <p>Chez <strong>PRO C2S</strong>, nous accordons une importance majeure à la protection de vos données personnelles conformément à la législation marocaine en vigueur.</p>
-            <h4 style="margin-top: 15px;">1. Utilisation des cookies</h4>
-            <p>Les cookies sont de petits fichiers textes stockés sur votre navigateur pour améliorer votre navigation, mesurer l'audience de notre site web et sécuriser nos services de recrutement.</p>
-            <h4 style="margin-top: 15px;">2. Données collectées</h4>
-            <p>Les informations transmises via nos formulaires de contact ou nos liens WhatsApp (Noms, e-mails, téléphones, CV) sont strictement réservées à notre département RH pour le traitement de vos demandes professionnelles.</p>
-            <h4 style="margin-top: 15px;">3. Finalité et durée de conservation</h4>
-            <p>Vos données sont utilisées uniquement pour répondre à votre demande, étudier votre candidature ou vous mettre en relation avec nos clients. Elles sont conservées le temps nécessaire à ces finalités, puis supprimées ou archivées conformément aux obligations légales.</p>
-            <h4 style="margin-top: 15px;">4. Services tiers</h4>
-            <p>Ce site fait appel à des services tiers : EmailJS (envoi du formulaire de contact), WhatsApp (échanges et envoi de CV), Google Maps et Google Fonts (affichage). Ces services peuvent déposer leurs propres cookies ou traiter votre adresse IP.</p>
-            <h4 style="margin-top: 15px;">5. Vos droits</h4>
-            <p>Conformément à la loi n° 09-08 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel, vous disposez d'un droit d'accès, de rectification et d'opposition. Pour l'exercer, écrivez-nous à <a href="mailto:procssentreprise@gmail.com">procssentreprise@gmail.com</a>. Vous pouvez également saisir la CNDP (<a href="https://www.cndp.ma" target="_blank" rel="noopener noreferrer">www.cndp.ma</a>).</p>
-        </div>
-    </div>
-</div>
-
 <section class="contact reveal" id="contact">
     <div class="container contact-container">
 
         <div class="contact-info">
-            <span class="badge-crit">CONTACT</span>
-            <h2>Parlons de votre projet</h2>
-            <p>Contactez-nous pour discuter de vos besoins et demander votre devis gratuit et personnalisé.</p>
+            <span class="badge-crit" data-i18n="contact_badge">CONTACT</span>
+            <h2 data-i18n="contact_title">Parlons de votre projet</h2>
+            <p data-i18n="contact_desc">Contactez-nous pour discuter de vos besoins et demander votre devis gratuit et personnalisé.</p>
 
             <div class="contact-items">
                 <div class="contact-item">
                     <i class="fa-solid fa-user"></i>
                     <div>
-                        <strong>Contact</strong>
+                        <strong data-i18n="c_contact">Contact</strong>
                         <span>YOUSSEF NAJI</span>
                     </div>
                 </div>
                 <div class="contact-item">
                     <i class="fa-solid fa-phone"></i>
                     <div>
-                        <strong>Téléphone</strong>
+                        <strong data-i18n="c_phone">Téléphone</strong>
                         <span><a href="tel:+212663449824" style="color: inherit;">06 63 44 98 24</a> / <a href="tel:+212520704830" style="color: inherit;">05 20 70 48 30</a></span>
                     </div>
                 </div>
@@ -870,40 +547,20 @@
                 <div class="contact-item">
                     <i class="fa-solid fa-location-dot"></i>
                     <div>
-                        <strong>Adresse</strong>
-                        <span>Imm. 69, 4ème Étage, Appt 04, Av. Patrice Lumumba, Hassan - Rabat</span>
+                        <strong data-i18n="c_addr">Adresse</strong>
+                        <span data-i18n="c_addr_val">Imm. 69, 4ème Étage, Appt 04, Av. Patrice Lumumba, Hassan - Rabat</span>
                     </div>
                 </div>
-            </div>
-
-            <div class="map-wrapper" style="margin-top: 25px; border-radius: 18px; overflow: hidden; border: 1px solid var(--border-color); height: 200px;">
-                <iframe title="Localisation de PRO C2S à Rabat" 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.382878401314!2d-6.835489724285816!3d34.02120087316937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76b8826543d23%3A0x892a0fefc2aef89a!2sAvenue%20Patrice%20Lumumba%2C%20Rabat!5e0!3m2!1sfr!2sma!4v1726570000000!5m2!1sfr!2sma" 
-                    width="100%" 
-                    height="100%" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
             </div>
         </div>
 
         <form class="contact-form" id="contact-form">
-            <input type="text" name="user_name" placeholder="Nom complet" aria-label="Nom complet" autocomplete="name" required>
-            <input type="email" name="user_email" placeholder="Adresse e-mail" aria-label="Adresse e-mail" autocomplete="email" required>
-            <input type="tel" name="user_phone" placeholder="Téléphone" aria-label="Téléphone" autocomplete="tel" required>
-            <textarea name="message" placeholder="Votre message" aria-label="Votre message" required></textarea>
+            <input type="text" name="user_name" placeholder="Nom complet" data-i18n-ph="ph_name" aria-label="Nom complet" autocomplete="name" required>
+            <input type="email" name="user_email" placeholder="Adresse e-mail" data-i18n-ph="ph_email" aria-label="Adresse e-mail" autocomplete="email" required>
+            <input type="tel" name="user_phone" placeholder="Téléphone" data-i18n-ph="ph_phone" aria-label="Téléphone" autocomplete="tel" required>
+            <textarea name="message" placeholder="Votre message" data-i18n-ph="ph_msg" aria-label="Votre message" required></textarea>
 
-            <p style="font-size: 12px; color: #64748b; line-height: 1.5; margin: 4px 0 10px;">En envoyant ce formulaire, vous acceptez que vos données soient utilisées pour répondre à votre demande. Voir notre <a href="#" id="openPrivacyForm" style="text-decoration: underline;">politique de confidentialité</a>.</p>
-
-            <button type="submit" class="btn btn-submit">Envoyer</button>
-
-            <div class="cv-notice">
-                <p><i class="fa-solid fa-briefcase"></i> Vous souhaitez postuler ou envoyer un CV ?</p>
-                <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20postuler%20et%20vous%20envoyer%20mon%20CV." target="_blank" rel="noopener noreferrer" class="btn-cv-whatsapp">
-                    <i class="fa-brands fa-whatsapp"></i> Envoyer mon CV via WhatsApp
-                </a>
-            </div>
+            <button type="submit" class="btn btn-submit" data-i18n="btn_submit">Envoyer</button>
         </form>
 
     </div>
@@ -913,28 +570,21 @@
     <div class="container footer-grid">
         <div class="footer-about">
             <h3>PRO C2S</h3>
-            <p>Société spécialisée en recrutement, intérim créée en 2017. Votre partenaire pour construire vos équipes de demain.</p>
+            <p data-i18n="f_about">Société spécialisée en recrutement, intérim créée en 2017. Votre partenaire pour construire vos équipes de demain.</p>
         </div>
         <div class="footer-links">
-            <h4>Navigation</h4>
-            <p><a href="#home">Accueil</a></p>
-            <p><a href="#services">Services</a></p>
-            <p><a href="#sectors">Secteurs</a></p>
-            <p><a href="#references">Références</a></p>
-            <p><a href="#actualites">Actualités</a></p>
-            <p><a href="#faq">FAQ</a></p>
-            <p><a href="#contact">Contact</a></p>
-            <p><a href="mentions-legales.html">Mentions légales</a></p>
+            <h4 data-i18n="f_nav">Navigation</h4>
+            <p><a href="#home" data-i18n="nav_home">Accueil</a></p>
+            <p><a href="#services" data-i18n="nav_about">Services</a></p>
+            <p><a href="#contact" data-i18n="nav_contact">Contact</a></p>
         </div>
         <div class="footer-contact">
-            <h4>Contact</h4>
-            <p><i class="fa-solid fa-location-dot"></i> Imm. 69, 4ème Étage, Hassan - Rabat</p>
-            <p><i class="fa-solid fa-phone"></i> <a href="tel:+212663449824">06 63 44 98 24</a> / <a href="tel:+212520704830">05 20 70 48 30</a></p>
-            <p><i class="fa-solid fa-envelope"></i> <a href="mailto:procssentreprise@gmail.com">procssentreprise@gmail.com</a></p>
+            <h4 data-i18n="f_contact">Contact</h4>
+            <p><i class="fa-solid fa-location-dot"></i> <span data-i18n="c_addr_val">Imm. 69, 4ème Étage, Hassan - Rabat</span></p>
         </div>
     </div>
-    <div class="copyright">
-        © 2026 PRO C2S - Tous droits réservés. | <a href="mentions-legales.html" style="color: #81c784; text-decoration: underline;">Mentions légales</a> | <a href="#" id="openPrivacyModal" style="color: #81c784; text-decoration: underline;">Politique de confidentialité</a>
+    <div class="copyright" data-i18n="copyright">
+        © 2026 PRO C2S - Tous droits réservés.
     </div>
 </footer>
 
@@ -942,12 +592,12 @@
     <div class="cookie-content">
         <i class="fa-solid fa-cookie-bite cookie-icon-pro"></i>
         <div class="cookie-text">
-            <h4>Gestion des Cookies & Confidentialité</h4>
-            <p>Nous utilisons des cookies pour améliorer votre expérience. En poursuivant, vous acceptez notre <a href="#" id="openPrivacyLink" style="color: #4ade80; text-decoration: underline;">politique de cookies</a>.</p>
+            <h4 data-i18n="cookie_title">Gestion des Cookies & Confidentialité</h4>
+            <p data-i18n="cookie_desc">Nous utilisons des cookies pour améliorer votre expérience.</p>
         </div>
     </div>
     <div class="cookie-actions">
-        <button id="acceptCookiesBtn" class="btn-cookie-accept">Tout accepter</button>
+        <button id="acceptCookiesBtn" class="btn-cookie-accept" data-i18n="cookie_btn">Tout accepter</button>
     </div>
 </div>
 
@@ -962,13 +612,235 @@
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="script.js"></script>
 <script>
-    (function () {
-        var link = document.getElementById('openPrivacyForm');
-        var opener = document.getElementById('openPrivacyModal');
-        if (link && opener) {
-            link.addEventListener('click', function (e) { e.preventDefault(); opener.click(); });
+    // Dictionnaire de traduction (Français et Anglais uniquement)
+    const translations = {
+        fr: {
+            nav_home: "Accueil",
+            nav_companies: "Entreprises",
+            nav_jobs: "Offres d'emploi",
+            nav_about: "À propos",
+            nav_refs: "Références",
+            nav_news: "Actualités",
+            nav_faq: "FAQ",
+            nav_contact: "Contact",
+            nav_cta: "Besoin de recruter",
+            hero_badge: "Partenaire Recrutement & Intérim",
+            hero_title: "Votre partenaire RH pour bâtir vos équipes de demain",
+            hero_desc: "Spécialiste du recrutement et du travail temporaire au Maroc depuis 2017. Nous apportons des réponses rapides, flexibles et conformes à tous vos défis RH.",
+            hero_btn1: "Vous recrutez ?",
+            hero_btn2: "Consulter les offres",
+            badge_react: "Réactivité",
+            badge_conf: "Conformité",
+            badge_nat: "Toutes régions",
+            badge_nat_val: "National",
+            float_cand: "Candidats satisfaits",
+            float_jobs: "Offres d'emploi",
+            float_missions: "Missions continues",
+            dom_span: "NOS DOMAINES D'EXPERTISE",
+            dom_title: "Nos Pôles de Services pour Entreprises",
+            dom_desc: "Découvrez nos solutions ciblées en Intérim, Informatique et Nettoyage.",
+            d1_title: "Intérim",
+            d1_desc: "Travail temporaire et délégation de personnel qualifié pour répondre à vos besoins urgents et pics d'activité.",
+            d2_title: "Informatique",
+            d2_desc: "Mise à disposition de profils informatiques : développeurs full-stack, ingénieurs réseaux, techniciens, digitalisation et gestion de projet.",
+            d3_title: "Nettoyage",
+            d3_desc: "Entretien professionnel des locaux, nettoyage industriel, désinfection et hygiène pour entreprises.",
+            more_btn: "En savoir plus",
+            proc_span: "COMMENT ÇA MARCHE",
+            proc_title: "Votre besoin RH en 4 étapes",
+            proc_desc: "Un parcours simple, de votre demande jusqu'au suivi de la mission.",
+            p1_t: "Votre besoin",
+            p1_d: "Vous nous décrivez le poste, le nombre de profils et la durée de la mission, par formulaire, téléphone ou WhatsApp.",
+            p2_t: "Sélection",
+            p2_d: "Nous identifions et présélectionnons les profils adaptés à votre activité dans notre vivier.",
+            p3_t: "Mise à disposition",
+            p3_d: "Les collaborateurs sont délégués sous 24 à 48h. Contrats de mission et déclarations CNSS sont pris en charge.",
+            p4_t: "Suivi",
+            p4_d: "Un interlocuteur dédié suit la mission et assure la gestion administrative et la paie.",
+            split_c_badge: "Entreprises",
+            split_c_title: "Besoins urgents ou pics d'activité ?",
+            split_c_desc: "Difficulté à recruter rapidement, complexité juridique ou surcroît temporaire : bénéficiez d'une délégation réactive.",
+            split_c_btn: "Estimer mon besoin RH",
+            split_cand_badge: "Candidats",
+            split_cand_title: "Trouvez votre prochaine mission",
+            split_cand_desc: "Intérim et missions dans l'industrie, la logistique, le tertiaire et les services dans tout le Maroc.",
+            split_cand_btn: "Consulter les offres",
+            ref_title: "Ils nous accordent leur confiance au quotidien",
+            sim_badge: "ESPACE ENTREPRISES",
+            sim_title: "Simulateur de délégation RH",
+            sim_desc: "Estimez immédiatement la mise à disposition de vos équipes temporaires selon votre secteur et le volume souhaité.",
+            sim_lbl1: "Secteur d'activité :",
+            sim_lbl2: "Nombre de profils recherchés :",
+            sim_guar: "Délégation garantie sous",
+            sim_btn: "Demander cette équipe",
+            about_span: "NOTRE HISTOIRE & VALEURS",
+            about_title: "À Propos de PRO C2S",
+            about_desc: "Créée en 2017 à Rabat, PRO C2S s'engage au quotidien pour offrir aux entreprises et aux talents la flexibilité et la sécurité juridique qu'ils méritent.",
+            ab1_t: "Proximité & Écoute",
+            ab1_d: "Un interlocuteur RH dédié qui comprend vos exigences métier et s'adapte à vos urgences sur le terrain.",
+            ab2_t: "Conformité Rigoureuse",
+            ab2_d: "Respect strict de la législation marocaine du travail, traçabilité totale et transparence contractuelle.",
+            ab3_t: "Agilité Opérationnelle",
+            ab3_d: "Capacité à déployer des collaborateurs qualifiés en quelques heures pour répondre à vos surcroîts d'activité.",
+            ab4_t: "Suivi & Intégration",
+            ab4_d: "Accompagnement continu de chaque intérimaire pour garantir une productivité immédiate sur vos sites.",
+            stat_1: "Années d'expérience",
+            stat_2: "Entreprises partenaires",
+            stat_3: "Intérimaires placés / an",
+            stat_4: "Taux de satisfaction",
+            faq_span: "QUESTIONS FRÉQUENTES",
+            faq_title: "Tout ce que vous devez savoir",
+            faq_desc: "Des réponses claires pour les entreprises et les candidats sur le fonctionnement de PRO C2S.",
+            fq1_q: "Quels sont les délais pour déléguer du personnel intérimaire ?",
+            fq1_a: "Grâce à notre vivier actif et réactif dans tout le Maroc, nous sommes capables de mettre à disposition des profils qualifiés sous un délai moyen de 24h à 48h selon la spécificité des postes.",
+            fq2_q: "Quelle est la conformité juridique des contrats au Maroc ?",
+            fq2_a: "PRO C2S applique rigoureusement le Code du Travail marocain. Nous prenons en charge la totalité des obligations légales : déclarations CNSS, contrats de mission, assurances AT et gestion de la paie sans aucun risque pour l'entreprise utilisatrice.",
+            contact_badge: "CONTACT",
+            contact_title: "Parlons de votre projet",
+            contact_desc: "Contactez-nous pour discuter de vos besoins et demander votre devis gratuit et personnalisé.",
+            c_contact: "Contact",
+            c_phone: "Téléphone",
+            c_addr: "Adresse",
+            c_addr_val: "Imm. 69, 4ème Étage, Appt 04, Av. Patrice Lumumba, Hassan - Rabat",
+            ph_name: "Nom complet",
+            ph_email: "Adresse e-mail",
+            ph_phone: "Téléphone",
+            ph_msg: "Votre message",
+            btn_submit: "Envoyer",
+            f_about: "Société spécialisée en recrutement, intérim créée en 2017. Votre partenaire pour construire vos équipes de demain.",
+            f_nav: "Navigation",
+            f_contact: "Contact",
+            copyright: "© 2026 PRO C2S - Tous droits réservés.",
+            cookie_title: "Gestion des Cookies & Confidentialité",
+            cookie_desc: "Nous utilisons des cookies pour améliorer votre expérience.",
+            cookie_btn: "Tout accepter"
+        },
+        en: {
+            nav_home: "Home",
+            nav_companies: "Companies",
+            nav_jobs: "Job Offers",
+            nav_about: "About Us",
+            nav_refs: "References",
+            nav_news: "News",
+            nav_faq: "FAQ",
+            nav_contact: "Contact",
+            nav_cta: "Need to hire",
+            hero_badge: "Recruitment & Temp Partner",
+            hero_title: "Your HR Partner to build tomorrow's teams",
+            hero_desc: "Specialist in recruitment and temporary work in Morocco since 2017. We provide fast, flexible and compliant solutions for all your HR challenges.",
+            hero_btn1: "Are you hiring?",
+            hero_btn2: "View offers",
+            badge_react: "Responsiveness",
+            badge_conf: "Compliance",
+            badge_nat: "All regions",
+            badge_nat_val: "National",
+            float_cand: "Satisfied candidates",
+            float_jobs: "Job offers",
+            float_missions: "Ongoing missions",
+            dom_span: "OUR AREAS OF EXPERTISE",
+            dom_title: "Our Corporate Services",
+            dom_desc: "Discover our targeted solutions in Temp Staffing, IT, and Cleaning.",
+            d1_title: "Temp Work",
+            d1_desc: "Temporary work and qualified staff delegation to meet your urgent needs and activity peaks.",
+            d2_title: "Information Technology",
+            d2_desc: "Provision of IT profiles: full-stack developers, network engineers, technicians, digitalization and project management.",
+            d3_title: "Cleaning",
+            d3_desc: "Professional premises maintenance, industrial cleaning, disinfection and hygiene for businesses.",
+            more_btn: "Learn more",
+            proc_span: "HOW IT WORKS",
+            proc_title: "Your HR Need in 4 Steps",
+            proc_desc: "A simple journey, from your request to mission tracking.",
+            p1_t: "Your Need",
+            p1_d: "Describe the position, number of profiles and mission duration via form, phone or WhatsApp.",
+            p2_t: "Selection",
+            p2_d: "We identify and pre-select profiles suited to your business from our talent pool.",
+            p3_t: "Deployment",
+            p3_d: "Staff are delegated within 24 to 48 hours. Mission contracts and social declarations are fully managed.",
+            p4_t: "Tracking",
+            p4_d: "A dedicated contact person monitors the mission and manages administration and payroll.",
+            split_c_badge: "Companies",
+            split_c_title: "Urgent needs or activity peaks?",
+            split_c_desc: "Difficulty hiring quickly, legal complexity, or temporary surges: benefit from a reactive delegation.",
+            split_c_btn: "Estimate my HR need",
+            split_cand_badge: "Candidates",
+            split_cand_title: "Find your next mission",
+            split_cand_desc: "Temp work and missions in industry, logistics, office support and services across Morocco.",
+            split_cand_btn: "View job offers",
+            ref_title: "They trust us every day",
+            sim_badge: "CORPORATE SPACE",
+            sim_title: "HR Delegation Simulator",
+            sim_desc: "Immediately estimate the provision of your temporary teams based on your sector and desired volume.",
+            sim_lbl1: "Activity sector:",
+            sim_lbl2: "Number of profiles requested:",
+            sim_guar: "Guaranteed delegation within",
+            sim_btn: "Request this team",
+            about_span: "OUR HISTORY & VALUES",
+            about_title: "About PRO C2S",
+            about_desc: "Founded in 2017 in Rabat, PRO C2S is committed daily to offering companies and talent the flexibility and legal security they deserve.",
+            ab1_t: "Proximity & Listening",
+            ab1_d: "A dedicated HR contact who understands your business requirements and adapts to your field emergencies.",
+            ab2_t: "Rigorous Compliance",
+            ab2_d: "Strict adherence to Moroccan labor law, total traceability, and contractual transparency.",
+            ab3_t: "Operational Agility",
+            ab3_d: "Ability to deploy qualified staff within hours to meet your activity surges.",
+            ab4_t: "Support & Integration",
+            ab4_d: "Continuous support for every temp worker to ensure immediate productivity on your sites.",
+            stat_1: "Years of experience",
+            stat_2: "Partner companies",
+            stat_3: "Temp workers placed / year",
+            stat_4: "Satisfaction rate",
+            faq_span: "FREQUENTLY ASKED QUESTIONS",
+            faq_title: "Everything you need to know",
+            faq_desc: "Clear answers for companies and candidates on how PRO C2S works.",
+            fq1_q: "What are the timeframes for delegating temporary staff?",
+            fq1_a: "Thanks to our active and reactive talent pool across Morocco, we can provide qualified profiles within an average timeframe of 24h to 48h.",
+            fq2_q: "What is the legal compliance of contracts in Morocco?",
+            fq2_a: "PRO C2S strictly applies Moroccan labor law, handling all legal obligations: social declarations, mission contracts, and payroll management with zero risk.",
+            contact_badge: "CONTACT",
+            contact_title: "Let's talk about your project",
+            contact_desc: "Contact us to discuss your needs and request your free, customized quote.",
+            c_contact: "Contact",
+            c_phone: "Phone",
+            c_addr: "Address",
+            c_addr_val: "Imm. 69, 4th Floor, Appt 04, Av. Patrice Lumumba, Hassan - Rabat",
+            ph_name: "Full Name",
+            ph_email: "Email address",
+            ph_phone: "Phone",
+            ph_msg: "Your message",
+            btn_submit: "Send",
+            f_about: "Company specialized in recruitment and temp work founded in 2017. Your partner to build tomorrow's teams.",
+            f_nav: "Navigation",
+            f_contact: "Contact",
+            copyright: "© 2026 PRO C2S - All rights reserved.",
+            cookie_title: "Cookies & Privacy Management",
+            cookie_desc: "We use cookies to improve your experience.",
+            cookie_btn: "Accept all"
         }
-    })();
+    };
+
+    // Tفعيل وظيفة تغيير اللغة بين الفرنسية والإنجليزية فقط
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang');
+            
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+                const key = el.getAttribute('data-i18n-ph');
+                if (translations[lang] && translations[lang][key]) {
+                    el.setAttribute('placeholder', translations[lang][key]);
+                }
+            });
+        });
+    });
 </script>
 </body>
 </html>
