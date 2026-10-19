@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profils IT & Mise à disposition Informatique au Maroc | PRO C2S</title>
+    <meta name="description" content="Mise à disposition et positionnement de profils informatiques au Maroc : développeurs, ingénieurs réseau, support, cybersécurité, cloud. PRO C2S, Rabat.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#2e7d32">
+    <link rel="canonical" href="https://proo-c2s.github.io/proo-c2s/informatique.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_MA">
+    <meta property="og:site_name" content="PRO C2S">
+    <meta property="og:title" content="Profils IT & Mise à disposition Informatique au Maroc | PRO C2S">
+    <meta property="og:description" content="Mise à disposition et positionnement de profils informatiques au Maroc : développeurs, ingénieurs réseau, support, cybersécurité, cloud. PRO C2S, Rabat.">
+    <meta property="og:url" content="https://proo-c2s.github.io/proo-c2s/informatique.html">
+    <meta property="og:image" content="https://proo-c2s.github.io/proo-c2s/image/logo.png.png">
+    <link rel="icon" type="image/png" href="image/logo.png.png">
+    <link rel="apple-touch-icon" href="image/logo.png.png">
+    <link rel="stylesheet" href="style.css?v=3003">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @keyframes floatBadge {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating-box { animation: floatBadge 4s ease-in-out infinite; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .card { 
+            transition: all 0.3s ease; 
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column; 
+            background: #ffffff;
+            border: 1.5px solid var(--border-color);
+            border-radius: 20px;
+            padding: 0;
+            text-align: left;
+        }
+        .card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08); 
+        }
+        .card-img-top {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-top-left-radius: 18px;
+            border-top-right-radius: 18px;
+        }
+        .card-body-content {
+            padding: 25px 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .lang-switcher {
+            display: flex;
+            gap: 4px;
+            background: #f1f5f9;
+            padding: 4px;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--gray);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .lang-btn.active {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(46, 125, 50, 0.2);
+        }
+        a:focus-visible, button:focus-visible { outline: 3px solid #2e7d32; outline-offset: 2px; }
+        @media (prefers-reduced-motion: reduce) { .floating-box, .animate-up { animation: none !important; } }
+    </style>
+</head>
+<body>
+
+<!-- ================= PRELOADER ANIMATION (FOND BLANC - LOGO SEUL) ================= -->
+<div id="preloader" class="montarville-loader" aria-hidden="true">
+    <div class="loader-center">
+        <img src="image/logo.png.png" alt="PRO C2S" class="loader-logo">
+    </div>
+</div>
+
+<header id="main-header" class="scrolled">
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="image/logo.png.png" alt="PRO C2S"></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" data-i18n="nav_home">Accueil</a></li>
+            <li><a href="interim.html" data-i18n="nav_interim">Intérim</a></li>
+            <li><a href="informatique.html" style="color: var(--primary);" data-i18n="nav_info">Informatique</a></li>
+            <li><a href="nettoyage.html" data-i18n="nav_clean">Nettoyage</a></li>
+            <li><a href="index.html#contact" data-i18n="nav_contact">Contact</a></li>
+            <li class="nav-mobile-extra">
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="fr">FR</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+                <a href="index.html#contact" class="btn-mobile-cta" data-i18n="nav_contact">Contactez-nous</a>
+            </li>
+        </ul>
+        <div class="nav-actions">
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="fr">FR</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+        </div>
+        <button class="menu-toggle" aria-label="Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </nav>
+</header>
+
+<section class="hero animate-up" style="padding: 140px 0 70px; background: linear-gradient(135deg, #f4faf6 0%, #e8f5e9 100%); position: relative; overflow: hidden;">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
+        
+        <div style="flex: 1; min-width: 300px; text-align: left;">
+            <span class="badge-crit" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(46, 125, 50, 0.15); color: #2e7d32; padding: 6px 14px; border-radius: 20px; font-weight: 600; margin-bottom: 20px;">
+                <i class="fa-solid fa-laptop-code"></i> <span data-i18n="info_badge">Pôle Informatique & Numérique</span>
+            </span>
+            <h1 style="font-size: 38px; margin-bottom: 20px; color: #0f172a; font-weight: 800; line-height: 1.2;" data-i18n="info_title">Mise à disposition & Positionnement de Profils IT</h1>
+            <p style="font-size: 17px; color: #64748b; line-height: 1.7; margin-bottom: 30px;" data-i18n="info_desc">Accélérez votre transformation numérique grâce à notre expertise en délégation et positionnement de talents informatiques hautement qualifiés.</p>
+            
+            <a href="index.html#contact" class="btn btn-cta-page">
+                <i class="fa-solid fa-envelope"></i> <span data-i18n="info_btn">Contactez-nous pour vos besoins IT</span>
+            </a>
+        </div>
+
+        <div style="flex: 1; min-width: 300px; position: relative; display: flex; justify-content: center; align-items: center;">
+            <div style="position: relative; width: 100%; max-width: 420px; height: 420px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <div style="position: absolute; width: 320px; height: 320px; background: rgba(46, 125, 50, 0.08); border-radius: 50%; z-index: 1;"></div>
+
+                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" alt="Informatique" style="width: 100%; max-height: 260px; object-fit: cover; position: relative; z-index: 2; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                
+                <div style="position: relative; z-index: 3; margin-top: 15px; text-align: center; background: #ffffff; padding: 12px 20px; border-radius: 14px; box-shadow: 0 10px 25px rgba(0,0,0,0.06); width: 90%; border: 1px solid rgba(0,0,0,0.04);">
+                    <strong style="font-size: 14px; color: #0f172a; display: block;" data-i18n="box_t1">Experts IT & Digital</strong>
+                    <span style="font-size: 12px; color: #64748b;" data-i18n="box_t2">Positionnement rapide sur site ou remote</span>
+                </div>
+
+                <div class="floating-box" style="position: absolute; top: 10px; left: -10px; background: #ffffff; padding: 10px 15px; border-radius: 14px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); z-index: 4; display: flex; align-items: center; gap: 10px;">
+                    <i class="fa-solid fa-code" style="color: #2e7d32; font-size: 18px;"></i>
+                    <span style="font-size: 13px; font-weight: 600; color: #0f172a;" data-i18n="box_t3">Solutions IT Sur Mesure</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="services animate-up" style="padding: 80px 0; animation-delay: 0.2s;">
+    <div class="container">
+        <div class="section-title">
+            <h2 data-i18n="exp_title">Nos Expertises Informatiques</h2>
+            <p data-i18n="exp_desc">Des compétences de pointe déléguées rapidement pour répondre à vos projets technologiques au Maroc.</p>
+        </div>
+
+        <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px;">
+            
+            <div class="card">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Mise à disposition informatique" class="card-img-top">
+                <div class="card-body-content">
+                    <h3 style="font-size: 18px; color: var(--dark); margin-bottom: 10px;" data-i18n="c1_t">Mise à disposition informatique</h3>
+                    <p style="font-size: 13.5px; color: var(--gray); line-height: 1.6;" data-i18n="c1_d">Délégation rapide d'experts informatiques qualifiés pour renforcer vos équipes techniques sur site ou en mode hybride.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Positionnement de profils informatiques" class="card-img-top">
+                <div class="card-body-content">
+                    <h3 style="font-size: 18px; color: var(--dark); margin-bottom: 10px;" data-i18n="c2_t">Positionnement de profils informatiques</h3>
+                    <p style="font-size: 13.5px; color: var(--gray); line-height: 1.6;" data-i18n="c2_d">Intégration de développeurs front-end, back-end et full-stack maîtrisant les technologies modernes pour vos applications web et mobiles.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80" alt="Ingénieurs Réseau" class="card-img-top">
+                <div class="card-body-content">
+                    <h3 style="font-size: 18px; color: var(--dark); margin-bottom: 10px;" data-i18n="c3_t">Ingénieurs Réseau</h3>
+                    <p style="font-size: 13.5px; color: var(--gray); line-height: 1.6;" data-i18n="c3_d">Conception, sécurisation et administration de vos infrastructures réseaux, serveurs et systèmes de télécommunications.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80" alt="Techniciens Support & Helpdesk" class="card-img-top">
+                <div class="card-body-content">
+                    <h3 style="font-size: 18px; color: var(--dark); margin-bottom: 10px;" data-i18n="c4_t">Techniciens Support & Helpdesk</h3>
+                    <p style="font-size: 13.5px; color: var(--gray); line-height: 1.6;" data-i18n="c4_d">Assistance technique aux utilisateurs, résolution d'incidents de niveau 1, 2 et maintenance informatique de proximité.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="Digitalisation des Processus" class="card-img-top">
+                <div class="card-body-content">
+                    <h3 style="font-size: 18px; color: var(--dark); margin-bottom: 10px;" data-i18n="c5_t">Digitalisation des Processus</h3>
+                    <p style="font-size: 13.5px; color: var(--gray); line-height: 1.6;" data-i18n="c5_d">Accompagnement dans la dématérialisation et l'optimisation de vos flux de travail et outils de gestion d'entreprise.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=600&q=80" alt="Gestion de Projet Professionnel" class="card-img-top">
+                <div class="card-body-content">
+                    <h3 style="font-size: 18px; color: var(--dark); margin-bottom: 10px;" data-i18n="c6_t">Gestion de Projet Professionnel</h3>
+                    <p style="font-size: 13.5px; color: var(--gray); line-height: 1.6;" data-i18n="c6_d">Chefs de projets informatiques et consultants certifiés pour piloter vos projets stratégiques dans les délais et budgets impartis.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80" alt="Cybersécurité & Audit" class="card-img-top">
+                <div class="card-body-content">
+                    <h3 style="font-size: 18px; color: var(--dark); margin-bottom: 10px;" data-i18n="c7_t">Cybersécurité & Audit</h3>
+                    <p style="font-size: 13.5px; color: var(--gray); line-height: 1.6;" data-i18n="c7_d">Protection de vos données sensibles, audits de vulnérabilité et mise en place de pare-feux et protocoles de sécurité avancés.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80" alt="Cloud Computing & Hébergement" class="card-img-top">
+                <div class="card-body-content">
+                    <h3 style="font-size: 18px; color: var(--dark); margin-bottom: 10px;" data-i18n="c8_t">Cloud & Hébergement</h3>
+                    <p style="font-size: 13.5px; color: var(--gray); line-height: 1.6;" data-i18n="c8_d">Migration vers le cloud, gestion des serveurs virtuels et solutions d'hébergement hautement sécurisées et évolutives.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container footer-grid">
+        <div class="footer-about">
+            <h3>PRO C2S</h3>
+            <p data-i18n="f_about">Société spécialisée en recrutement, intérim créée en 2017. Votre partenaire pour construire vos équipes de demain.</p>
+        </div>
+        <div class="footer-links">
+            <h4 data-i18n="f_nav">Navigation</h4>
+            <p><a href="index.html" data-i18n="nav_home">Accueil</a></p>
+            <p><a href="interim.html" data-i18n="nav_interim">Intérim</a></p>
+            <p><a href="informatique.html" data-i18n="nav_info">Informatique</a></p>
+            <p><a href="nettoyage.html" data-i18n="nav_clean">Nettoyage</a></p>
+            <p><a href="index.html#contact" data-i18n="nav_contact">Contact</a></p>
+        </div>
+        <div class="footer-contact">
+            <h4 data-i18n="f_contact">Contact</h4>
+            <p><i class="fa-solid fa-location-dot"></i> Imm. 69, 4ème Étage, Hassan - Rabat</p>
+            <p><i class="fa-solid fa-phone"></i> <a href="tel:+212663449824">06 63 44 98 24</a> / <a href="tel:+212520704830">05 20 70 48 30</a></p>
+            <p><i class="fa-solid fa-envelope"></i> <a href="mailto:procssentreprise@gmail.com">procssentreprise@gmail.com</a></p>
+        </div>
+    </div>
+    <div class="copyright" data-i18n="copyright">
+        © 2026 PRO C2S - Pôle Informatique & Numérique. Tous droits réservés.
+    </div>
+</footer>
+
+<script>
+    const translations = {
+        fr: {
+            nav_home: "Accueil",
+            nav_interim: "Intérim",
+            nav_info: "Informatique",
+            nav_clean: "Nettoyage",
+            nav_contact: "Contact",
+            info_badge: "Pôle Informatique & Numérique",
+            info_title: "Mise à disposition & Positionnement de Profils IT",
+            info_desc: "Accélérez votre transformation numérique grâce à notre expertise en délégation et positionnement de talents informatiques hautement qualifiés.",
+            info_btn: "Contactez-nous pour vos besoins IT",
+            box_t1: "Experts IT & Digital",
+            box_t2: "Positionnement rapide sur site ou remote",
+            box_t3: "Solutions IT Sur Mesure",
+            exp_title: "Nos Expertises Informatiques",
+            exp_desc: "Des compétences de pointe déléguées rapidement pour répondre à vos projets technologiques au Maroc.",
+            c1_t: "Mise à disposition informatique",
+            c1_d: "Délégation rapide d'experts informatiques qualifiés pour renforcer vos équipes techniques sur site ou en mode hybride.",
+            c2_t: "Positionnement de profils informatiques",
+            c2_d: "Intégration de développeurs front-end, back-end et full-stack maîtrisant les technologies modernes pour vos applications web et mobiles.",
+            c3_t: "Ingénieurs Réseau",
+            c3_d: "Conception, sécurisation et administration de vos infrastructures réseaux, serveurs et systèmes de télécommunications.",
+            c4_t: "Techniciens Support & Helpdesk",
+            c4_d: "Assistance technique aux utilisateurs, résolution d'incidents de niveau 1, 2 et maintenance informatique de proximité.",
+            c5_t: "Digitalisation des Processus",
+            c5_d: "Accompagnement dans la dématérialisation et l'optimisation de vos flux de travail et outils de gestion d'entreprise.",
+            c6_t: "Gestion de Projet Professionnel",
+            c6_d: "Chefs de projets informatiques et consultants certifiés pour piloter vos projets stratégiques dans les délais et budgets impartis.",
+            c7_t: "Cybersécurité & Audit",
+            c7_d: "Protection de vos données sensibles, audits de vulnérabilité et mise en place de pare-feux et protocoles de sécurité avancés.",
+            c8_t: "Cloud & Hébergement",
+            c8_d: "Migration vers le cloud, gestion des serveurs virtuels et solutions d'hébergement hautement sécurisées et évolutives.",
+            cta_t: "Un besoin en profils informatiques ?",
+            cta_d: "Décrivez-nous votre besoin, notre équipe vous répond rapidement.",
+            cta_b1: "Nous contacter",
+            f_about: "Société spécialisée en recrutement, intérim créée en 2017. Votre partenaire pour construire vos équipes de demain.",
+            f_nav: "Navigation",
+            f_contact: "Contact",
+            copyright: "© 2026 PRO C2S - Pôle Informatique & Numérique. Tous droits réservés."
+        },
+        en: {
+            nav_home: "Home",
+            nav_interim: "Temp Work",
+            nav_info: "IT Services",
+            nav_clean: "Cleaning",
+            nav_contact: "Contact",
+            info_badge: "IT & Digital Division",
+            info_title: "IT Staffing & Profile Placement",
+            info_desc: "Accelerate your digital transformation through our expertise in delegating and positioning highly qualified IT talent.",
+            info_btn: "Contact us for your IT needs",
+            box_t1: "IT & Digital Experts",
+            box_t2: "Fast on-site or remote placement",
+            box_t3: "Custom IT Solutions",
+            exp_title: "Our IT Expertises",
+            exp_desc: "Cutting-edge skills deployed quickly to meet your technological projects in Morocco.",
+            c1_t: "IT Staffing",
+            c1_d: "Rapid delegation of qualified IT experts to strengthen your technical teams on-site or in hybrid mode.",
+            c2_t: "IT Profile Placement",
+            c2_d: "Integration of front-end, back-end, and full-stack developers mastering modern technologies for web and mobile apps.",
+            c3_t: "Network Engineers",
+            c3_d: "Design, security, and administration of your network infrastructures, servers, and telecommunication systems.",
+            c4_t: "Support & Helpdesk Technicians",
+            c4_d: "User technical assistance, level 1 & 2 incident resolution, and local IT maintenance.",
+            c5_t: "Process Digitalization",
+            c5_d: "Support in paperless transformation and optimization of your workflows and management tools.",
+            c6_t: "Professional Project Management",
+            c6_d: "IT project managers and certified consultants to steer your strategic projects within deadlines and budgets.",
+            c7_t: "Cybersecurity & Audit",
+            c7_d: "Protection of your sensitive data, vulnerability audits, and implementation of firewalls and advanced security protocols.",
+            c8_t: "Cloud & Hosting",
+            c8_d: "Cloud migration, virtual server management, and highly secure, scalable hosting solutions.",
+            cta_t: "Need IT profiles?",
+            cta_d: "Describe your needs, our team will get back to you quickly.",
+            cta_b1: "Contact us",
+            f_about: "Company specialized in recruitment and temp work founded in 2017. Your partner to build tomorrow's teams.",
+            f_nav: "Navigation",
+            f_contact: "Contact",
+            copyright: "© 2026 PRO C2S - IT & Digital Division. All rights reserved."
+        }
+    };
+
+    function setLanguage(lang) {
+        if (!translations[lang]) return;
+        localStorage.setItem("proC2sLang", lang);
+        document.querySelectorAll('.lang-btn').forEach(b => {
+            if (b.getAttribute('data-lang') === lang) {
+                b.classList.add('active');
+            } else {
+                b.classList.remove('active');
+            }
+        });
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key] !== undefined) {
+                el.innerHTML = translations[lang][key];
+            }
+        });
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang');
+            setLanguage(lang);
+        });
+    });
+
+    const savedLang = localStorage.getItem("proC2sLang") || "fr";
+    if (savedLang && savedLang !== "fr") {
+        setLanguage(savedLang);
+    }
+</script>
+<script src="script.js?v=1001"></script>
+</body>
+</html>

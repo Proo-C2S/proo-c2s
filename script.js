@@ -1,6 +1,69 @@
 /* ==========================================
-   PRO C2S - SCRIPT.JS COMPLET (Recherche & 4 Articles)
+   PRO C2S - SCRIPT.JS COMPLET
 ========================================== */
+
+// ==========================================
+// PRELOADER & HERO REVEAL (STYLE MONTARVILLE)
+// ==========================================
+(function() {
+    function initPreloader() {
+        const preloader = document.getElementById("preloader");
+        if (!preloader) return;
+
+        if (document.body) {
+            document.body.classList.add("is-loading");
+        }
+
+        const startTime = performance.now();
+        const MIN_DISPLAY_TIME = 1100; // 1.1s : khefifa o mezyana, matkounch m3etla bzaf
+        let isDone = false;
+
+        function revealSite() {
+            if (isDone) return;
+            isDone = true;
+
+            // 1. Lever le rideau avec transition fluide façon Montarville
+            preloader.classList.add("curtain-up");
+
+            // 2. Déclencher le reveal du Hero
+            setTimeout(() => {
+                if (document.body) {
+                    document.body.classList.remove("is-loading");
+                    document.body.classList.add("hero-revealed");
+                }
+            }, 200);
+
+            // 3. Masquer complètement après la sortie
+            setTimeout(() => {
+                preloader.classList.add("preloader-hidden");
+                if (preloader.parentNode) {
+                    preloader.style.display = "none";
+                }
+            }, 900);
+        }
+
+        function scheduleReveal() {
+            const elapsed = performance.now() - startTime;
+            const delay = Math.max(0, MIN_DISPLAY_TIME - elapsed);
+            setTimeout(revealSite, delay);
+        }
+
+        if (document.readyState === "complete") {
+            scheduleReveal();
+        } else {
+            window.addEventListener("load", scheduleReveal);
+        }
+
+        // Sécurité réseau
+        setTimeout(revealSite, 3200);
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initPreloader);
+    } else {
+        initPreloader();
+    }
+})();
 
 document.addEventListener("DOMContentLoaded", function() {
     // Navigation Active Scroll & Shadow
@@ -47,14 +110,44 @@ document.addEventListener("DOMContentLoaded", function() {
     const menuToggle = document.querySelector(".menu-toggle");
     const navLinks = document.querySelector(".nav-links");
 
+    function closeMobileMenu() {
+        if(navLinks && navLinks.classList.contains("open")) {
+            navLinks.classList.remove("open");
+            if(menuToggle) {
+                menuToggle.classList.remove("active");
+                const icon = menuToggle.querySelector("i");
+                if(icon) {
+                    icon.className = "fa-solid fa-bars";
+                }
+            }
+        }
+    }
+
     if(menuToggle && navLinks) {
-        menuToggle.addEventListener("click", () => {
-            navLinks.classList.toggle("open");
+        menuToggle.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isOpen = navLinks.classList.toggle("open");
+            menuToggle.classList.toggle("active", isOpen);
+            const icon = menuToggle.querySelector("i");
+            if(icon) {
+                if(isOpen) {
+                    icon.className = "fa-solid fa-xmark";
+                } else {
+                    icon.className = "fa-solid fa-bars";
+                }
+            }
         });
+
         document.querySelectorAll(".nav-links a").forEach(link => {
             link.addEventListener("click", () => {
-                navLinks.classList.remove("open");
+                closeMobileMenu();
             });
+        });
+
+        document.addEventListener("click", (e) => {
+            if(!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                closeMobileMenu();
+            }
         });
     }
 
@@ -309,3 +402,266 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
+
+/* ===================================================================
+   PRO C2S — SENIOR ENGINEER INTERACTION SUITE v2.0
+   Micro-interactions, Particle Canvas, Smart Header, Sector Modal
+=================================================================== */
+(function() {
+    'use strict';
+
+    // 1. Scroll Progress Bar
+    const progressBar = document.getElementById('scrollProgress');
+    function updateScrollProgress() {
+        if (!progressBar) return;
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (totalHeight <= 0) {
+            progressBar.style.width = '0%';
+            return;
+        }
+        const progress = Math.min(100, Math.max(0, (window.scrollY / totalHeight) * 100));
+        progressBar.style.width = progress + '%';
+    }
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    window.addEventListener('resize', updateScrollProgress, { passive: true });
+
+    // 2. Smart Header (Hide on Scroll Down, Reveal on Scroll Up)
+    const header = document.getElementById('main-header');
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function handleSmartHeader() {
+        const currentScrollY = window.scrollY;
+        if (header) {
+            if (currentScrollY > 180 && currentScrollY > lastScrollY) {
+                // Scrolling down past threshold -> hide header
+                header.classList.add('nav-hidden');
+                header.classList.remove('nav-visible');
+            } else {
+                // Scrolling up or at top -> show header
+                header.classList.remove('nav-hidden');
+                header.classList.add('nav-visible');
+            }
+        }
+        lastScrollY = currentScrollY;
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(handleSmartHeader);
+            ticking = true;
+        }
+    }, { passive: true });
+
+    // 3. Hero Particle Canvas (Senior Tech Agency Grade)
+    const canvas = document.getElementById('heroParticles');
+    if (canvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = canvas.parentElement.offsetWidth || window.innerWidth;
+        let height = canvas.height = canvas.parentElement.offsetHeight || 600;
+        let particles = [];
+        const particleCount = Math.min(45, Math.floor((width * height) / 18000));
+        let mouse = { x: -1000, y: -1000, radius: 120 };
+
+        function onResize() {
+            if (!canvas.parentElement) return;
+            width = canvas.width = canvas.parentElement.offsetWidth;
+            height = canvas.height = canvas.parentElement.offsetHeight;
+        }
+        window.addEventListener('resize', onResize, { passive: true });
+
+        canvas.parentElement.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+        }, { passive: true });
+
+        canvas.parentElement.addEventListener('mouseleave', () => {
+            mouse.x = -1000;
+            mouse.y = -1000;
+        }, { passive: true });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.7;
+                this.vy = (Math.random() - 0.5) * 0.7;
+                this.radius = Math.random() * 2 + 1;
+                this.color = Math.random() > 0.4 ? 'rgba(16, 185, 129, ' : 'rgba(0, 230, 118, ';
+                this.alpha = Math.random() * 0.5 + 0.2;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+
+                // Mouse push
+                const dx = mouse.x - this.x;
+                const dy = mouse.y - this.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < mouse.radius && dist > 0) {
+                    const angle = Math.atan2(dy, dx);
+                    const force = (mouse.radius - dist) / mouse.radius;
+                    this.x -= Math.cos(angle) * force * 2;
+                    this.y -= Math.sin(angle) * force * 2;
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color + this.alpha + ')';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        let isHeroVisible = true;
+        const heroObserver = new IntersectionObserver((entries) => {
+            isHeroVisible = entries[0].isIntersecting;
+        }, { threshold: 0.05 });
+        if (canvas.parentElement) heroObserver.observe(canvas.parentElement);
+
+        function animateParticles() {
+            if (isHeroVisible) {
+                ctx.clearRect(0, 0, width, height);
+
+                // Connect nearby particles
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 110) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = `rgba(16, 185, 129, ${0.18 * (1 - dist / 110)})`;
+                            ctx.lineWidth = 0.8;
+                            ctx.stroke();
+                        }
+                    }
+                }
+
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+    }
+
+    // 4. Sector Card Modal Activation
+    const sectorModal = document.getElementById('sectorModal');
+    const closeSectorModalBtn = document.getElementById('closeSectorModalBtn');
+    const sectorModalTitle = document.getElementById('sectorModalTitle');
+    const sectorModalDesc = document.getElementById('sectorModalDesc');
+    const sectorModalIcon = document.getElementById('sectorModalIcon');
+    const sectorModalWaBtn = document.getElementById('sectorModalWaBtn');
+    const sectorCards = document.querySelectorAll('.sector-card');
+
+    sectorCards.forEach(card => {
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('title', 'Cliquer pour voir les détails et demander un devis');
+
+        function openModal() {
+            const title = card.getAttribute('data-title') || card.innerText.trim();
+            const desc = card.getAttribute('data-desc') || '';
+            const wa = card.getAttribute('data-wa') || `Bonjour PRO C2S, je souhaite demander une équipe dans le secteur: ${title}`;
+            const iconEl = card.querySelector('i');
+
+            if (sectorModalTitle) sectorModalTitle.innerText = title;
+            if (sectorModalDesc) sectorModalDesc.innerText = desc;
+            if (sectorModalIcon && iconEl) {
+                sectorModalIcon.innerHTML = `<i class="${iconEl.className}"></i>`;
+            }
+            if (sectorModalWaBtn) {
+                sectorModalWaBtn.href = `https://wa.me/212663449824?text=${encodeURIComponent(wa)}`;
+                sectorModalWaBtn.innerHTML = `<i class="fa-brands fa-whatsapp"></i> Demander une équipe (${title})`;
+            }
+            if (sectorModal) {
+                sectorModal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        card.addEventListener('click', openModal);
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openModal();
+            }
+        });
+    });
+
+    function closeSectorModal() {
+        if (sectorModal) {
+            sectorModal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (closeSectorModalBtn) closeSectorModalBtn.addEventListener('click', closeSectorModal);
+    if (sectorModal) {
+        sectorModal.addEventListener('click', (e) => {
+            if (e.target === sectorModal) closeSectorModal();
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeSectorModal();
+        }
+    });
+
+    // 5. Magnetic CTA Button Micro-Interaction (Desktop only)
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        const magneticBtns = document.querySelectorAll('.hero-actions .btn, .nav-actions .btn, .domains-section .btn');
+        magneticBtns.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.18}px, ${y * 0.18}px) scale(1.03)`;
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = '';
+            });
+        });
+    }
+
+    // 6. Interactive 3D Tilt on Hover for Bento & Job Cards
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        const tiltCards = document.querySelectorAll('.domain-card, .job-card, .split-card');
+        tiltCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -4;
+                const rotateY = ((x - centerX) / centerX) * 4;
+                card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+    }
+
+})();

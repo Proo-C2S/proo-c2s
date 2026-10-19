@@ -1,0 +1,6 @@
+# Note : ce fichier n'est pris en compte par Google que s'il est à la racine du domaine
+# (ex. https://www.votredomaine.ma/robots.txt). Sur github.io en "project page", il est ignoré.
+User-agent: *
+Allow: /
+
+Sitemap: https://proo-c2s.github.io/proo-c2s/sitemap.xml
