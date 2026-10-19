@@ -1,3 +1,6 @@
 {
-    "liveServer.settings.port": 5501
+    "liveServer.settings.port": 5501,
+    "git.path": "C:\\Users\\Administrateur\\Desktop\\mingit\\cmd\\git.exe",
+    "git.enabled": true,
+    "git.autofetch": true
 }
