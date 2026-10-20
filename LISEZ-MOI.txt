@@ -1,0 +1,23 @@
+================================================================
+PRO C2S - SITE WEB OFFICIEL (VERSION FINALE)
+Solutions RH, Travail Temporaire & Recrutement au Maroc
+================================================================
+
+1. ACCÈS DIRECT AU SITE WEB
+----------------------------
+- Double-cliquez simplement sur "Ouvrir le site.bat" ou sur "index.html"
+- Le site s'ouvre directement dans votre navigateur par défaut (Chrome, Edge, Firefox, Safari).
+
+2. LIEN EN LIGNE (GITHUB PAGES)
+--------------------------------
+- Site en ligne : https://proo-c2s.github.io/proo-c2s/
+- Dépôt GitHub : https://github.com/Proo-C2S/proo-c2s
+
+3. FONCTIONNALITÉS INTÉGRÉES
+----------------------------
+- Simulateur de délégation RH interactif avec sélection des pôles (Intérim, IT Full-Stack, Nettoyage, Chauffeurs B/C/D, Maîtres-Nageurs, Assistantes RH & Option personnalisée "Autre").
+- Envoi de devis express par Email avec EmailJS (Clé publique configurée).
+- Contact direct et WhatsApp direct (+212 663-449824).
+- Design responsive haute performance (Mobile, Tablette, Desktop).
+
+Date d'export : 20 Octobre 2026

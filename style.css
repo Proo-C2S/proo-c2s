@@ -3255,6 +3255,10 @@ header.nav-visible {
   gap: 12px;
 }
 
+.sim-card-autre {
+  grid-column: span 2;
+}
+
 .sim-card-btn {
   background: rgba(255, 255, 255, 0.05);
   border: 1.5px solid rgba(255, 255, 255, 0.12);
@@ -3613,58 +3617,316 @@ header.nav-visible {
 
 /* Sim badges row alignment fix */
 .sim-badges-row {
-  display: flex !important;
-  align-items: center !important;
-  gap: 12px !important;
-  margin-top: 0 !important;
-  margin-bottom: 18px !important;
-  flex-wrap: nowrap !important;
-  white-space: nowrap !important;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 0;
+  margin-bottom: 18px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 .sim-badges-row .badge-crit,
 .sim-badges-row .live-pulse-badge {
-  margin: 0 !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  white-space: nowrap !important;
-  flex-shrink: 0 !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  height: 36px !important;
-  box-sizing: border-box !important;
-  line-height: 1 !important;
-  vertical-align: middle !important;
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  box-sizing: border-box;
+  line-height: 1;
+  vertical-align: middle;
 }
 .sim-badges-row .badge-crit {
-  padding: 0 16px !important;
-  font-size: 12px !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.5px !important;
-  border-radius: 9999px !important;
+  padding: 0 16px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  border-radius: 9999px;
 }
 .sim-badges-row .live-pulse-badge {
-  background: rgba(0, 230, 118, 0.08) !important;
-  border: 1.5px solid rgba(0, 230, 118, 0.35) !important;
-  padding: 0 16px !important;
-  border-radius: 9999px !important;
-  font-size: 12px !important;
-  font-weight: 700 !important;
-  color: #00e676 !important;
-  letter-spacing: 0.3px !important;
-  box-shadow: 0 0 16px rgba(0, 230, 118, 0.18) !important;
-  gap: 0 !important;
+  background: rgba(0, 230, 118, 0.08);
+  border: 1.5px solid rgba(0, 230, 118, 0.35);
+  padding: 0 16px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #00e676;
+  letter-spacing: 0.3px;
+  box-shadow: 0 0 16px rgba(0, 230, 118, 0.18);
+  gap: 0;
 }
 .sim-badges-row .pulse-dot {
-  width: 8px !important;
-  height: 8px !important;
-  min-width: 8px !important;
-  min-height: 8px !important;
-  background-color: #00e676 !important;
-  border-radius: 50% !important;
-  display: inline-block !important;
-  position: relative !important;
-  margin-right: 12px !important;
-  margin-left: 2px !important;
-  flex-shrink: 0 !important;
-  box-shadow: 0 0 10px #00e676 !important;
+  width: 8px;
+  height: 8px;
+  min-width: 8px;
+  min-height: 8px;
+  background-color: #00e676;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  margin-right: 12px;
+  margin-left: 2px;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px #00e676;
+}
+
+/* ===================================================================
+   SIMULATEUR RH — ADVANCED MOBILE & RESPONSIVE PERFECTION
+   Senior UX & Layout Engineering for Mobile Devices (<= 768px & <= 480px)
+=================================================================== */
+@media (max-width: 768px) {
+  /* Section Spacing */
+  .simulator-section {
+    padding: 55px 0 !important;
+  }
+
+  /* Main Simulator Glass Box */
+  .simulator-box {
+    grid-template-columns: 1fr !important;
+    padding: 26px 18px !important;
+    gap: 26px !important;
+    border-radius: 20px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  /* Badges Row - Wrap gracefully on mobile without overflowing */
+  .sim-badges-row {
+    flex-wrap: wrap !important;
+    white-space: normal !important;
+    gap: 8px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .sim-badges-row .badge-crit,
+  .sim-badges-row .live-pulse-badge {
+    height: auto !important;
+    min-height: 32px !important;
+    padding: 6px 12px !important;
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+    white-space: normal !important;
+    max-width: 100% !important;
+  }
+
+  .sim-badges-row .pulse-dot {
+    margin-right: 8px !important;
+    margin-left: 0 !important;
+  }
+
+  /* Typography */
+  .sim-info h2 {
+    font-size: 24px !important;
+    line-height: 1.28 !important;
+    margin-bottom: 8px !important;
+    letter-spacing: -0.3px !important;
+  }
+
+  .sim-info p {
+    font-size: 13.5px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 20px !important;
+    color: #94a3b8 !important;
+  }
+
+  .sim-field label {
+    font-size: 12.5px !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* Step 1: Sector Grid Mobile */
+  .sim-sector-grid {
+    grid-template-columns: 1fr !important;
+    gap: 9px !important;
+  }
+
+  .sim-card-btn,
+  .sim-card-autre {
+    grid-column: span 1 !important;
+    padding: 12px 14px !important;
+    font-size: 13px !important;
+    border-radius: 12px !important;
+    min-height: 48px !important;
+    gap: 12px !important;
+  }
+
+  .sim-card-btn i {
+    font-size: 16px !important;
+    width: 20px !important;
+    text-align: center !important;
+    flex-shrink: 0 !important;
+  }
+
+  .sim-card-btn span {
+    line-height: 1.35 !important;
+  }
+
+  /* Custom input for other sector */
+  .sim-custom-input-wrap input {
+    padding: 12px 14px 12px 42px !important;
+    font-size: 13px !important;
+  }
+
+  .sim-custom-hint {
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Step 2: Volume Pills - 2x2 Grid for symmetry & touch comfort */
+  .sim-count-pills {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .sim-count-pill {
+    min-width: unset !important;
+    width: 100% !important;
+    padding: 10px 8px !important;
+    font-size: 12.5px !important;
+    border-radius: 10px !important;
+    text-align: center !important;
+  }
+
+  /* Right Summary Card */
+  .sim-summary {
+    padding: 22px 16px !important;
+    border-radius: 18px !important;
+    gap: 12px !important;
+    background: linear-gradient(180deg, rgba(0, 230, 118, 0.08) 0%, rgba(15, 23, 42, 0.65) 100%) !important;
+    border: 1.5px solid rgba(0, 230, 118, 0.3) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .sim-summary-top {
+    gap: 5px !important;
+  }
+
+  .sim-live-badge {
+    font-size: 10.5px !important;
+    padding: 4px 10px !important;
+  }
+
+  .sim-summary span {
+    font-size: 12px !important;
+  }
+
+  .sim-summary strong {
+    font-size: 28px !important;
+    margin-bottom: 6px !important;
+    text-shadow: 0 0 18px rgba(0, 230, 118, 0.35) !important;
+  }
+
+  /* Metrics in Summary */
+  .sim-metrics-box {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    margin: 6px 0 10px 0 !important;
+  }
+
+  .sim-metric-item {
+    padding: 10px 6px !important;
+    border-radius: 10px !important;
+  }
+
+  .sim-metric-val {
+    font-size: 20px !important;
+  }
+
+  .sim-metric-lbl {
+    font-size: 10px !important;
+    line-height: 1.25 !important;
+  }
+
+  /* Summary Features List */
+  .sim-summary-features {
+    gap: 6px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .sim-summary-features div {
+    font-size: 11.5px !important;
+    gap: 8px !important;
+    line-height: 1.35 !important;
+  }
+
+  /* Action Buttons */
+  #simOpenModalBtn {
+    padding: 12px 14px !important;
+    font-size: 13.5px !important;
+    min-height: 46px !important;
+    border-radius: var(--r-pill) !important;
+    font-weight: 700 !important;
+  }
+
+  .sim-btn-secondary {
+    padding: 11px 14px !important;
+    font-size: 13px !important;
+    min-height: 44px !important;
+  }
+
+  /* Direct Call Box */
+  .sim-direct-call {
+    flex-direction: column !important;
+    gap: 3px !important;
+    font-size: 11px !important;
+    text-align: center !important;
+    margin-top: 6px !important;
+  }
+
+  .sim-direct-call a {
+    font-size: 13px !important;
+  }
+
+  /* Simulator Modal Responsive */
+  #simEmailModal .job-modal-content {
+    padding: 24px 18px !important;
+    max-width: 95% !important;
+    border-radius: 16px !important;
+  }
+}
+
+/* Extra Small Phones (<= 480px) */
+@media (max-width: 480px) {
+  .simulator-box {
+    padding: 20px 14px !important;
+    gap: 22px !important;
+    border-radius: 16px !important;
+  }
+
+  .sim-info h2 {
+    font-size: 21px !important;
+  }
+
+  .sim-card-btn {
+    padding: 11px 12px !important;
+    font-size: 12.5px !important;
+  }
+
+  .sim-count-pill {
+    font-size: 12px !important;
+    padding: 9px 4px !important;
+  }
+
+  .sim-summary strong {
+    font-size: 26px !important;
+  }
+
+  .sim-summary {
+    padding: 18px 12px !important;
+  }
+
+  #simEmailModal form > div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  .sim-modal-recap {
+    flex-direction: column !important;
+    gap: 6px !important;
+  }
 }
