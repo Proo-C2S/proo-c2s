@@ -85,7 +85,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=3005">
+    <link rel="stylesheet" href="style.css?v=3006">
 
     <style>
         .skip-link { position: absolute; left: -9999px; top: 0; background: #00e676; color: #06090e; padding: 10px 16px; z-index: 10000; border-radius: 0 0 8px 0; font-weight: 800; }
@@ -94,6 +94,41 @@
         @media (prefers-reduced-motion: reduce) { .floating-box, .floating-box-delayed, .reveal { animation: none !important; transition: none !important; } }
     
         /* ======================== CACHE-PROOF SIMULATOR & BADGE STYLES ======================== */
+
+        .sim-badges-row {
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+            margin-bottom: 16px !important;
+            flex-wrap: nowrap !important;
+            white-space: nowrap !important;
+        }
+        .sim-badges-row .badge-crit,
+        .sim-badges-row .live-pulse-badge {
+            white-space: nowrap !important;
+            flex-shrink: 0 !important;
+        }
+        .pulse-dot {
+            width: 8px !important;
+            height: 8px !important;
+            background-color: #00e676 !important;
+            border-radius: 50% !important;
+            display: inline-block !important;
+            position: relative !important;
+            margin-right: 6px !important;
+            margin-left: 2px !important;
+            box-shadow: 0 0 10px #00e676 !important;
+        }
+        @media (max-width: 600px) {
+            .sim-badges-row {
+                gap: 8px !important;
+            }
+            .sim-badges-row .badge-crit,
+            .sim-badges-row .live-pulse-badge {
+                font-size: 11px !important;
+                padding: 4px 10px !important;
+            }
+        }
         .live-pulse-badge {
             display: inline-flex !important;
             align-items: center !important;
@@ -629,7 +664,7 @@
     <div class="container">
         <div class="simulator-box">
             <div class="sim-info">
-                <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap;">
+                <div class="sim-badges-row">
                     <span class="badge-crit" data-i18n="sim_badge">ESPACE ENTREPRISES</span>
                     <span class="live-pulse-badge"><span class="pulse-dot"></span> Vivier Actif • Mobilisation 24h-48h</span>
                 </div>
