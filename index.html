@@ -85,7 +85,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=3030">
+    <link rel="stylesheet" href="style.css?v=3040">
 
     <style>
         .skip-link { position: absolute; left: -9999px; top: 0; background: #00e676; color: #06090e; padding: 10px 16px; z-index: 10000; border-radius: 0 0 8px 0; font-weight: 800; }
@@ -1134,7 +1134,7 @@
         <!-- Offre 2: Chauffeur Professionnel -->
         <div class="job-card" data-category="transport" data-title="Chauffeur Professionnel" data-type="Intérim" data-badge="interim" data-sector="Transport & Logistique" data-location="Maroc Entier (Toutes les régions)" data-desc="Transport de personnel et de marchandises, conduite sécurisée de véhicules légers et autocars." data-req="Permis B, C ou D en cours de validité." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Chauffeur Professionnel">
             <div class="job-card-media">
-                <img src="image/offers/chauffeur.jpg?v=3" alt="Chauffeur Professionnel" loading="lazy">
+                <img src="image/offers/chauffeur.jpg?v=3040" alt="Chauffeur Professionnel" loading="lazy">
                 <div class="job-card-overlay"></div>
                 <div class="job-card-badges">
                     <span class="job-type-pill"><span class="job-type-dot"></span> Intérim</span>
@@ -1365,7 +1365,7 @@
         <!-- Offre 9: Responsable des Ressources Humaines (RRH) -->
         <div class="job-card" data-category="admin" data-title="Responsable des Ressources Humaines (RRH)" data-type="Intérim" data-badge="interim" data-sector="Management & Stratégie RH" data-location="Maroc Entier (Toutes les régions)" data-desc="Pilotage de la stratégie RH, recrutement, gestion des relations sociales, formation et accompagnement des managers." data-req="Bac+5 en Ressources Humaines ou Management avec une solide expérience." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Responsable des Ressources Humaines (RRH)">
             <div class="job-card-media">
-                <img src="image/offers/rrh.jpg?v=4" style="object-position: center 25%;" alt="Responsable des Ressources Humaines" loading="lazy">
+                <img src="image/offers/rrh.jpg?v=3040" style="object-position: center 25%;" alt="Responsable des Ressources Humaines" loading="lazy">
                 <div class="job-card-overlay"></div>
                 <div class="job-card-badges">
                     <span class="job-type-pill"><span class="job-type-dot"></span> Intérim</span>
@@ -1440,83 +1440,240 @@
 
 <section class="services reveal" id="actualites" style="background: #ffffff; padding: 95px 0;">
     <div class="section-title">
-        <span data-i18n="news_span">BLOG & CONSEILS</span>
-        <h2 data-i18n="news_title">Actualités & Expertise RH</h2>
-        <p data-i18n="news_desc">Restez informés des dernières actualités juridiques, du droit du travail et des conseils pour réussir vos recrutements au Maroc.</p>
+        <span class="badge-crit" data-i18n="news_span">BLOG & VEILLE RH</span>
+        <h2 data-i18n="news_title">Actualités, Législation & Conseil RH</h2>
+        <p data-i18n="news_desc">Restez informés du cadre légal du travail temporaire au Maroc, des stratégies de recrutement agile et des bonnes pratiques RH.</p>
     </div>
 
-    <div class="container services-grid">
-        <div class="card article-card" 
+    <div class="container articles-grid">
+        <!-- Article 1: Droit du Travail -->
+        <article class="article-card" 
+             tabindex="0"
+             role="button"
+             aria-label="Lire l'article: Le Contrat de Travail Temporaire (Intérim) au Maroc"
              data-title="Le Contrat de Travail Temporaire (Intérim) au Maroc" 
-             data-category="Droit du travail"
-             data-content="Le travail temporaire ou l'intérim est devenu une solution incontournable pour les entreprises marocaines qui font face à des pics d'activité ou à des remplacements urgents. Mais que dit exactement le Code du Travail marocain à ce sujet ? Une entreprise ne peut recourir à l'intérim que dans des cas précis : remplacement d'un salarié absent, surcroît temporaire d'activité, ou travaux urgents. PRO C2S garantit une conformité légale totale et une gestion simplifiée de la paie et des contrats.">
-            <div>
-                <span class="job-badge interim" style="margin-bottom: 15px; display: inline-block;">Droit du travail</span>
-                <h3 style="font-size: 18px; margin-bottom: 12px;">Le Contrat de Travail Temporaire (Intérim) au Maroc</h3>
-                <p style="font-size: 14px; color: var(--gray); line-height: 1.6; margin-bottom: 20px;">Tout savoir sur les cas de recours légaux, la durée maximale et les avantages de l'intérim selon le Code du Travail marocain.</p>
+             data-category="Droit du Travail & Législation"
+             data-time="4 min de lecture"
+             data-points="Encadré par les articles 495 à 506 du Code du Travail marocain|Cas de recours légaux stricts : remplacement temporaire, pic d'activité ou travaux urgents|Sécurité juridique 100% garantie avec prise en charge contractuelle et CNSS par PRO C2S"
+             data-content="Le travail temporaire ou intérim constitue une solution stratégique majeure pour les entreprises marocaines confrontées à des variations conjoncturelles d'activité ou des besoins urgents de remplacement.<br><br>Conformément au Code du Travail marocain (Articles 495 à 506), le recours à l'intérim est strictement délimité par la loi. Une entreprise utilisatrice ne peut solliciter une agence de travail temporaire que dans des cas prévus par le législateur :<br>• Le remplacement d'un salarié dont le contrat est suspendu (hors cas de grève)<br>• Le surcroît temporaire d'activité lié à des commandes exceptionnelles ou saisonnières<br>• L'exécution de travaux urgents ou temporaires par nature.<br><br>En confiant vos missions à PRO C2S, vous bénéficiez d'une conformité légale absolue : notre cabinet assume la totalité des formalités administratives, de l'établissement des contrats de mise à disposition aux déclarations sociales (CNSS, AMO, IR) et à l'assurance accident du travail, écartant tout risque de requalification ou de contentieux.">
+            <div class="article-card-header header-legal">
+                <div class="article-icon-badge">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                </div>
+                <div class="article-meta-tags">
+                    <span class="article-cat-pill cat-legal">Droit du Travail</span>
+                    <span class="article-time-pill"><i class="fa-regular fa-clock"></i> 4 min</span>
+                </div>
             </div>
-            <button class="btn-job btn-read-article" style="margin-top: auto; border:none; width:100%; cursor:pointer;">
-                Lire l'article complet <i class="fa-solid fa-arrow-right"></i>
-            </button>
-        </div>
+            <div class="article-card-body">
+                <h3 class="article-card-title">Le Contrat de Travail Temporaire (Intérim) au Maroc</h3>
+                <p class="article-card-excerpt">Tout savoir sur le cadre légal du Code du Travail marocain, les cas de recours autorisés et la protection juridique de votre entreprise.</p>
+                <div class="article-tags-wrap">
+                    <span class="article-micro-tag"><i class="fa-solid fa-check"></i> Code du Travail</span>
+                    <span class="article-micro-tag"><i class="fa-solid fa-shield-halved"></i> Zéro Risque</span>
+                </div>
+            </div>
+            <div class="article-card-footer">
+                <div class="article-author-info">
+                    <div class="author-mini-avatar"><i class="fa-solid fa-gavel"></i></div>
+                    <div class="author-text">
+                        <strong>Comité Juridique</strong>
+                        <span>PRO C2S Maroc</span>
+                    </div>
+                </div>
+                <button type="button" class="btn-read-article" aria-label="Consulter l'analyse">
+                    <span>Lire l'analyse</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </article>
 
-        <div class="card article-card" 
+        <!-- Article 2: Recrutement Express -->
+        <article class="article-card" 
+             tabindex="0"
+             role="button"
+             aria-label="Lire l'article: Comment gérer un pic d'activité urgent en entreprise ?"
              data-title="Comment gérer un pic d'activité urgent en entreprise ?" 
-             data-category="Recrutement"
-             data-content="Face à une augmentation soudaine de la demande ou à des commandes exceptionnelles, les entreprises marocaines doivent réagir vite pour ne pas perdre de parts de marché. La délégation de personnel intérimaire en 24h/48h s'avère être la solution idéale. Elle permet d'absorber la charge de travail sans alourdir la masse salariale fixe à long terme, tout en garantissant une conformité totale avec le Code du Travail marocain. PRO C2S prend en charge tout le sourcing et la gestion administrative pour vous laisser vous concentrer sur votre cœur de métier.">
-            <div>
-                <span class="job-badge interim" style="margin-bottom: 15px; display: inline-block;">Recrutement</span>
-                <h3 style="font-size: 18px; margin-bottom: 12px;">Comment gérer un pic d'activité urgent en entreprise ?</h3>
-                <p style="font-size: 14px; color: var(--gray); line-height: 1.6; margin-bottom: 20px;">Découvrez comment la délégation de personnel qualifié en 24h/48h permet d'assurer la continuité de vos opérations sans stress.</p>
+             data-category="Recrutement Express & Flexibilité"
+             data-time="3 min de lecture"
+             data-points="Délégation de talents qualifiés et opérationnels sous 24h à 48h|Flexibilité maximale sans alourdir la masse salariale fixe à long terme|Accès direct à un vivier vérifié de plus de 15 000 candidats dans tout le Royaume"
+             data-content="Face à une augmentation soudaine de la demande, un afflux de commandes imprévu ou un pic saisonnier, la rapidité d'exécution RH est la clé pour ne pas perdre de parts de marché ni surcharger vos équipes permanentes.<br><br>Le recrutement direct classique en CDI ou CDD nécessite plusieurs semaines de sourcing, d'entretiens et de sélection, incompatible avec l'urgence opérationnelle. La délégation d'intérimaires qualifiés en 24h/48h apporte la réponse la plus agile et la plus rentable.<br><br>Elle permet d'absorber la charge immédiate sans créer de coûts salariaux fixes à long terme, tout en respectant scrupuleusement la réglementation du travail. PRO C2S sélectionne dans son vivier des profils formés et prêts à intervenir immédiatement sur vos sites de production, vos entrepôts logistiques ou vos bureaux administratifs.">
+            <div class="article-card-header header-recrutement">
+                <div class="article-icon-badge">
+                    <i class="fa-solid fa-bolt-lightning"></i>
+                </div>
+                <div class="article-meta-tags">
+                    <span class="article-cat-pill cat-recrutement">Recrutement Express</span>
+                    <span class="article-time-pill"><i class="fa-regular fa-clock"></i> 3 min</span>
+                </div>
             </div>
-            <button class="btn-job btn-read-article" style="margin-top: auto; border:none; width:100%; cursor:pointer;">
-                Lire l'article complet <i class="fa-solid fa-arrow-right"></i>
-            </button>
-        </div>
+            <div class="article-card-body">
+                <h3 class="article-card-title">Comment gérer un pic d'activité urgent en entreprise ?</h3>
+                <p class="article-card-excerpt">Découvrez les mécanismes de délégation rapide en 24h/48h pour absorber les surcroîts d'activité sans alourdir la masse salariale fixe.</p>
+                <div class="article-tags-wrap">
+                    <span class="article-micro-tag"><i class="fa-solid fa-check"></i> Délégation 24/48h</span>
+                    <span class="article-micro-tag"><i class="fa-solid fa-chart-line"></i> Flexibilité RH</span>
+                </div>
+            </div>
+            <div class="article-card-footer">
+                <div class="article-author-info">
+                    <div class="author-mini-avatar"><i class="fa-solid fa-user-tie"></i></div>
+                    <div class="author-text">
+                        <strong>Pôle Sourcing RH</strong>
+                        <span>PRO C2S Maroc</span>
+                    </div>
+                </div>
+                <button type="button" class="btn-read-article" aria-label="Consulter l'analyse">
+                    <span>Lire l'analyse</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </article>
 
-        <div class="card article-card" 
+        <!-- Article 3: Conseils Carrière -->
+        <article class="article-card" 
+             tabindex="0"
+             role="button"
+             aria-label="Lire l'article: Réussir sa mission d'intérim : Guide pour les candidats"
              data-title="Réussir sa mission d'intérim : Guide pour les candidats" 
-             data-category="Conseils Carrière"
-             data-content="Décrocher une mission d'intérim est une excellente opportunité pour développer ses compétences et élargir son réseau professionnel. Pour réussir dès les premiers jours, il est primordial d'adopter une attitude proactive, d'être ponctuel et de faire preuve d'écoute active. S'intégrer rapidement dans une nouvelle équipe d'entreprise demande de la souplesse et du sérieux. De nombreuses missions temporaires se transforment souvent en contrats durables pour les profils les plus investis et rigoureux.">
-            <div>
-                <span class="job-badge interim" style="margin-bottom: 15px; display: inline-block;">Conseils Carrière</span>
-                <h3 style="font-size: 18px; margin-bottom: 12px;">Réussir sa mission d'intérim : Guide pour les candidats</h3>
-                <p style="font-size: 14px; color: var(--gray); line-height: 1.6; margin-bottom: 20px;">Les bonnes pratiques pour s'intégrer rapidement dans une nouvelle équipe d'entreprise et transformer l'essai en opportunité.</p>
+             data-category="Conseils Carrière & Talents"
+             data-time="3 min de lecture"
+             data-points="Près de 40% des missions d'intérim débouchent sur une embauche directe en CDI|Ponctualité exemplaire, respect des consignes de sécurité et adaptabilité au cœur du succès|Accompagnement continu et écoute active assurés par les consultants PRO C2S"
+             data-content="Décrocher une mission d'intérim est une excellente opportunité pour enrichir son parcours, développer de nouvelles compétences techniques et se faire repérer par les plus grandes entreprises du Maroc.<br><br>Pour transformer votre mission en un véritable accélérateur de carrière et susciter une proposition d'embauche définitive (CDI), plusieurs réflexes sont déterminants dès votre premier jour :<br>• Une ponctualité rigoureuse et une présentation irréprochable<br>• Le respect minutieux des protocoles d'hygiène et de sécurité au travail<br>• Une attitude proactive, curieuse et orientée vers la résolution des défis de votre équipe.<br><br>Chez PRO C2S, nos consultants vous coachent et assurent un suivi régulier tout au long de votre contrat. Grâce à ce partenariat de confiance, près de 40% de nos candidats délégués reçoivent une proposition d'intégration permanente par l'entreprise cliente à l'issue de leur mission.">
+            <div class="article-card-header header-carriere">
+                <div class="article-icon-badge">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="article-meta-tags">
+                    <span class="article-cat-pill cat-carriere">Conseils Carrière</span>
+                    <span class="article-time-pill"><i class="fa-regular fa-clock"></i> 3 min</span>
+                </div>
             </div>
-            <button class="btn-job btn-read-article" style="margin-top: auto; border:none; width:100%; cursor:pointer;">
-                Lire l'article complet <i class="fa-solid fa-arrow-right"></i>
-            </button>
-        </div>
+            <div class="article-card-body">
+                <h3 class="article-card-title">Réussir sa mission d'intérim : Guide pour les candidats</h3>
+                <p class="article-card-excerpt">Les meilleures pratiques pour réussir son intégration en entreprise, faire la différence sur le terrain et transformer l'intérim en CDI pérenne.</p>
+                <div class="article-tags-wrap">
+                    <span class="article-micro-tag"><i class="fa-solid fa-check"></i> Tremplin CDI</span>
+                    <span class="article-micro-tag"><i class="fa-solid fa-star"></i> Coaching RH</span>
+                </div>
+            </div>
+            <div class="article-card-footer">
+                <div class="article-author-info">
+                    <div class="author-mini-avatar"><i class="fa-solid fa-award"></i></div>
+                    <div class="author-text">
+                        <strong>Talents & Carrières</strong>
+                        <span>PRO C2S Maroc</span>
+                    </div>
+                </div>
+                <button type="button" class="btn-read-article" aria-label="Consulter l'analyse">
+                    <span>Lire l'analyse</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </article>
 
-        <div class="card article-card" 
-             data-title="La gestion administrative et la paie externalisée" 
-             data-category="Conformité RH"
-             data-content="La gestion de la paie, les déclarations CNSS, la rédaction des contrats et le suivi des congés représentent une charge administrative très lourde pour les entreprises. Externaliser ces processus auprès d'un partenaire spécialisé comme PRO C2S garantit une conformité juridique irréprochable avec les lois en vigueur au Maroc. Cela permet non seulement de réduire les risques d'erreurs et de litiges, mais aussi d'optimiser les coûts internes de gestion des ressources humaines.">
-            <div>
-                <span class="job-badge interim" style="margin-bottom: 15px; display: inline-block;">Conformité RH</span>
-                <h3 style="font-size: 18px; margin-bottom: 12px;">La gestion administrative et la paie externalisée</h3>
-                <p style="font-size: 14px; color: var(--gray); line-height: 1.6; margin-bottom: 20px;">Pourquoi de plus en plus d'entreprises confient la complexité des contrats et des déclarations sociales aux experts.</p>
+        <!-- Article 4: Externalisation RH & Paie -->
+        <article class="article-card" 
+             tabindex="0"
+             role="button"
+             aria-label="Lire l'article: Externalisation RH & Paie : Sécuriser la conformité de votre entreprise"
+             data-title="Externalisation RH & Paie : Sécuriser la conformité de votre entreprise" 
+             data-category="Conformité, Audit & Paie"
+             data-time="5 min de lecture"
+             data-points="Zéro risque de redressement ou litige social grâce à une expertise juridique pointue|Traitement rigoureux et ponctuel de 100% des bulletins de paie et télédéclarations Damancom|Réduction significative des coûts opérationnels de gestion interne"
+             data-content="La gestion de la paie, l'édition des bulletins, les télédéclarations CNSS, le calcul de l'IR et le suivi administratif des congés constituent des processus complexes à fort enjeu juridique pour les directions d'entreprise.<br><br>La moindre inexactitude de calcul ou un retard déclaratif expose la structure à des pénalités financières substantielles et peut fragiliser le climat social interne. L'externalisation auprès d'un expert certifié comme PRO C2S garantit une maîtrise absolue de vos obligations légales.<br><br>Nos spécialistes RH prennent en charge l'ensemble de votre chaîne de paie : élaboration conforme, calcul des charges, déclarations sociales dans les délais et veille législative continue sur le Code du Travail. Votre entreprise gagne en sérénité, sécurise ses coûts et peut concentrer ses ressources sur ses objectifs stratégiques.">
+            <div class="article-card-header header-paie">
+                <div class="article-icon-badge">
+                    <i class="fa-solid fa-file-shield"></i>
+                </div>
+                <div class="article-meta-tags">
+                    <span class="article-cat-pill cat-paie">Audit & Paie RH</span>
+                    <span class="article-time-pill"><i class="fa-regular fa-clock"></i> 5 min</span>
+                </div>
             </div>
-            <button class="btn-job btn-read-article" style="margin-top: auto; border:none; width:100%; cursor:pointer;">
-                Lire l'article complet <i class="fa-solid fa-arrow-right"></i>
-            </button>
-        </div>
+            <div class="article-card-body">
+                <h3 class="article-card-title">Externalisation RH & Paie : Sécuriser la conformité</h3>
+                <p class="article-card-excerpt">Pourquoi et comment déléguer la complexité des bulletins, des contrats et des déclarations sociales pour une conformité 100% garantie.</p>
+                <div class="article-tags-wrap">
+                    <span class="article-micro-tag"><i class="fa-solid fa-check"></i> Audit CNSS & IR</span>
+                    <span class="article-micro-tag"><i class="fa-solid fa-lock"></i> Confidentialité</span>
+                </div>
+            </div>
+            <div class="article-card-footer">
+                <div class="article-author-info">
+                    <div class="author-mini-avatar"><i class="fa-solid fa-building-columns"></i></div>
+                    <div class="author-text">
+                        <strong>Pôle Paie & Audit</strong>
+                        <span>PRO C2S Maroc</span>
+                    </div>
+                </div>
+                <button type="button" class="btn-read-article" aria-label="Consulter l'analyse">
+                    <span>Lire l'analyse</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </article>
     </div>
 </section>
 
-<div class="job-modal-overlay" id="articleModal">
-    <div class="job-modal-content">
-        <button class="job-modal-close" id="closeArticleModalBtn" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
-        <span class="modal-header-badge job-badge interim" id="articleModalBadge">Catégorie</span>
-        <h3 class="job-modal-title" id="articleModalTitle" style="font-size: 22px; margin-bottom: 15px;">Titre de l'article</h3>
-        
-        <div class="modal-description" style="margin-top: 15px;">
-            <p id="articleModalDesc" style="font-size: 15px; line-height: 1.8; color: var(--gray); margin-bottom: 25px;"></p>
+<!-- MODAL ARTICLE (EXECUTIVE READER - SANS WHATSAPP) -->
+<div class="job-modal-overlay" id="articleModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="job-modal-content article-modal-deluxe">
+        <button class="job-modal-close" id="closeArticleModalBtn" aria-label="Fermer la lecture">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="article-modal-meta-top">
+            <span class="article-modal-badge" id="articleModalBadge">Droit du Travail</span>
+            <span class="article-modal-pill" id="articleModalTime"><i class="fa-regular fa-clock"></i> 4 min de lecture</span>
+            <span class="article-modal-pill"><i class="fa-regular fa-calendar-check"></i> Veille Juridique 2025</span>
         </div>
 
-        <a href="#" id="articleModalWaBtn" target="_blank" rel="noopener noreferrer" class="btn" style="background: #25d366; width: 100%; justify-content: center; border-radius: 12px; padding: 14px;">
-            <i class="fa-brands fa-whatsapp"></i> Discuter de ce sujet sur WhatsApp
-        </a>
+        <h2 class="article-modal-title" id="articleModalTitle">Titre de l'analyse</h2>
+
+        <div class="article-modal-authority">
+            <div class="authority-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="authority-details">
+                <strong>Publication certifiée par le Pôle d'Expertise PRO C2S</strong>
+                <span>Conforme aux dispositions du Code du Travail marocain & standards RH</span>
+            </div>
+        </div>
+
+        <div class="article-modal-takeaway" id="articleModalTakeawayBox">
+            <div class="takeaway-header">
+                <i class="fa-solid fa-lightbulb"></i>
+                <strong>Points clés à retenir pour votre organisation :</strong>
+            </div>
+            <ul class="takeaway-list" id="articleModalPointsList">
+                <!-- Dynamically populated -->
+            </ul>
+        </div>
+
+        <div class="article-modal-body" id="articleModalDesc">
+            <!-- Dynamically populated -->
+        </div>
+
+        <!-- Consultation Box Corporate (Pas de bouton WhatsApp) -->
+        <div class="article-modal-cta-box">
+            <div class="cta-box-content">
+                <div class="cta-icon-wrapper"><i class="fa-solid fa-headset"></i></div>
+                <div class="cta-text-wrapper">
+                    <h4>Besoin d'un accompagnement personnalisé sur ce sujet ?</h4>
+                    <p>Nos consultants seniors en ressources humaines analysent la situation de votre entreprise en toute confidentialité et sans engagement.</p>
+                </div>
+            </div>
+            <div class="cta-box-actions">
+                <button type="button" class="btn-consult-primary" id="articleModalConsultBtn">
+                    <i class="fa-solid fa-paper-plane"></i> Échanger avec un consultant RH
+                </button>
+                <button type="button" class="btn-consult-share" id="articleModalShareBtn">
+                    <i class="fa-solid fa-share-nodes"></i> <span id="articleModalShareText">Partager l'article</span>
+                </button>
+            </div>
+            <div class="cta-direct-phone">
+                <i class="fa-solid fa-phone"></i> Ligne directe service entreprises : <a href="tel:+212663449824">06 63 44 98 24</a> / <a href="tel:+212520704830">05 20 70 48 30</a>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -1840,7 +1997,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="script.js?v=3030"></script>
+<script src="script.js?v=3040"></script>
 <script>
     // Dictionnaire de traduction FR/EN complet pour index.html
     const translations = {

@@ -398,30 +398,130 @@ document.addEventListener("DOMContentLoaded", function() {
     const closeArticleModalBtn = document.getElementById("closeArticleModalBtn");
     const articleModalTitle = document.getElementById("articleModalTitle");
     const articleModalBadge = document.getElementById("articleModalBadge");
+    const articleModalTime = document.getElementById("articleModalTime");
     const articleModalDesc = document.getElementById("articleModalDesc");
-    const articleModalWaBtn = document.getElementById("articleModalWaBtn");
+    const articleModalPointsList = document.getElementById("articleModalPointsList");
+    const articleModalConsultBtn = document.getElementById("articleModalConsultBtn");
+    const articleModalShareBtn = document.getElementById("articleModalShareBtn");
+    const articleModalShareText = document.getElementById("articleModalShareText");
     const articleCards = document.querySelectorAll(".article-card");
 
-    articleCards.forEach(card => {
-        const readBtn = card.querySelector(".btn-read-article");
-        readBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            const title = card.getAttribute("data-title");
-            const category = card.getAttribute("data-category");
-            const content = card.getAttribute("data-content");
+    let currentArticleTitle = "";
 
-            articleModalTitle.innerText = title;
-            articleModalBadge.innerText = category;
-            articleModalDesc.innerText = content;
-            articleModalWaBtn.href = `https://wa.me/212663449824?text=${encodeURIComponent("Bonjour, j'ai lu votre article '" + title + "' et je souhaite en savoir plus.")}`;
-            
-            if(articleModal) articleModal.classList.add("open");
+    function openArticle(card) {
+        currentArticleTitle = card.getAttribute("data-title") || "";
+        const category = card.getAttribute("data-category") || "";
+        const time = card.getAttribute("data-time") || "3 min de lecture";
+        const content = card.getAttribute("data-content") || "";
+        const rawPoints = card.getAttribute("data-points") || "";
+
+        if (articleModalTitle) articleModalTitle.innerText = currentArticleTitle;
+        if (articleModalBadge) articleModalBadge.innerText = category;
+        if (articleModalTime) articleModalTime.innerHTML = '<i class="fa-regular fa-clock"></i> ' + time;
+        
+        // Render rich paragraphs
+        if (articleModalDesc) {
+            articleModalDesc.innerHTML = content;
+        }
+
+        // Render points list
+        if (articleModalPointsList) {
+            articleModalPointsList.innerHTML = "";
+            if (rawPoints) {
+                const points = rawPoints.split("|");
+                points.forEach(pt => {
+                    const li = document.createElement("li");
+                    li.innerHTML = '<i class="fa-solid fa-circle-check"></i> <span>' + pt.trim() + '</span>';
+                    articleModalPointsList.appendChild(li);
+                });
+            }
+        }
+
+        if (articleModal) {
+            articleModal.classList.add("open");
+            document.body.style.overflow = "hidden";
+        }
+    }
+
+    function closeArticle() {
+        if (articleModal) {
+            articleModal.classList.remove("open");
+            document.body.style.overflow = "";
+        }
+    }
+
+    articleCards.forEach(card => {
+        card.addEventListener("click", () => openArticle(card));
+        card.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                openArticle(card);
+            }
         });
     });
 
-    if(closeArticleModalBtn && articleModal) {
-        closeArticleModalBtn.addEventListener("click", () => articleModal.classList.remove("open"));
-        articleModal.addEventListener("click", (e) => { if(e.target === articleModal) articleModal.classList.remove("open"); });
+    if (closeArticleModalBtn) {
+        closeArticleModalBtn.addEventListener("click", closeArticle);
+    }
+
+    if (articleModal) {
+        articleModal.addEventListener("click", (e) => {
+            if (e.target === articleModal) closeArticle();
+        });
+    }
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && articleModal && articleModal.classList.contains("open")) {
+            closeArticle();
+        }
+    });
+
+    // Consultant CTA Action (Smooth scroll to contact & pre-fill message)
+    if (articleModalConsultBtn) {
+        articleModalConsultBtn.addEventListener("click", () => {
+            closeArticle();
+            const contactSection = document.getElementById("contact");
+            const contactForm = document.getElementById("contact-form");
+            const msgArea = contactForm ? contactForm.querySelector('textarea[name="message"]') : null;
+            const nameInput = contactForm ? contactForm.querySelector('input[name="user_name"]') : null;
+
+            if (msgArea && currentArticleTitle) {
+                msgArea.value = "Bonjour, suite à la lecture de votre publication \"" + currentArticleTitle + "\", je souhaite échanger avec vos consultants RH pour étudier nos besoins d'entreprise.";
+            }
+
+            if (contactSection) {
+                setTimeout(() => {
+                    contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
+                    if (nameInput) {
+                        setTimeout(() => nameInput.focus(), 600);
+                    }
+                }, 100);
+            }
+        });
+    }
+
+    // Share Article Link
+    if (articleModalShareBtn && articleModalShareText) {
+        articleModalShareBtn.addEventListener("click", () => {
+            const shareUrl = window.location.origin + window.location.pathname + "#actualites";
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(shareUrl).then(() => {
+                    const originalText = articleModalShareText.innerText;
+                    articleModalShareText.innerText = "Lien copié !";
+                    articleModalShareBtn.style.background = "rgba(16, 185, 129, 0.25)";
+                    articleModalShareBtn.style.borderColor = "#10b981";
+                    setTimeout(() => {
+                        articleModalShareText.innerText = originalText;
+                        articleModalShareBtn.style.background = "";
+                        articleModalShareBtn.style.borderColor = "";
+                    }, 2500);
+                }).catch(() => {
+                    alert("Lien : " + shareUrl);
+                });
+            } else {
+                alert("Lien : " + shareUrl);
+            }
+        });
     }
 
     // Simulator Pro Interactive
