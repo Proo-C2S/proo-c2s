@@ -9,39 +9,54 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cabinet+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3080">
+    <link rel="stylesheet" href="style.css?v=3090">
 </head>
 <body class="page-informatique">
 
-    <!-- ================= NAVBAR ================= -->
-    <header class="navbar">
-        <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <img src="image/logo.png" alt="Logo PRO C2S" class="logo-img">
-            </a>
+    <!-- ================= PRELOADER ANIMATION ================= -->
+    <div id="preloader" class="montarville-loader" aria-hidden="true">
+        <div class="loader-center">
+            <img src="image/logo.png.png" alt="PRO C2S" class="loader-logo">
+        </div>
+    </div>
 
-            <nav class="nav-links">
-                <a href="index.html" class="nav-link" data-i18n="nav_home">Accueil</a>
-                <a href="interim.html" class="nav-link" data-i18n="nav_interim">Intérim</a>
-                <a href="informatique.html" class="nav-link active" data-i18n="nav_info">Informatique</a>
-                <a href="nettoyage.html" class="nav-link" data-i18n="nav_clean">Nettoyage</a>
-                <a href="recrutement.html" class="nav-link" data-i18n="nav_recrut">Offres d'emploi</a>
-            </nav>
+    <!-- ================= NAVBAR UNIFIÉE ================= -->
+    <header id="main-header" class="scrolled">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="image/logo.png.png" alt="PRO C2S"></a>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="index.html" data-i18n="nav_home">Accueil</a></li>
+                <li><a href="interim.html" data-i18n="nav_interim">Intérim</a></li>
+                <li><a href="informatique.html" class="active" style="color: var(--primary);" data-i18n="nav_info">Informatique</a></li>
+                <li><a href="nettoyage.html" data-i18n="nav_clean">Nettoyage</a></li>
+                <li><a href="index.html#carrieres" data-i18n="nav_jobs">Offres d'emploi</a></li>
+                <li><a href="index.html#contact" data-i18n="nav_contact">Contact</a></li>
+                <li class="nav-mobile-extra">
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" data-lang="fr">FR</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    <a href="index.html#contact" class="btn-mobile-cta" data-i18n="nav_cta">Devis Express</a>
+                </li>
+            </ul>
 
             <div class="nav-actions">
-                <button class="btn-lang" id="langToggle" aria-label="Changer de langue">
-                    <span class="lang-flag">🌐</span>
-                    <span class="lang-text" id="langText">EN</span>
-                </button>
-                <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20un%20renfort%20IT%20d%27ingénierie" target="_blank" class="btn btn-secondary nav-wa-btn">
-                    <i class="fa-brands fa-whatsapp"></i> <span data-i18n="nav_cta_it">Audit & Devis IT</span>
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="fr">FR</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+                <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20un%20renfort%20IT" target="_blank" class="btn">
+                    <i class="fa-brands fa-whatsapp"></i> <span data-i18n="nav_cta">Devis Express</span>
                 </a>
             </div>
 
-            <button class="burger" id="burgerBtn" aria-label="Menu Mobile">
+            <button class="menu-toggle" aria-label="Menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
-        </div>
+        </nav>
     </header>
 
     <!-- ================= HERO SECTION (ENGINEERING LUXE) ================= -->
@@ -133,10 +148,10 @@
 
             <div class="luxury-services-grid">
 
-                <!-- 1. Dev Web & Cloud -->
+                <!-- 1. Dev Web & Cloud (Real Code Syntax on Screens) -->
                 <div class="luxury-service-card">
                     <div class="card-img-holder">
-                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Développement Web & Applications Cloud" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" alt="Développement Web & Applications Cloud" loading="lazy">
                         <span class="service-pill" data-i18n="it_s1_pill">Web & Full-Stack</span>
                     </div>
                     <div class="card-body-content">
@@ -152,10 +167,10 @@
                     </div>
                 </div>
 
-                <!-- 2. Dev Mobile -->
+                <!-- 2. Dev Mobile (Mobile Engineering Setup) -->
                 <div class="luxury-service-card">
                     <div class="card-img-holder">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=800&q=80" alt="Développement Mobile iOS & Android" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=800&q=80" alt="Développement Mobile iOS & Android" loading="lazy">
                         <span class="service-pill" data-i18n="it_s2_pill">Mobile & Apps</span>
                     </div>
                     <div class="card-body-content">
@@ -171,7 +186,7 @@
                     </div>
                 </div>
 
-                <!-- 3. Cloud & DevOps -->
+                <!-- 3. Cloud & DevOps (Cloud Networks) -->
                 <div class="luxury-service-card">
                     <div class="card-img-holder">
                         <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="Cloud Computing & DevOps" loading="lazy">
@@ -190,7 +205,7 @@
                     </div>
                 </div>
 
-                <!-- 4. Cybersécurité -->
+                <!-- 4. Cybersécurité (SOC Shield & Cyber Monitor) -->
                 <div class="luxury-service-card">
                     <div class="card-img-holder">
                         <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80" alt="Cybersécurité & Audit Pentest" loading="lazy">
@@ -209,7 +224,7 @@
                     </div>
                 </div>
 
-                <!-- 5. Data & IA -->
+                <!-- 5. Data & IA (Data Analytics BI Dashboards) -->
                 <div class="luxury-service-card">
                     <div class="card-img-holder">
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Data Engineering & Intelligence Artificielle" loading="lazy">
@@ -228,7 +243,7 @@
                     </div>
                 </div>
 
-                <!-- 6. Systèmes & Réseaux -->
+                <!-- 6. Systèmes & Réseaux (Datacenter Cabling & Servers) -->
                 <div class="luxury-service-card">
                     <div class="card-img-holder">
                         <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Administration Systèmes & Réseaux" loading="lazy">
@@ -247,7 +262,7 @@
                     </div>
                 </div>
 
-                <!-- 7. Support & Infogérance -->
+                <!-- 7. Support & Infogérance (IT Support Workstation) -->
                 <div class="luxury-service-card">
                     <div class="card-img-holder">
                         <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" alt="Support Informatique & Helpdesk" loading="lazy">
@@ -266,10 +281,10 @@
                     </div>
                 </div>
 
-                <!-- 8. Architecture & Conseil IT -->
+                <!-- 8. Architecture & Conseil IT (Software System Blueprint) -->
                 <div class="luxury-service-card">
                     <div class="card-img-holder">
-                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Architecture IT & Conseil" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80" alt="Architecture IT & Conseil" loading="lazy">
                         <span class="service-pill" data-i18n="it_s8_pill">Architecture & Conseil</span>
                     </div>
                     <div class="card-body-content">
@@ -289,7 +304,7 @@
         </div>
     </section>
 
-    <!-- ================= EXECUTIVE PILLARS REDESIGN (WHY CHOOSE US) ================= -->
+    <!-- ================= EXECUTIVE PILLARS REDESIGN ================= -->
     <section class="pillars-section">
         <div class="container">
             <div class="section-title">
@@ -332,7 +347,7 @@
                     <div class="pillar-chip"><i class="fa-solid fa-circle-check"></i> <span data-i18n="it_v3_chip">Modèles Hybrides</span></div>
                 </div>
 
-                <!-- Pillar 4 (Guaranteed Free FA Icon) -->
+                <!-- Pillar 4 -->
                 <div class="pillar-card">
                     <div class="pillar-card-top">
                         <div class="pillar-icon"><i class="fa-solid fa-shield-halved"></i></div>
@@ -368,7 +383,7 @@
     <footer class="footer">
         <div class="container footer-content">
             <div class="footer-col">
-                <img src="image/logo.png" alt="Logo PRO C2S" class="footer-logo">
+                <img src="image/logo.png.png" alt="Logo PRO C2S" class="footer-logo">
                 <p class="footer-desc" data-i18n="footer_desc">Partenaire stratégique de référence en Intérim, Ingénierie Informatique et Facility Management au Maroc.</p>
                 <div class="social-links">
                     <a href="https://wa.me/212663449824" target="_blank" class="social-link" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
@@ -383,7 +398,7 @@
                     <li><a href="interim.html" data-i18n="nav_interim">Intérim & Recrutement</a></li>
                     <li><a href="informatique.html" data-i18n="nav_info">Ingénierie Informatique</a></li>
                     <li><a href="nettoyage.html" data-i18n="nav_clean">Nettoyage & Hygiène</a></li>
-                    <li><a href="recrutement.html" data-i18n="nav_recrut">Offres d'emploi</a></li>
+                    <li><a href="index.html#carrieres" data-i18n="nav_jobs">Offres d'emploi</a></li>
                 </ul>
             </div>
 
@@ -412,8 +427,9 @@
                 nav_interim: "Intérim",
                 nav_info: "Informatique",
                 nav_clean: "Nettoyage",
-                nav_recrut: "Offres d'emploi",
-                nav_cta_it: "Audit & Devis IT",
+                nav_jobs: "Offres d'emploi",
+                nav_contact: "Contact",
+                nav_cta: "Devis Express",
                 it_hero_chip: "PÔLE INGÉNIERIE & TALENTS DIGITAUX",
                 it_hero_title: "L'Excellence <span class='highlight-text'>IT & Ingénierie Logicielle</span> au Service de Votre Croissance",
                 it_hero_desc: "Nous mettons à votre disposition les 5% meilleurs développeurs, architectes Cloud, consultants cybersécurité et experts en infrastructures pour accélérer vos roadmaps technologiques en Régie ou au Forfait.",
@@ -497,8 +513,9 @@
                 nav_interim: "Staffing",
                 nav_info: "IT Engineering",
                 nav_clean: "Cleaning",
-                nav_recrut: "Job Offers",
-                nav_cta_it: "IT Audit & Quote",
+                nav_jobs: "Job Offers",
+                nav_contact: "Contact",
+                nav_cta: "Express Quote",
                 it_hero_chip: "ENGINEERING & DIGITAL TALENTS DIVISION",
                 it_hero_title: "Excellence in <span class='highlight-text'>IT & Software Engineering</span> Powering Your Growth",
                 it_hero_desc: "We deploy the top 5% developers, cloud architects, cybersecurity consultants, and infrastructure specialists to accelerate your roadmaps on time-and-materials or fixed-price models.",
@@ -579,34 +596,56 @@
             }
         };
 
-        function setPageLanguage(lang) {
+        function setLanguage(lang) {
+            if (!itDict[lang]) return;
             localStorage.setItem("proC2sLang", lang);
-            const dict = itDict[lang] || itDict.fr;
+            document.documentElement.lang = lang;
+            const dict = itDict[lang];
 
-            document.querySelectorAll("[data-i18n]").forEach(el => {
-                const key = el.getAttribute("data-i18n");
+            document.querySelectorAll('.lang-btn').forEach(b => {
+                if (b.getAttribute('data-lang') === lang) {
+                    b.classList.add('active');
+                } else {
+                    b.classList.remove('active');
+                }
+            });
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
                 if (dict[key]) {
                     el.innerHTML = dict[key];
                 }
             });
-
-            const langText = document.getElementById("langText");
-            if (langText) langText.textContent = lang === "fr" ? "EN" : "FR";
         }
+
+        (function(){
+            function dismissPreloader() {
+                var p = document.getElementById("preloader");
+                if (p && !p.classList.contains("curtain-up")) {
+                    p.classList.add("curtain-up");
+                    setTimeout(function(){
+                        p.classList.add("preloader-hidden");
+                        p.style.display = "none";
+                        document.body.classList.remove("is-loading");
+                        document.body.classList.add("hero-revealed");
+                    }, 600);
+                }
+            }
+            window.addEventListener("load", function(){ setTimeout(dismissPreloader, 300); });
+            setTimeout(dismissPreloader, 1800);
+        })();
 
         document.addEventListener("DOMContentLoaded", () => {
             const savedLang = localStorage.getItem("proC2sLang") || "fr";
-            setPageLanguage(savedLang);
+            setLanguage(savedLang);
 
-            const langToggle = document.getElementById("langToggle");
-            if (langToggle) {
-                langToggle.addEventListener("click", () => {
-                    const current = localStorage.getItem("proC2sLang") || "fr";
-                    setPageLanguage(current === "fr" ? "en" : "fr");
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    setLanguage(btn.getAttribute('data-lang'));
                 });
-            }
+            });
         });
     </script>
-    <script src="script.js?v=3080"></script>
+    <script src="script.js?v=3090"></script>
 </body>
 </html>
