@@ -308,12 +308,13 @@ document.addEventListener("DOMContentLoaded", function() {
     // Open Modal when clicking any Job Card
     allJobCards.forEach(card => {
         card.addEventListener("click", () => {
-            const title = card.getAttribute("data-title");
-            const sector = card.getAttribute("data-sector");
+            const isEn = localStorage.getItem("proC2sLang") === "en";
+            const title = (isEn && card.getAttribute("data-title-en")) ? card.getAttribute("data-title-en") : card.getAttribute("data-title");
+            const sector = (isEn && card.getAttribute("data-sector-en")) ? card.getAttribute("data-sector-en") : card.getAttribute("data-sector");
             const badge = card.getAttribute("data-badge") || "interim";
-            const location = card.getAttribute("data-location");
-            const req = card.getAttribute("data-req");
-            const desc = card.getAttribute("data-desc");
+            const location = (isEn && card.getAttribute("data-location-en")) ? card.getAttribute("data-location-en") : card.getAttribute("data-location");
+            const req = (isEn && card.getAttribute("data-req-en")) ? card.getAttribute("data-req-en") : card.getAttribute("data-req");
+            const desc = (isEn && card.getAttribute("data-desc-en")) ? card.getAttribute("data-desc-en") : card.getAttribute("data-desc");
             const wa = card.getAttribute("data-wa");
 
             if (modalTitle) modalTitle.innerText = title;
@@ -409,11 +410,12 @@ document.addEventListener("DOMContentLoaded", function() {
     let currentArticleTitle = "";
 
     function openArticle(card) {
-        currentArticleTitle = card.getAttribute("data-title") || "";
-        const category = card.getAttribute("data-category") || "";
-        const time = card.getAttribute("data-time") || "3 min de lecture";
-        const content = card.getAttribute("data-content") || "";
-        const rawPoints = card.getAttribute("data-points") || "";
+        const isEn = localStorage.getItem("proC2sLang") === "en";
+        currentArticleTitle = (isEn && card.getAttribute("data-title-en")) ? card.getAttribute("data-title-en") : (card.getAttribute("data-title") || "");
+        const category = (isEn && card.getAttribute("data-category-en")) ? card.getAttribute("data-category-en") : (card.getAttribute("data-category") || "");
+        const time = (isEn && card.getAttribute("data-time-en")) ? card.getAttribute("data-time-en") : (card.getAttribute("data-time") || (isEn ? "3 min read" : "3 min de lecture"));
+        const content = (isEn && card.getAttribute("data-content-en")) ? card.getAttribute("data-content-en") : (card.getAttribute("data-content") || "");
+        const rawPoints = (isEn && card.getAttribute("data-points-en")) ? card.getAttribute("data-points-en") : (card.getAttribute("data-points") || "");
 
         if (articleModalTitle) articleModalTitle.innerText = currentArticleTitle;
         if (articleModalBadge) articleModalBadge.innerText = category;
@@ -486,7 +488,8 @@ document.addEventListener("DOMContentLoaded", function() {
             const nameInput = contactForm ? contactForm.querySelector('input[name="user_name"]') : null;
 
             if (msgArea && currentArticleTitle) {
-                msgArea.value = "Bonjour, suite à la lecture de votre publication \"" + currentArticleTitle + "\", je souhaite échanger avec vos consultants RH pour étudier nos besoins d'entreprise.";
+                const isEn = localStorage.getItem("proC2sLang") === "en";
+            msgArea.value = isEn ? "Hello, following my reading of your publication \"" + currentArticleTitle + "\", I would like to speak with your HR consultants regarding our corporate staffing requirements." : "Bonjour, suite à la lecture de votre publication \"" + currentArticleTitle + "\", je souhaite échanger avec vos consultants RH pour étudier nos besoins d'entreprise.";
             }
 
             if (contactSection) {
