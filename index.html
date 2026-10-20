@@ -85,7 +85,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=3020">
+    <link rel="stylesheet" href="style.css?v=3030">
 
     <style>
         .skip-link { position: absolute; left: -9999px; top: 0; background: #00e676; color: #06090e; padding: 10px 16px; z-index: 10000; border-radius: 0 0 8px 0; font-weight: 800; }
@@ -607,6 +607,26 @@
         <img src="image/logo.png.png" alt="PRO C2S" class="loader-logo">
     </div>
 </div>
+<script>
+    (function(){
+        function dismissPreloader() {
+            var p = document.getElementById("preloader");
+            if (p && !p.classList.contains("curtain-up")) {
+                p.classList.add("curtain-up");
+                setTimeout(function(){
+                    p.classList.add("preloader-hidden");
+                    p.style.display = "none";
+                    if (document.body) {
+                        document.body.classList.remove("is-loading");
+                        document.body.classList.add("hero-revealed");
+                    }
+                }, 700);
+            }
+        }
+        window.addEventListener("load", function(){ setTimeout(dismissPreloader, 600); });
+        setTimeout(dismissPreloader, 2000);
+    })();
+</script>
 
 <a href="#home" class="skip-link">Aller au contenu</a>
 
@@ -1820,7 +1840,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="script.js?v=3007"></script>
+<script src="script.js?v=3030"></script>
 <script>
     // Dictionnaire de traduction FR/EN complet pour index.html
     const translations = {
