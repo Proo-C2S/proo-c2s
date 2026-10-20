@@ -3246,3 +3246,367 @@ header.nav-visible {
   outline: 2px solid #10b981 !important;
   outline-offset: 3px !important;
 }
+
+
+/* ======================== ENGINEERED SIMULATOR UPGRADES ======================== */
+.sim-sector-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.sim-card-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--r-md);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #e2e8f0;
+  font-family: var(--font-main);
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: left;
+}
+
+.sim-card-btn i {
+  font-size: 16px;
+  color: var(--c-green-vivid);
+  transition: transform 0.25s ease;
+}
+
+.sim-card-btn:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(16, 185, 129, 0.4);
+  transform: translateY(-2px);
+}
+
+.sim-card-btn.active {
+  background: rgba(16, 185, 129, 0.14);
+  border-color: var(--c-green-neon);
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 230, 118, 0.25);
+}
+
+.sim-card-btn.active i {
+  color: var(--c-green-neon);
+  transform: scale(1.15);
+}
+
+.sim-count-pills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sim-count-pill {
+  flex: 1;
+  min-width: 90px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--r-pill);
+  padding: 10px 16px;
+  color: #cbd5e1;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.sim-count-pill:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.sim-count-pill.active {
+  background: var(--c-green-neon);
+  border-color: var(--c-green-neon);
+  color: var(--c-black);
+  box-shadow: 0 4px 16px rgba(0, 230, 118, 0.3);
+}
+
+.sim-summary-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.sim-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 4px 12px;
+  background: rgba(0, 230, 118, 0.15);
+  color: var(--c-green-neon);
+  border-radius: 999px;
+  border: 1px solid rgba(0, 230, 118, 0.3);
+}
+
+.sim-metrics-box {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.sim-metric-item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--r-md);
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sim-metric-val {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.sim-metric-lbl {
+  font-size: 11px;
+  color: #94a3b8;
+  text-align: center;
+  margin-top: 2px;
+}
+
+.sim-summary-features {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.sim-summary-features div {
+  font-size: 12.5px;
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sim-summary-features i {
+  color: var(--c-green-neon);
+  font-size: 12px;
+}
+
+.sim-direct-call {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 6px;
+}
+
+.sim-direct-call a {
+  color: #ffffff;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.sim-direct-call a:hover {
+  color: var(--c-green-neon);
+}
+
+@media (max-width: 768px) {
+  .sim-sector-grid {
+    grid-template-columns: 1fr;
+  }
+  .simulator-box {
+    grid-template-columns: 1fr;
+    padding: 30px 20px;
+    gap: 30px;
+  }
+}
+
+
+/* ======================== LIVE PULSE BADGE DESIGN (USER REQUEST) ======================== */
+.live-pulse-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 230, 118, 0.08);
+  border: 1.5px solid rgba(0, 230, 118, 0.35);
+  padding: 6px 14px;
+  border-radius: var(--r-pill);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #00e676;
+  letter-spacing: 0.3px;
+  box-shadow: 0 0 16px rgba(0, 230, 118, 0.18);
+  transition: all 0.3s ease;
+}
+
+.live-pulse-badge:hover {
+  background: rgba(0, 230, 118, 0.14);
+  border-color: rgba(0, 230, 118, 0.6);
+  box-shadow: 0 0 22px rgba(0, 230, 118, 0.3);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--c-green-neon);
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-shadow: 0 0 10px var(--c-green-neon);
+}
+
+.pulse-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--c-green-neon);
+  animation: pulseRadar 1.8s infinite cubic-bezier(0, 0.2, 0.8, 1);
+  opacity: 0.8;
+}
+
+@keyframes pulseRadar {
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* ======================== AUTRE / CUSTOM SECTOR INPUT DESIGN ======================== */
+.sim-card-autre {
+  background: rgba(255, 255, 255, 0.04);
+  border-style: dashed;
+}
+
+.sim-card-autre:hover {
+  border-color: var(--c-green-neon);
+  background: rgba(0, 230, 118, 0.08);
+}
+
+.sim-custom-box {
+  animation: fadeInDown 0.3s ease;
+  width: 100%;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sim-custom-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.sim-custom-input-wrap i {
+  position: absolute;
+  left: 16px;
+  color: var(--c-green-neon);
+  font-size: 15px;
+  pointer-events: none;
+}
+
+.sim-custom-input-wrap input {
+  width: 100%;
+  padding: 14px 18px 14px 46px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(0, 230, 118, 0.45);
+  border-radius: var(--r-md);
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-size: 14.5px;
+  font-weight: 600;
+  outline: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 18px rgba(0, 230, 118, 0.15);
+}
+
+.sim-custom-input-wrap input:focus {
+  border-color: var(--c-green-neon);
+  box-shadow: 0 0 25px rgba(0, 230, 118, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.sim-custom-input-wrap input::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.sim-custom-hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 8px;
+}
+
+.sim-custom-hint i {
+  color: var(--c-green-neon);
+}
+
+
+/* ======================== SIMULATOR EMAIL & WHATSAPP BUTTONS ======================== */
+.sim-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 11px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(37, 211, 102, 0.4);
+  color: #25d366;
+  border-radius: var(--r-pill);
+  font-size: 13.5px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  margin-top: 4px;
+}
+
+.sim-btn-secondary:hover {
+  background: rgba(37, 211, 102, 0.15);
+  border-color: #25d366;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.sim-modal-recap {
+  background: #f0fdf4;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 13px;
+  color: #065f46;
+}

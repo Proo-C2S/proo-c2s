@@ -332,24 +332,72 @@ document.addEventListener("DOMContentLoaded", function() {
         articleModal.addEventListener("click", (e) => { if(e.target === articleModal) articleModal.classList.remove("open"); });
     }
 
-    // Simulator
+    // Simulator Pro Interactive
     const simSector = document.getElementById("simSector");
     const simCount = document.getElementById("simCount");
     const simWhatsAppBtn = document.getElementById("simWhatsAppBtn");
+    const simPoolDisplay = document.getElementById("simPoolDisplay");
+    const simSpeedDisplay = document.getElementById("simSpeedDisplay");
 
     function updateSimLink() {
         if(simSector && simWhatsAppBtn) {
-            const count = simCount.value || 1;
-            const msg = `Bonjour PRO C2S, nous souhaitons une délégation de ${count} profil(s) dans le secteur: ${simSector.value}. Pouvez-vous nous transmettre une étude / devis ?`;
+            const count = simCount ? simCount.value : "3 à 5 profils";
+            const sector = simSector.value;
+            const msg = `Bonjour PRO C2S, nous souhaitons une délégation de ${count} dans le secteur : ${sector}. Merci de nous transmettre une proposition et devis.`;
             simWhatsAppBtn.href = `https://wa.me/212663449824?text=${encodeURIComponent(msg)}`;
         }
     }
 
-    if(simSector && simCount) {
-        simSector.addEventListener("change", updateSimLink);
-        simCount.addEventListener("input", updateSimLink);
-        updateSimLink();
+    const sectorCards = document.querySelectorAll(".sim-card-btn");
+    const customBox = document.getElementById("simCustomSectorBox");
+    const customInput = document.getElementById("simCustomSectorInput");
+
+    sectorCards.forEach(card => {
+        card.addEventListener("click", () => {
+            sectorCards.forEach(c => c.classList.remove("active"));
+            card.classList.add("active");
+            const sector = card.getAttribute("data-sector");
+            const pool = card.getAttribute("data-pool");
+            const speed = card.getAttribute("data-speed");
+
+            if (sector === "autre") {
+                if (customBox) customBox.style.display = "block";
+                if (customInput) {
+                    customInput.focus();
+                    const typed = customInput.value.trim();
+                    if (simSector) simSector.value = typed ? `Autre (${typed})` : "Autre profil spécifique";
+                }
+            } else {
+                if (customBox) customBox.style.display = "none";
+                if (simSector) simSector.value = sector;
+            }
+
+            if (simPoolDisplay && pool) simPoolDisplay.innerText = pool;
+            if (simSpeedDisplay && speed) simSpeedDisplay.innerText = speed;
+            updateSimLink();
+        });
+    });
+
+    if (customInput) {
+        customInput.addEventListener("input", () => {
+            const typed = customInput.value.trim();
+            if (simSector) simSector.value = typed ? `Autre (${typed})` : "Autre profil spécifique";
+            updateSimLink();
+        });
     }
+
+    const countPills = document.querySelectorAll(".sim-count-pill");
+    countPills.forEach(pill => {
+        pill.addEventListener("click", () => {
+            countPills.forEach(p => p.classList.remove("active"));
+            pill.classList.add("active");
+            const count = pill.getAttribute("data-count");
+            if (simCount) simCount.value = count;
+            updateSimLink();
+        });
+    });
+
+    updateSimLink();
 
     // FAQ Accordion
     document.querySelectorAll(".faq-item").forEach(item => {
@@ -398,6 +446,76 @@ document.addEventListener("DOMContentLoaded", function() {
                 .finally(() => {
                     submitBtn.innerText = originalText;
                     submitBtn.disabled = false;
+                });
+        });
+    }
+
+    // Simulator EmailJS Modal Submission
+    const simOpenModalBtn = document.getElementById("simOpenModalBtn");
+    const simEmailModal = document.getElementById("simEmailModal");
+    const closeSimModalBtn = document.getElementById("closeSimModalBtn");
+    const simEmailForm = document.getElementById("simEmailForm");
+    const modalRecapSector = document.getElementById("modalRecapSector");
+    const modalRecapCount = document.getElementById("modalRecapCount");
+    const simModalSubmitBtn = document.getElementById("simModalSubmitBtn");
+
+    if (simOpenModalBtn && simEmailModal) {
+        simOpenModalBtn.addEventListener("click", () => {
+            const sectorVal = simSector ? simSector.value : "Intérim & Production";
+            const countVal = simCount ? simCount.value : "3 à 5 profils";
+            if (modalRecapSector) modalRecapSector.innerText = sectorVal;
+            if (modalRecapCount) modalRecapCount.innerText = countVal;
+            simEmailModal.classList.add("open");
+        });
+    }
+
+    if (closeSimModalBtn && simEmailModal) {
+        closeSimModalBtn.addEventListener("click", () => {
+            simEmailModal.classList.remove("open");
+        });
+        simEmailModal.addEventListener("click", (e) => {
+            if (e.target === simEmailModal) simEmailModal.classList.remove("open");
+        });
+    }
+
+    if (simEmailForm) {
+        simEmailForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const name = document.getElementById("simModalName").value;
+            const phone = document.getElementById("simModalPhone").value;
+            const email = document.getElementById("simModalEmail").value;
+            const notes = document.getElementById("simModalNotes") ? document.getElementById("simModalNotes").value : "";
+            const sectorVal = simSector ? simSector.value : "Non précisé";
+            const countVal = simCount ? simCount.value : "Non précisé";
+
+            const origText = simModalSubmitBtn ? simModalSubmitBtn.innerHTML : "Envoyer";
+            if (simModalSubmitBtn) {
+                simModalSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Envoi en cours...';
+                simModalSubmitBtn.disabled = true;
+            }
+
+            const templateParams = {
+                user_name: name,
+                user_phone: phone,
+                user_email: email,
+                message: `DEMANDE DE DEVIS SIMULATEUR RH PRO C2S:\n- Pôle d'expertise : ${sectorVal}\n- Effectif requis : ${countVal}\n- Précisions de mission : ${notes || 'Aucune'}`
+            };
+
+            emailjs.send("service_d9cvkm8", "template_ob7d4cb", templateParams)
+                .then(() => {
+                    showToast("Demande de devis transmise avec succès ! Nous vous recontactons sous 24h.");
+                    simEmailForm.reset();
+                    if (simEmailModal) simEmailModal.classList.remove("open");
+                })
+                .catch((err) => {
+                    console.error("EmailJS Error:", err);
+                    showToast("Erreur lors de l'envoi. Veuillez réessayer ou utiliser WhatsApp.", true);
+                })
+                .finally(() => {
+                    if (simModalSubmitBtn) {
+                        simModalSubmitBtn.innerHTML = origText;
+                        simModalSubmitBtn.disabled = false;
+                    }
                 });
         });
     }

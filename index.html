@@ -200,7 +200,7 @@
                 <div class="hero-ring"></div>
 
                 <div class="hero-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="PRO C2S Entreprises & Direction RH">
+                    <img src="image/hero_team.jpg" alt="PRO C2S Entreprises & Direction RH">
                 </div>
 
                 <div class="floating-box" style="top: 30px; left: -10px;">
@@ -354,35 +354,106 @@
     <div class="container">
         <div class="simulator-box">
             <div class="sim-info">
-                <span class="badge-crit" data-i18n="sim_badge">ESPACE ENTREPRISES</span>
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap;">
+                    <span class="badge-crit" data-i18n="sim_badge">ESPACE ENTREPRISES</span>
+                    <span class="live-pulse-badge"><span class="pulse-dot"></span> Vivier Actif • Mobilisation 24h-48h</span>
+                </div>
                 <h2 data-i18n="sim_title">Simulateur de délégation RH</h2>
-                <p data-i18n="sim_desc">Estimez immédiatement la mise à disposition de vos équipes temporaires selon votre secteur et le volume souhaité.</p>
+                <p data-i18n="sim_desc">Sélectionnez votre secteur et votre effectif pour estimer immédiatement la disponibilité de vos équipes au Maroc.</p>
                 
                 <div class="sim-controls">
                     <div class="sim-field">
-                        <label data-i18n="sim_lbl1">Secteur d'activité :</label>
-                        <select id="simSector">
-                            <option value="Industrie & Production">Industrie & Production</option>
-                            <option value="Logistique & Transport">Logistique & Transport</option>
-                            <option value="BTP & Construction">BTP & Construction</option>
-                            <option value="Tertiaire & Administratif">Tertiaire & Administratif</option>
-                            <option value="Santé & Hygiène">Santé & Hygiène</option>
-                        </select>
+                        <label data-i18n="sim_lbl1" style="color:#cbd5e1;font-size:13.5px;font-weight:700;margin-bottom:10px;display:block;">1. Pôle d'expertise recherché :</label>
+                        <div class="sim-sector-grid" id="simSectorGrid">
+                            <button type="button" class="sim-card-btn active" data-sector="Intérim & Production" data-pool="180+" data-speed="24h à 48h">
+                                <i class="fa-solid fa-users-gear"></i>
+                                <span>Intérim & Ouvriers</span>
+                            </button>
+                            <button type="button" class="sim-card-btn" data-sector="Informatique & IT Full-Stack" data-pool="65+" data-speed="24h à 48h">
+                                <i class="fa-solid fa-laptop-code"></i>
+                                <span>Informatique Full-Stack</span>
+                            </button>
+                            <button type="button" class="sim-card-btn" data-sector="Nettoyage & Hygiène" data-pool="120+" data-speed="24h">
+                                <i class="fa-solid fa-broom"></i>
+                                <span>Nettoyage & Hygiène</span>
+                            </button>
+                            <button type="button" class="sim-card-btn" data-sector="Chauffeurs Professionnels" data-pool="45+" data-speed="24h à 48h">
+                                <i class="fa-solid fa-van-shuttle"></i>
+                                <span>Chauffeurs (B, C, D)</span>
+                            </button>
+                            <button type="button" class="sim-card-btn" data-sector="Maîtres-Nageurs Sauveteurs" data-pool="30+" data-speed="24h à 48h">
+                                <i class="fa-solid fa-person-swimming"></i>
+                                <span>Maîtres-Nageurs</span>
+                            </button>
+                            <button type="button" class="sim-card-btn" data-sector="Assistance Administrative" data-pool="85+" data-speed="24h à 48h">
+                                <i class="fa-solid fa-building"></i>
+                                <span>Assistantes RH & Admin</span>
+                            </button>
+                            <button type="button" class="sim-card-btn sim-card-autre" data-sector="autre" data-pool="Sur étude" data-speed="24h à 48h" style="grid-column: span 2;">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                                <span>Autre profil / Métier spécifique (cliquer pour préciser)</span>
+                            </button>
+                        </div>
+
+                        <div id="simCustomSectorBox" class="sim-custom-box" style="display:none; margin-top:12px;">
+                            <div class="sim-custom-input-wrap">
+                                <i class="fa-solid fa-keyboard"></i>
+                                <input type="text" id="simCustomSectorInput" placeholder="Précisez le métier ou profil recherché (ex: Cuisinier, Électricien, Comptable, Soudeur...)" autocomplete="off">
+                            </div>
+                            <span class="sim-custom-hint"><i class="fa-solid fa-circle-info"></i> Tapez le métier souhaité, la demande WhatsApp se prépare sur-mesure.</span>
+                        </div>
+
+                        <input type="hidden" id="simSector" value="Intérim & Production">
                     </div>
 
-                    <div class="sim-field">
-                        <label data-i18n="sim_lbl2">Nombre de profils recherchés :</label>
-                        <input type="number" id="simCount" min="1" max="100" value="3">
+                    <div class="sim-field" style="margin-top:12px;">
+                        <label data-i18n="sim_lbl2" style="color:#cbd5e1;font-size:13.5px;font-weight:700;margin-bottom:10px;display:block;">2. Volume d'effectif souhaité :</label>
+                        <div class="sim-count-pills" id="simCountPills">
+                            <button type="button" class="sim-count-pill" data-count="1 à 2 profils">1 à 2 profils</button>
+                            <button type="button" class="sim-count-pill active" data-count="3 à 5 profils">3 à 5 profils</button>
+                            <button type="button" class="sim-count-pill" data-count="6 à 15 profils">6 à 15 profils</button>
+                            <button type="button" class="sim-count-pill" data-count="15+ profils (Grand Compte)">15+ profils</button>
+                        </div>
+                        <input type="hidden" id="simCount" value="3 à 5 profils">
                     </div>
                 </div>
             </div>
 
             <div class="sim-summary">
-                <span data-i18n="sim_guar">Délégation garantie sous</span>
-                <strong>24h à 48h</strong>
-                <a href="#" id="simWhatsAppBtn" target="_blank" rel="noopener noreferrer" class="btn" style="background: #25d366; width: 100%;">
-                    <i class="fa-brands fa-whatsapp"></i> <span data-i18n="sim_btn">Demander cette équipe</span>
+                <div class="sim-summary-top">
+                    <span class="sim-live-badge"><i class="fa-solid fa-bolt"></i> Disponibilité Immédiate</span>
+                    <span data-i18n="sim_guar">Délégation estimée sous</span>
+                    <strong id="simSpeedDisplay">24h à 48h</strong>
+                </div>
+
+                <div class="sim-metrics-box">
+                    <div class="sim-metric-item">
+                        <span class="sim-metric-val" id="simPoolDisplay">180+</span>
+                        <span class="sim-metric-lbl">Profils qualifiés actifs</span>
+                    </div>
+                    <div class="sim-metric-item">
+                        <span class="sim-metric-val">100%</span>
+                        <span class="sim-metric-lbl">Conforme CNSS & Légal</span>
+                    </div>
+                </div>
+
+                <div class="sim-summary-features">
+                    <div><i class="fa-solid fa-circle-check"></i> Contrats & assurances AT pris en charge</div>
+                    <div><i class="fa-solid fa-circle-check"></i> Remplacement immédiat garanti</div>
+                </div>
+
+                <button type="button" id="simOpenModalBtn" class="btn btn-sim-action" style="width: 100%; justify-content: center; font-size: 15px; margin-bottom: 10px;">
+                    <i class="fa-solid fa-paper-plane"></i> <span data-i18n="sim_email_btn">Demander ce devis par Email</span>
+                </button>
+                
+                <a href="#" id="simWhatsAppBtn" target="_blank" rel="noopener noreferrer" class="sim-btn-secondary">
+                    <i class="fa-brands fa-whatsapp"></i> <span data-i18n="sim_wa_btn">Ou envoyer directement via WhatsApp</span>
                 </a>
+                
+                <div class="sim-direct-call">
+                    <span>Devis direct par téléphone :</span>
+                    <a href="tel:+212663449824"><i class="fa-solid fa-phone"></i> +212 663-449824</a>
+                </div>
             </div>
         </div>
     </div>
@@ -1289,5 +1360,56 @@
         </a>
     </div>
 </div>
+
+<!-- ================= MODAL DEVIS SIMULATEUR (EMAILJS) ================= -->
+<div class="job-modal-overlay" id="simEmailModal" aria-hidden="true">
+    <div class="job-modal-content" style="max-width: 500px; padding: 32px 28px;">
+        <button class="job-modal-close" id="closeSimModalBtn" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+        
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+            <div style="width:46px;height:46px;border-radius:14px;background:rgba(16,185,129,0.12);color:#047857;display:flex;align-items:center;justify-content:center;font-size:20px;">
+                <i class="fa-solid fa-file-invoice"></i>
+            </div>
+            <div>
+                <h3 style="margin:0;font-size:19px;font-weight:800;color:#0f172a;">Demande de Devis Express</h3>
+                <span style="font-size:12px;color:#64748b;">Réponse et cadrage sous 24h ouvrées</span>
+            </div>
+        </div>
+
+        <div class="sim-modal-recap">
+            <div><strong style="color:#047857;">Pôle :</strong> <span id="modalRecapSector" style="font-weight:700;">Intérim & Production</span></div>
+            <div><strong style="color:#047857;">Effectif :</strong> <span id="modalRecapCount" style="font-weight:700;">3 à 5 profils</span></div>
+        </div>
+
+        <form id="simEmailForm" style="display:flex;flex-direction:column;gap:12px;margin-top:14px;">
+            <div>
+                <label style="display:block;font-size:12px;font-weight:700;color:#334155;margin-bottom:5px;">Nom complet & Entreprise *</label>
+                <input type="text" name="user_name" id="simModalName" placeholder="Ex: Karim Benjelloun (Société Atlas)" required style="width:100%;padding:11px 14px;border:1.5px solid #cbd5e1;border-radius:10px;font-size:13.5px;outline:none;">
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <div>
+                    <label style="display:block;font-size:12px;font-weight:700;color:#334155;margin-bottom:5px;">Téléphone *</label>
+                    <input type="tel" name="user_phone" id="simModalPhone" placeholder="06 12 34 56 78" required style="width:100%;padding:11px 14px;border:1.5px solid #cbd5e1;border-radius:10px;font-size:13.5px;outline:none;">
+                </div>
+                <div>
+                    <label style="display:block;font-size:12px;font-weight:700;color:#334155;margin-bottom:5px;">Email professionnel *</label>
+                    <input type="email" name="user_email" id="simModalEmail" placeholder="contact@entreprise.ma" required style="width:100%;padding:11px 14px;border:1.5px solid #cbd5e1;border-radius:10px;font-size:13.5px;outline:none;">
+                </div>
+            </div>
+
+            <div>
+                <label style="display:block;font-size:12px;font-weight:700;color:#334155;margin-bottom:5px;">Précisions sur la mission (facultatif)</label>
+                <textarea name="user_notes" id="simModalNotes" placeholder="Lieu, date de démarrage, besoins spécifiques..." rows="2" style="width:100%;padding:10px 14px;border:1.5px solid #cbd5e1;border-radius:10px;font-size:13px;outline:none;resize:vertical;"></textarea>
+            </div>
+
+            <button type="submit" id="simModalSubmitBtn" class="btn" style="width:100%;justify-content:center;padding:13px;font-size:14.5px;margin-top:4px;">
+                <i class="fa-solid fa-paper-plane"></i> Envoyer ma demande à PRO C2S
+            </button>
+            <span style="font-size:11px;color:#64748b;text-align:center;">Données traitées en toute confidentialité par PRO C2S Maroc.</span>
+        </form>
+    </div>
+</div>
+
 </body>
 </html>
