@@ -6,7 +6,7 @@
     <title>Intérim & Travail Temporaire au Maroc | PRO C2S</title>
     <meta name="description" content="Travail temporaire, intérim et recrutement CDI/CDD au Maroc. Délégation de personnel qualifié sous 24 à 48h, conforme au Code du Travail. PRO C2S, Rabat.">
     <meta name="robots" content="index, follow, max-image-preview:large">
-    <meta name="theme-color" content="#2e7d32">
+    <meta name="theme-color" content="#047857">
     <link rel="canonical" href="https://proo-c2s.github.io/proo-c2s/interim.html">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_MA">
@@ -17,101 +17,19 @@
     <meta property="og:image" content="https://proo-c2s.github.io/proo-c2s/image/logo.png.png">
     <link rel="icon" type="image/png" href="image/logo.png.png">
     <link rel="apple-touch-icon" href="image/logo.png.png">
-    <link rel="stylesheet" href="style.css?v=3003">
+    <link rel="stylesheet" href="style.css?v=3060">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <style>
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-up { animation: fadeInUp 0.8s ease-out forwards; }
-        .card { 
-            transition: all 0.3s ease; 
-            overflow: hidden; 
-            display: flex; 
-            flex-direction: column; 
-            background: #ffffff;
-            border: 1.5px solid var(--border-color);
-            border-radius: 20px;
-            padding: 0;
-            text-align: left;
-        }
-        .card:hover { 
-            transform: translateY(-8px); 
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08); 
-        }
-        .card-img-top {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-top-left-radius: 18px;
-            border-top-right-radius: 18px;
-        }
-        .card-body-content {
-            padding: 25px 20px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-        .pro-feature-card {
-            background: #fff;
-            border-radius: 18px;
-            overflow: hidden;
-            border: 1.5px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            transition: all 0.3s ease;
-        }
-        .pro-feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.06);
-        }
-        .pro-feature-img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-        .pro-feature-content {
-            padding: 20px;
-            text-align: left;
-        }
-        .lang-switcher {
-            display: flex;
-            gap: 4px;
-            background: #f1f5f9;
-            padding: 4px;
-            border-radius: 30px;
-            border: 1px solid var(--border-color);
-        }
-        .lang-btn {
-            background: transparent;
-            border: none;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12.5px;
-            font-weight: 700;
-            color: var(--gray);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .lang-btn.active {
-            background: var(--primary);
-            color: #fff;
-            box-shadow: 0 2px 8px rgba(46, 125, 50, 0.2);
-        }
-        a:focus-visible, button:focus-visible { outline: 3px solid #2e7d32; outline-offset: 2px; }
-        @media (prefers-reduced-motion: reduce) { .floating-box, .animate-up { animation: none !important; } }
-    </style>
 </head>
 <body>
 
-<!-- ================= PRELOADER ANIMATION (FOND BLANC - LOGO SEUL) ================= -->
+<!-- ================= PRELOADER ================= -->
 <div id="preloader" class="montarville-loader" aria-hidden="true">
     <div class="loader-center">
         <img src="image/logo.png.png" alt="PRO C2S" class="loader-logo">
     </div>
 </div>
 
+<!-- ================= HEADER NAVBAR ================= -->
 <header id="main-header" class="scrolled">
     <nav class="navbar">
         <div class="logo">
@@ -119,7 +37,7 @@
         </div>
         <ul class="nav-links">
             <li><a href="index.html" data-i18n="nav_home">Accueil</a></li>
-            <li><a href="interim.html" style="color: var(--primary);" data-i18n="nav_interim">Intérim</a></li>
+            <li><a href="interim.html" style="color: #047857; font-weight: 700;" data-i18n="nav_interim">Intérim</a></li>
             <li><a href="informatique.html" data-i18n="nav_info">Informatique</a></li>
             <li><a href="nettoyage.html" data-i18n="nav_clean">Nettoyage</a></li>
             <li><a href="index.html#contact" data-i18n="nav_contact">Contact</a></li>
@@ -143,105 +61,232 @@
     </nav>
 </header>
 
-<section class="hero animate-up" style="padding: 140px 0 70px; background: linear-gradient(135deg, #f4faf6 0%, #e8f5e9 100%); position: relative; overflow: hidden;">
-    <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
-        <div style="flex: 1; min-width: 300px; text-align: left;">
-            <span class="badge-crit" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(46, 125, 50, 0.15); color: #2e7d32; padding: 6px 14px; border-radius: 20px; font-weight: 600; margin-bottom: 20px;">
-                <i class="fa-solid fa-users-gear"></i> <span data-i18n="int_badge">Pôle Intérim & Recrutement</span>
-            </span>
-            <h1 style="font-size: 38px; margin-bottom: 20px; color: #0f172a; font-weight: 800; line-height: 1.2;" data-i18n="int_title">Travail Temporaire & Délégation de Personnel</h1>
-            <p style="font-size: 17px; color: #64748b; line-height: 1.7; margin-bottom: 30px;" data-i18n="int_desc">Nous apportons des solutions rapides, flexibles et 100% conformes au Code du Travail marocain pour vos besoins urgents et pics d'activité.</p>
-            <a href="index.html#contact" class="btn btn-cta-page">
-                <i class="fa-solid fa-envelope"></i> <span data-i18n="int_btn">Contactez-nous pour recruter</span>
+<!-- ================= HERO SECTION (HIGH-TECH B2B) ================= -->
+<section class="service-page-hero">
+    <div class="container hero-grid-layout">
+        <div>
+            <div class="hero-kicker-pill">
+                <span class="pulse-indicator"></span>
+                <span data-i18n="hero_pill">Pôle Intérim & Recrutement Stratégique</span>
+            </div>
+            <h1 class="hero-main-title">
+                <span data-i18n="hero_h1_part1">Travail Temporaire &</span><br>
+                <span class="highlight-gradient" data-i18n="hero_h1_part2">Délégation de Personnel</span>
+            </h1>
+            <p class="hero-subtitle" data-i18n="hero_sub">
+                Partenaire RH de référence au Maroc depuis 2017. Nous mobilisons des équipes qualifiées et immédiatement opérationnelles en 24h/48h, avec une conformité totale au Code du Travail marocain et zéro risque juridique.
+            </p>
+            <div class="hero-actions-group">
+                <a href="index.html#contact" class="btn-hero-primary">
+                    <i class="fa-solid fa-user-plus"></i> <span data-i18n="hero_btn_quote">Demander une délégation de personnel</span>
+                </a>
+                <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20des%20informations%20sur%20vos%20solutions%20d'intérim." target="_blank" rel="noopener noreferrer" class="btn-hero-secondary">
+                    <i class="fa-brands fa-whatsapp" style="color:#25d366;font-size:18px;"></i> <span data-i18n="hero_btn_wa">WhatsApp Direct</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-media-wrapper">
+            <div class="hero-image-frame">
+                <!-- High-res photo matching real temporary staffing & engineering supervision in Morocco -->
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1000&q=80" alt="Supervision de personnel intérimaire en industrie et logistique" loading="eager">
+            </div>
+
+            <!-- Floating Glassmorphism Badge Top-Left -->
+            <div class="float-badge-card pos-top-left">
+                <div class="float-badge-icon emerald"><i class="fa-solid fa-bolt"></i></div>
+                <div class="float-badge-text">
+                    <strong data-i18n="fl_t1">Délégation Express 24h</strong>
+                    <span data-i18n="fl_s1">Intervention dans tout le Maroc</span>
+                </div>
+            </div>
+
+            <!-- Floating Glassmorphism Badge Bottom-Right -->
+            <div class="float-badge-card pos-bottom-right">
+                <div class="float-badge-icon navy"><i class="fa-solid fa-scale-balanced"></i></div>
+                <div class="float-badge-text">
+                    <strong data-i18n="fl_t2">Sécurité Juridique 100%</strong>
+                    <span data-i18n="fl_s2">Art. 495-506 Code du Travail</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= STATS & TRUST RIBBON ================= -->
+<div class="container">
+    <div class="page-stats-ribbon">
+        <div class="stat-kpi-item">
+            <div class="stat-kpi-icon"><i class="fa-solid fa-users"></i></div>
+            <div class="stat-kpi-content">
+                <strong>15 000+</strong>
+                <span data-i18n="kpi_1">Candidats qualifiés et évalués</span>
+            </div>
+        </div>
+        <div class="stat-kpi-item">
+            <div class="stat-kpi-icon"><i class="fa-solid fa-stopwatch"></i></div>
+            <div class="stat-kpi-content">
+                <strong>24h - 48h</strong>
+                <span data-i18n="kpi_2">Délai moyen de mise à disposition</span>
+            </div>
+        </div>
+        <div class="stat-kpi-item">
+            <div class="stat-kpi-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="stat-kpi-content">
+                <strong>100%</strong>
+                <span data-i18n="kpi_3">Conformité CNSS, AMO & AT</span>
+            </div>
+        </div>
+        <div class="stat-kpi-item">
+            <div class="stat-kpi-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <div class="stat-kpi-content">
+                <strong>40%</strong>
+                <span data-i18n="kpi_4">Missions converties en CDI</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================= NOS PRESTATIONS RH (LUXURY CARDS) ================= -->
+<section class="services" style="padding: 95px 0 70px;">
+    <div class="container">
+        <div class="section-title">
+            <span class="badge-crit" data-i18n="serv_span">NOS SOLUTIONS RH</span>
+            <h2 data-i18n="serv_title">Prestations sur-mesure en Intérim & Recrutement</h2>
+            <p data-i18n="serv_desc">Une gamme complète de services pour optimiser votre masse salariale et sécuriser la continuité de votre activité.</p>
+        </div>
+
+        <div class="luxury-services-grid">
+            <!-- Card 1: Travail Temporaire & Intérim (Real logistics & manufacturing photo) -->
+            <div class="luxury-service-card">
+                <div class="luxury-card-media">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="Travail Temporaire & Intérim">
+                    <span class="luxury-card-tag"><i class="fa-solid fa-industry"></i> <span data-i18n="c1_tag">Intérim Opérationnel</span></span>
+                </div>
+                <div class="luxury-card-body">
+                    <h3 data-i18n="c1_t">Travail Temporaire & Intérim</h3>
+                    <p data-i18n="c1_d">Mise à disposition rapide d'ouvriers qualifiés, agents logistiques, caristes et opérateurs de production pour absorber vos surcroîts d'activité et remplacements urgents.</p>
+                    <ul class="deliverables-list">
+                        <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="c1_point1">Mobilisation garantie sous 24h à 48h</span></li>
+                        <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="c1_point2">Contrats de mise à disposition conformes</span></li>
+                        <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="c1_point3">Remplacement immédiat en cas d'absence</span></li>
+                    </ul>
+                    <div class="luxury-card-footer">
+                        <a href="index.html#contact" class="luxury-card-action-btn">
+                            <span data-i18n="btn_req_service">Demander cette solution</span> <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Recrutement CDI / CDD (Executive interview photo) -->
+            <div class="luxury-service-card">
+                <div class="luxury-card-media">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Recrutement CDI et CDD">
+                    <span class="luxury-card-tag"><i class="fa-solid fa-user-check"></i> <span data-i18n="c2_tag">Placement Direct</span></span>
+                </div>
+                <div class="luxury-card-body">
+                    <h3 data-i18n="c2_t">Recrutement Direct CDI / CDD</h3>
+                    <p data-i18n="c2_d">Chasse de têtes, sourcing ciblé et évaluation rigoureuse pour intégrer durablement vos futurs managers, ingénieurs et profils tertiaires stratégiques.</p>
+                    <ul class="deliverables-list">
+                        <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="c2_point1">Sourcing multicanal et vivier privé</span></li>
+                        <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="c2_point2">Entretiens approfondis & validation des soft skills</span></li>
+                        <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="c2_point3">Garantie de remplacement durant la période d'essai</span></li>
+                    </ul>
+                    <div class="luxury-card-footer">
+                        <a href="index.html#contact" class="luxury-card-action-btn">
+                            <span data-i18n="btn_req_service">Demander cette solution</span> <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Gestion Administrative & Paie (Real HR legal documents & tablet photo) -->
+            <div class="luxury-service-card">
+                <div class="luxury-card-media">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80" alt="Gestion Administrative & Paie">
+                    <span class="luxury-card-tag"><i class="fa-solid fa-file-shield"></i> <span data-i18n="c3_tag">Audit & Paie</span></span>
+                </div>
+                <div class="luxury-card-body">
+                    <h3 data-i18n="c3_t">Gestion Administrative & Paie</h3>
+                    <p data-i18n="c3_d">Externalisez la complexité sociale : rédaction des contrats, déclarations CNSS/AMO, calcul des bulletins de paie et respect scrupuleux du Code du Travail marocain.</p>
+                    <ul class="deliverables-list">
+                        <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="c3_point1">Édition des bulletins et télédéclarations Damancom</span></li>
+                        <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="c3_point2">Zéro risque de litige social ou redressement</span></li>
+                        <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="c3_point3">Prise en charge intégrale de l'assurance accident du travail</span></li>
+                    </ul>
+                    <div class="luxury-card-footer">
+                        <a href="index.html#contact" class="luxury-card-action-btn">
+                            <span data-i18n="btn_req_service">Demander cette solution</span> <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= NOTRE VALEUR AJOUTÉE (4 PILIERS) ================= -->
+<section class="pillars-section">
+    <div class="container">
+        <div class="section-title">
+            <span class="badge-crit" data-i18n="val_span">EXCELLENCE OPÉRATIONNELLE</span>
+            <h2 data-i18n="val_title">Pourquoi confier vos recrutements à PRO C2S ?</h2>
+            <p data-i18n="val_desc">Un accompagnement d'experts pour conjuguer agilité opérationnelle et sécurité juridique sans failles.</p>
+        </div>
+
+        <div class="pillars-grid">
+            <div class="pillar-card">
+                <div class="pillar-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+                <h3 data-i18n="v1_t">Réactivité 24-48h</h3>
+                <p data-i18n="v1_d">Capacité éprouvée à mobiliser et déployer des effectifs opérationnels sur vos sites dans toutes les régions du Maroc en un temps record.</p>
+            </div>
+
+            <div class="pillar-card">
+                <div class="pillar-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                <h3 data-i18n="v2_t">Sécurité Juridique</h3>
+                <p data-i18n="v2_d">Conformité intégrale avec les articles 495 à 506 du Code du Travail. Déclarations sociales, contrats et attestations gérés avec rigueur.</p>
+            </div>
+
+            <div class="pillar-card">
+                <div class="pillar-icon"><i class="fa-solid fa-users-gear"></i></div>
+                <h3 data-i18n="v3_t">Vivier Actif Qualifié</h3>
+                <p data-i18n="v3_d">Plus de 15 000 profils rigoureusement évalués, testés et prêts à intervenir immédiatement dans vos ateliers, chantiers ou bureaux.</p>
+            </div>
+
+            <div class="pillar-card">
+                <div class="pillar-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+                <h3 data-i18n="v4_t">Interlocuteur Dédié</h3>
+                <p data-i18n="v4_d">Un chargé de compte RH senior à vos côtés pour le suivi quotidien, la gestion des plannings et l'ajustement continu de vos équipes.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= HIGH-IMPACT CONVERSION BANNER ================= -->
+<div class="container">
+    <div class="service-cta-banner">
+        <div class="service-cta-content">
+            <h3 data-i18n="cta_b_title">Vous avez un besoin urgent de personnel ?</h3>
+            <p data-i18n="cta_b_desc">Nos consultants seniors étudient votre demande et déploient vos équipes sous 24 à 48 heures ouvrées dans tout le Maroc.</p>
+        </div>
+        <div class="service-cta-actions">
+            <a href="index.html#contact" class="btn-cta-emerald">
+                <i class="fa-solid fa-paper-plane"></i> <span data-i18n="cta_b_btn1">Demander un devis express</span>
+            </a>
+            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20un%20devis%20rapide%20pour%20une%20délégation%20de%20personnel." target="_blank" rel="noopener noreferrer" class="btn-cta-wa">
+                <i class="fa-brands fa-whatsapp"></i> <span data-i18n="cta_b_btn2">Échanger sur WhatsApp</span>
             </a>
         </div>
-        <div style="flex: 1; min-width: 300px; position: relative; display: flex; justify-content: center; align-items: center;">
-            <div style="position: relative; width: 100%; max-width: 420px; height: 420px; display: flex; align-items: center; justify-content: center;">
-                <div style="position: absolute; width: 320px; height: 320px; background: rgba(46, 125, 50, 0.08); border-radius: 50%; z-index: 1;"></div>
-                <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=800&q=80" alt="Intérim et Recrutement" style="width: 330px; height: 330px; object-fit: cover; border-radius: 50%; position: relative; z-index: 2; border: 4px solid #fff; box-shadow: 0 15px 35px rgba(0,0,0,0.12);">
-            </div>
-        </div>
     </div>
-</section>
+</div>
 
-<section class="services animate-up" style="padding: 80px 0; animation-delay: 0.2s;">
-    <div class="container">
-        <div class="section-title">
-            <span data-i18n="serv_span">NOS PRESTATIONS RH</span>
-            <h2 data-i18n="serv_title">Nos Solutions en Intérim & RH</h2>
-            <p data-i18n="serv_desc">Une offre complète de prestations pour garantir la continuité et la performance de vos opérations.</p>
-        </div>
-        <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px;">
-            <div class="card">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=600&q=80" alt="Travail Temporaire" class="card-img-top">
-                <div class="card-body-content">
-                    <h3 style="font-size: 19px; color: var(--dark); margin-bottom: 10px;" data-i18n="c1_t">Travail Temporaire & Intérim</h3>
-                    <p style="font-size: 14px; color: var(--gray); line-height: 1.6;" data-i18n="c1_d">Délégation rapide de personnel qualifié pour gérer vos imprévus, congés et surcroîts d'activité dans l'industrie et le tertiaire.</p>
-                </div>
-            </div>
-            <div class="card">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80" alt="Recrutement" class="card-img-top">
-                <div class="card-body-content">
-                    <h3 style="font-size: 19px; color: var(--dark); margin-bottom: 10px;" data-i18n="c2_t">Recrutement CDI / CDD</h3>
-                    <p style="font-size: 14px; color: var(--gray); line-height: 1.6;" data-i18n="c2_d">Sourcing sur-mesure, entretiens et sélection rigoureuse pour intégrer durablement vos futurs collaborateurs clés.</p>
-                </div>
-            </div>
-            <div class="card">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="Gestion Paie" class="card-img-top">
-                <div class="card-body-content">
-                    <h3 style="font-size: 19px; color: var(--dark); margin-bottom: 10px;" data-i18n="c3_t">Gestion Administrative & Paie</h3>
-                    <p style="font-size: 14px; color: var(--gray); line-height: 1.6;" data-i18n="c3_d">Prise en charge intégrale des contrats de mission, déclarations sociales (CNSS) et respect total de la législation.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section style="padding: 70px 0; background: #f8fafc; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
-    <div class="container">
-        <div class="section-title">
-            <span data-i18n="val_span">NOTRE VALEUR AJOUTÉE</span>
-            <h2 data-i18n="val_title">Pourquoi les entreprises choisissent PRO C2S ?</h2>
-            <p data-i18n="val_desc">Notre engagement est de vous offrir la flexibilité opérationnelle sans les contraintes de gestion lourdes.</p>
-        </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin-top: 40px;">
-            <div class="pro-feature-card">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=600&q=80" alt="Réactivité" class="pro-feature-img">
-                <div class="pro-feature-content">
-                    <h3 style="font-size: 17px; color: var(--dark); margin-bottom: 8px;" data-i18n="v1_t">Réactivité 24-48h</h3>
-                    <p style="font-size: 13px; color: var(--gray); line-height: 1.6;" data-i18n="v1_d">Mobilisation et mise à disposition rapide de profils opérationnels dans tout le Maroc.</p>
-                </div>
-            </div>
-            <div class="pro-feature-card">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" alt="Sécurité Juridique" class="pro-feature-img">
-                <div class="pro-feature-content">
-                    <h3 style="font-size: 17px; color: var(--dark); margin-bottom: 8px;" data-i18n="v2_t">Sécurité Juridique</h3>
-                    <p style="font-size: 13px; color: var(--gray); line-height: 1.6;" data-i18n="v2_d">Maîtrise totale du Code du Travail marocain et conformité stricte des contrats.</p>
-                </div>
-            </div>
-            <div class="pro-feature-card">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=600&q=80" alt="Vivier Qualifié" class="pro-feature-img">
-                <div class="pro-feature-content">
-                    <h3 style="font-size: 17px; color: var(--dark); margin-bottom: 8px;" data-i18n="v3_t">Vivier Qualifié</h3>
-                    <p style="font-size: 13px; color: var(--gray); line-height: 1.6;" data-i18n="v3_d">Base de données riche de talents évalués, formés et prêts à intégrer vos équipes.</p>
-                </div>
-            </div>
-            <div class="pro-feature-card">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1573497491765-dccce02b29df?auto=format&fit=crop&w=600&q=80" alt="Interlocuteur Dédié" class="pro-feature-img">
-                <div class="pro-feature-content">
-                    <h3 style="font-size: 17px; color: var(--dark); margin-bottom: 8px;" data-i18n="v4_t">Interlocuteur Dédié</h3>
-                    <p style="font-size: 13px; color: var(--gray); line-height: 1.6;" data-i18n="v4_d">Un chargé de compte RH à vos côtés pour assurer un suivi personnalisé et de proximité.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
+<!-- ================= FOOTER ================= -->
 <footer>
     <div class="container footer-grid">
         <div class="footer-about">
             <h3>PRO C2S</h3>
-            <p data-i18n="f_about">Société spécialisée en recrutement, intérim créée en 2017. Votre partenaire pour construire vos équipes de demain.</p>
+            <p data-i18n="f_about">Société spécialisée en recrutement et travail temporaire créée en 2017. Votre partenaire pour construire vos équipes de demain.</p>
         </div>
         <div class="footer-links">
             <h4 data-i18n="f_nav">Navigation</h4>
@@ -249,6 +294,7 @@
             <p><a href="interim.html" data-i18n="nav_interim">Intérim</a></p>
             <p><a href="informatique.html" data-i18n="nav_info">Informatique</a></p>
             <p><a href="nettoyage.html" data-i18n="nav_clean">Nettoyage</a></p>
+            <p><a href="index.html#contact" data-i18n="nav_contact">Contact</a></p>
         </div>
     </div>
     <div class="copyright" data-i18n="copyright">
@@ -264,65 +310,119 @@
             nav_info: "Informatique",
             nav_clean: "Nettoyage",
             nav_contact: "Contact",
-            int_badge: "Pôle Intérim & Recrutement",
-            int_title: "Travail Temporaire & Délégation de Personnel",
-            int_desc: "Nous apportons des solutions rapides, flexibles et 100% conformes au Code du Travail marocain pour vos besoins urgents et pics d'activité.",
-            int_btn: "Contactez-nous pour recruter",
-            serv_span: "NOS PRESTATIONS RH",
-            serv_title: "Nos Solutions en Intérim & RH",
-            serv_desc: "Une offre complète de prestations pour garantir la continuité et la performance de vos opérations.",
+            hero_pill: "Pôle Intérim & Recrutement Stratégique",
+            hero_h1_part1: "Travail Temporaire &",
+            hero_h1_part2: "Délégation de Personnel",
+            hero_sub: "Partenaire RH de référence au Maroc depuis 2017. Nous mobilisons des équipes qualifiées et immédiatement opérationnelles en 24h/48h, avec une conformité totale au Code du Travail marocain et zéro risque juridique.",
+            hero_btn_quote: "Demander une délégation de personnel",
+            hero_btn_wa: "WhatsApp Direct",
+            fl_t1: "Délégation Express 24h",
+            fl_s1: "Intervention dans tout le Maroc",
+            fl_t2: "Sécurité Juridique 100%",
+            fl_s2: "Art. 495-506 Code du Travail",
+            kpi_1: "Candidats qualifiés et évalués",
+            kpi_2: "Délai moyen de mise à disposition",
+            kpi_3: "Conformité CNSS, AMO & AT",
+            kpi_4: "Missions converties en CDI",
+            serv_span: "NOS SOLUTIONS RH",
+            serv_title: "Prestations sur-mesure en Intérim & Recrutement",
+            serv_desc: "Une gamme complète de services pour optimiser votre masse salariale et sécuriser la continuité de votre activité.",
+            c1_tag: "Intérim Opérationnel",
             c1_t: "Travail Temporaire & Intérim",
-            c1_d: "Délégation rapide de personnel qualifié pour gérer vos imprévus, congés et surcroîts d'activité dans l'industrie et le tertiaire.",
-            c2_t: "Recrutement CDI / CDD",
-            c2_d: "Sourcing sur-mesure, entretiens et sélection rigoureuse pour intégrer durablement vos futurs collaborateurs clés.",
+            c1_d: "Mise à disposition rapide d'ouvriers qualifiés, agents logistiques, caristes et opérateurs de production pour absorber vos surcroîts d'activité et remplacements urgents.",
+            c1_point1: "Mobilisation garantie sous 24h à 48h",
+            c1_point2: "Contrats de mise à disposition conformes",
+            c1_point3: "Remplacement immédiat en cas d'absence",
+            c2_tag: "Placement Direct",
+            c2_t: "Recrutement Direct CDI / CDD",
+            c2_d: "Chasse de têtes, sourcing ciblé et évaluation rigoureuse pour intégrer durablement vos futurs managers, ingénieurs et profils tertiaires stratégiques.",
+            c2_point1: "Sourcing multicanal et vivier privé",
+            c2_point2: "Entretiens approfondis & validation des soft skills",
+            c2_point3: "Garantie de remplacement durant la période d'essai",
+            c3_tag: "Audit & Paie",
             c3_t: "Gestion Administrative & Paie",
-            c3_d: "Prise en charge intégrale des contrats de mission, déclarations sociales (CNSS) et respect total de la législation.",
-            val_span: "NOTRE VALEUR AJOUTÉE",
-            val_title: "Pourquoi les entreprises choisissent PRO C2S ?",
-            val_desc: "Notre engagement est de vous offrir la flexibilité opérationnelle sans les contraintes de gestion lourdes.",
+            c3_d: "Externalisez la complexité sociale : rédaction des contrats, déclarations CNSS/AMO, calcul des bulletins de paie et respect scrupuleux du Code du Travail marocain.",
+            c3_point1: "Édition des bulletins et télédéclarations Damancom",
+            c3_point2: "Zéro risque de litige social ou redressement",
+            c3_point3: "Prise en charge intégrale de l'assurance accident du travail",
+            btn_req_service: "Demander cette solution",
+            val_span: "EXCELLENCE OPÉRATIONNELLE",
+            val_title: "Pourquoi confier vos recrutements à PRO C2S ?",
+            val_desc: "Un accompagnement d'experts pour conjuguer agilité opérationnelle et sécurité juridique sans failles.",
             v1_t: "Réactivité 24-48h",
-            v1_d: "Mobilisation et mise à disposition rapide de profils opérationnels dans tout le Maroc.",
+            v1_d: "Capacité éprouvée à mobiliser et déployer des effectifs opérationnels sur vos sites dans toutes les régions du Maroc en un temps record.",
             v2_t: "Sécurité Juridique",
-            v2_d: "Maîtrise totale du Code du Travail marocain et conformité stricte des contrats.",
-            v3_t: "Vivier Qualifié",
-            v3_d: "Base de données riche de talents évalués, formés et prêts à intégrer vos équipes.",
+            v2_d: "Conformité intégrale avec les articles 495 à 506 du Code du Travail. Déclarations sociales, contrats et attestations gérés avec rigueur.",
+            v3_t: "Vivier Actif Qualifié",
+            v3_d: "Plus de 15 000 profils rigoureusement évalués, testés et prêts à intervenir immédiatement dans vos ateliers, chantiers ou bureaux.",
             v4_t: "Interlocuteur Dédié",
-            v4_d: "Un chargé de compte RH à vos côtés pour assurer un suivi personnalisé et de proximité.",
-            f_about: "Société spécialisée en recrutement, intérim créée en 2017. Votre partenaire pour construire vos équipes de demain.",
+            v4_d: "Un chargé de compte RH senior à vos côtés pour le suivi quotidien, la gestion des plannings et l'ajustement continu de vos équipes.",
+            cta_b_title: "Vous avez un besoin urgent de personnel ?",
+            cta_b_desc: "Nos consultants seniors étudient votre demande et déploient vos équipes sous 24 à 48 heures ouvrées dans tout le Maroc.",
+            cta_b_btn1: "Demander un devis express",
+            cta_b_btn2: "Échanger sur WhatsApp",
+            f_about: "Société spécialisée en recrutement et travail temporaire créée en 2017. Votre partenaire pour construire vos équipes de demain.",
             f_nav: "Navigation",
             copyright: "© 2026 PRO C2S - Pôle Intérim & Recrutement. Tous droits réservés."
         },
         en: {
             nav_home: "Home",
-            nav_interim: "Temp Work",
-            nav_info: "IT Services",
-            nav_clean: "Cleaning",
+            nav_interim: "Temp Staffing",
+            nav_info: "IT Solutions",
+            nav_clean: "Facility Cleaning",
             nav_contact: "Contact",
-            int_badge: "Temp Work & Recruitment Division",
-            int_title: "Temporary Work & Staff Delegation",
-            int_desc: "We provide fast, flexible solutions 100% compliant with Moroccan Labor Law for your urgent needs and activity peaks.",
-            int_btn: "Contact us to recruit",
-            serv_span: "OUR HR SERVICES",
-            serv_title: "Our Temp & HR Solutions",
-            serv_desc: "A complete range of services to guarantee the continuity and performance of your operations.",
-            c1_t: "Temporary Work & Temp Staffing",
-            c1_d: "Rapid delegation of qualified personnel to manage your unexpected events, leave, and activity surges in industry and services.",
-            c2_t: "Permanent / Fixed-term Recruitment",
-            c2_d: "Custom sourcing, interviews, and rigorous selection to permanently integrate your future key employees.",
-            c3_t: "Administrative & Payroll Management",
-            c3_d: "Full handling of mission contracts, social declarations (CNSS), and total compliance with legislation.",
-            val_span: "OUR ADDED VALUE",
-            val_title: "Why do companies choose PRO C2S?",
-            val_desc: "Our commitment is to offer you operational flexibility without heavy management constraints.",
-            v1_t: "24-48h Responsiveness",
-            v1_d: "Rapid mobilization and provision of operational profiles across Morocco.",
-            v2_t: "Legal Security",
-            v2_d: "Complete mastery of Moroccan Labor Law and strict contract compliance.",
-            v3_t: "Qualified Talent Pool",
-            v3_d: "Rich database of evaluated, trained talent ready to join your teams.",
-            v4_t: "Dedicated Contact",
-            v4_d: "An HR account manager by your side to ensure personalized, close follow-up.",
-            f_about: "Company specialized in recruitment and temp work founded in 2017. Your partner to build tomorrow's teams.",
+            hero_pill: "Strategic Temp Staffing & Recruitment",
+            hero_h1_part1: "Temporary Workforce &",
+            hero_h1_part2: "Personnel Delegation",
+            hero_sub: "Leading HR partner in Morocco since 2017. We deploy qualified and immediately operational staff within 24h/48h, with complete Moroccan Labor Code compliance and zero legal liability.",
+            hero_btn_quote: "Request Staff Delegation",
+            hero_btn_wa: "WhatsApp Direct",
+            fl_t1: "24h Express Deployment",
+            fl_s1: "Nationwide service across Morocco",
+            fl_t2: "100% Legal Compliance",
+            fl_s2: "Art. 495-506 Moroccan Labor Code",
+            kpi_1: "Qualified & screened candidates",
+            kpi_2: "Average delegation lead time",
+            kpi_3: "Full CNSS & accident insurance",
+            kpi_4: "Missions converted to permanent CDI",
+            serv_span: "OUR HR SOLUTIONS",
+            serv_title: "Tailored Temporary Staffing & Recruitment",
+            serv_desc: "A comprehensive range of services to optimize your payroll flexibility and secure your business continuity.",
+            c1_tag: "Operational Staffing",
+            c1_t: "Temporary Staffing & Operations",
+            c1_d: "Rapid deployment of certified operators, forklift drivers, logistics handlers, and assembly technicians to absorb production surges and cover urgent leaves.",
+            c1_point1: "Guaranteed mobilization within 24h to 48h",
+            c1_point2: "Fully compliant assignment contracts",
+            c1_point3: "Immediate replacement in case of absence",
+            c2_tag: "Direct Placement",
+            c2_t: "Permanent & Fixed-Term Placement",
+            c2_d: "Executive headhunting, targeted sourcing, and in-depth assessment to recruit high-performing managers, engineers, and key corporate personnel.",
+            c2_point1: "Multichannel sourcing & proprietary talent pool",
+            c2_point2: "Structured interviews & soft-skills validation",
+            c2_point3: "Replacement guarantee during probation period",
+            c3_tag: "Audit & Payroll",
+            c3_t: "Administrative & Payroll Outsourcing",
+            c3_d: "Outsource labor complexity: contract drafting, Damancom CNSS filings, payroll processing, and rigorous adherence to Moroccan labor standards.",
+            c3_point1: "Certified payslips & statutory Damancom filings",
+            c3_point2: "Zero risk of labor disputes or audit liabilities",
+            c3_point3: "Comprehensive workplace accident insurance included",
+            btn_req_service: "Inquire about this service",
+            val_span: "OPERATIONAL EXCELLENCE",
+            val_title: "Why Entrust Your Staffing to PRO C2S?",
+            val_desc: "Expert advisory combining immediate operational agility with unyielding legal safety.",
+            v1_t: "24-48h Fast Responsiveness",
+            v1_d: "Proven capacity to deploy operational workforce directly onto your sites across all regions of Morocco in record time.",
+            v2_t: "Absolute Legal Security",
+            v2_d: "Strict adherence to Articles 495 to 506 of the Moroccan Labor Code. Complete social security filings and transparent contract handling.",
+            v3_t: "15,000+ Active Talent Pool",
+            v3_d: "Over 15,000 vetted, tested professionals ready for immediate on-site integration in factories, logistics hubs, or offices.",
+            v4_t: "Dedicated HR Advisor",
+            v4_d: "A senior HR account manager at your service for daily coordination, schedule adjustments, and continuous workforce optimization.",
+            cta_b_title: "Need Temporary Staffing Urgently?",
+            cta_b_desc: "Our senior consultants scope your needs and deploy your workforce within 24 to 48 business hours nationwide.",
+            cta_b_btn1: "Request an Express Quote",
+            cta_b_btn2: "Speak on WhatsApp",
+            f_about: "Recruitment and temporary staffing firm established in 2017. Your partner to build tomorrow's high-performing teams.",
             f_nav: "Navigation",
             copyright: "© 2026 PRO C2S - Temp & Recruitment Division. All rights reserved."
         }
@@ -331,6 +431,7 @@
     function setLanguage(lang) {
         if (!translations[lang]) return;
         localStorage.setItem("proC2sLang", lang);
+        document.documentElement.lang = lang;
         document.querySelectorAll('.lang-btn').forEach(b => {
             if (b.getAttribute('data-lang') === lang) {
                 b.classList.add('active');
@@ -358,6 +459,6 @@
         setLanguage(savedLang);
     }
 </script>
-<script src="script.js?v=1001"></script>
+<script src="script.js?v=3060"></script>
 </body>
 </html>
