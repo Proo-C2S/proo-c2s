@@ -3610,3 +3610,61 @@ header.nav-visible {
   font-size: 13px;
   color: #065f46;
 }
+
+/* Sim badges row alignment fix */
+.sim-badges-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin-top: 0 !important;
+  margin-bottom: 18px !important;
+  flex-wrap: nowrap !important;
+  white-space: nowrap !important;
+}
+.sim-badges-row .badge-crit,
+.sim-badges-row .live-pulse-badge {
+  margin: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  height: 36px !important;
+  box-sizing: border-box !important;
+  line-height: 1 !important;
+  vertical-align: middle !important;
+}
+.sim-badges-row .badge-crit {
+  padding: 0 16px !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.5px !important;
+  border-radius: 9999px !important;
+}
+.sim-badges-row .live-pulse-badge {
+  background: rgba(0, 230, 118, 0.08) !important;
+  border: 1.5px solid rgba(0, 230, 118, 0.35) !important;
+  padding: 0 16px !important;
+  border-radius: 9999px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: #00e676 !important;
+  letter-spacing: 0.3px !important;
+  box-shadow: 0 0 16px rgba(0, 230, 118, 0.18) !important;
+  gap: 0 !important;
+}
+.sim-badges-row .pulse-dot {
+  width: 8px !important;
+  height: 8px !important;
+  min-width: 8px !important;
+  min-height: 8px !important;
+  background-color: #00e676 !important;
+  border-radius: 50% !important;
+  display: inline-block !important;
+  position: relative !important;
+  margin-right: 12px !important;
+  margin-left: 2px !important;
+  flex-shrink: 0 !important;
+  box-shadow: 0 0 10px #00e676 !important;
+}

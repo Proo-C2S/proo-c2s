@@ -85,7 +85,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=3006">
+    <link rel="stylesheet" href="style.css?v=3007">
 
     <style>
         .skip-link { position: absolute; left: -9999px; top: 0; background: #00e676; color: #06090e; padding: 10px 16px; z-index: 10000; border-radius: 0 0 8px 0; font-weight: 800; }
@@ -99,57 +99,56 @@
             display: flex !important;
             align-items: center !important;
             gap: 12px !important;
-            margin-bottom: 16px !important;
+            margin-top: 0 !important;
+            margin-bottom: 18px !important;
             flex-wrap: nowrap !important;
             white-space: nowrap !important;
         }
         .sim-badges-row .badge-crit,
         .sim-badges-row .live-pulse-badge {
+            margin: 0 !important;
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
             white-space: nowrap !important;
             flex-shrink: 0 !important;
-        }
-        .pulse-dot {
-            width: 8px !important;
-            height: 8px !important;
-            background-color: #00e676 !important;
-            border-radius: 50% !important;
-            display: inline-block !important;
-            position: relative !important;
-            margin-right: 6px !important;
-            margin-left: 2px !important;
-            box-shadow: 0 0 10px #00e676 !important;
-        }
-        @media (max-width: 600px) {
-            .sim-badges-row {
-                gap: 8px !important;
-            }
-            .sim-badges-row .badge-crit,
-            .sim-badges-row .live-pulse-badge {
-                font-size: 11px !important;
-                padding: 4px 10px !important;
-            }
-        }
-        .live-pulse-badge {
             display: inline-flex !important;
             align-items: center !important;
-            gap: 8px !important;
+            height: 36px !important;
+            box-sizing: border-box !important;
+            line-height: 1 !important;
+            vertical-align: middle !important;
+        }
+        .sim-badges-row .badge-crit {
+            padding: 0 16px !important;
+            font-size: 12px !important;
+            font-weight: 800 !important;
+            letter-spacing: 0.5px !important;
+            border-radius: 9999px !important;
+        }
+        .sim-badges-row .live-pulse-badge {
             background: rgba(0, 230, 118, 0.08) !important;
             border: 1.5px solid rgba(0, 230, 118, 0.35) !important;
-            padding: 6px 14px !important;
+            padding: 0 16px !important;
             border-radius: 9999px !important;
-            font-size: 12.5px !important;
+            font-size: 12px !important;
             font-weight: 700 !important;
             color: #00e676 !important;
             letter-spacing: 0.3px !important;
             box-shadow: 0 0 16px rgba(0, 230, 118, 0.18) !important;
+            gap: 0 !important;
         }
         .pulse-dot {
             width: 8px !important;
             height: 8px !important;
+            min-width: 8px !important;
+            min-height: 8px !important;
             background-color: #00e676 !important;
             border-radius: 50% !important;
             display: inline-block !important;
             position: relative !important;
+            margin-right: 12px !important;
+            margin-left: 2px !important;
+            flex-shrink: 0 !important;
             box-shadow: 0 0 10px #00e676 !important;
         }
         .pulse-dot::after {
@@ -160,10 +159,25 @@
             border: 2px solid #00e676 !important;
             animation: pulseRadar 1.8s infinite cubic-bezier(0, 0.2, 0.8, 1) !important;
             opacity: 0.8 !important;
+            pointer-events: none !important;
         }
         @keyframes pulseRadar {
             0% { transform: scale(0.6); opacity: 1; }
             100% { transform: scale(2.2); opacity: 0; }
+        }
+        @media (max-width: 600px) {
+            .sim-badges-row {
+                gap: 8px !important;
+            }
+            .sim-badges-row .badge-crit,
+            .sim-badges-row .live-pulse-badge {
+                font-size: 11px !important;
+                padding: 0 10px !important;
+                height: 30px !important;
+            }
+            .pulse-dot {
+                margin-right: 8px !important;
+            }
         }
 
         .sim-sector-grid {
@@ -1333,7 +1347,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="script.js?v=1005"></script>
+<script src="script.js?v=3007"></script>
 <script>
     // Dictionnaire de traduction FR/EN complet pour index.html
     const translations = {
