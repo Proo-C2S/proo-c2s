@@ -9,18 +9,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cabinet+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3090">
+    <link rel="stylesheet" href="style.css?v=3100">
 </head>
 <body class="page-nettoyage">
 
-    <!-- ================= PRELOADER ANIMATION ================= -->
+    <!-- Preloader -->
     <div id="preloader" class="montarville-loader" aria-hidden="true">
         <div class="loader-center">
             <img src="image/logo.png.png" alt="PRO C2S" class="loader-logo">
         </div>
     </div>
 
-    <!-- ================= NAVBAR UNIFIÉE ================= -->
+    <!-- Header Navbar -->
     <header id="main-header" class="scrolled">
         <nav class="navbar">
             <div class="logo">
@@ -59,7 +59,7 @@
         </nav>
     </header>
 
-    <!-- ================= HERO SECTION ================= -->
+    <!-- Hero Section -->
     <section class="service-page-hero">
         <div class="container hero-grid-layout">
             <div class="service-hero-content">
@@ -86,7 +86,7 @@
 
             <div class="service-hero-visual-col">
                 <div class="hero-media-wrapper">
-                    <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=80" alt="Nettoyage Professionnel PRO C2S" class="hero-cover-img">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" alt="Siège Social d'Entreprise Propre PRO C2S" class="hero-cover-img">
                     <div class="media-overlay-gradient"></div>
 
                     <!-- Floating Badge 1 -->
@@ -115,30 +115,42 @@
         </div>
     </section>
 
-    <!-- ================= METRICS RIBBON ================= -->
-    <section class="page-stats-ribbon">
-        <div class="container ribbon-grid">
-            <div class="ribbon-metric-item">
-                <span class="ribbon-num">+150,000</span>
-                <span class="ribbon-label" data-i18n="net_stat1_label">m² de Surfaces Entretenus Mensuellement</span>
+    <!-- Metrics Ribbon (Exact CSS Match) -->
+    <div class="container">
+        <div class="page-stats-ribbon">
+            <div class="stat-kpi-item">
+                <div class="stat-kpi-icon"><i class="fa-solid fa-broom"></i></div>
+                <div class="stat-kpi-content">
+                    <strong>+150,000</strong>
+                    <span data-i18n="net_stat1_label">m² de Surfaces Entretenus</span>
+                </div>
             </div>
-            <div class="ribbon-metric-item">
-                <span class="ribbon-num">100%</span>
-                <span class="ribbon-label" data-i18n="net_stat2_label">Conformité Protocoles Sanitaires & HACCP</span>
+            <div class="stat-kpi-item">
+                <div class="stat-kpi-icon"><i class="fa-solid fa-shield-virus"></i></div>
+                <div class="stat-kpi-content">
+                    <strong>100%</strong>
+                    <span data-i18n="net_stat2_label">Normes Sanitaires & HACCP</span>
+                </div>
             </div>
-            <div class="ribbon-metric-item">
-                <span class="ribbon-num">Éco-Friendly</span>
-                <span class="ribbon-label" data-i18n="net_stat3_label">Matériel Haute Efficacité & Faible Impact</span>
+            <div class="stat-kpi-item">
+                <div class="stat-kpi-icon"><i class="fa-solid fa-leaf"></i></div>
+                <div class="stat-kpi-content">
+                    <strong>Éco-Friendly</strong>
+                    <span data-i18n="net_stat3_label">Matériel Haute Efficacité</span>
+                </div>
             </div>
-            <div class="ribbon-metric-item">
-                <span class="ribbon-num">24/7</span>
-                <span class="ribbon-label" data-i18n="net_stat4_label">Astreinte & Interventions d'Urgence Disponibles</span>
+            <div class="stat-kpi-item">
+                <div class="stat-kpi-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                <div class="stat-kpi-content">
+                    <strong>24/7</strong>
+                    <span data-i18n="net_stat4_label">Astreinte & Urgences</span>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- ================= 8 CORE NETTOYAGE SERVICES ================= -->
-    <section class="luxury-services-grid-section" id="services-nettoyage">
+    <!-- 8 Core Services Grid -->
+    <section class="luxury-services-grid-section" id="services-nettoyage" style="padding-top: 80px;">
         <div class="container">
             <div class="section-title">
                 <span class="badge-crit" data-i18n="net_sec_span">SERVICES DE PROPRETÉ PROFESSIONNELLE</span>
@@ -148,155 +160,171 @@
 
             <div class="luxury-services-grid">
 
-                <!-- 1. Bureaux & Tertiaire -->
+                <!-- 1. Bureaux & Sièges -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
+                    <div class="luxury-card-media">
                         <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80" alt="Nettoyage Quotidien de Bureaux" loading="lazy">
-                        <span class="service-pill" data-i18n="net_s1_pill">Bureaux & Sièges</span>
+                        <span class="luxury-card-tag" data-i18n="net_s1_pill">Bureaux & Sièges</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-building service-icon-accent"></i>
-                            <h3 data-i18n="net_s1_t">Nettoyage Quotidien de Bureaux & Locaux</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="net_s1_t">Nettoyage Quotidien de Bureaux & Locaux</h3>
                         <p data-i18n="net_s1_d">Entretien méticuleux des open spaces, bureaux de direction, salles de réunion, sanitaires et gestion discrète des déchets.</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="net_s1_k1">Horaires décalés pour préserver le calme</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="net_s1_k2">Désinfection des points de contact fréquents</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20un%20devis%20nettoyage%20bureaux" target="_blank" class="luxury-card-action-btn">
+                                <span>Demander un Devis</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 2. Industriel & Entrepôts (Spotless Warehouse Floor) -->
+                <!-- 2. Industriel & Entrepôts -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
+                    <div class="luxury-card-media">
                         <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=800&q=80" alt="Nettoyage Industriel & Usines" loading="lazy">
-                        <span class="service-pill" data-i18n="net_s2_pill">Industrie & Usines</span>
+                        <span class="luxury-card-tag" data-i18n="net_s2_pill">Industrie & Usines</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-industry service-icon-accent"></i>
-                            <h3 data-i18n="net_s2_t">Nettoyage Industriel, Usines & Entrepôts</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="net_s2_t">Nettoyage Industriel, Usines & Entrepôts</h3>
                         <p data-i18n="net_s2_d">Dégraissage intensif des sols industriels, dépoussiérage des charpentes, nettoyage des machines et maintenance des ateliers.</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="net_s2_k1">Autolaveuses haute pression & monobrosses</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="net_s2_k2">Respect strict des normes d'usine</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20un%20devis%20nettoyage%20industriel" target="_blank" class="luxury-card-action-btn">
+                                <span>Demander un Devis</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 3. Vitrerie en Hauteur (Real Window Cleaning with Squeegee) -->
+                <!-- 3. Vitrerie en Hauteur -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
+                    <div class="luxury-card-media">
                         <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&w=800&q=80" alt="Lavage de Vitrerie en Hauteur" loading="lazy">
-                        <span class="service-pill" data-i18n="net_s3_pill">Vitrerie en Hauteur</span>
+                        <span class="luxury-card-tag" data-i18n="net_s3_pill">Vitrerie en Hauteur</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-window-maximize service-icon-accent"></i>
-                            <h3 data-i18n="net_s3_t">Lavage de Vitres & Façades en Hauteur</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="net_s3_t">Lavage de Vitres & Façades en Hauteur</h3>
                         <p data-i18n="net_s3_d">Nettoyage des façades vitrées, verrières et baies inaccessibles par cordistes certifiés et nacelles motorisées avec système d'eau pure.</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="net_s3_k1">Techniciens cordistes habilités travaux en hauteur</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="net_s3_k2">Lavage eau pure osmosée sans traces</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20un%20devis%20lavage%20vitres" target="_blank" class="luxury-card-action-btn">
+                                <span>Demander un Devis</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 4. Remise en État Fin de Chantier (Spotless Finished Interior) -->
+                <!-- 4. Remise en État Après Travaux -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
-                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Remise en État Après Travaux" loading="lazy">
-                        <span class="service-pill" data-i18n="net_s4_pill">Fin de Chantier BTP</span>
+                    <div class="luxury-card-media">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Remise en État Fin de Chantier" loading="lazy">
+                        <span class="luxury-card-tag" data-i18n="net_s4_pill">Fin de Chantier BTP</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-trowel-bricks service-icon-accent"></i>
-                            <h3 data-i18n="net_s4_t">Remise en État Après Travaux & Chantiers</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="net_s4_t">Remise en État Après Travaux & Chantiers</h3>
                         <p data-i18n="net_s4_d">Décapage de la laitance de ciment, évacuation des poussières de plâtre, élimination des résidus de peinture et lustrage avant livraison.</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="net_s4_k1">Livraison clé en main pour inauguration</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="net_s4_k2">Traitement spécifique marbres, parquets et carrelages</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20un%20devis%20remise%20en%20état%20chantier" target="_blank" class="luxury-card-action-btn">
+                                <span>Demander un Devis</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 5. Bio-Nettoyage Cliniques & Médical -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
+                    <div class="luxury-card-media">
                         <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80" alt="Bio-Nettoyage Milieu Médical" loading="lazy">
-                        <span class="service-pill" data-i18n="net_s5_pill">Santé & Cliniques</span>
+                        <span class="luxury-card-tag" data-i18n="net_s5_pill">Santé & Cliniques</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-hospital service-icon-accent"></i>
-                            <h3 data-i18n="net_s5_t">Bio-Nettoyage & Désinfection Médicale</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="net_s5_t">Bio-Nettoyage & Désinfection Médicale</h3>
                         <p data-i18n="net_s5_d">Protocoles d'asepsie hospitaliers stricts pour blocs opératoires, laboratoires d'analyses, cliniques et cabinets de consultation médicale.</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="net_s5_k1">Élimination des risques nosocomiaux</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="net_s5_k2">Désinfectants virucides et bactéricides certifiés</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20un%20devis%20bio-nettoyage%20médical" target="_blank" class="luxury-card-action-btn">
+                                <span>Demander un Devis</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 6. Malls & Grandes Surfaces (Gleaming Polished Mall Floor) -->
+                <!-- 6. Malls & Grandes Surfaces -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
-                        <img src="https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?auto=format&fit=crop&w=800&q=80" alt="Nettoyage Grandes Surfaces & Malls" loading="lazy">
-                        <span class="service-pill" data-i18n="net_s6_pill">Retail & Centres Commerciaux</span>
+                    <div class="luxury-card-media">
+                        <img src="https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?auto=format&fit=crop&w=800&q=80" alt="Entretien Malls & Grandes Surfaces" loading="lazy">
+                        <span class="luxury-card-tag" data-i18n="net_s6_pill">Retail & Malls</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-cart-shopping service-icon-accent"></i>
-                            <h3 data-i18n="net_s6_t">Entretien Mécanisé de Grands Espaces & Malls</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="net_s6_t">Entretien Mécanisé de Grands Espaces & Malls</h3>
                         <p data-i18n="net_s6_d">Balayage et lavage mécanisés continus des allées à fort trafic, galeries marchandes, food courts et sanitaires publics en temps réel.</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="net_s6_k1">Flotte d'autolaveuses autoportées silencieuses</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="net_s6_k2">Permanence de propreté continue aux heures de pointe</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20un%20devis%20nettoyage%20mall" target="_blank" class="luxury-card-action-btn">
+                                <span>Demander un Devis</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 7. Copropriétés & Immeubles (Luxury Clean Entrance Lobby) -->
+                <!-- 7. Copropriétés & Immeubles -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
-                        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" alt="Entretien Immeubles & Copropriétés" loading="lazy">
-                        <span class="service-pill" data-i18n="net_s7_pill">Copropriétés & Syndics</span>
+                    <div class="luxury-card-media">
+                        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80" alt="Entretien Copropriétés" loading="lazy">
+                        <span class="luxury-card-tag" data-i18n="net_s7_pill">Copropriétés & Syndics</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-city service-icon-accent"></i>
-                            <h3 data-i18n="net_s7_t">Entretien des Copropriétés & Résidences</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="net_s7_t">Entretien des Copropriétés & Résidences</h3>
                         <p data-i18n="net_s7_d">Nettoyage régulier des halls de prestige, cages d'escalier, cabines d'ascenseur, cours intérieures, locaux poubelles et parkings sous-sol.</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="net_s7_k1">Rapports de passage et suivi digitalisé</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="net_s7_k2">Désodorisation et entretien des revêtements nobles</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20un%20devis%20syndic%20nettoyage" target="_blank" class="luxury-card-action-btn">
+                                <span>Demander un Devis</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 8. Désinfection 3D & Nuisibles (PPE Disinfection Treatment) -->
+                <!-- 8. Désinfection 3D & Nuisibles -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
+                    <div class="luxury-card-media">
                         <img src="https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=800&q=80" alt="Désinfection 3D & Nuisibles" loading="lazy">
-                        <span class="service-pill" data-i18n="net_s8_pill">Traitement 3D Certifié</span>
+                        <span class="luxury-card-tag" data-i18n="net_s8_pill">Traitement 3D</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-shield-virus service-icon-accent"></i>
-                            <h3 data-i18n="net_s8_t">Désinfection 3D : Dératisation & Nuisibles</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="net_s8_t">Désinfection 3D : Dératisation & Nuisibles</h3>
                         <p data-i18n="net_s8_d">Solutions complètes anti-nuisibles (rongeurs, insectes rampants et volants) et nébulisation virucide/bactéricide par des techniciens agréés.</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="net_s8_k1">Certificat de conformité sanitaire délivré</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="net_s8_k2">Traitements curatifs et plans de prévention annuels</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20un%20devis%20traitement%203D" target="_blank" class="luxury-card-action-btn">
+                                <span>Demander un Devis</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -304,7 +332,7 @@
         </div>
     </section>
 
-    <!-- ================= EXECUTIVE PILLARS REDESIGN ================= -->
+    <!-- Executive Pillars Section -->
     <section class="pillars-section">
         <div class="container">
             <div class="section-title">
@@ -314,7 +342,6 @@
             </div>
 
             <div class="pillars-grid">
-                <!-- Pillar 1 -->
                 <div class="pillar-card">
                     <div class="pillar-card-top">
                         <div class="pillar-icon"><i class="fa-solid fa-clipboard-check"></i></div>
@@ -325,7 +352,6 @@
                     <div class="pillar-chip"><i class="fa-solid fa-circle-check"></i> <span data-i18n="net_v1_chip">Audits Numériques 100%</span></div>
                 </div>
 
-                <!-- Pillar 2 -->
                 <div class="pillar-card">
                     <div class="pillar-card-top">
                         <div class="pillar-icon"><i class="fa-solid fa-leaf"></i></div>
@@ -336,7 +362,6 @@
                     <div class="pillar-chip"><i class="fa-solid fa-circle-check"></i> <span data-i18n="net_v2_chip">Norme Éco-Label UE</span></div>
                 </div>
 
-                <!-- Pillar 3 -->
                 <div class="pillar-card">
                     <div class="pillar-card-top">
                         <div class="pillar-icon"><i class="fa-solid fa-shield-virus"></i></div>
@@ -347,7 +372,6 @@
                     <div class="pillar-chip"><i class="fa-solid fa-circle-check"></i> <span data-i18n="net_v3_chip">HACCP & Bio-Nettoyage</span></div>
                 </div>
 
-                <!-- Pillar 4 -->
                 <div class="pillar-card">
                     <div class="pillar-card-top">
                         <div class="pillar-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
@@ -361,7 +385,7 @@
         </div>
     </section>
 
-    <!-- ================= HIGH-IMPACT CONVERSION BANNER ================= -->
+    <!-- High-Impact Conversion Banner -->
     <div class="container">
         <div class="service-cta-banner">
             <div class="service-cta-content">
@@ -379,47 +403,40 @@
         </div>
     </div>
 
-    <!-- ================= FOOTER ================= -->
-    <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-col">
-                <img src="image/logo.png.png" alt="Logo PRO C2S" class="footer-logo">
-                <p class="footer-desc" data-i18n="footer_desc">Partenaire stratégique de référence en Intérim, Ingénierie Informatique et Facility Management au Maroc.</p>
-                <div class="social-links">
-                    <a href="https://wa.me/212663449824" target="_blank" class="social-link" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="https://linkedin.com" target="_blank" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    <!-- Official Site Footer (Safe, Clean, Matches index.html) -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-about">
+                <h3>PRO C2S</h3>
+                <p data-i18n="footer_desc">Partenaire stratégique de référence en Intérim, Ingénierie Informatique et Facility Management au Maroc.</p>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;">
+                    <span style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(0,230,118,0.1);color:#10b981;border:1px solid rgba(0,230,118,0.2);">ISO 9001</span>
+                    <span style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(0,230,118,0.1);color:#10b981;border:1px solid rgba(0,230,118,0.2);">CNSS</span>
+                    <span style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(0,230,118,0.1);color:#10b981;border:1px solid rgba(0,230,118,0.2);">Code du Travail</span>
                 </div>
             </div>
-
-            <div class="footer-col">
-                <h4 class="footer-title" data-i18n="footer_col_nav">Navigation</h4>
-                <ul class="footer-links">
-                    <li><a href="index.html" data-i18n="nav_home">Accueil</a></li>
-                    <li><a href="interim.html" data-i18n="nav_interim">Intérim & Recrutement</a></li>
-                    <li><a href="informatique.html" data-i18n="nav_info">Ingénierie Informatique</a></li>
-                    <li><a href="nettoyage.html" data-i18n="nav_clean">Nettoyage & Hygiène</a></li>
-                    <li><a href="index.html#carrieres" data-i18n="nav_jobs">Offres d'emploi</a></li>
-                </ul>
+            <div class="footer-links">
+                <h4 data-i18n="footer_col_nav">Navigation</h4>
+                <p><a href="index.html" data-i18n="nav_home">Accueil</a></p>
+                <p><a href="interim.html" data-i18n="nav_interim">Intérim</a></p>
+                <p><a href="informatique.html" data-i18n="nav_info">Informatique</a></p>
+                <p><a href="nettoyage.html" data-i18n="nav_clean">Nettoyage</a></p>
+                <p><a href="index.html#carrieres" data-i18n="nav_jobs">Offres d'emploi</a></p>
+                <p><a href="index.html#contact" data-i18n="nav_contact">Contact</a></p>
             </div>
-
-            <div class="footer-col">
-                <h4 class="footer-title" data-i18n="footer_col_contact">Contact Direct</h4>
-                <ul class="footer-links contact-info">
-                    <li><i class="fa-solid fa-phone"></i> +212 663 44 98 24</li>
-                    <li><i class="fa-solid fa-envelope"></i> contact@proc2s.com</li>
-                    <li><i class="fa-solid fa-location-dot"></i> Casablanca, Maroc</li>
-                </ul>
+            <div class="footer-links">
+                <h4 data-i18n="footer_col_contact">Contact Direct</h4>
+                <p><i class="fa-solid fa-phone"></i> +212 663 44 98 24</p>
+                <p><i class="fa-solid fa-envelope"></i> contact@proc2s.com</p>
+                <p><i class="fa-solid fa-location-dot"></i> Casablanca, Maroc</p>
             </div>
         </div>
-
-        <div class="footer-bottom">
-            <div class="container">
-                <p>&copy; 2026 PRO C2S. <span data-i18n="footer_rights">Tous droits réservés. Pôle Ingénierie & Solutions d'Entreprise.</span></p>
-            </div>
+        <div style="border-top:1px solid rgba(255,255,255,0.08);padding:18px 0;text-align:center;font-size:12.5px;color:#94a3b8;margin-top:40px;">
+            <p>&copy; 2026 PRO C2S. Tous droits réservés.</p>
         </div>
     </footer>
 
-    <!-- ================= BILINGUAL SCRIPT (FR / EN) ================= -->
+    <!-- Bilingual Scripts -->
     <script>
         const netDict = {
             fr: {
@@ -437,10 +454,10 @@
                 net_hero_btn2: "Découvrir nos Services",
                 net_badge1_label: "Protocoles Certifiés",
                 net_badge2_label: "Produits Biodégradables",
-                net_stat1_label: "m² de Surfaces Entretenus Mensuellement",
-                net_stat2_label: "Conformité Protocoles Sanitaires & HACCP",
-                net_stat3_label: "Matériel Haute Efficacité & Faible Impact",
-                net_stat4_label: "Astreinte & Interventions d'Urgence Disponibles",
+                net_stat1_label: "m² de Surfaces Entretenus",
+                net_stat2_label: "Normes Sanitaires & HACCP",
+                net_stat3_label: "Matériel Haute Efficacité",
+                net_stat4_label: "Astreinte & Urgences",
                 net_sec_span: "SERVICES DE PROPRETÉ PROFESSIONNELLE",
                 net_sec_title: "Nos Prestations Spécialisées en Nettoyage",
                 net_sec_desc: "Des interventions rigoureuses et sur-mesure pour sublimer et assainir vos espaces de travail et d'accueil.",
@@ -469,7 +486,7 @@
                 net_s5_d: "Protocoles d'asepsie hospitaliers stricts pour blocs opératoires, laboratoires d'analyses, cliniques et cabinets de consultation médicale.",
                 net_s5_k1: "Élimination des risques nosocomiaux",
                 net_s5_k2: "Désinfectants virucides et bactéricides certifiés",
-                net_s6_pill: "Retail & Centres Commerciaux",
+                net_s6_pill: "Retail & Malls",
                 net_s6_t: "Entretien Mécanisé de Grands Espaces & Malls",
                 net_s6_d: "Balayage et lavage mécanisés continus des allées à fort trafic, galeries marchandes, food courts et sanitaires publics en temps réel.",
                 net_s6_k1: "Flotte d'autolaveuses autoportées silencieuses",
@@ -479,7 +496,7 @@
                 net_s7_d: "Nettoyage régulier des halls de prestige, cages d'escalier, cabines d'ascenseur, cours intérieures, locaux poubelles et parkings sous-sol.",
                 net_s7_k1: "Rapports de passage et suivi digitalisé",
                 net_s7_k2: "Désodorisation et entretien des revêtements nobles",
-                net_s8_pill: "Traitement 3D Certifié",
+                net_s8_pill: "Traitement 3D",
                 net_s8_t: "Désinfection 3D : Dératisation & Nuisibles",
                 net_s8_d: "Solutions complètes anti-nuisibles (rongeurs, insectes rampants et volants) et nébulisation virucide/bactéricide par des techniciens agréés.",
                 net_s8_k1: "Certificat de conformité sanitaire délivré",
@@ -505,8 +522,7 @@
                 net_cta_btn2: "Demander une Visite des Locaux",
                 footer_desc: "Partenaire stratégique de référence en Intérim, Ingénierie Informatique et Facility Management au Maroc.",
                 footer_col_nav: "Navigation",
-                footer_col_contact: "Contact Direct",
-                footer_rights: "Tous droits réservés. Pôle Ingénierie & Solutions d'Entreprise."
+                footer_col_contact: "Contact Direct"
             },
             en: {
                 nav_home: "Home",
@@ -523,10 +539,10 @@
                 net_hero_btn2: "Explore Our Cleaning Services",
                 net_badge1_label: "Certified Protocols",
                 net_badge2_label: "Biodegradable Products",
-                net_stat1_label: "m² of Managed Spaces Maintained Monthly",
-                net_stat2_label: "HACCP & Sanitary Protocol Compliance",
-                net_stat3_label: "High-Efficiency Low-Impact Equipment",
-                net_stat4_label: "24/7 Rapid Emergency Response Teams",
+                net_stat1_label: "m² of Managed Spaces",
+                net_stat2_label: "Sanitary & HACCP Standards",
+                net_stat3_label: "High-Efficiency Equipment",
+                net_stat4_label: "24/7 Rapid Emergency",
                 net_sec_span: "PROFESSIONAL FACILITY SERVICES",
                 net_sec_title: "Our Specialized Commercial Cleaning Services",
                 net_sec_desc: "Rigorous and tailored cleaning operations designed to elevate and sanitize your workspaces and public areas.",
@@ -591,8 +607,7 @@
                 net_cta_btn2: "Request an On-Site Technical Visit",
                 footer_desc: "Strategic partner of excellence in Staffing, IT Engineering, and Facility Management across Morocco.",
                 footer_col_nav: "Navigation",
-                footer_col_contact: "Direct Contact",
-                footer_rights: "All rights reserved. Engineering & Corporate Solutions Division."
+                footer_col_contact: "Direct Contact"
             }
         };
 
@@ -646,6 +661,6 @@
             });
         });
     </script>
-    <script src="script.js?v=3090"></script>
+    <script src="script.js?v=3100"></script>
 </body>
 </html>

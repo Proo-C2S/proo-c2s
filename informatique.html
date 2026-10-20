@@ -9,18 +9,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cabinet+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3090">
+    <link rel="stylesheet" href="style.css?v=3100">
 </head>
 <body class="page-informatique">
 
-    <!-- ================= PRELOADER ANIMATION ================= -->
+    <!-- Preloader -->
     <div id="preloader" class="montarville-loader" aria-hidden="true">
         <div class="loader-center">
             <img src="image/logo.png.png" alt="PRO C2S" class="loader-logo">
         </div>
     </div>
 
-    <!-- ================= NAVBAR UNIFIÉE ================= -->
+    <!-- Header Navbar -->
     <header id="main-header" class="scrolled">
         <nav class="navbar">
             <div class="logo">
@@ -59,7 +59,7 @@
         </nav>
     </header>
 
-    <!-- ================= HERO SECTION (ENGINEERING LUXE) ================= -->
+    <!-- Hero Section -->
     <section class="service-page-hero">
         <div class="container hero-grid-layout">
             <div class="service-hero-content">
@@ -115,30 +115,42 @@
         </div>
     </section>
 
-    <!-- ================= METRICS RIBBON ================= -->
-    <section class="page-stats-ribbon">
-        <div class="container ribbon-grid">
-            <div class="ribbon-metric-item">
-                <span class="ribbon-num">+500</span>
-                <span class="ribbon-label" data-i18n="it_stat1_label">Ingénieurs & Consultants IT Validés</span>
+    <!-- Metrics Ribbon (Exact CSS Match) -->
+    <div class="container">
+        <div class="page-stats-ribbon">
+            <div class="stat-kpi-item">
+                <div class="stat-kpi-icon"><i class="fa-solid fa-code"></i></div>
+                <div class="stat-kpi-content">
+                    <strong>+500</strong>
+                    <span data-i18n="it_stat1_label">Ingénieurs IT Validés</span>
+                </div>
             </div>
-            <div class="ribbon-metric-item">
-                <span class="ribbon-num">48h</span>
-                <span class="ribbon-label" data-i18n="it_stat2_label">Délai Moyen de Présentation des Profils</span>
+            <div class="stat-kpi-item">
+                <div class="stat-kpi-icon"><i class="fa-solid fa-bolt"></i></div>
+                <div class="stat-kpi-content">
+                    <strong>48h</strong>
+                    <span data-i18n="it_stat2_label">Délai Short-list Moyen</span>
+                </div>
             </div>
-            <div class="ribbon-metric-item">
-                <span class="ribbon-num">100%</span>
-                <span class="ribbon-label" data-i18n="it_stat3_label">Régie Sur Site ou Télé-travail Sécurisé</span>
+            <div class="stat-kpi-item">
+                <div class="stat-kpi-icon"><i class="fa-solid fa-network-wired"></i></div>
+                <div class="stat-kpi-content">
+                    <strong>100%</strong>
+                    <span data-i18n="it_stat3_label">Régie ou Remote Sécurisé</span>
+                </div>
             </div>
-            <div class="ribbon-metric-item">
-                <span class="ribbon-num">99%</span>
-                <span class="ribbon-label" data-i18n="it_stat4_label">Taux de Réussite des Projets & Sprints</span>
+            <div class="stat-kpi-item">
+                <div class="stat-kpi-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <div class="stat-kpi-content">
+                    <strong>99%</strong>
+                    <span data-i18n="it_stat4_label">Réussite des Sprints</span>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- ================= 8 CORE IT SERVICES (100% PURE INFORMATIQUE) ================= -->
-    <section class="luxury-services-grid-section" id="services-tech">
+    <!-- 8 Core IT Services Grid -->
+    <section class="luxury-services-grid-section" id="services-tech" style="padding-top: 80px;">
         <div class="container">
             <div class="section-title">
                 <span class="badge-crit" data-i18n="it_sec_span">EXPERTISES TECHNOLOGIQUES</span>
@@ -148,155 +160,171 @@
 
             <div class="luxury-services-grid">
 
-                <!-- 1. Dev Web & Cloud (Real Code Syntax on Screens) -->
+                <!-- 1. Dev Web & Cloud -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" alt="Développement Web & Applications Cloud" loading="lazy">
-                        <span class="service-pill" data-i18n="it_s1_pill">Web & Full-Stack</span>
+                    <div class="luxury-card-media">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" alt="Développement Web & Cloud" loading="lazy">
+                        <span class="luxury-card-tag" data-i18n="it_s1_pill">Web & Full-Stack</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-laptop-code service-icon-accent"></i>
-                            <h3 data-i18n="it_s1_t">Développement Web & Apps Cloud</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="it_s1_t">Développement Web & Apps Cloud</h3>
                         <p data-i18n="it_s1_d">Conception de plateformes SaaS scalables, portails B2B et APIs robustes (React, Vue, Angular, Node.js, Python, Java, .NET).</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="it_s1_k1">Architecture microservices</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="it_s1_k2">APIs RESTful & GraphQL</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20cherche%20des%20développeurs%20web" target="_blank" class="luxury-card-action-btn">
+                                <span>Demander un Profil</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 2. Dev Mobile (Mobile Engineering Setup) -->
+                <!-- 2. Dev Mobile -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
+                    <div class="luxury-card-media">
                         <img src="https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=800&q=80" alt="Développement Mobile iOS & Android" loading="lazy">
-                        <span class="service-pill" data-i18n="it_s2_pill">Mobile & Apps</span>
+                        <span class="luxury-card-tag" data-i18n="it_s2_pill">Mobile & Apps</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-mobile-screen-button service-icon-accent"></i>
-                            <h3 data-i18n="it_s2_t">Développement Mobile iOS & Android</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="it_s2_t">Développement Mobile iOS & Android</h3>
                         <p data-i18n="it_s2_d">Applications mobiles fluides, intuitives et sécurisées en natif (Swift, Kotlin) ou cross-platform (Flutter, React Native).</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="it_s2_k1">Expérience UX/UI haute performance</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="it_s2_k2">Synchronisation offline & biométrie</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20cherche%20un%20développeur%20mobile" target="_blank" class="luxury-card-action-btn">
+                                <span>Demander un Profil</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 3. Cloud & DevOps (Cloud Networks) -->
+                <!-- 3. Cloud & DevOps -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
-                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="Cloud Computing & DevOps" loading="lazy">
-                        <span class="service-pill" data-i18n="it_s3_pill">Cloud & DevOps</span>
+                    <div class="luxury-card-media">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="Cloud & DevOps" loading="lazy">
+                        <span class="luxury-card-tag" data-i18n="it_s3_pill">Cloud & DevOps</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-cloud-arrow-up service-icon-accent"></i>
-                            <h3 data-i18n="it_s3_t">Cloud Computing, DevOps & CI/CD</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="it_s3_t">Cloud Computing, DevOps & CI/CD</h3>
                         <p data-i18n="it_s3_d">Migration Cloud, conteneurisation Docker / Kubernetes, automatisation des déploiements sur AWS, Azure et Google Cloud Platform.</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="it_s3_k1">Pipelines CI/CD automatisés</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="it_s3_k2">Infrastructure as Code (Terraform)</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20cherche%20un%20ingénieur%20cloud%20devops" target="_blank" class="luxury-card-action-btn">
+                                <span>Demander un Profil</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 4. Cybersécurité (SOC Shield & Cyber Monitor) -->
+                <!-- 4. Cybersécurité -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
+                    <div class="luxury-card-media">
                         <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80" alt="Cybersécurité & Audit Pentest" loading="lazy">
-                        <span class="service-pill" data-i18n="it_s4_pill">Cybersécurité</span>
+                        <span class="luxury-card-tag" data-i18n="it_s4_pill">Cybersécurité</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-shield-halved service-icon-accent"></i>
-                            <h3 data-i18n="it_s4_t">Cybersécurité, Audit & Pentest</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="it_s4_t">Cybersécurité, Audit & Pentest</h3>
                         <p data-i18n="it_s4_d">Tests d'intrusion (Pentest éthique), surveillance SOC 24/7, conformité RGPD / CNDP et durcissement des architectures contre les cybermenaces.</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="it_s4_k1">Audit de vulnérabilités & SIEM</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="it_s4_k2">Conformité ISO 27001 & CNDP</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20un%20audit%20cybersécurité" target="_blank" class="luxury-card-action-btn">
+                                <span>Demander un Audit</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 5. Data & IA (Data Analytics BI Dashboards) -->
+                <!-- 5. Data & IA -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Data Engineering & Intelligence Artificielle" loading="lazy">
-                        <span class="service-pill" data-i18n="it_s5_pill">Data & IA</span>
+                    <div class="luxury-card-media">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Data Engineering & IA" loading="lazy">
+                        <span class="luxury-card-tag" data-i18n="it_s5_pill">Data & IA</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-brain service-icon-accent"></i>
-                            <h3 data-i18n="it_s5_t">Data Engineering, IA & Business Intelligence</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="it_s5_t">Data Engineering, IA & Business Intelligence</h3>
                         <p data-i18n="it_s5_d">Collecte et structuration des données en temps réel, modélisation prédictive Machine Learning et dashboards d'aide à la décision (Power BI, Tableau).</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="it_s5_k1">Pipelines ETL & Data Lakehouse</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="it_s5_k2">Modèles prédictifs & IA Générative</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20cherche%20un%20data%20engineer" target="_blank" class="luxury-card-action-btn">
+                                <span>Demander un Profil</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 6. Systèmes & Réseaux (Datacenter Cabling & Servers) -->
+                <!-- 6. Systèmes & Réseaux -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
-                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Administration Systèmes & Réseaux" loading="lazy">
-                        <span class="service-pill" data-i18n="it_s6_pill">Infrastructures</span>
+                    <div class="luxury-card-media">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Systèmes & Réseaux" loading="lazy">
+                        <span class="luxury-card-tag" data-i18n="it_s6_pill">Infrastructures</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-server service-icon-accent"></i>
-                            <h3 data-i18n="it_s6_t">Administration Systèmes, Réseaux & Télécoms</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="it_s6_t">Administration Systèmes, Réseaux & Télécoms</h3>
                         <p data-i18n="it_s6_d">Gestion des parcs serveurs (Linux/Windows), configuration switchs/routeurs Cisco, VPN, firewalling et interconnexion de sites distants.</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="it_s6_k1">Haute disponibilité & Sauvegardes PCA/PRA</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="it_s6_k2">Virtualisation VMware / Hyper-V</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20cherche%20un%20administrateur%20système" target="_blank" class="luxury-card-action-btn">
+                                <span>Demander un Profil</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 7. Support & Infogérance (IT Support Workstation) -->
+                <!-- 7. Support & Infogérance -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
+                    <div class="luxury-card-media">
                         <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" alt="Support Informatique & Helpdesk" loading="lazy">
-                        <span class="service-pill" data-i18n="it_s7_pill">Support & Helpdesk</span>
+                        <span class="luxury-card-tag" data-i18n="it_s7_pill">Support & Helpdesk</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-headset service-icon-accent"></i>
-                            <h3 data-i18n="it_s7_t">Support Informatique, Helpdesk & Infogérance</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="it_s7_t">Support Informatique, Helpdesk & Infogérance</h3>
                         <p data-i18n="it_s7_d">Assistance technique utilisateurs N1/N2/N3, maintenance de parc informatique sur site et télé-intervention immédiate selon les normes ITIL.</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="it_s7_k1">Gestion rigoureuse des tickets & SLA</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="it_s7_k2">Maintien en condition opérationnelle (MCO)</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20cherche%20un%20technicien%20helpdesk" target="_blank" class="luxury-card-action-btn">
+                                <span>Demander un Profil</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 8. Architecture & Conseil IT (Software System Blueprint) -->
+                <!-- 8. Architecture IT -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
+                    <div class="luxury-card-media">
                         <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80" alt="Architecture IT & Conseil" loading="lazy">
-                        <span class="service-pill" data-i18n="it_s8_pill">Architecture & Conseil</span>
+                        <span class="luxury-card-tag" data-i18n="it_s8_pill">Architecture & Conseil</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-diagram-project service-icon-accent"></i>
-                            <h3 data-i18n="it_s8_t">Conseil en Architecture IT & Transformation</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="it_s8_t">Conseil en Architecture IT & Transformation</h3>
                         <p data-i18n="it_s8_d">Audits des Systèmes d'Information, gouvernance technique, refonte des architectures legacy et cadrage de projets IT stratégiques.</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="it_s8_k1">Alignement technologique & ROI</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="it_s8_k2">Pilotage Scrum Master & Product Owner</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20cherche%20un%20architecte%20IT" target="_blank" class="luxury-card-action-btn">
+                                <span>Demander un Profil</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -304,7 +332,7 @@
         </div>
     </section>
 
-    <!-- ================= EXECUTIVE PILLARS REDESIGN ================= -->
+    <!-- Executive Pillars Section -->
     <section class="pillars-section">
         <div class="container">
             <div class="section-title">
@@ -314,7 +342,6 @@
             </div>
 
             <div class="pillars-grid">
-                <!-- Pillar 1 -->
                 <div class="pillar-card">
                     <div class="pillar-card-top">
                         <div class="pillar-icon"><i class="fa-solid fa-user-check"></i></div>
@@ -325,7 +352,6 @@
                     <div class="pillar-chip"><i class="fa-solid fa-circle-check"></i> <span data-i18n="it_v1_chip">Top 5% Validé</span></div>
                 </div>
 
-                <!-- Pillar 2 -->
                 <div class="pillar-card">
                     <div class="pillar-card-top">
                         <div class="pillar-icon"><i class="fa-solid fa-gauge-high"></i></div>
@@ -336,7 +362,6 @@
                     <div class="pillar-chip"><i class="fa-solid fa-circle-check"></i> <span data-i18n="it_v2_chip">SLA 48h Garanti</span></div>
                 </div>
 
-                <!-- Pillar 3 -->
                 <div class="pillar-card">
                     <div class="pillar-card-top">
                         <div class="pillar-icon"><i class="fa-solid fa-sliders"></i></div>
@@ -347,7 +372,6 @@
                     <div class="pillar-chip"><i class="fa-solid fa-circle-check"></i> <span data-i18n="it_v3_chip">Modèles Hybrides</span></div>
                 </div>
 
-                <!-- Pillar 4 -->
                 <div class="pillar-card">
                     <div class="pillar-card-top">
                         <div class="pillar-icon"><i class="fa-solid fa-shield-halved"></i></div>
@@ -361,7 +385,7 @@
         </div>
     </section>
 
-    <!-- ================= HIGH-IMPACT CONVERSION BANNER ================= -->
+    <!-- High-Impact Conversion Banner -->
     <div class="container">
         <div class="service-cta-banner">
             <div class="service-cta-content">
@@ -379,47 +403,40 @@
         </div>
     </div>
 
-    <!-- ================= FOOTER ================= -->
-    <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-col">
-                <img src="image/logo.png.png" alt="Logo PRO C2S" class="footer-logo">
-                <p class="footer-desc" data-i18n="footer_desc">Partenaire stratégique de référence en Intérim, Ingénierie Informatique et Facility Management au Maroc.</p>
-                <div class="social-links">
-                    <a href="https://wa.me/212663449824" target="_blank" class="social-link" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="https://linkedin.com" target="_blank" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    <!-- Official Site Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-about">
+                <h3>PRO C2S</h3>
+                <p data-i18n="footer_desc">Partenaire stratégique de référence en Intérim, Ingénierie Informatique et Facility Management au Maroc.</p>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;">
+                    <span style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(0,230,118,0.1);color:#10b981;border:1px solid rgba(0,230,118,0.2);">ISO 9001</span>
+                    <span style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(0,230,118,0.1);color:#10b981;border:1px solid rgba(0,230,118,0.2);">CNSS</span>
+                    <span style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(0,230,118,0.1);color:#10b981;border:1px solid rgba(0,230,118,0.2);">Code du Travail</span>
                 </div>
             </div>
-
-            <div class="footer-col">
-                <h4 class="footer-title" data-i18n="footer_col_nav">Navigation</h4>
-                <ul class="footer-links">
-                    <li><a href="index.html" data-i18n="nav_home">Accueil</a></li>
-                    <li><a href="interim.html" data-i18n="nav_interim">Intérim & Recrutement</a></li>
-                    <li><a href="informatique.html" data-i18n="nav_info">Ingénierie Informatique</a></li>
-                    <li><a href="nettoyage.html" data-i18n="nav_clean">Nettoyage & Hygiène</a></li>
-                    <li><a href="index.html#carrieres" data-i18n="nav_jobs">Offres d'emploi</a></li>
-                </ul>
+            <div class="footer-links">
+                <h4 data-i18n="footer_col_nav">Navigation</h4>
+                <p><a href="index.html" data-i18n="nav_home">Accueil</a></p>
+                <p><a href="interim.html" data-i18n="nav_interim">Intérim</a></p>
+                <p><a href="informatique.html" data-i18n="nav_info">Informatique</a></p>
+                <p><a href="nettoyage.html" data-i18n="nav_clean">Nettoyage</a></p>
+                <p><a href="index.html#carrieres" data-i18n="nav_jobs">Offres d'emploi</a></p>
+                <p><a href="index.html#contact" data-i18n="nav_contact">Contact</a></p>
             </div>
-
-            <div class="footer-col">
-                <h4 class="footer-title" data-i18n="footer_col_contact">Contact Direct</h4>
-                <ul class="footer-links contact-info">
-                    <li><i class="fa-solid fa-phone"></i> +212 663 44 98 24</li>
-                    <li><i class="fa-solid fa-envelope"></i> contact@proc2s.com</li>
-                    <li><i class="fa-solid fa-location-dot"></i> Casablanca, Maroc</li>
-                </ul>
+            <div class="footer-links">
+                <h4 data-i18n="footer_col_contact">Contact Direct</h4>
+                <p><i class="fa-solid fa-phone"></i> +212 663 44 98 24</p>
+                <p><i class="fa-solid fa-envelope"></i> contact@proc2s.com</p>
+                <p><i class="fa-solid fa-location-dot"></i> Casablanca, Maroc</p>
             </div>
         </div>
-
-        <div class="footer-bottom">
-            <div class="container">
-                <p>&copy; 2026 PRO C2S. <span data-i18n="footer_rights">Tous droits réservés. Pôle Ingénierie & Solutions d'Entreprise.</span></p>
-            </div>
+        <div style="border-top:1px solid rgba(255,255,255,0.08);padding:18px 0;text-align:center;font-size:12.5px;color:#94a3b8;margin-top:40px;">
+            <p>&copy; 2026 PRO C2S. Tous droits réservés.</p>
         </div>
     </footer>
 
-    <!-- ================= BILINGUAL SCRIPT (FR / EN) ================= -->
+    <!-- Bilingual Scripts -->
     <script>
         const itDict = {
             fr: {
@@ -437,10 +454,10 @@
                 it_hero_btn2: "Découvrir nos Expertises",
                 it_badge1_label: "Tech Talents Certifiés",
                 it_badge2_label: "Assistance Technique Agile",
-                it_stat1_label: "Ingénieurs & Consultants IT Validés",
-                it_stat2_label: "Délai Moyen de Présentation des Profils",
-                it_stat3_label: "Régie Sur Site ou Télé-travail Sécurisé",
-                it_stat4_label: "Taux de Réussite des Projets & Sprints",
+                it_stat1_label: "Ingénieurs IT Validés",
+                it_stat2_label: "Délai Short-list Moyen",
+                it_stat3_label: "Régie ou Remote Sécurisé",
+                it_stat4_label: "Réussite des Sprints",
                 it_sec_span: "EXPERTISES TECHNOLOGIQUES",
                 it_sec_title: "Nos Domaines d'Intervention en Ingénierie IT",
                 it_sec_desc: "Des solutions techniques sur-mesure pour couvrir l'intégralité du cycle de vie de vos systèmes d'information.",
@@ -505,8 +522,7 @@
                 it_cta_btn2: "Demande de Devis Formel",
                 footer_desc: "Partenaire stratégique de référence en Intérim, Ingénierie Informatique et Facility Management au Maroc.",
                 footer_col_nav: "Navigation",
-                footer_col_contact: "Contact Direct",
-                footer_rights: "Tous droits réservés. Pôle Ingénierie & Solutions d'Entreprise."
+                footer_col_contact: "Contact Direct"
             },
             en: {
                 nav_home: "Home",
@@ -523,10 +539,10 @@
                 it_hero_btn2: "Explore Our Technical Expertise",
                 it_badge1_label: "Certified Tech Talents",
                 it_badge2_label: "Agile Technical Assistance",
-                it_stat1_label: "Validated IT Engineers & Consultants",
-                it_stat2_label: "Average Candidate Presentation Time",
-                it_stat3_label: "On-site or Secure Remote Staffing",
-                it_stat4_label: "Project & Sprint Success Rate",
+                it_stat1_label: "Validated IT Engineers",
+                it_stat2_label: "Average Short-list SLA",
+                it_stat3_label: "On-site or Remote Staffing",
+                it_stat4_label: "Sprint Success Rate",
                 it_sec_span: "TECHNOLOGY EXPERTISE",
                 it_sec_title: "Our IT Engineering Core Specializations",
                 it_sec_desc: "Tailored engineering services covering the full lifecycle of your enterprise information systems.",
@@ -591,8 +607,7 @@
                 it_cta_btn2: "Request a Formal Quote",
                 footer_desc: "Strategic partner of excellence in Staffing, IT Engineering, and Facility Management across Morocco.",
                 footer_col_nav: "Navigation",
-                footer_col_contact: "Direct Contact",
-                footer_rights: "All rights reserved. Engineering & Corporate Solutions Division."
+                footer_col_contact: "Direct Contact"
             }
         };
 
@@ -646,6 +661,6 @@
             });
         });
     </script>
-    <script src="script.js?v=3090"></script>
+    <script src="script.js?v=3100"></script>
 </body>
 </html>

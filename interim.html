@@ -9,18 +9,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cabinet+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3090">
+    <link rel="stylesheet" href="style.css?v=3100">
 </head>
 <body class="page-interim">
 
-    <!-- ================= PRELOADER ANIMATION ================= -->
+    <!-- Preloader -->
     <div id="preloader" class="montarville-loader" aria-hidden="true">
         <div class="loader-center">
             <img src="image/logo.png.png" alt="PRO C2S" class="loader-logo">
         </div>
     </div>
 
-    <!-- ================= NAVBAR UNIFIÉE ================= -->
+    <!-- Header Navbar -->
     <header id="main-header" class="scrolled">
         <nav class="navbar">
             <div class="logo">
@@ -59,7 +59,7 @@
         </nav>
     </header>
 
-    <!-- ================= HERO SECTION (EXECUTIVE LUXE) ================= -->
+    <!-- Hero Section -->
     <section class="service-page-hero">
         <div class="container hero-grid-layout">
             <div class="service-hero-content">
@@ -115,30 +115,42 @@
         </div>
     </section>
 
-    <!-- ================= METRICS RIBBON ================= -->
-    <section class="page-stats-ribbon">
-        <div class="container ribbon-grid">
-            <div class="ribbon-metric-item">
-                <span class="ribbon-num">+15,000</span>
-                <span class="ribbon-label" data-i18n="int_stat1_label">Vivier de Candidats Préqualifiés</span>
+    <!-- Metrics Ribbon (Exact CSS Match) -->
+    <div class="container">
+        <div class="page-stats-ribbon">
+            <div class="stat-kpi-item">
+                <div class="stat-kpi-icon"><i class="fa-solid fa-users"></i></div>
+                <div class="stat-kpi-content">
+                    <strong>+15,000</strong>
+                    <span data-i18n="int_stat1_label">Vivier Candidats Qualifiés</span>
+                </div>
             </div>
-            <div class="ribbon-metric-item">
-                <span class="ribbon-num">24h - 48h</span>
-                <span class="ribbon-label" data-i18n="int_stat2_label">Délai Moyen de Mise à Disposition</span>
+            <div class="stat-kpi-item">
+                <div class="stat-kpi-icon"><i class="fa-solid fa-stopwatch"></i></div>
+                <div class="stat-kpi-content">
+                    <strong>24h - 48h</strong>
+                    <span data-i18n="int_stat2_label">Délai Moyen Placement</span>
+                </div>
             </div>
-            <div class="ribbon-metric-item">
-                <span class="ribbon-num">100%</span>
-                <span class="ribbon-label" data-i18n="int_stat3_label">Conformité CNSS, Mutuelle & Assurance AT</span>
+            <div class="stat-kpi-item">
+                <div class="stat-kpi-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                <div class="stat-kpi-content">
+                    <strong>100%</strong>
+                    <span data-i18n="int_stat3_label">Conformité CNSS & AT</span>
+                </div>
             </div>
-            <div class="ribbon-metric-item">
-                <span class="ribbon-num">40%</span>
-                <span class="ribbon-label" data-i18n="int_stat4_label">Taux Moyen d'Embauche en CDI post-mission</span>
+            <div class="stat-kpi-item">
+                <div class="stat-kpi-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+                <div class="stat-kpi-content">
+                    <strong>40%</strong>
+                    <span data-i18n="int_stat4_label">Taux d'Embauche en CDI</span>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- ================= 8 CORE INTÉRIM PROFILES ================= -->
-    <section class="luxury-services-grid-section" id="profils-interim">
+    <!-- 8 Core Intérim Profiles Grid -->
+    <section class="luxury-services-grid-section" id="profils-interim" style="padding-top: 80px;">
         <div class="container">
             <div class="section-title">
                 <span class="badge-crit" data-i18n="int_sec_span">MÉTIERS & DÉLÉGATIONS INTÉRIM</span>
@@ -148,155 +160,171 @@
 
             <div class="luxury-services-grid">
 
-                <!-- 1. Industrie & Production (Assembly Line Workers) -->
+                <!-- 1. Ouvriers de Production -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
-                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Ouvriers de Production & Industrie" loading="lazy">
-                        <span class="service-pill" data-i18n="int_p1_pill">Industrie & Usines</span>
+                    <div class="luxury-card-media">
+                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="Ouvriers de Production" loading="lazy">
+                        <span class="luxury-card-tag" data-i18n="int_p1_pill">Industrie & Usines</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-industry service-icon-accent"></i>
-                            <h3 data-i18n="int_p1_t">Ouvriers de Production & Câbleurs</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="int_p1_t">Ouvriers de Production & Câbleurs</h3>
                         <p data-i18n="int_p1_d">Opérateurs de ligne, assembleurs, câbleurs aéronautiques et agents de production formés aux cadences industrielles et normes qualité.</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="int_p1_k1">Respect strict des consignes de sécurité</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="int_p1_k2">Horaires postés (2x8, 3x8, weekend)</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20cherche%20des%20ouvriers%20de%20production" target="_blank" class="luxury-card-action-btn">
+                                <span>Commander du Personnel</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 2. Logistique & Caristes (Forklift Warehouse) -->
+                <!-- 2. Manutention & Caristes -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
+                    <div class="luxury-card-media">
                         <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="Manutention & Logistique" loading="lazy">
-                        <span class="service-pill" data-i18n="int_p2_pill">Logistique & Hubs</span>
+                        <span class="luxury-card-tag" data-i18n="int_p2_pill">Logistique & Hubs</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-dolly service-icon-accent"></i>
-                            <h3 data-i18n="int_p2_t">Manutention, Caristes CACES & Magasiniers</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="int_p2_t">Manutention, Caristes CACES & Magasiniers</h3>
                         <p data-i18n="int_p2_d">Préparateurs de commandes avec scan vocal, caristes certifiés CACES 1/3/5 et gestionnaires d'entrepôt pour vos flux logistiques.</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="int_p2_k1">Permis CACES en cours de validité</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="int_p2_k2">Zéro rupture de cadence logistique</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20cherche%20des%20caristes%20CACES" target="_blank" class="luxury-card-action-btn">
+                                <span>Commander du Personnel</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 3. BTP & Construction (Construction Site & Helmets) -->
+                <!-- 3. BTP & Construction -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
-                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" alt="BTP & Travaux de Construction" loading="lazy">
-                        <span class="service-pill" data-i18n="int_p3_pill">BTP & Chantier</span>
+                    <div class="luxury-card-media">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" alt="BTP & Construction" loading="lazy">
+                        <span class="luxury-card-tag" data-i18n="int_p3_pill">BTP & Chantiers</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-helmet-safety service-icon-accent"></i>
-                            <h3 data-i18n="int_p3_t">BTP, Gros Œuvre & Second Œuvre</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="int_p3_t">BTP, Gros Œuvre & Second Œuvre</h3>
                         <p data-i18n="int_p3_d">Maçons qualifiés, coffreurs, ferrailleurs, électriciens BTP, peintres et chefs d'équipe équipés d'EPI pour vos chantiers d'envergure.</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="int_p3_k1">Assurance Responsabilité Civile & AT</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="int_p3_k2">Équipements de protection individuels fournis</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20cherche%20des%20ouvriers%20BTP" target="_blank" class="luxury-card-action-btn">
+                                <span>Commander du Personnel</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 4. Maintenance Industrielle (Electromechanical Maintenance) -->
+                <!-- 4. Maintenance Industrielle -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
-                        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=800&q=80" alt="Techniciens de Maintenance Industrielle" loading="lazy">
-                        <span class="service-pill" data-i18n="int_p4_pill">Maintenance</span>
+                    <div class="luxury-card-media">
+                        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=800&q=80" alt="Maintenance Industrielle" loading="lazy">
+                        <span class="luxury-card-tag" data-i18n="int_p4_pill">Maintenance</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-screwdriver-wrench service-icon-accent"></i>
-                            <h3 data-i18n="int_p4_t">Techniciens de Maintenance & Électromécanique</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="int_p4_t">Techniciens de Maintenance & Électromécanique</h3>
                         <p data-i18n="int_p4_d">Électromécaniciens, techniciens d'automatisme et agents de maintenance curative pour garantir la continuité de vos outils industriels.</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="int_p4_k1">Diagnostic rapide des pannes machine</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="int_p4_k2">Habilitations électriques à jour</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20cherche%20des%20techniciens%20de%20maintenance" target="_blank" class="luxury-card-action-btn">
+                                <span>Commander du Personnel</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 5. Chauffeurs & Transport (Heavy Transport Truck & Driver) -->
+                <!-- 5. Chauffeurs Professionnels -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
-                        <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=800&q=80" alt="Chauffeurs Professionnels & Transport" loading="lazy">
-                        <span class="service-pill" data-i18n="int_p5_pill">Transport & Flotte</span>
+                    <div class="luxury-card-media">
+                        <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=800&q=80" alt="Chauffeurs & Transport" loading="lazy">
+                        <span class="luxury-card-tag" data-i18n="int_p5_pill">Transport & Flotte</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-truck-moving service-icon-accent"></i>
-                            <h3 data-i18n="int_p5_t">Chauffeurs Professionnels & Livreurs</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="int_p5_t">Chauffeurs Professionnels & Livreurs</h3>
                         <p data-i18n="int_p5_d">Chauffeurs Poids Lourds (Permis C / EC), conducteurs de navettes d'entreprise et livreurs express expérimentés pour sécuriser vos liaisons.</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="int_p5_k1">Permis professionnels et visites médicales validés</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="int_p5_k2">Ponctualité et traçabilité des livraisons</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20cherche%20des%20chauffeurs%20professionnels" target="_blank" class="luxury-card-action-btn">
+                                <span>Commander du Personnel</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 6. Personnel Administratif (Corporate Front Desk Receptionist) -->
+                <!-- 6. Personnel Administratif -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Support Tertiaire & Administratif" loading="lazy">
-                        <span class="service-pill" data-i18n="int_p6_pill">Tertiaire & Sièges</span>
+                    <div class="luxury-card-media">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Personnel Administratif" loading="lazy">
+                        <span class="luxury-card-tag" data-i18n="int_p6_pill">Tertiaire & Sièges</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-briefcase service-icon-accent"></i>
-                            <h3 data-i18n="int_p6_t">Personnel Administratif, Accueil & Gestion</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="int_p6_t">Personnel Administratif, Accueil & Gestion</h3>
                         <p data-i18n="int_p6_d">Hôtesses d'accueil d'entreprise, secrétaires polyvalentes, assistants RH temporaires et aides-comptables opérationnels immédiatement.</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="int_p6_k1">Excellente présentation & bilinguisme</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="int_p6_k2">Maîtrise Pack Office & ERP d'entreprise</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20cherche%20des%20profils%20administratifs" target="_blank" class="luxury-card-action-btn">
+                                <span>Commander du Personnel</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 7. Relation Client & Call Center (Support Call Center Team) -->
+                <!-- 7. Relation Client & Call Center -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
+                    <div class="luxury-card-media">
                         <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80" alt="Téléconseillers Call Center" loading="lazy">
-                        <span class="service-pill" data-i18n="int_p7_pill">Centres de Contacts</span>
+                        <span class="luxury-card-tag" data-i18n="int_p7_pill">Centres d'Appels</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-headset service-icon-accent"></i>
-                            <h3 data-i18n="int_p7_t">Téléconseillers & Relation Client BPO</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="int_p7_t">Téléconseillers & Relation Client BPO</h3>
                         <p data-i18n="int_p7_d">Agents de centre d'appels entrants/sortants, conseillers support client multilingues et opérateurs de télévente formés aux outils CRM.</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="int_p7_k1">Élocution fluide en français & anglais</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="int_p7_k2">Capacité de montée en charge immédiate</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20cherche%20des%20téléconseillers" target="_blank" class="luxury-card-action-btn">
+                                <span>Commander du Personnel</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 8. Hôtellerie & Restauration (Chef & Culinary Brigade) -->
+                <!-- 8. Hôtellerie & Restauration -->
                 <div class="luxury-service-card">
-                    <div class="card-img-holder">
+                    <div class="luxury-card-media">
                         <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Hôtellerie & Restauration" loading="lazy">
-                        <span class="service-pill" data-i18n="int_p8_pill">Hôtellerie & CHR</span>
+                        <span class="luxury-card-tag" data-i18n="int_p8_pill">Hôtellerie & CHR</span>
                     </div>
-                    <div class="card-body-content">
-                        <div class="card-title-row">
-                            <i class="fa-solid fa-utensils service-icon-accent"></i>
-                            <h3 data-i18n="int_p8_t">Hôtellerie, Restauration & Événements</h3>
-                        </div>
+                    <div class="luxury-card-body">
+                        <h3 data-i18n="int_p8_t">Hôtellerie, Restauration & Événements</h3>
                         <p data-i18n="int_p8_d">Serveurs professionnels, commis de cuisine, chefs de partie, barmans et brigades d'extra pour vos banquets, séminaires et saisons touristiques.</p>
-                        <ul class="spec-list">
+                        <ul class="deliverables-list">
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="int_p8_k1">Expérience en établissements de standing</span></li>
                             <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="int_p8_k2">Tenues professionnelles irréprochables</span></li>
                         </ul>
+                        <div class="luxury-card-footer">
+                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20cherche%20du%20personnel%20hôtellerie" target="_blank" class="luxury-card-action-btn">
+                                <span>Commander du Personnel</span> <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -304,7 +332,7 @@
         </div>
     </section>
 
-    <!-- ================= EXECUTIVE PILLARS REDESIGN ================= -->
+    <!-- Executive Pillars Section -->
     <section class="pillars-section">
         <div class="container">
             <div class="section-title">
@@ -314,7 +342,6 @@
             </div>
 
             <div class="pillars-grid">
-                <!-- Pillar 1 -->
                 <div class="pillar-card">
                     <div class="pillar-card-top">
                         <div class="pillar-icon"><i class="fa-solid fa-users-gear"></i></div>
@@ -325,7 +352,6 @@
                     <div class="pillar-chip"><i class="fa-solid fa-circle-check"></i> <span data-i18n="int_v1_chip">15,000+ Profils Actifs</span></div>
                 </div>
 
-                <!-- Pillar 2 -->
                 <div class="pillar-card">
                     <div class="pillar-card-top">
                         <div class="pillar-icon"><i class="fa-solid fa-scale-balanced"></i></div>
@@ -336,7 +362,6 @@
                     <div class="pillar-chip"><i class="fa-solid fa-circle-check"></i> <span data-i18n="int_v2_chip">100% CNSS & AT Garantis</span></div>
                 </div>
 
-                <!-- Pillar 3 -->
                 <div class="pillar-card">
                     <div class="pillar-card-top">
                         <div class="pillar-icon"><i class="fa-solid fa-stopwatch"></i></div>
@@ -347,7 +372,6 @@
                     <div class="pillar-chip"><i class="fa-solid fa-circle-check"></i> <span data-i18n="int_v3_chip">Réactivité 24-48h SLA</span></div>
                 </div>
 
-                <!-- Pillar 4 -->
                 <div class="pillar-card">
                     <div class="pillar-card-top">
                         <div class="pillar-icon"><i class="fa-solid fa-handshake-angle"></i></div>
@@ -361,7 +385,7 @@
         </div>
     </section>
 
-    <!-- ================= HIGH-IMPACT CONVERSION BANNER ================= -->
+    <!-- High-Impact Conversion Banner -->
     <div class="container">
         <div class="service-cta-banner">
             <div class="service-cta-content">
@@ -379,47 +403,40 @@
         </div>
     </div>
 
-    <!-- ================= FOOTER ================= -->
-    <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-col">
-                <img src="image/logo.png.png" alt="Logo PRO C2S" class="footer-logo">
-                <p class="footer-desc" data-i18n="footer_desc">Partenaire stratégique de référence en Intérim, Ingénierie Informatique et Facility Management au Maroc.</p>
-                <div class="social-links">
-                    <a href="https://wa.me/212663449824" target="_blank" class="social-link" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="https://linkedin.com" target="_blank" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+    <!-- Official Site Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-about">
+                <h3>PRO C2S</h3>
+                <p data-i18n="footer_desc">Partenaire stratégique de référence en Intérim, Ingénierie Informatique et Facility Management au Maroc.</p>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;">
+                    <span style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(0,230,118,0.1);color:#10b981;border:1px solid rgba(0,230,118,0.2);">ISO 9001</span>
+                    <span style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(0,230,118,0.1);color:#10b981;border:1px solid rgba(0,230,118,0.2);">CNSS</span>
+                    <span style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(0,230,118,0.1);color:#10b981;border:1px solid rgba(0,230,118,0.2);">Code du Travail</span>
                 </div>
             </div>
-
-            <div class="footer-col">
-                <h4 class="footer-title" data-i18n="footer_col_nav">Navigation</h4>
-                <ul class="footer-links">
-                    <li><a href="index.html" data-i18n="nav_home">Accueil</a></li>
-                    <li><a href="interim.html" data-i18n="nav_interim">Intérim & Recrutement</a></li>
-                    <li><a href="informatique.html" data-i18n="nav_info">Ingénierie Informatique</a></li>
-                    <li><a href="nettoyage.html" data-i18n="nav_clean">Nettoyage & Hygiène</a></li>
-                    <li><a href="index.html#carrieres" data-i18n="nav_jobs">Offres d'emploi</a></li>
-                </ul>
+            <div class="footer-links">
+                <h4 data-i18n="footer_col_nav">Navigation</h4>
+                <p><a href="index.html" data-i18n="nav_home">Accueil</a></p>
+                <p><a href="interim.html" data-i18n="nav_interim">Intérim</a></p>
+                <p><a href="informatique.html" data-i18n="nav_info">Informatique</a></p>
+                <p><a href="nettoyage.html" data-i18n="nav_clean">Nettoyage</a></p>
+                <p><a href="index.html#carrieres" data-i18n="nav_jobs">Offres d'emploi</a></p>
+                <p><a href="index.html#contact" data-i18n="nav_contact">Contact</a></p>
             </div>
-
-            <div class="footer-col">
-                <h4 class="footer-title" data-i18n="footer_col_contact">Contact Direct</h4>
-                <ul class="footer-links contact-info">
-                    <li><i class="fa-solid fa-phone"></i> +212 663 44 98 24</li>
-                    <li><i class="fa-solid fa-envelope"></i> contact@proc2s.com</li>
-                    <li><i class="fa-solid fa-location-dot"></i> Casablanca, Maroc</li>
-                </ul>
+            <div class="footer-links">
+                <h4 data-i18n="footer_col_contact">Contact Direct</h4>
+                <p><i class="fa-solid fa-phone"></i> +212 663 44 98 24</p>
+                <p><i class="fa-solid fa-envelope"></i> contact@proc2s.com</p>
+                <p><i class="fa-solid fa-location-dot"></i> Casablanca, Maroc</p>
             </div>
         </div>
-
-        <div class="footer-bottom">
-            <div class="container">
-                <p>&copy; 2026 PRO C2S. <span data-i18n="footer_rights">Tous droits réservés. Pôle Ingénierie & Solutions d'Entreprise.</span></p>
-            </div>
+        <div style="border-top:1px solid rgba(255,255,255,0.08);padding:18px 0;text-align:center;font-size:12.5px;color:#94a3b8;margin-top:40px;">
+            <p>&copy; 2026 PRO C2S. Tous droits réservés.</p>
         </div>
     </footer>
 
-    <!-- ================= BILINGUAL SCRIPT (FR / EN) ================= -->
+    <!-- Bilingual Scripts -->
     <script>
         const intDict = {
             fr: {
@@ -437,10 +454,10 @@
                 int_hero_btn2: "Découvrir nos Profils",
                 int_badge1_label: "Candidats Évalués",
                 int_badge2_label: "Réactivité Garantie",
-                int_stat1_label: "Vivier de Candidats Préqualifiés",
-                int_stat2_label: "Délai Moyen de Mise à Disposition",
-                int_stat3_label: "Conformité CNSS, Mutuelle & Assurance AT",
-                int_stat4_label: "Taux Moyen d'Embauche en CDI post-mission",
+                int_stat1_label: "Vivier Candidats Qualifiés",
+                int_stat2_label: "Délai Moyen Placement",
+                int_stat3_label: "Conformité CNSS & AT",
+                int_stat4_label: "Taux d'Embauche en CDI",
                 int_sec_span: "MÉTIERS & DÉLÉGATIONS INTÉRIM",
                 int_sec_title: "Nos Familles de Métiers en Travail Temporaire",
                 int_sec_desc: "Du renfort ouvrier aux profils tertiaires spécialisés, nous répondons à vos pics d'activité avec précision et rigueur.",
@@ -454,7 +471,7 @@
                 int_p2_d: "Préparateurs de commandes avec scan vocal, caristes certifiés CACES 1/3/5 et gestionnaires d'entrepôt pour vos flux logistiques.",
                 int_p2_k1: "Permis CACES en cours de validité",
                 int_p2_k2: "Zéro rupture de cadence logistique",
-                int_p3_pill: "BTP & Chantier",
+                int_p3_pill: "BTP & Chantiers",
                 int_p3_t: "BTP, Gros Œuvre & Second Œuvre",
                 int_p3_d: "Maçons qualifiés, coffreurs, ferrailleurs, électriciens BTP, peintres et chefs d'équipe équipés d'EPI pour vos chantiers d'envergure.",
                 int_p3_k1: "Assurance Responsabilité Civile & AT",
@@ -474,7 +491,7 @@
                 int_p6_d: "Hôtesses d'accueil d'entreprise, secrétaires polyvalentes, assistants RH temporaires et aides-comptables opérationnels immédiatement.",
                 int_p6_k1: "Excellente présentation & bilinguisme",
                 int_p6_k2: "Maîtrise Pack Office & ERP d'entreprise",
-                int_p7_pill: "Centres de Contacts",
+                int_p7_pill: "Centres d'Appels",
                 int_p7_t: "Téléconseillers & Relation Client BPO",
                 int_p7_d: "Agents de centre d'appels entrants/sortants, conseillers support client multilingues et opérateurs de télévente formés aux outils CRM.",
                 int_p7_k1: "Élocution fluide en français & anglais",
@@ -505,8 +522,7 @@
                 int_cta_btn2: "Demande de Devis Intérim",
                 footer_desc: "Partenaire stratégique de référence en Intérim, Ingénierie Informatique et Facility Management au Maroc.",
                 footer_col_nav: "Navigation",
-                footer_col_contact: "Contact Direct",
-                footer_rights: "Tous droits réservés. Pôle Ingénierie & Solutions d'Entreprise."
+                footer_col_contact: "Contact Direct"
             },
             en: {
                 nav_home: "Home",
@@ -523,10 +539,10 @@
                 int_hero_btn2: "Explore Our Staffing Profiles",
                 int_badge1_label: "Screened Candidates",
                 int_badge2_label: "Guaranteed Turnaround",
-                int_stat1_label: "Pre-screened Candidate Talent Pool",
-                int_stat2_label: "Average Candidate Placement Time",
-                int_stat3_label: "100% CNSS, Health & Work Accident Insurance",
-                int_stat4_label: "Average Permanent Hire Conversion Rate",
+                int_stat1_label: "Qualified Candidate Pool",
+                int_stat2_label: "Average Placement SLA",
+                int_stat3_label: "CNSS & Insurance Compliance",
+                int_stat4_label: "Permanent Hire Rate",
                 int_sec_span: "TEMPORARY STAFFING DISCIPLINES",
                 int_sec_title: "Our Temporary Staffing Divisions & Profiles",
                 int_sec_desc: "From manufacturing operators to specialized corporate support, we address your peak workloads with speed and precision.",
@@ -591,8 +607,7 @@
                 int_cta_btn2: "Request Temporary Staffing Quote",
                 footer_desc: "Strategic partner of excellence in Staffing, IT Engineering, and Facility Management across Morocco.",
                 footer_col_nav: "Navigation",
-                footer_col_contact: "Direct Contact",
-                footer_rights: "All rights reserved. Engineering & Corporate Solutions Division."
+                footer_col_contact: "Direct Contact"
             }
         };
 
@@ -646,6 +661,6 @@
             });
         });
     </script>
-    <script src="script.js?v=3090"></script>
+    <script src="script.js?v=3100"></script>
 </body>
 </html>

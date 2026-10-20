@@ -5760,3 +5760,11 @@ header.nav-visible {
     justify-content: center;
   }
 }
+
+
+/* Footer safety guard */
+.footer-logo, footer img {
+  max-width: 170px !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
