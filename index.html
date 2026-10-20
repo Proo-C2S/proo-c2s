@@ -85,7 +85,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=3010">
+    <link rel="stylesheet" href="style.css?v=3015">
 
     <style>
         .skip-link { position: absolute; left: -9999px; top: 0; background: #00e676; color: #06090e; padding: 10px 16px; z-index: 10000; border-radius: 0 0 8px 0; font-weight: 800; }
@@ -1055,20 +1055,24 @@
     <div class="section-title">
         <span data-i18n="jobs_span">OPPORTUNITÉS DE CARRIÈRE</span>
         <h2 data-i18n="jobs_title">Nos Dernières Missions d'Intérim</h2>
-        <p data-i18n="jobs_desc">Filtrez par pôle de compétences ou recherchez directement un poste.</p>
+        <p data-i18n="jobs_desc">Filtrez par pôle de compétences et découvrez nos postes immédiatement disponibles au Maroc.</p>
     </div>
 
-    <!-- Barre de Recherche & Filtres -->
-    <div class="job-filters-wrapper" style="flex-direction: column; align-items: center;">
-        <div class="job-search-box" style="width: 100%; max-width: 450px; margin-bottom: 18px;">
-            <input type="text" id="jobSearchInput" placeholder="🔍 Rechercher un poste..." data-i18n-placeholder="jobs_search_placeholder" style="width: 100%; padding: 13px 20px; border-radius: 40px; border: 1.5px solid var(--border-color); outline: none; font-size: 14.5px; background: #ffffff;">
-        </div>
-
-        <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
-            <button class="filter-btn active" data-filter="all"><i class="fa-solid fa-layer-group"></i> <span data-i18n="filter_all">Toutes les offres</span></button>
-            <button class="filter-btn" data-filter="transport"><i class="fa-solid fa-van-shuttle"></i> <span data-i18n="filter_trans">Transport & Logistique</span></button>
-            <button class="filter-btn" data-filter="admin"><i class="fa-solid fa-briefcase"></i> <span data-i18n="filter_admin">Administration & IT</span></button>
-            <button class="filter-btn" data-filter="sante"><i class="fa-solid fa-heart-pulse"></i> <span data-i18n="filter_sante">Santé & Sport</span></button>
+    <!-- Filtres Modernes par Catégories (Sans barre de recherche) -->
+    <div class="job-filters-wrapper">
+        <div class="job-filter-pill-nav">
+            <button class="filter-btn active" data-filter="all">
+                <i class="fa-solid fa-layer-group"></i> <span data-i18n="filter_all">Toutes les offres</span> <span class="filter-count">9</span>
+            </button>
+            <button class="filter-btn" data-filter="transport">
+                <i class="fa-solid fa-van-shuttle"></i> <span data-i18n="filter_trans">Transport & Logistique</span> <span class="filter-count">1</span>
+            </button>
+            <button class="filter-btn" data-filter="admin">
+                <i class="fa-solid fa-briefcase"></i> <span data-i18n="filter_admin">Administration & IT</span> <span class="filter-count">5</span>
+            </button>
+            <button class="filter-btn" data-filter="sante">
+                <i class="fa-solid fa-heart-pulse"></i> <span data-i18n="filter_sante">Santé & Sport</span> <span class="filter-count">3</span>
+            </button>
         </div>
     </div>
 
@@ -1076,110 +1080,299 @@
         
         <!-- Offre 1: Assistant Administratif -->
         <div class="job-card" data-category="admin" data-title="Assistant (e) administratif (ve)" data-type="Intérim" data-badge="interim" data-sector="Administration & Gestion RH" data-location="Maroc Entier (Toutes les régions)" data-desc="Gestion des courriers, accueil téléphonique, tenue des registres du personnel, préparation des contrats et support administratif." data-req="Bac+2 minimum en Gestion ou Bureautique." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Assistant(e) Administratif(ve)">
-            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Récent</span></div>
-            <div class="job-illustration-box">
+            <div class="job-card-media">
                 <img src="image/offers/assistant-admin.jpg" alt="Assistant(e) administratif(ve)" loading="lazy">
+                <div class="job-card-overlay"></div>
+                <div class="job-card-badges">
+                    <span class="job-type-pill"><span class="job-type-dot"></span> Intérim</span>
+                    <span class="job-status-pill recent"><i class="fa-regular fa-clock"></i> Récent</span>
+                </div>
+                <div class="job-sector-icon-badge">
+                    <i class="fa-solid fa-building"></i>
+                </div>
             </div>
-            <h3>Assistant (e) administratif (ve)</h3>
-            <p class="job-sect"><i class="fa-solid fa-building"></i> Administration & Gestion RH</p>
-            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> Maroc Entier</span><span><i class="fa-solid fa-graduation-cap"></i> Bac+2 en Gestion</span></div>
-            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
+            <div class="job-card-body">
+                <span class="job-card-category job-sect"><i class="fa-solid fa-briefcase"></i> Administration & Gestion RH</span>
+                <h3 class="job-card-title">Assistant (e) administratif (ve)</h3>
+                <p class="job-card-snippet">Gestion des courriers, accueil téléphonique, tenue des registres du personnel, préparation des contrats et support administratif.</p>
+                <div class="job-card-tags">
+                    <span class="job-tag"><i class="fa-solid fa-location-dot"></i> Maroc Entier</span>
+                    <span class="job-tag"><i class="fa-solid fa-graduation-cap"></i> Bac+2 en Gestion</span>
+                    <span class="job-tag highlight"><i class="fa-solid fa-bolt"></i> Mobilisation 24h-48h</span>
+                </div>
+            </div>
+            <div class="job-card-footer">
+                <div class="job-contract-status">
+                    <i class="fa-solid fa-shield-halved"></i> CNSS & AT Inclus
+                </div>
+                <div class="btn-job btn-job-action">
+                    <span>Postuler</span> <i class="fa-solid fa-arrow-right-long"></i>
+                </div>
+            </div>
         </div>
 
         <!-- Offre 2: Chauffeur Professionnel -->
         <div class="job-card" data-category="transport" data-title="Chauffeur Professionnel" data-type="Intérim" data-badge="interim" data-sector="Transport & Logistique" data-location="Maroc Entier (Toutes les régions)" data-desc="Transport de personnel et de marchandises, conduite sécurisée de véhicules légers et autocars." data-req="Permis B, C ou D en cours de validité." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Chauffeur Professionnel">
-            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Urgent</span></div>
-            <div class="job-illustration-box">
-                <img src="image/offers/chauffeur.jpg?v=3" alt="Chauffeur Professionnel" style="object-position: center;" loading="lazy">
+            <div class="job-card-media">
+                <img src="image/offers/chauffeur.jpg?v=3" alt="Chauffeur Professionnel" loading="lazy">
+                <div class="job-card-overlay"></div>
+                <div class="job-card-badges">
+                    <span class="job-type-pill"><span class="job-type-dot"></span> Intérim</span>
+                    <span class="job-status-pill urgent"><i class="fa-solid fa-bolt"></i> Urgent</span>
+                </div>
+                <div class="job-sector-icon-badge">
+                    <i class="fa-solid fa-van-shuttle"></i>
+                </div>
             </div>
-            <h3>Chauffeur Professionnel</h3>
-            <p class="job-sect"><i class="fa-solid fa-van-shuttle"></i> Transport & Logistique</p>
-            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> Maroc Entier</span><span><i class="fa-solid fa-id-card"></i> Permis B / C / D</span></div>
-            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
+            <div class="job-card-body">
+                <span class="job-card-category job-sect"><i class="fa-solid fa-briefcase"></i> Transport & Logistique</span>
+                <h3 class="job-card-title">Chauffeur Professionnel</h3>
+                <p class="job-card-snippet">Transport de personnel et de marchandises, conduite sécurisée de véhicules légers et autocars d'entreprise.</p>
+                <div class="job-card-tags">
+                    <span class="job-tag"><i class="fa-solid fa-location-dot"></i> Maroc Entier</span>
+                    <span class="job-tag"><i class="fa-solid fa-id-card"></i> Permis B / C / D</span>
+                    <span class="job-tag highlight"><i class="fa-solid fa-bolt"></i> Mobilisation 24h</span>
+                </div>
+            </div>
+            <div class="job-card-footer">
+                <div class="job-contract-status">
+                    <i class="fa-solid fa-shield-halved"></i> Véhicules assurés
+                </div>
+                <div class="btn-job btn-job-action">
+                    <span>Postuler</span> <i class="fa-solid fa-arrow-right-long"></i>
+                </div>
+            </div>
         </div>
 
         <!-- Offre 3: Maître Nageur Sauveteur (MNS) -->
         <div class="job-card" data-category="sante" data-title="Maître Nageur Sauveteur (MNS)" data-type="Intérim" data-badge="interim" data-sector="Sport, Loisirs & Tourisme" data-location="Maroc Entier (Toutes les régions)" data-desc="Surveillance des bassins et des espaces aquatiques, prévention des risques de noyade, sauvetage et application stricte des consignes de sécurité." data-req="Diplôme de Maître Nageur Sauveteur (BNSSA ou équivalent) et excellente condition physique." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Maître Nageur Sauveteur (MNS)">
-            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Urgent</span></div>
-            <div class="job-illustration-box">
+            <div class="job-card-media">
                 <img src="image/offers/maitre-nageur.jpg" alt="Maître Nageur Sauveteur" loading="lazy">
+                <div class="job-card-overlay"></div>
+                <div class="job-card-badges">
+                    <span class="job-type-pill"><span class="job-type-dot"></span> Intérim</span>
+                    <span class="job-status-pill urgent"><i class="fa-solid fa-bolt"></i> Urgent</span>
+                </div>
+                <div class="job-sector-icon-badge">
+                    <i class="fa-solid fa-person-swimming"></i>
+                </div>
             </div>
-            <h3>Maître Nageur Sauveteur (MNS)</h3>
-            <p class="job-sect"><i class="fa-solid fa-person-swimming"></i> Sport, Loisirs & Tourisme</p>
-            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> Maroc Entier</span><span><i class="fa-solid fa-medal"></i> BNSSA / Certifié</span></div>
-            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
+            <div class="job-card-body">
+                <span class="job-card-category job-sect"><i class="fa-solid fa-briefcase"></i> Sport, Loisirs & Tourisme</span>
+                <h3 class="job-card-title">Maître Nageur Sauveteur (MNS)</h3>
+                <p class="job-card-snippet">Surveillance des bassins et des espaces aquatiques, prévention des risques de noyade, sauvetage et hygiène stricte.</p>
+                <div class="job-card-tags">
+                    <span class="job-tag"><i class="fa-solid fa-location-dot"></i> Maroc Entier</span>
+                    <span class="job-tag"><i class="fa-solid fa-medal"></i> BNSSA / Certifié</span>
+                    <span class="job-tag highlight"><i class="fa-solid fa-bolt"></i> Mobilisation 24h-48h</span>
+                </div>
+            </div>
+            <div class="job-card-footer">
+                <div class="job-contract-status">
+                    <i class="fa-solid fa-shield-halved"></i> Bassins Certifiés
+                </div>
+                <div class="btn-job btn-job-action">
+                    <span>Postuler</span> <i class="fa-solid fa-arrow-right-long"></i>
+                </div>
+            </div>
         </div>
 
         <!-- Offre 4: Agent de Brancardage -->
         <div class="job-card" data-category="sante" data-title="Agent de Brancardage" data-type="Intérim" data-badge="interim" data-sector="Milieu Hospitalier & Médical" data-location="Maroc Entier (Toutes les régions)" data-desc="Prise en charge et transfert sécurisé des patients entre les services hospitaliers selon des protocoles d'hygiène stricts." data-req="Excellente condition physique et sens de l'écoute." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Agent de brancardage">
-            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Urgent</span></div>
-            <div class="job-illustration-box">
+            <div class="job-card-media">
                 <img src="image/offers/brancardier.jpg" alt="Agent de Brancardage" loading="lazy">
+                <div class="job-card-overlay"></div>
+                <div class="job-card-badges">
+                    <span class="job-type-pill"><span class="job-type-dot"></span> Intérim</span>
+                    <span class="job-status-pill urgent"><i class="fa-solid fa-bolt"></i> Urgent</span>
+                </div>
+                <div class="job-sector-icon-badge">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
             </div>
-            <h3>Agent de brancardage</h3>
-            <p class="job-sect"><i class="fa-solid fa-heart-pulse"></i> Milieu Hospitalier & Médical</p>
-            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> Maroc Entier</span><span><i class="fa-solid fa-hands-holding-child"></i> Rigueur & empathie</span></div>
-            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
+            <div class="job-card-body">
+                <span class="job-card-category job-sect"><i class="fa-solid fa-briefcase"></i> Milieu Hospitalier & Médical</span>
+                <h3 class="job-card-title">Agent de Brancardage</h3>
+                <p class="job-card-snippet">Prise en charge et transfert sécurisé des patients entre les services hospitaliers selon des protocoles d'hygiène stricts.</p>
+                <div class="job-card-tags">
+                    <span class="job-tag"><i class="fa-solid fa-location-dot"></i> Maroc Entier</span>
+                    <span class="job-tag"><i class="fa-solid fa-hands-holding-child"></i> Rigueur & Empathie</span>
+                    <span class="job-tag highlight"><i class="fa-solid fa-bolt"></i> Mobilisation 24h</span>
+                </div>
+            </div>
+            <div class="job-card-footer">
+                <div class="job-contract-status">
+                    <i class="fa-solid fa-shield-halved"></i> Milieu Sanitaire Agréé
+                </div>
+                <div class="btn-job btn-job-action">
+                    <span>Postuler</span> <i class="fa-solid fa-arrow-right-long"></i>
+                </div>
+            </div>
         </div>
 
         <!-- Offre 5: Support applicatif -->
         <div class="job-card" data-category="admin" data-title="Support applicatif" data-type="Intérim" data-badge="interim" data-sector="Informatique & Systèmes IT" data-location="Maroc Entier (Toutes les régions)" data-desc="Assistance technique aux utilisateurs, qualification des incidents informatiques niveau 1 & 2 et ticketing." data-req="Bac+2 ou Bac+3 en Informatique / Réseaux." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Support applicatif">
-            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Nouveau</span></div>
-            <div class="job-illustration-box">
+            <div class="job-card-media">
                 <img src="image/offers/support-it.jpg" alt="Support applicatif IT" loading="lazy">
+                <div class="job-card-overlay"></div>
+                <div class="job-card-badges">
+                    <span class="job-type-pill"><span class="job-type-dot"></span> Intérim</span>
+                    <span class="job-status-pill nouveau"><i class="fa-solid fa-sparkles"></i> Nouveau</span>
+                </div>
+                <div class="job-sector-icon-badge">
+                    <i class="fa-solid fa-laptop-code"></i>
+                </div>
             </div>
-            <h3>Support applicatif</h3>
-            <p class="job-sect"><i class="fa-solid fa-code"></i> Informatique & Systèmes IT</p>
-            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> Maroc Entier</span><span><i class="fa-solid fa-laptop-code"></i> Bac+2 / Bac+3 Info</span></div>
-            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
+            <div class="job-card-body">
+                <span class="job-card-category job-sect"><i class="fa-solid fa-briefcase"></i> Informatique & Systèmes IT</span>
+                <h3 class="job-card-title">Support Applicatif & IT</h3>
+                <p class="job-card-snippet">Assistance technique aux utilisateurs, qualification des incidents informatiques niveau 1 & 2 et résolution ticketing.</p>
+                <div class="job-card-tags">
+                    <span class="job-tag"><i class="fa-solid fa-location-dot"></i> Maroc Entier</span>
+                    <span class="job-tag"><i class="fa-solid fa-code"></i> Bac+2 / Bac+3 IT</span>
+                    <span class="job-tag highlight"><i class="fa-solid fa-bolt"></i> Mobilisation 24h-48h</span>
+                </div>
+            </div>
+            <div class="job-card-footer">
+                <div class="job-contract-status">
+                    <i class="fa-solid fa-shield-halved"></i> Mission Évolutive
+                </div>
+                <div class="btn-job btn-job-action">
+                    <span>Postuler</span> <i class="fa-solid fa-arrow-right-long"></i>
+                </div>
+            </div>
         </div>
 
         <!-- Offre 6: Agent d'accueil -->
         <div class="job-card" data-category="admin" data-title="Agent D'accueil" data-type="Intérim" data-badge="interim" data-sector="Accueil & Relations Entreprise" data-location="Maroc Entier (Toutes les régions)" data-desc="Accueil physique et téléphonique des visiteurs, distribution des badges d'accès et orientation." data-req="Excellente élocution et maîtrise du français." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Agent d'accueil">
-            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Récent</span></div>
-            <div class="job-illustration-box">
+            <div class="job-card-media">
                 <img src="image/offers/accueil.jpg" alt="Agent d'accueil" loading="lazy">
+                <div class="job-card-overlay"></div>
+                <div class="job-card-badges">
+                    <span class="job-type-pill"><span class="job-type-dot"></span> Intérim</span>
+                    <span class="job-status-pill recent"><i class="fa-regular fa-clock"></i> Récent</span>
+                </div>
+                <div class="job-sector-icon-badge">
+                    <i class="fa-solid fa-handshake"></i>
+                </div>
             </div>
-            <h3>Agent D'accueil</h3>
-            <p class="job-sect"><i class="fa-solid fa-handshake"></i> Accueil & Relations Entreprise</p>
-            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> Maroc Entier</span><span><i class="fa-solid fa-comments"></i> Très bon français</span></div>
-            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
+            <div class="job-card-body">
+                <span class="job-card-category job-sect"><i class="fa-solid fa-briefcase"></i> Accueil & Relations Entreprise</span>
+                <h3 class="job-card-title">Agent D'accueil Corporate</h3>
+                <p class="job-card-snippet">Accueil physique et téléphonique des visiteurs, gestion des flux, distribution des badges d'accès et orientation.</p>
+                <div class="job-card-tags">
+                    <span class="job-tag"><i class="fa-solid fa-location-dot"></i> Maroc Entier</span>
+                    <span class="job-tag"><i class="fa-solid fa-comments"></i> Bilingue Français</span>
+                    <span class="job-tag highlight"><i class="fa-solid fa-bolt"></i> Mobilisation 24h</span>
+                </div>
+            </div>
+            <div class="job-card-footer">
+                <div class="job-contract-status">
+                    <i class="fa-solid fa-shield-halved"></i> Grands Comptes
+                </div>
+                <div class="btn-job btn-job-action">
+                    <span>Postuler</span> <i class="fa-solid fa-arrow-right-long"></i>
+                </div>
+            </div>
         </div>
 
         <!-- Offre 7: Moniteur de Sport -->
         <div class="job-card" data-category="sante" data-title="Moniteur de Sport" data-type="Intérim" data-badge="interim" data-sector="Coaching, Loisirs & Établissements" data-location="Maroc Entier (Toutes les régions)" data-desc="Encadrement et animation de séances sportives, suivi personnalisé et ateliers de remise en forme." data-req="Diplôme d'éducateur ou CQP Sport." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Moniteur de Sport">
-            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Récent</span></div>
-            <div class="job-illustration-box">
+            <div class="job-card-media">
                 <img src="image/offers/moniteur-sport.jpg" alt="Moniteur de Sport" loading="lazy">
+                <div class="job-card-overlay"></div>
+                <div class="job-card-badges">
+                    <span class="job-type-pill"><span class="job-type-dot"></span> Intérim</span>
+                    <span class="job-status-pill recent"><i class="fa-regular fa-clock"></i> Récent</span>
+                </div>
+                <div class="job-sector-icon-badge">
+                    <i class="fa-solid fa-dumbbell"></i>
+                </div>
             </div>
-            <h3>Moniteur de Sport</h3>
-            <p class="job-sect"><i class="fa-solid fa-dumbbell"></i> Coaching, Loisirs & Établissements</p>
-            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> Maroc Entier</span><span><i class="fa-solid fa-medal"></i> Diplôme Sport</span></div>
-            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
+            <div class="job-card-body">
+                <span class="job-card-category job-sect"><i class="fa-solid fa-briefcase"></i> Coaching, Loisirs & Établissements</span>
+                <h3 class="job-card-title">Moniteur de Sport & Loisirs</h3>
+                <p class="job-card-snippet">Encadrement et animation de séances sportives, suivi personnalisé, animation de groupes et ateliers bien-être.</p>
+                <div class="job-card-tags">
+                    <span class="job-tag"><i class="fa-solid fa-location-dot"></i> Maroc Entier</span>
+                    <span class="job-tag"><i class="fa-solid fa-medal"></i> Diplôme Sport / CQP</span>
+                    <span class="job-tag highlight"><i class="fa-solid fa-bolt"></i> Mobilisation 24h-48h</span>
+                </div>
+            </div>
+            <div class="job-card-footer">
+                <div class="job-contract-status">
+                    <i class="fa-solid fa-shield-halved"></i> Équipements Pro
+                </div>
+                <div class="btn-job btn-job-action">
+                    <span>Postuler</span> <i class="fa-solid fa-arrow-right-long"></i>
+                </div>
+            </div>
         </div>
 
         <!-- Offre 8: Chargé(e) de la Paie & Administration -->
         <div class="job-card" data-category="admin" data-title="Chargé(e) de la Paie & Administration" data-type="Intérim" data-badge="interim" data-sector="Gestion Sociale & Paie" data-location="Maroc Entier (Toutes les régions)" data-desc="Établissement des bulletins de paie, déclarations CNSS, gestion des congés et suivi des dossiers administratifs du personnel." data-req="Bac+3 en Gestion, Finance ou RH avec expérience exigée." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Chargé(e) de la Paie & Administration">
-            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Urgent</span></div>
-            <div class="job-illustration-box">
+            <div class="job-card-media">
                 <img src="image/offers/gestion-paie.jpg" alt="Chargé(e) de la Paie & Administration" loading="lazy">
+                <div class="job-card-overlay"></div>
+                <div class="job-card-badges">
+                    <span class="job-type-pill"><span class="job-type-dot"></span> Intérim</span>
+                    <span class="job-status-pill urgent"><i class="fa-solid fa-bolt"></i> Urgent</span>
+                </div>
+                <div class="job-sector-icon-badge">
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                </div>
             </div>
-            <h3>Chargé(e) de la Paie & Administration</h3>
-            <p class="job-sect"><i class="fa-solid fa-file-invoice-dollar"></i> Gestion Sociale & Paie</p>
-            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> Maroc Entier</span><span><i class="fa-solid fa-graduation-cap"></i> Bac+3 Gestion / Paie</span></div>
-            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
+            <div class="job-card-body">
+                <span class="job-card-category job-sect"><i class="fa-solid fa-briefcase"></i> Gestion Sociale & Paie</span>
+                <h3 class="job-card-title">Chargé(e) de Paie & Admin RH</h3>
+                <p class="job-card-snippet">Établissement des bulletins de paie, déclarations fiscales & CNSS, gestion des congés et suivi administratif.</p>
+                <div class="job-card-tags">
+                    <span class="job-tag"><i class="fa-solid fa-location-dot"></i> Maroc Entier</span>
+                    <span class="job-tag"><i class="fa-solid fa-graduation-cap"></i> Bac+3 Gestion / Paie</span>
+                    <span class="job-tag highlight"><i class="fa-solid fa-bolt"></i> Mobilisation 24h-48h</span>
+                </div>
+            </div>
+            <div class="job-card-footer">
+                <div class="job-contract-status">
+                    <i class="fa-solid fa-shield-halved"></i> Confidentialité Garantie
+                </div>
+                <div class="btn-job btn-job-action">
+                    <span>Postuler</span> <i class="fa-solid fa-arrow-right-long"></i>
+                </div>
+            </div>
         </div>
 
         <!-- Offre 9: Responsable des Ressources Humaines (RRH) -->
         <div class="job-card" data-category="admin" data-title="Responsable des Ressources Humaines (RRH)" data-type="Intérim" data-badge="interim" data-sector="Management & Stratégie RH" data-location="Maroc Entier (Toutes les régions)" data-desc="Pilotage de la stratégie RH, recrutement, gestion des relations sociales, formation et accompagnement des managers." data-req="Bac+5 en Ressources Humaines ou Management avec une solide expérience." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Responsable des Ressources Humaines (RRH)">
-            <div class="job-top"><span class="job-badge interim">Intérim</span><span class="job-date"><i class="fa-regular fa-clock"></i> Nouveau</span></div>
-            <div class="job-illustration-box">
+            <div class="job-card-media">
                 <img src="image/offers/rrh.jpg" alt="Responsable des Ressources Humaines" loading="lazy">
+                <div class="job-card-overlay"></div>
+                <div class="job-card-badges">
+                    <span class="job-type-pill"><span class="job-type-dot"></span> Intérim</span>
+                    <span class="job-status-pill nouveau"><i class="fa-solid fa-sparkles"></i> Nouveau</span>
+                </div>
+                <div class="job-sector-icon-badge">
+                    <i class="fa-solid fa-users-gear"></i>
+                </div>
             </div>
-            <h3>Responsable des Ressources Humaines</h3>
-            <p class="job-sect"><i class="fa-solid fa-users-gear"></i> Management & Stratégie RH</p>
-            <div class="job-info"><span><i class="fa-solid fa-location-dot"></i> Maroc Entier</span><span><i class="fa-solid fa-user-tie"></i> Bac+5 / Expérience</span></div>
-            <div class="btn-job">Voir détails & Postuler <i class="fa-solid fa-arrow-right"></i></div>
+            <div class="job-card-body">
+                <span class="job-card-category job-sect"><i class="fa-solid fa-briefcase"></i> Management & Stratégie RH</span>
+                <h3 class="job-card-title">Responsable Ressources Humaines</h3>
+                <p class="job-card-snippet">Pilotage de la stratégie RH, recrutement des talents, gestion du climat social, formation et accompagnement managérial.</p>
+                <div class="job-card-tags">
+                    <span class="job-tag"><i class="fa-solid fa-location-dot"></i> Maroc Entier</span>
+                    <span class="job-tag"><i class="fa-solid fa-user-tie"></i> Bac+5 / Expérience RH</span>
+                    <span class="job-tag highlight"><i class="fa-solid fa-bolt"></i> Mobilisation 24h-48h</span>
+                </div>
+            </div>
+            <div class="job-card-footer">
+                <div class="job-contract-status">
+                    <i class="fa-solid fa-shield-halved"></i> Poste Stratégique
+                </div>
+                <div class="btn-job btn-job-action">
+                    <span>Postuler</span> <i class="fa-solid fa-arrow-right-long"></i>
+                </div>
+            </div>
         </div>
 
     </div>
