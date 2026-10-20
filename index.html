@@ -85,7 +85,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=3015">
+    <link rel="stylesheet" href="style.css?v=3020">
 
     <style>
         .skip-link { position: absolute; left: -9999px; top: 0; background: #00e676; color: #06090e; padding: 10px 16px; z-index: 10000; border-radius: 0 0 8px 0; font-weight: 800; }
@@ -1345,7 +1345,7 @@
         <!-- Offre 9: Responsable des Ressources Humaines (RRH) -->
         <div class="job-card" data-category="admin" data-title="Responsable des Ressources Humaines (RRH)" data-type="Intérim" data-badge="interim" data-sector="Management & Stratégie RH" data-location="Maroc Entier (Toutes les régions)" data-desc="Pilotage de la stratégie RH, recrutement, gestion des relations sociales, formation et accompagnement des managers." data-req="Bac+5 en Ressources Humaines ou Management avec une solide expérience." data-wa="Bonjour, je souhaite postuler au poste d'Intérim: Responsable des Ressources Humaines (RRH)">
             <div class="job-card-media">
-                <img src="image/offers/rrh.jpg" alt="Responsable des Ressources Humaines" loading="lazy">
+                <img src="image/offers/rrh.jpg?v=4" style="object-position: center 25%;" alt="Responsable des Ressources Humaines" loading="lazy">
                 <div class="job-card-overlay"></div>
                 <div class="job-card-badges">
                     <span class="job-type-pill"><span class="job-type-dot"></span> Intérim</span>
@@ -1547,26 +1547,127 @@
     </div>
 </section>
 
-<div class="job-modal-overlay" id="jobModal">
-    <div class="job-modal-content">
+<div class="job-modal-overlay" id="jobModal" aria-hidden="true">
+    <div class="job-modal-content job-modal-enhanced">
         <button class="job-modal-close" id="closeModalBtn" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
-        <span class="modal-header-badge" id="modalBadge">Intérim</span>
-        <h3 class="job-modal-title" id="modalTitle">Titre de l'offre</h3>
-        <p class="job-modal-sector" id="modalSector"><i class="fa-solid fa-briefcase"></i> Secteur</p>
-
-        <div class="modal-details-grid">
-            <div><i class="fa-solid fa-location-dot"></i> <strong>Lieu:</strong> <span id="modalLocation">Maroc</span></div>
-            <div><i class="fa-solid fa-graduation-cap"></i> <strong>Profil:</strong> <span id="modalReq">Diplôme</span></div>
+        
+        <div class="job-modal-top-tag">
+            <span class="modal-brand-badge"><i class="fa-solid fa-building-circle-check"></i> PRO C2S MAROC • MISSION OFFICIELLE</span>
+            <span class="modal-header-badge" id="modalBadge">Intérim</span>
         </div>
 
-        <div class="modal-description">
-            <h4>Description du poste & Missions :</h4>
+        <h2 class="job-modal-title" id="modalTitle">Titre de l'offre</h2>
+        <p class="job-modal-sector" id="modalSector"><i class="fa-solid fa-briefcase"></i> Secteur</p>
+
+        <!-- Grille des Critères Clés -->
+        <div class="modal-specs-ribbon">
+            <div class="modal-spec-card">
+                <i class="fa-solid fa-location-dot"></i>
+                <div>
+                    <span class="spec-label">Lieu de Mission</span>
+                    <strong id="modalLocation">Maroc Entier</strong>
+                </div>
+            </div>
+            <div class="modal-spec-card">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <div>
+                    <span class="spec-label">Profil Requis</span>
+                    <strong id="modalReq">Diplôme & Expérience</strong>
+                </div>
+            </div>
+            <div class="modal-spec-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <div>
+                    <span class="spec-label">Conformité Légale</span>
+                    <strong>Déclaration CNSS & AT</strong>
+                </div>
+            </div>
+            <div class="modal-spec-card">
+                <i class="fa-solid fa-bolt"></i>
+                <div>
+                    <span class="spec-label">Délai d'Intégration</span>
+                    <strong>Mobilisation 24h - 48h</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Description & Missions -->
+        <div class="modal-description-box">
+            <div class="modal-desc-heading">
+                <i class="fa-solid fa-file-lines"></i>
+                <h4>Description du poste & Missions :</h4>
+            </div>
             <p id="modalDesc"></p>
         </div>
 
-        <a href="#" id="modalApplyBtn" target="_blank" rel="noopener noreferrer" class="btn-modal-apply">
-            <i class="fa-brands fa-whatsapp"></i> Postuler via WhatsApp
-        </a>
+        <!-- Canaux de Candidature (Tabs) -->
+        <div class="modal-apply-section">
+            <div class="modal-apply-tabs">
+                <button type="button" class="modal-tab-btn active" id="modalTabEmailBtn">
+                    <i class="fa-solid fa-envelope"></i> Postuler par Email & CV
+                </button>
+                <button type="button" class="modal-tab-btn" id="modalTabWaBtn">
+                    <i class="fa-brands fa-whatsapp"></i> Postuler via WhatsApp
+                </button>
+            </div>
+
+            <!-- Tab 1: Formulaire Email avec EmailJS -->
+            <div class="modal-tab-content" id="modalEmailApplyTab">
+                <form id="jobCandidateEmailForm" class="job-candidate-form">
+                    <input type="hidden" id="jobModalHiddenTitle" name="job_title" value="">
+                    <input type="hidden" id="jobModalHiddenSector" name="job_sector" value="">
+
+                    <div class="form-row-2">
+                        <div class="form-field">
+                            <label><i class="fa-solid fa-user"></i> Nom complet *</label>
+                            <input type="text" id="jobCandidateName" name="user_name" placeholder="Ex: Yassine Berrada" required>
+                        </div>
+                        <div class="form-field">
+                            <label><i class="fa-solid fa-phone"></i> Téléphone (Mobile / WhatsApp) *</label>
+                            <input type="tel" id="jobCandidatePhone" name="user_phone" placeholder="06 12 34 56 78" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-field">
+                            <label><i class="fa-solid fa-envelope"></i> Email de contact *</label>
+                            <input type="email" id="jobCandidateEmail" name="user_email" placeholder="yassine@gmail.com" required>
+                        </div>
+                        <div class="form-field">
+                            <label><i class="fa-solid fa-link"></i> Lien vers CV ou Profil (Drive, LinkedIn...) *</label>
+                            <input type="text" id="jobCandidateCvLink" name="cv_link" placeholder="Lien Drive, LinkedIn, ou Ville de résidence" required>
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label><i class="fa-solid fa-pen"></i> Message / Vos disponibilités (Optionnel)</label>
+                        <textarea id="jobCandidateNotes" name="candidate_notes" rows="2" placeholder="Précisez votre expérience, vos disponibilités immédiates ou votre secteur d'intérêt..."></textarea>
+                    </div>
+
+                    <button type="submit" id="jobCandidateSubmitBtn" class="btn btn-candidate-submit">
+                        <i class="fa-solid fa-paper-plane"></i> Transmettre ma candidature à PRO C2S
+                    </button>
+                    <span class="candidate-form-guarantee">
+                        <i class="fa-solid fa-lock"></i> Données protégées et transmises directement au service recrutement de PRO C2S. Réponse sous 24h ouvrées.
+                    </span>
+                </form>
+            </div>
+
+            <!-- Tab 2: WhatsApp Direct -->
+            <div class="modal-tab-content" id="modalWhatsappApplyTab" style="display:none;">
+                <div class="modal-wa-direct-card">
+                    <div class="wa-direct-icon">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <h4>Candidature Instantanée sur WhatsApp</h4>
+                    <p>Vous avez déjà votre CV sur votre téléphone ? Envoyez-le directement à notre équipe de recrutement pour un traitement prioritaire.</p>
+                    <a href="#" id="modalApplyBtn" target="_blank" rel="noopener noreferrer" class="btn-modal-apply">
+                        <i class="fa-brands fa-whatsapp"></i> Ouvrir WhatsApp (+212 663-449824)
+                    </a>
+                    <span class="wa-direct-hint"><i class="fa-solid fa-clock"></i> Équipe RH disponible du Lundi au Samedi de 8h30 à 18h30</span>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

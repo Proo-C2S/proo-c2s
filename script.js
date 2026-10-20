@@ -271,6 +271,398 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+        // ======================== ADVANCED JOB MODAL & DUAL APPLICATION ========================
+    const modal = document.getElementById("jobModal");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalBadge = document.getElementById("modalBadge");
+    const modalSector = document.getElementById("modalSector");
+    const modalLocation = document.getElementById("modalLocation");
+    const modalReq = document.getElementById("modalReq");
+    const modalDesc = document.getElementById("modalDesc");
+    const modalApplyBtn = document.getElementById("modalApplyBtn");
+    const jobModalHiddenTitle = document.getElementById("jobModalHiddenTitle");
+    const jobModalHiddenSector = document.getElementById("jobModalHiddenSector");
+
+    // Modal tabs (Email vs WhatsApp)
+    const modalTabEmailBtn = document.getElementById("modalTabEmailBtn");
+    const modalTabWaBtn = document.getElementById("modalTabWaBtn");
+    const modalEmailApplyTab = document.getElementById("modalEmailApplyTab");
+    const modalWhatsappApplyTab = document.getElementById("modalWhatsappApplyTab");
+
+    if (modalTabEmailBtn && modalTabWaBtn) {
+        modalTabEmailBtn.addEventListener("click", () => {
+            modalTabEmailBtn.classList.add("active");
+            modalTabWaBtn.classList.remove("active");
+            if (modalEmailApplyTab) modalEmailApplyTab.style.display = "block";
+            if (modalWhatsappApplyTab) modalWhatsappApplyTab.style.display = "none";
+        });
+        modalTabWaBtn.addEventListener("click", () => {
+            modalTabWaBtn.classList.add("active");
+            modalTabEmailBtn.classList.remove("active");
+            if (modalEmailApplyTab) modalEmailApplyTab.style.display = "none";
+            if (modalWhatsappApplyTab) modalWhatsappApplyTab.style.display = "block";
+        });
+    }
+
+    // Open Modal when clicking any Job Card
+    allJobCards.forEach(card => {
+        card.addEventListener("click", () => {
+            const title = card.getAttribute("data-title");
+            const sector = card.getAttribute("data-sector");
+            const badge = card.getAttribute("data-badge") || "interim";
+            const location = card.getAttribute("data-location");
+            const req = card.getAttribute("data-req");
+            const desc = card.getAttribute("data-desc");
+            const wa = card.getAttribute("data-wa");
+
+            if (modalTitle) modalTitle.innerText = title;
+            if (jobModalHiddenTitle) jobModalHiddenTitle.value = title;
+            if (jobModalHiddenSector) jobModalHiddenSector.value = sector;
+            if (modalBadge) {
+                modalBadge.innerText = card.getAttribute("data-type") || "Intérim";
+                modalBadge.className = `modal-header-badge job-badge ${badge}`;
+            }
+            if (modalSector) modalSector.innerHTML = `<i class="fa-solid fa-briefcase"></i> ${sector}`;
+            if (modalLocation) modalLocation.innerText = location;
+            if (modalReq) modalReq.innerText = req;
+            if (modalDesc) modalDesc.innerText = desc;
+            if (modalApplyBtn) {
+                modalApplyBtn.href = `https://wa.me/212663449824?text=${encodeURIComponent(wa)}`;
+            }
+
+            // Always default to email tab for maximum professional impression
+            if (modalTabEmailBtn) modalTabEmailBtn.click();
+            if (modal) modal.classList.add("open");
+        });
+    });
+
+    if (closeModalBtn && modal) {
+        closeModalBtn.addEventListener("click", () => modal.classList.remove("open"));
+        modal.addEventListener("click", (e) => { if(e.target === modal) modal.classList.remove("open"); });
+    }
+
+    // EmailJS Candidate Application Form
+    const jobCandidateEmailForm = document.getElementById("jobCandidateEmailForm");
+    const jobCandidateSubmitBtn = document.getElementById("jobCandidateSubmitBtn");
+
+    if (jobCandidateEmailForm) {
+        jobCandidateEmailForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const name = document.getElementById("jobCandidateName").value;
+            const phone = document.getElementById("jobCandidatePhone").value;
+            const email = document.getElementById("jobCandidateEmail").value;
+            const cvLink = document.getElementById("jobCandidateCvLink").value;
+            const notes = document.getElementById("jobCandidateNotes") ? document.getElementById("jobCandidateNotes").value : "";
+            const currentTitle = jobModalHiddenTitle ? jobModalHiddenTitle.value : (modalTitle ? modalTitle.innerText : "Poste");
+            const currentSector = jobModalHiddenSector ? jobModalHiddenSector.value : "Général";
+
+            const origHtml = jobCandidateSubmitBtn ? jobCandidateSubmitBtn.innerHTML : "Envoyer";
+            if (jobCandidateSubmitBtn) {
+                jobCandidateSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Transmission en cours...';
+                jobCandidateSubmitBtn.disabled = true;
+            }
+
+            // Ensure EmailJS is initialized with user's key
+            if (typeof emailjs !== 'undefined') {
+                emailjs.init({ publicKey: "W70dwCkNbwmFHeSOA" });
+            }
+
+            const templateParams = {
+                user_name: name,
+                user_phone: phone,
+                user_email: email,
+                message: `CANDIDATURE OFFRE D'EMPLOI PRO C2S:\n- Poste concerné : ${currentTitle}\n- Pôle d'expertise : ${currentSector}\n- Lien CV / Portfolio / Profil : ${cvLink}\n- Précisions candidat : ${notes || 'Aucune'}`
+            };
+
+            emailjs.send("service_d9cvkm8", "template_ob7d4cb", templateParams)
+                .then(() => {
+                    showToast("Candidature transmise avec succès ! Nous étudierons votre profil sous 24h.");
+                    jobCandidateEmailForm.reset();
+                    if (modal) modal.classList.remove("open");
+                })
+                .catch((err) => {
+                    console.error("EmailJS Job Apply Error:", err);
+                    showToast("Erreur lors de l'envoi. Veuillez réessayer ou postuler via WhatsApp.", true);
+                })
+                .finally(() => {
+                    if (jobCandidateSubmitBtn) {
+                        jobCandidateSubmitBtn.innerHTML = origHtml;
+                        jobCandidateSubmitBtn.disabled = false;
+                    }
+                });
+        });
+    }================= */
+
+// ==========================================
+// PRELOADER & HERO REVEAL (STYLE MONTARVILLE)
+// ==========================================
+(function() {
+    function initPreloader() {
+        const preloader = document.getElementById("preloader");
+        if (!preloader) return;
+
+        if (document.body) {
+            document.body.classList.add("is-loading");
+        }
+
+        const startTime = performance.now();
+        const MIN_DISPLAY_TIME = 1100; // 1.1s : khefifa o mezyana, matkounch m3etla bzaf
+        let isDone = false;
+
+        function revealSite() {
+            if (isDone) return;
+            isDone = true;
+
+            // 1. Lever le rideau avec transition fluide façon Montarville
+            preloader.classList.add("curtain-up");
+
+            // 2. Déclencher le reveal du Hero
+            setTimeout(() => {
+                if (document.body) {
+                    document.body.classList.remove("is-loading");
+                    document.body.classList.add("hero-revealed");
+                }
+            }, 200);
+
+            // 3. Masquer complètement après la sortie
+            setTimeout(() => {
+                preloader.classList.add("preloader-hidden");
+                if (preloader.parentNode) {
+                    preloader.style.display = "none";
+                }
+            }, 900);
+        }
+
+        function scheduleReveal() {
+            const elapsed = performance.now() - startTime;
+            const delay = Math.max(0, MIN_DISPLAY_TIME - elapsed);
+            setTimeout(revealSite, delay);
+        }
+
+        if (document.readyState === "complete") {
+            scheduleReveal();
+        } else {
+            window.addEventListener("load", scheduleReveal);
+        }
+
+        // Sécurité réseau
+        setTimeout(revealSite, 3200);
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initPreloader);
+    } else {
+        initPreloader();
+    }
+})();
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Navigation Active Scroll & Shadow
+    const links = document.querySelectorAll(".nav-links a");
+    const header = document.getElementById("main-header");
+    const backToTopBtn = document.getElementById("backToTopBtn");
+
+    window.addEventListener("scroll", () => {
+        let current = "";
+        document.querySelectorAll("section").forEach(section => {
+            const sectionTop = section.offsetTop - 120;
+            if (pageYOffset >= sectionTop) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        links.forEach(link => {
+            link.classList.remove("active");
+            if(link.getAttribute("href") === "#" + current){
+                link.classList.add("active");
+            }
+        });
+
+        if(window.scrollY > 50) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+
+        if(window.scrollY > 400) {
+            backToTopBtn.classList.add("show");
+        } else {
+            backToTopBtn.classList.remove("show");
+        }
+    });
+
+    if(backToTopBtn) {
+        backToTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
+
+    // Mobile Menu Toggle
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    function closeMobileMenu() {
+        if(navLinks && navLinks.classList.contains("open")) {
+            navLinks.classList.remove("open");
+            if(menuToggle) {
+                menuToggle.classList.remove("active");
+                const icon = menuToggle.querySelector("i");
+                if(icon) {
+                    icon.className = "fa-solid fa-bars";
+                }
+            }
+        }
+    }
+
+    if(menuToggle && navLinks) {
+        menuToggle.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isOpen = navLinks.classList.toggle("open");
+            menuToggle.classList.toggle("active", isOpen);
+            const icon = menuToggle.querySelector("i");
+            if(icon) {
+                if(isOpen) {
+                    icon.className = "fa-solid fa-xmark";
+                } else {
+                    icon.className = "fa-solid fa-bars";
+                }
+            }
+        });
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                closeMobileMenu();
+            });
+        });
+
+        document.addEventListener("click", (e) => {
+            if(!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                closeMobileMenu();
+            }
+        });
+    }
+
+    // Cookie Banner
+    const cookieBanner = document.getElementById("cookieConsentBanner");
+    const acceptBtn = document.getElementById("acceptCookiesBtn");
+
+    if (localStorage.getItem("proC2sCookiesAccepted") === "true") {
+        if (cookieBanner) cookieBanner.style.display = "none";
+    }
+
+    if (acceptBtn && cookieBanner) {
+        acceptBtn.addEventListener("click", function(e) {
+            e.preventDefault();
+            localStorage.setItem("proC2sCookiesAccepted", "true");
+            cookieBanner.style.display = "none";
+        });
+    }
+
+    // Modal Politique
+    const privacyModal = document.getElementById("privacyModal");
+    const openPrivacyModal = document.getElementById("openPrivacyModal");
+    const closePrivacyBtn = document.getElementById("closePrivacyBtn");
+
+    function togglePrivacyModal(e) {
+        if(e) e.preventDefault();
+        if(privacyModal) privacyModal.classList.toggle("open");
+    }
+
+    if(openPrivacyModal) openPrivacyModal.addEventListener("click", togglePrivacyModal);
+    if(closePrivacyBtn) closePrivacyBtn.addEventListener("click", togglePrivacyModal);
+    
+    if(privacyModal) {
+        privacyModal.addEventListener("click", (e) => {
+            if(e.target === privacyModal) privacyModal.classList.remove("open");
+        });
+    }
+
+    // Scroll Reveal
+    const revealElements = document.querySelectorAll(".reveal");
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add("active");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Stats Counter
+    const counters = document.querySelectorAll(".counter");
+    let countersStarted = false;
+    const statsSection = document.querySelector(".stats");
+
+    const statsObserver = new IntersectionObserver((entries) => {
+        if(entries[0].isIntersecting && !countersStarted) {
+            countersStarted = true;
+            counters.forEach(counter => {
+                const target = +counter.getAttribute("data-target");
+                const prefix = counter.getAttribute("data-prefix") || "";
+                const suffix = counter.getAttribute("data-suffix") || "";
+                const duration = 1600;
+                const increment = target / (duration / 16);
+                let current = 0;
+
+                const updateCounter = () => {
+                    current += increment;
+                    if(current < target) {
+                        counter.innerText = prefix + Math.ceil(current) + suffix;
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = prefix + target + suffix;
+                    }
+                };
+                updateCounter();
+            });
+        }
+    }, { threshold: 0.3 });
+
+    if(statsSection) statsObserver.observe(statsSection);
+
+    // Job Filters & Modal Offres
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    const allJobCards = document.querySelectorAll(".job-card");
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            filterBtns.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            const filterValue = btn.getAttribute("data-filter");
+
+            allJobCards.forEach(card => {
+                const category = card.getAttribute("data-category");
+                if (filterValue === "all" || category === filterValue) {
+                    card.classList.remove("hidden");
+                } else {
+                    card.classList.add("hidden");
+                }
+            });
+        });
+    });
+
+    // Recherche Rapide par Mots-Clés f Offres d'Emploi
+    const jobSearchInput = document.getElementById("jobSearchInput");
+    if(jobSearchInput) {
+        jobSearchInput.addEventListener("input", (e) => {
+            const term = e.target.value.toLowerCase().trim();
+            allJobCards.forEach(card => {
+                const title = card.querySelector("h3").innerText.toLowerCase();
+                const sector = card.querySelector(".job-sect").innerText.toLowerCase();
+                const desc = card.getAttribute("data-desc").toLowerCase();
+
+                if(title.includes(term) || sector.includes(term) || desc.includes(term)) {
+                    card.classList.remove("hidden");
+                } else {
+                    card.classList.add("hidden");
+                }
+            });
+        });
+    }
+
     const modal = document.getElementById("jobModal");
     const closeModalBtn = document.getElementById("closeModalBtn");
     const modalTitle = document.getElementById("modalTitle");
