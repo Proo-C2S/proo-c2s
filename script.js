@@ -542,7 +542,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             };
 
-            if (file && file.size < 4 * 1024 * 1024) {
+            if (file && file.size <= 20 * 1024 * 1024) {
                 const reader = new FileReader();
                 reader.onload = function(evt) { sendAndRecord(evt.target.result); };
                 reader.onerror = function() { sendAndRecord(null); };
@@ -937,7 +937,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             };
 
-            if (file && file.size < 4 * 1024 * 1024) {
+            if (file && file.size <= 20 * 1024 * 1024) {
                 const reader = new FileReader();
                 reader.onload = function(evt) { sendAndSave(evt.target.result); };
                 reader.onerror = function() { sendAndSave(null); };

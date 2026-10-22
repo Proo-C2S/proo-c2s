@@ -1362,12 +1362,14 @@ const PRO_C2S_IDB = {
             const c = list.find(item => item.id === candId);
             if (!c) return;
 
-            // Check IndexedDB if fileData is null
+            // Fetch from IndexedDB if not in local storage object
             let activeFileData = c.fileData;
             if (!activeFileData && typeof PRO_C2S_IDB !== 'undefined') {
                 try {
                     activeFileData = await PRO_C2S_IDB.getFile(candId);
-                } catch(e) {}
+                } catch(e) {
+                    console.warn('IDB lookup error:', e);
+                }
             }
 
             const overlay = document.getElementById('cvModalOverlay');
@@ -1419,52 +1421,54 @@ const PRO_C2S_IDB = {
                     <div style="margin-top:22px;">
                         <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:14px;">
                             <div>
-                                <h4 style="margin:0;font-size:15px;color:#0f172a;font-weight:800;">
+                                <h4 style="margin:0;font-size:16px;color:#0f172a;font-weight:800;">
                                     <i class="fa-solid fa-file-pdf" style="color:#ef4444;"></i> ${c.fileName}
                                 </h4>
-                                <span style="font-size:12px;color:#64748b;">Document CV prêt pour consultation et impression</span>
+                                <span style="font-size:12.5px;color:#059669;font-weight:700;">
+                                    <i class="fa-solid fa-circle-check"></i> Document CV complet chargé
+                                </span>
                             </div>
                             <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                                <a href="${activeFileData}" download="${c.fileName}" class="cv-btn-action primary">
+                                <a href="${activeFileData}" download="${c.fileName}" class="cv-btn-action primary" style="background:#047857;color:#fff;">
                                     <i class="fa-solid fa-download"></i> Télécharger le CV
                                 </a>
-                                <button type="button" class="cv-btn-action secondary" onclick="printPdfDocument('${candId}')">
+                                <button type="button" class="cv-btn-action secondary" onclick="printPdfDocument('${candId}')" style="background:#0284c7;color:#fff;border-color:#0284c7;">
                                     <i class="fa-solid fa-print"></i> Imprimer le CV
                                 </button>
                                 <a href="${activeFileData}" target="_blank" class="cv-btn-action tertiary">
-                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Grand écran
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Plein écran
                                 </a>
                             </div>
                         </div>
 
-                        <div style="width:100%;height:580px;border-radius:12px;border:1px solid #cbd5e1;overflow:hidden;background:#f8fafc;">
+                        <div style="width:100%;height:620px;border-radius:12px;border:1.5px solid #cbd5e1;overflow:hidden;background:#f8fafc;box-shadow:0 4px 16px rgba(0,0,0,0.06);">
                             <iframe id="pdfFrame_${candId}" src="${activeFileData}" style="width:100%;height:100%;border:none;" title="Aperçu CV"></iframe>
                         </div>
                     </div>
                 `;
             } else {
                 html += `
-                    <div style="margin-top:22px;background:#f0fdf4;border:1.5px dashed #86efac;padding:22px;border-radius:14px;">
+                    <div style="margin-top:22px;background:#fef2f2;border:1.5px dashed #f87171;padding:22px;border-radius:14px;">
                         <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
-                            <div style="width:48px;height:48px;border-radius:12px;background:#dcfce7;color:#047857;display:flex;align-items:center;justify-content:center;font-size:22px;">
-                                <i class="fa-solid fa-file-signature"></i>
+                            <div style="width:48px;height:48px;border-radius:12px;background:#fee2e2;color:#dc2626;display:flex;align-items:center;justify-content:center;font-size:22px;">
+                                <i class="fa-solid fa-file-circle-exclamation"></i>
                             </div>
                             <div>
-                                <h4 style="margin:0;font-size:16px;font-weight:800;color:#065f46;">Fiche Candidat (${c.fileName || 'CV'})</h4>
-                                <span style="font-size:12.5px;color:#047857;">Candidature enregistrée dans la base. Vous pouvez joindre le document PDF directement ci-dessous pour l'afficher à l'écran.</span>
+                                <h4 style="margin:0;font-size:16px;font-weight:800;color:#991b1b;">Fichier "${c.fileName}" (Non encore synchronisé en local)</h4>
+                                <span style="font-size:12.5px;color:#7f1d1d;">Cette candidature est enregistrée. Cliquez ci-dessous pour sélectionner le fichier sur votre PC et l'afficher immédiatement en direct.</span>
                             </div>
                         </div>
 
                         <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;">
-                            <button type="button" class="cv-btn-action primary" onclick="document.getElementById('attachCvInput').click()">
-                                <i class="fa-solid fa-cloud-arrow-up"></i> Attacher le fichier PDF du CV
+                            <button type="button" class="cv-btn-action primary" onclick="document.getElementById('attachCvInput').click()" style="background:#047857;color:#fff;border-color:#047857;">
+                                <i class="fa-solid fa-folder-open"></i> Sélectionner "${c.fileName}" sur mon PC pour l'afficher
                             </button>
                             <input type="file" id="attachCvInput" style="display:none;" accept=".pdf,.doc,.docx" onchange="attachCvFile('${c.id}', this)">
-                            <a href="https://wa.me/${cleanWa}?text=Bonjour%20${encodeURIComponent(c.name)},%20l'%C3%A9quipe%20RH%20de%20PRO%20C2S%20a%20bien%20re%C3%A7u%20votre%20candidature.%20Merci%20de%20nous%20transmettre%20votre%20CV%20complet%20en%20format%20PDF%20pour%20finaliser%20votre%20dossier." target="_blank" class="cv-btn-action secondary" style="background:#25d366;color:#fff;border-color:#25d366;">
+                            <a href="https://wa.me/${cleanWa}?text=Bonjour%20${encodeURIComponent(c.name)},%20l'%C3%A9quipe%20RH%20de%20PRO%20C2S%20a%20bien%20re%C3%A7u%20votre%20candidature.%20Merci%20de%20nous%20transmettre%20votre%20CV%20complet%20en%20format%20PDF." target="_blank" class="cv-btn-action secondary" style="background:#25d366;color:#fff;border-color:#25d366;">
                                 <i class="fa-brands fa-whatsapp"></i> Demander sur WhatsApp
                             </a>
                             <button type="button" class="cv-btn-action tertiary" onclick="window.print()">
-                                <i class="fa-solid fa-print"></i> Imprimer la fiche
+                                <i class="fa-solid fa-print"></i> Imprimer la fiche résumé
                             </button>
                         </div>
                     </div>
@@ -1507,9 +1511,9 @@ const PRO_C2S_IDB = {
                         list[idx].fileData = null;
                         localStorage.setItem('proc2s_candidatures', JSON.stringify(list));
                     }
-                    renderCandidats(document.getElementById('searchInput').value);
+                    renderCandidats(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '');
                     openCvModal(candId);
-                    alert('Le fichier CV ' + file.name + ' a été attaché avec succès à ' + list[idx].name + ' ! Il est maintenant consultable et imprimable.');
+                    alert('Le fichier CV ' + file.name + ' a été chargé avec succès ! Vous pouvez maintenant le consulter, le télécharger et l\'imprimer.');
                 }
             };
             reader.readAsDataURL(file);
