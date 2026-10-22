@@ -1784,8 +1784,12 @@
                             <input type="email" id="jobCandidateEmail" name="user_email" placeholder="yassine@gmail.com" required>
                         </div>
                         <div class="form-field">
-                            <label><i class="fa-solid fa-link"></i> <span data-i18n="job_modal_lbl_cv">Lien vers CV ou Profil (Drive, LinkedIn...) *</span></label>
-                            <input type="text" id="jobCandidateCvLink" name="cv_link" placeholder="Lien Drive, LinkedIn, ou Ville de résidence" required>
+                            <label><i class="fa-solid fa-file-pdf"></i> <span>Votre CV (PDF ou Word) *</span></label>
+                            <div class="cv-dropzone" id="jobCvDropzone" style="border: 2px dashed #10b981; border-radius: 10px; padding: 10px 12px; text-align: center; background: #f0fdf4; cursor: pointer; transition: all 0.2s ease;">
+                                <i class="fa-solid fa-cloud-arrow-up" style="font-size: 20px; color: #10b981; margin-bottom: 2px;"></i>
+                                <p id="jobCvFileLabel" style="margin: 0; font-size: 12.5px; font-weight: 700; color: #065f46;">Cliquez pour choisir votre fichier CV (PDF, DOC)</p>
+                                <input type="file" id="jobCandidateCvFile" accept=".pdf,.doc,.docx" style="display: none;">
+                            </div>
                         </div>
                     </div>
 
@@ -2113,7 +2117,8 @@
 </a>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="script.js?v=7777"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="script.js?v=8888"></script>
 <script>
     // Dictionnaire de traduction FR/EN complet pour index.html
     const translations = {

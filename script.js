@@ -114,6 +114,14 @@ window.PRO_C2S_DB = {
 })();
 
 document.addEventListener("DOMContentLoaded", function() {
+
+    // Initialize EmailJS with client key
+    if (typeof emailjs !== 'undefined') {
+        try {
+            emailjs.init({ publicKey: "W70dwCkNbwmFHeSOA" });
+        } catch(e) {}
+    }
+
     // Navigation Active Scroll & Shadow
     const links = document.querySelectorAll(".nav-links a");
     const header = document.getElementById("main-header");
@@ -395,47 +403,101 @@ document.addEventListener("DOMContentLoaded", function() {
     const jobCandidateEmailForm = document.getElementById("jobCandidateEmailForm");
     const jobCandidateSubmitBtn = document.getElementById("jobCandidateSubmitBtn");
 
+    
+    // Job Modal CV File Dropzone
+    const jobCvDropzone = document.getElementById("jobCvDropzone");
+    const jobCandidateCvFile = document.getElementById("jobCandidateCvFile");
+    const jobCvFileLabel = document.getElementById("jobCvFileLabel");
+
+    if (jobCvDropzone && jobCandidateCvFile) {
+        jobCvDropzone.addEventListener("click", () => jobCandidateCvFile.click());
+        jobCandidateCvFile.addEventListener("change", () => {
+            if (jobCandidateCvFile.files && jobCandidateCvFile.files[0]) {
+                const f = jobCandidateCvFile.files[0];
+                const sizeMb = (f.size / (1024 * 1024)).toFixed(2);
+                if (jobCvFileLabel) {
+                    jobCvFileLabel.innerHTML = '<i class="fa-solid fa-circle-check" style="color:#10b981;"></i> <strong>' + f.name + '</strong> (' + sizeMb + ' Mo)';
+                }
+                jobCvDropzone.style.borderColor = '#10b981';
+                jobCvDropzone.style.background = '#ecfdf5';
+            }
+        });
+    }
+
     if (jobCandidateEmailForm) {
         jobCandidateEmailForm.addEventListener("submit", function(e) {
             e.preventDefault();
             const name = document.getElementById("jobCandidateName").value;
             const phone = document.getElementById("jobCandidatePhone").value;
             const email = document.getElementById("jobCandidateEmail").value;
-            const cvLink = document.getElementById("jobCandidateCvLink").value;
             const notes = document.getElementById("jobCandidateNotes") ? document.getElementById("jobCandidateNotes").value : "";
             const currentTitle = jobModalHiddenTitle ? jobModalHiddenTitle.value : (modalTitle ? modalTitle.innerText : "Poste");
             const currentSector = jobModalHiddenSector ? jobModalHiddenSector.value : "Général";
+            const file = jobCandidateCvFile && jobCandidateCvFile.files && jobCandidateCvFile.files[0] ? jobCandidateCvFile.files[0] : null;
+            const fileName = file ? file.name : 'CV joint';
 
             const origHtml = jobCandidateSubmitBtn ? jobCandidateSubmitBtn.innerHTML : "Envoyer";
             if (jobCandidateSubmitBtn) {
-                jobCandidateSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enregistrement en cours...';
+                jobCandidateSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Transmission en cours...';
                 jobCandidateSubmitBtn.disabled = true;
             }
 
-            const candRecord = {
-                id: 'CAND-' + Date.now(),
-                date: new Date().toLocaleString('fr-FR'),
-                name: name,
-                phone: phone,
-                email: email,
-                pole: currentTitle + ' (' + currentSector + ')',
-                fileName: cvLink || 'Profil / CV en ligne',
-                fileData: null,
-                notes: notes || 'N/A',
-                status: 'Nouveau'
+            const sendAndRecord = function(base64Data) {
+                // 1. Save to Database
+                const candRecord = {
+                    id: 'CAND-' + Date.now(),
+                    date: new Date().toLocaleString('fr-FR'),
+                    name: name,
+                    phone: phone,
+                    email: email,
+                    pole: currentTitle + ' (' + currentSector + ')',
+                    fileName: fileName,
+                    fileData: base64Data || null,
+                    notes: notes || 'N/A',
+                    status: 'Nouveau'
+                };
+                window.PRO_C2S_DB.saveCandidate(candRecord);
+
+                // 2. Send Email notification to procssentreprise@gmail.com
+                const templateParams = {
+                    user_name: name,
+                    user_phone: phone,
+                    user_email: email,
+                    message: `NOUVELLE CANDIDATURE OFFRE D'EMPLOI PRO C2S :\n- Poste : ${currentTitle}\n- Pôle : ${currentSector}\n- Candidat : ${name}\n- Téléphone : ${phone}\n- Email : ${email}\n- Fichier CV : ${fileName}\n- Message / Disponibilité : ${notes || 'Aucune'}`
+                };
+
+                const finish = function() {
+                    showToast("Votre candidature a été transmise et enregistrée avec succès !");
+                    jobCandidateEmailForm.reset();
+                    if (jobCvFileLabel) jobCvFileLabel.innerText = "Cliquez pour choisir votre fichier CV (PDF, Word)";
+                    if (jobCvDropzone) { jobCvDropzone.style.borderColor = '#10b981'; jobCvDropzone.style.background = '#f0fdf4'; }
+                    if (modal) modal.classList.remove("open");
+                    if (jobCandidateSubmitBtn) {
+                        jobCandidateSubmitBtn.innerHTML = origHtml;
+                        jobCandidateSubmitBtn.disabled = false;
+                    }
+                };
+
+                if (typeof emailjs !== 'undefined') {
+                    emailjs.send('service_d9cvkm8', 'template_ob7d4cb', templateParams)
+                        .then(() => finish())
+                        .catch((err) => {
+                            console.warn('EmailJS fallback:', err);
+                            finish();
+                        });
+                } else {
+                    finish();
+                }
             };
 
-            window.PRO_C2S_DB.saveCandidate(candRecord);
-
-            setTimeout(() => {
-                showToast("Candidature enregistrée avec succès dans la Base de Données RH !");
-                jobCandidateEmailForm.reset();
-                if (modal) modal.classList.remove("open");
-                if (jobCandidateSubmitBtn) {
-                    jobCandidateSubmitBtn.innerHTML = origHtml;
-                    jobCandidateSubmitBtn.disabled = false;
-                }
-            }, 400);
+            if (file && file.size < 4 * 1024 * 1024) {
+                const reader = new FileReader();
+                reader.onload = function(evt) { sendAndRecord(evt.target.result); };
+                reader.onerror = function() { sendAndRecord(null); };
+                reader.readAsDataURL(file);
+            } else {
+                sendAndRecord(null);
+            }
         });
     }
 
@@ -668,7 +730,7 @@ document.addEventListener("DOMContentLoaded", function() {
             event.preventDefault();
             const originalText = submitBtn ? submitBtn.innerText : "Envoyer";
             if (submitBtn) {
-                submitBtn.innerText = "Enregistrement dans la base...";
+                submitBtn.innerText = "Envoi en cours...";
                 submitBtn.disabled = true;
             }
 
@@ -683,17 +745,27 @@ document.addEventListener("DOMContentLoaded", function() {
                 message: fd.get('message') || 'N/A',
                 status: 'Nouveau'
             };
-
             window.PRO_C2S_DB.saveDevis(leadRecord);
 
-            setTimeout(() => {
-                showToast("Votre demande de devis a été enregistrée dans notre Base de Données avec succès !");
+            const finish = function() {
+                showToast("Votre demande de devis a été transmise avec succès ! Notre équipe vous répondra sous 24h.");
                 contactForm.reset();
                 if (submitBtn) {
                     submitBtn.innerText = originalText;
                     submitBtn.disabled = false;
                 }
-            }, 400);
+            };
+
+            if (typeof emailjs !== 'undefined') {
+                emailjs.sendForm('service_d9cvkm8', 'template_ob7d4cb', contactForm)
+                    .then(() => finish())
+                    .catch((err) => {
+                        console.warn('EmailJS fallback:', err);
+                        finish();
+                    });
+            } else {
+                finish();
+            }
         });
     }
 
@@ -761,11 +833,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
             const origBtnHtml = directCvSubmitBtn ? directCvSubmitBtn.innerHTML : 'Envoyer';
             if (directCvSubmitBtn) {
-                directCvSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enregistrement dans la base...';
+                directCvSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Transmission en cours...';
                 directCvSubmitBtn.disabled = true;
             }
 
-            const saveAndFinish = function(base64Data) {
+            const sendAndSave = function(base64Data) {
+                // 1. Save to Database
                 const candRecord = {
                     id: 'CAND-' + Date.now(),
                     date: new Date().toLocaleString('fr-FR'),
@@ -778,11 +851,18 @@ document.addEventListener("DOMContentLoaded", function() {
                     notes: notes || 'N/A',
                     status: 'Nouveau'
                 };
-
                 window.PRO_C2S_DB.saveCandidate(candRecord);
 
-                setTimeout(() => {
-                    showToast("Candidature enregistrée avec succès dans la Base de Données RH !");
+                // 2. Send email notification
+                const templateParams = {
+                    user_name: name,
+                    user_phone: phone,
+                    user_email: email,
+                    message: `NOUVELLE CANDIDATURE DIRECTE PRO C2S :\n- Candidat : ${name}\n- Téléphone : ${phone}\n- Email : ${email}\n- Pôle recherché : ${pole}\n- Fichier CV : ${fileName}\n- Disponibilités / Notes : ${notes || 'Aucune'}`
+                };
+
+                const finish = function() {
+                    showToast("Votre candidature a bien été enregistrée et transmise à notre équipe RH !");
                     directCvForm.reset();
                     if (cvFileLabel) cvFileLabel.innerText = "Cliquez pour choisir votre fichier CV (Max 10 Mo)";
                     if (cvDropzone) { cvDropzone.style.borderColor = '#10b981'; cvDropzone.style.background = '#f0fdf4'; }
@@ -791,20 +871,27 @@ document.addEventListener("DOMContentLoaded", function() {
                         directCvSubmitBtn.innerHTML = origBtnHtml;
                         directCvSubmitBtn.disabled = false;
                     }
-                }, 400);
+                };
+
+                if (typeof emailjs !== 'undefined') {
+                    emailjs.send('service_d9cvkm8', 'template_ob7d4cb', templateParams)
+                        .then(() => finish())
+                        .catch((err) => {
+                            console.warn('EmailJS fallback:', err);
+                            finish();
+                        });
+                } else {
+                    finish();
+                }
             };
 
             if (file && file.size < 4 * 1024 * 1024) {
                 const reader = new FileReader();
-                reader.onload = function(evt) {
-                    saveAndFinish(evt.target.result);
-                };
-                reader.onerror = function() {
-                    saveAndFinish(null);
-                };
+                reader.onload = function(evt) { sendAndSave(evt.target.result); };
+                reader.onerror = function() { sendAndSave(null); };
                 reader.readAsDataURL(file);
             } else {
-                saveAndFinish(null);
+                sendAndSave(null);
             }
         });
     }
@@ -849,7 +936,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             const origText = simModalSubmitBtn ? simModalSubmitBtn.innerHTML : "Envoyer";
             if (simModalSubmitBtn) {
-                simModalSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enregistrement...';
+                simModalSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Transmission...';
                 simModalSubmitBtn.disabled = true;
             }
 
@@ -863,18 +950,35 @@ document.addEventListener("DOMContentLoaded", function() {
                 message: notes ? ('Simulation: ' + notes) : ('Simulation Devis: ' + sectorVal + ' - ' + countVal),
                 status: 'Nouveau'
             };
-
             window.PRO_C2S_DB.saveDevis(simRecord);
 
-            setTimeout(() => {
-                showToast("Demande de simulation enregistrée avec succès dans la Base de Données !");
+            const templateParams = {
+                user_name: name,
+                user_phone: phone,
+                user_email: email,
+                message: `DEMANDE DE DEVIS SIMULATEUR PRO C2S:\n- Secteur : ${sectorVal}\n- Effectif : ${countVal}\n- Client : ${name}\n- Téléphone : ${phone}\n- Email : ${email}\n- Précisions : ${notes || 'Aucune'}`
+            };
+
+            const finish = function() {
+                showToast("Votre demande de simulation a été transmise avec succès !");
                 simEmailForm.reset();
                 if (simEmailModal) simEmailModal.classList.remove("open");
                 if (simModalSubmitBtn) {
                     simModalSubmitBtn.innerHTML = origText;
                     simModalSubmitBtn.disabled = false;
                 }
-            }, 400);
+            };
+
+            if (typeof emailjs !== 'undefined') {
+                emailjs.send('service_d9cvkm8', 'template_ob7d4cb', templateParams)
+                    .then(() => finish())
+                    .catch((err) => {
+                        console.warn('EmailJS fallback:', err);
+                        finish();
+                    });
+            } else {
+                finish();
+            }
         });
     }
 });
