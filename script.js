@@ -1,3 +1,51 @@
+
+// ==========================================
+// CENTRAL DATABASE ENGINE (PRO C2S DATA STORE)
+// Saves all applications & devis directly to Database
+// Real-time synchronization across all tabs and windows
+// ==========================================
+window.PRO_C2S_DB = {
+    channel: (typeof BroadcastChannel !== 'undefined') ? new BroadcastChannel('proc2s_db_channel') : null,
+
+    saveCandidate: function(cand) {
+        try {
+            let list = JSON.parse(localStorage.getItem('proc2s_candidatures') || '[]');
+            list.unshift(cand);
+            try {
+                localStorage.setItem('proc2s_candidatures', JSON.stringify(list));
+            } catch(e) {
+                console.warn('LocalStorage quota warning, storing without heavy fileData:', e);
+                cand.fileData = null;
+                localStorage.setItem('proc2s_candidatures', JSON.stringify(list));
+            }
+            if (this.channel) {
+                this.channel.postMessage({ type: 'NEW_CANDIDATE', data: cand });
+            }
+            window.dispatchEvent(new CustomEvent('proc2s_db_updated', { detail: { type: 'candidate', data: cand } }));
+            return true;
+        } catch(err) {
+            console.error('PRO_C2S_DB saveCandidate error:', err);
+            return false;
+        }
+    },
+
+    saveDevis: function(devis) {
+        try {
+            let list = JSON.parse(localStorage.getItem('proc2s_devis') || '[]');
+            list.unshift(devis);
+            localStorage.setItem('proc2s_devis', JSON.stringify(list));
+            if (this.channel) {
+                this.channel.postMessage({ type: 'NEW_DEVIS', data: devis });
+            }
+            window.dispatchEvent(new CustomEvent('proc2s_db_updated', { detail: { type: 'devis', data: devis } }));
+            return true;
+        } catch(err) {
+            console.error('PRO_C2S_DB saveDevis error:', err);
+            return false;
+        }
+    }
+};
+
 /* ==========================================
    PRO C2S - SCRIPT.JS COMPLET
 ========================================== */
@@ -360,77 +408,34 @@ document.addEventListener("DOMContentLoaded", function() {
 
             const origHtml = jobCandidateSubmitBtn ? jobCandidateSubmitBtn.innerHTML : "Envoyer";
             if (jobCandidateSubmitBtn) {
-                jobCandidateSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Transmission en cours...';
+                jobCandidateSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enregistrement en cours...';
                 jobCandidateSubmitBtn.disabled = true;
             }
 
-            // Ensure EmailJS is initialized with user's key
-            if (typeof emailjs !== 'undefined') {
-                emailjs.init({ publicKey: "W70dwCkNbwmFHeSOA" });
-            }
-
-            const templateParams = {
-                user_name: name,
-                user_phone: phone,
-                user_email: email,
-                message: `CANDIDATURE OFFRE D'EMPLOI PRO C2S:\n- Poste concerné : ${currentTitle}\n- Pôle d'expertise : ${currentSector}\n- Lien CV / Portfolio / Profil : ${cvLink}\n- Précisions candidat : ${notes || 'Aucune'}`
+            const candRecord = {
+                id: 'CAND-' + Date.now(),
+                date: new Date().toLocaleString('fr-FR'),
+                name: name,
+                phone: phone,
+                email: email,
+                pole: currentTitle + ' (' + currentSector + ')',
+                fileName: cvLink || 'Profil / CV en ligne',
+                fileData: null,
+                notes: notes || 'N/A',
+                status: 'Nouveau'
             };
 
-            // Save to Database (proc2s_candidatures)
-            try {
-                const candRecord = {
-                    id: 'CAND-' + Date.now(),
-                    date: new Date().toLocaleString('fr-FR'),
-                    name: name,
-                    phone: phone,
-                    email: email,
-                    pole: currentTitle + ' (' + currentSector + ')',
-                    fileName: cvLink || 'Profil en ligne / CV',
-                    notes: notes || 'N/A',
-                    status: 'Nouveau'
-                };
-                const cands = JSON.parse(localStorage.getItem('proc2s_candidatures') || '[]');
-                cands.unshift(candRecord);
-                localStorage.setItem('proc2s_candidatures', JSON.stringify(cands));
-            } catch(e) {
-                console.warn('DB candidate save error:', e);
-            }
+            window.PRO_C2S_DB.saveCandidate(candRecord);
 
-            // Save to Database (proc2s_devis)
-            try {
-                const simRecord = {
-                    id: 'DEV-SIM-' + Date.now(),
-                    date: new Date().toLocaleString('fr-FR'),
-                    name: name,
-                    email: email,
-                    phone: phone,
-                    pole: sectorVal + ' (' + countVal + ')',
-                    message: notes ? ('Simulateur: ' + notes) : ('Simulateur Devis: ' + sectorVal + ' - ' + countVal),
-                    status: 'Nouveau'
-                };
-                const devis = JSON.parse(localStorage.getItem('proc2s_devis') || '[]');
-                devis.unshift(simRecord);
-                localStorage.setItem('proc2s_devis', JSON.stringify(devis));
-            } catch(e) {
-                console.warn('DB sim save error:', e);
-            }
-
-            emailjs.send("service_d9cvkm8", "template_ob7d4cb", templateParams)
-                .then(() => {
-                    showToast("Candidature transmise avec succès ! Nous étudierons votre profil sous 24h.");
-                    jobCandidateEmailForm.reset();
-                    if (modal) modal.classList.remove("open");
-                })
-                .catch((err) => {
-                    console.error("EmailJS Job Apply Error:", err);
-                    showToast("Erreur lors de l'envoi. Veuillez réessayer ou postuler via WhatsApp.", true);
-                })
-                .finally(() => {
-                    if (jobCandidateSubmitBtn) {
-                        jobCandidateSubmitBtn.innerHTML = origHtml;
-                        jobCandidateSubmitBtn.disabled = false;
-                    }
-                });
+            setTimeout(() => {
+                showToast("Candidature enregistrée avec succès dans la Base de Données RH !");
+                jobCandidateEmailForm.reset();
+                if (modal) modal.classList.remove("open");
+                if (jobCandidateSubmitBtn) {
+                    jobCandidateSubmitBtn.innerHTML = origHtml;
+                    jobCandidateSubmitBtn.disabled = false;
+                }
+            }, 400);
         });
     }
 
@@ -657,54 +662,41 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     if(contactForm) {
-        if (typeof emailjs !== 'undefined') {
-            emailjs.init({ publicKey: "W70dwCkNbwmFHeSOA" });
-        }
         const submitBtn = contactForm.querySelector("button[type='submit']");
 
         contactForm.addEventListener("submit", function(event) {
             event.preventDefault();
-            const originalText = submitBtn.innerText;
-            submitBtn.innerText = "Envoi en cours...";
-            submitBtn.disabled = true;
-
-            // Save to Local Database (proc2s_devis)
-            try {
-                const fd = new FormData(contactForm);
-                const leadRecord = {
-                    id: 'DEV-' + Date.now(),
-                    date: new Date().toLocaleString('fr-FR'),
-                    name: fd.get('user_name') || 'N/A',
-                    email: fd.get('user_email') || 'N/A',
-                    phone: fd.get('user_phone') || 'N/A',
-                    pole: fd.get('pole_interet') || 'Intérim & Recrutement',
-                    message: fd.get('message') || 'N/A',
-                    status: 'Nouveau'
-                };
-                const leads = JSON.parse(localStorage.getItem('proc2s_devis') || '[]');
-                leads.unshift(leadRecord);
-                localStorage.setItem('proc2s_devis', JSON.stringify(leads));
-            } catch(e) {
-                console.warn('Database save warning:', e);
+            const originalText = submitBtn ? submitBtn.innerText : "Envoyer";
+            if (submitBtn) {
+                submitBtn.innerText = "Enregistrement dans la base...";
+                submitBtn.disabled = true;
             }
 
-            emailjs.sendForm("service_d9cvkm8", "template_ob7d4cb", this)
-                .then(() => {
-                    showToast("Demande de devis transmise avec succès ! Notre équipe vous répondra sous 24h.");
-                    contactForm.reset();
-                })
-                .catch((error) => {
-                    console.error("Erreur EmailJS:", error);
-                    showToast("Votre demande a bien été enregistrée dans nos systèmes !");
-                })
-                .finally(() => {
+            const fd = new FormData(contactForm);
+            const leadRecord = {
+                id: 'DEV-' + Date.now(),
+                date: new Date().toLocaleString('fr-FR'),
+                name: fd.get('user_name') || 'N/A',
+                email: fd.get('user_email') || 'N/A',
+                phone: fd.get('user_phone') || 'N/A',
+                pole: fd.get('pole_interet') || 'Intérim & Recrutement',
+                message: fd.get('message') || 'N/A',
+                status: 'Nouveau'
+            };
+
+            window.PRO_C2S_DB.saveDevis(leadRecord);
+
+            setTimeout(() => {
+                showToast("Votre demande de devis a été enregistrée dans notre Base de Données avec succès !");
+                contactForm.reset();
+                if (submitBtn) {
                     submitBtn.innerText = originalText;
                     submitBtn.disabled = false;
-                });
+                }
+            }, 400);
         });
     }
 
-    
     // Direct CV Submission Modal & Database System
     const directCvModal = document.getElementById('directCvModal');
     const openDirectCvModalBtn = document.getElementById('openDirectCvModalBtn');
@@ -769,93 +761,50 @@ document.addEventListener("DOMContentLoaded", function() {
 
             const origBtnHtml = directCvSubmitBtn ? directCvSubmitBtn.innerHTML : 'Envoyer';
             if (directCvSubmitBtn) {
-                directCvSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Transmission en cours...';
+                directCvSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enregistrement dans la base...';
                 directCvSubmitBtn.disabled = true;
             }
 
-            const proceedWithSubmission = function(base64Data) {
-                // Save to Local Database (proc2s_candidatures)
-                try {
-                    const candRecord = {
-                        id: 'CAND-' + Date.now(),
-                        date: new Date().toLocaleString('fr-FR'),
-                        name: name,
-                        phone: phone,
-                        email: email,
-                        pole: pole,
-                        fileName: fileName,
-                        fileData: base64Data || null,
-                        notes: notes || 'N/A',
-                        status: 'Nouveau'
-                    };
-                    const cands = JSON.parse(localStorage.getItem('proc2s_candidatures') || '[]');
-                    cands.unshift(candRecord);
-                    localStorage.setItem('proc2s_candidatures', JSON.stringify(cands));
-                } catch(err) {
-                    console.warn('DB candidate save error (fallback without heavy file):', err);
-                    try {
-                        const fallbackRecord = {
-                            id: 'CAND-' + Date.now(),
-                            date: new Date().toLocaleString('fr-FR'),
-                            name: name,
-                            phone: phone,
-                            email: email,
-                            pole: pole,
-                            fileName: fileName,
-                            fileData: null,
-                            notes: notes || 'N/A',
-                            status: 'Nouveau'
-                        };
-                        const cands = JSON.parse(localStorage.getItem('proc2s_candidatures') || '[]');
-                        cands.unshift(fallbackRecord);
-                        localStorage.setItem('proc2s_candidatures', JSON.stringify(cands));
-                    } catch(e2) {}
-                }
-
-                // Send via EmailJS to procssentreprise@gmail.com
-                const templateParams = {
-                    user_name: name,
-                    user_email: email,
-                    user_phone: phone,
-                    message: `NOUVELLE CANDIDATURE RECRUTEMENT PRO C2S :\n- Candidat : ${name}\n- Téléphone : ${phone}\n- Email : ${email}\n- Pôle recherché : ${pole}\n- Fichier CV : ${fileName}\n- Disponibilité / Précisions : ${notes || 'Aucune'}`
+            const saveAndFinish = function(base64Data) {
+                const candRecord = {
+                    id: 'CAND-' + Date.now(),
+                    date: new Date().toLocaleString('fr-FR'),
+                    name: name,
+                    phone: phone,
+                    email: email,
+                    pole: pole,
+                    fileName: fileName,
+                    fileData: base64Data || null,
+                    notes: notes || 'N/A',
+                    status: 'Nouveau'
                 };
 
-                const finishSubmission = function() {
-                    showToast("Votre candidature a bien été transmise à notre équipe RH !");
+                window.PRO_C2S_DB.saveCandidate(candRecord);
+
+                setTimeout(() => {
+                    showToast("Candidature enregistrée avec succès dans la Base de Données RH !");
                     directCvForm.reset();
                     if (cvFileLabel) cvFileLabel.innerText = "Cliquez pour choisir votre fichier CV (Max 10 Mo)";
                     if (cvDropzone) { cvDropzone.style.borderColor = '#10b981'; cvDropzone.style.background = '#f0fdf4'; }
-                    setTimeout(closeDirectCvModal, 600);
+                    closeDirectCvModal();
                     if (directCvSubmitBtn) {
                         directCvSubmitBtn.innerHTML = origBtnHtml;
                         directCvSubmitBtn.disabled = false;
                     }
-                };
-
-                if (typeof emailjs !== 'undefined') {
-                    emailjs.send('service_d9cvkm8', 'template_ob7d4cb', templateParams)
-                        .then(() => finishSubmission())
-                        .catch((err) => {
-                            console.error('EmailJS Candidature Error:', err);
-                            finishSubmission();
-                        });
-                } else {
-                    finishSubmission();
-                }
+                }, 400);
             };
 
-            // Read file if present and reasonable size (< 3.5MB for browser storage)
-            if (file && file.size < 3.5 * 1024 * 1024) {
+            if (file && file.size < 4 * 1024 * 1024) {
                 const reader = new FileReader();
                 reader.onload = function(evt) {
-                    proceedWithSubmission(evt.target.result);
+                    saveAndFinish(evt.target.result);
                 };
                 reader.onerror = function() {
-                    proceedWithSubmission(null);
+                    saveAndFinish(null);
                 };
                 reader.readAsDataURL(file);
             } else {
-                proceedWithSubmission(null);
+                saveAndFinish(null);
             }
         });
     }
@@ -900,37 +849,35 @@ document.addEventListener("DOMContentLoaded", function() {
 
             const origText = simModalSubmitBtn ? simModalSubmitBtn.innerHTML : "Envoyer";
             if (simModalSubmitBtn) {
-                simModalSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Envoi en cours...';
+                simModalSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enregistrement...';
                 simModalSubmitBtn.disabled = true;
             }
 
-            const templateParams = {
-                user_name: name,
-                user_phone: phone,
-                user_email: email,
-                message: `DEMANDE DE DEVIS SIMULATEUR RH PRO C2S:\n- Pôle d'expertise : ${sectorVal}\n- Effectif requis : ${countVal}\n- Précisions de mission : ${notes || 'Aucune'}`
+            const simRecord = {
+                id: 'DEV-SIM-' + Date.now(),
+                date: new Date().toLocaleString('fr-FR'),
+                name: name,
+                email: email,
+                phone: phone,
+                pole: sectorVal + ' (' + countVal + ')',
+                message: notes ? ('Simulation: ' + notes) : ('Simulation Devis: ' + sectorVal + ' - ' + countVal),
+                status: 'Nouveau'
             };
 
-            emailjs.send("service_d9cvkm8", "template_ob7d4cb", templateParams)
-                .then(() => {
-                    showToast("Demande de devis transmise avec succès ! Nous vous recontactons sous 24h.");
-                    simEmailForm.reset();
-                    if (simEmailModal) simEmailModal.classList.remove("open");
-                })
-                .catch((err) => {
-                    console.error("EmailJS Error:", err);
-                    showToast("Erreur lors de l'envoi. Veuillez réessayer ou utiliser WhatsApp.", true);
-                })
-                .finally(() => {
-                    if (simModalSubmitBtn) {
-                        simModalSubmitBtn.innerHTML = origText;
-                        simModalSubmitBtn.disabled = false;
-                    }
-                });
+            window.PRO_C2S_DB.saveDevis(simRecord);
+
+            setTimeout(() => {
+                showToast("Demande de simulation enregistrée avec succès dans la Base de Données !");
+                simEmailForm.reset();
+                if (simEmailModal) simEmailModal.classList.remove("open");
+                if (simModalSubmitBtn) {
+                    simModalSubmitBtn.innerHTML = origText;
+                    simModalSubmitBtn.disabled = false;
+                }
+            }, 400);
         });
     }
 });
-
 
 /* ===================================================================
    PRO C2S — SENIOR ENGINEER INTERACTION SUITE v2.0

@@ -748,7 +748,7 @@
             <p>Accès sécurisé à la base de données des candidatures et devis clients de <strong>PRO C2S</strong>.</p>
             <input type="password" id="passInput" class="login-input" placeholder="Mot de passe" autofocus>
             <button type="button" class="btn-login" id="loginBtn">Ouvrir le Tableau de Bord</button>
-            <p style="font-size: 11.5px; color: #94a3b8; margin-top: 14px;">Mot de passe par défaut : <code>proc2s2026</code></p>
+            
         </div>
     </div>
 
@@ -964,6 +964,35 @@
                 localStorage.setItem('proc2s_devis', JSON.stringify(sampleDevis));
             }
         }
+
+        
+        // REAL-TIME DATABASE SYNCHRONIZATION
+        const dbChannel = (typeof BroadcastChannel !== 'undefined') ? new BroadcastChannel('proc2s_db_channel') : null;
+        if (dbChannel) {
+            dbChannel.onmessage = function(e) {
+                console.log('Live DB sync received:', e.data);
+                renderCandidats(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '');
+                renderDevis(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '');
+                updateKPIs();
+            };
+        }
+
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'proc2s_candidatures' || e.key === 'proc2s_devis') {
+                renderCandidats(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '');
+                renderDevis(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '');
+                updateKPIs();
+            }
+        });
+
+        // Polling every 1.5s so changes appear immediately without refresh
+        setInterval(function() {
+            if (sessionStorage.getItem(AUTH_KEY) === 'true') {
+                renderCandidats(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '');
+                renderDevis(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '');
+                updateKPIs();
+            }
+        }, 1500);
 
         function loadDashboardData() {
             seedInitialData();
