@@ -1,5 +1,55 @@
 
 // ==========================================
+// INDEXEDDB ENGINE FOR LARGE CV DOCUMENTS (PDF/WORD)
+// Solves localStorage 5MB quota limitation permanently
+// ==========================================
+const PRO_C2S_IDB = {
+    dbName: 'PRO_C2S_FILE_STORE',
+    storeName: 'cv_documents',
+    
+    getDb: function() {
+        return new Promise(function(resolve, reject) {
+            const req = indexedDB.open(PRO_C2S_IDB.dbName, 1);
+            req.onupgradeneeded = function(e) {
+                const db = e.target.result;
+                if (!db.objectStoreNames.contains(PRO_C2S_IDB.storeName)) {
+                    db.createObjectStore(PRO_C2S_IDB.storeName, { keyPath: 'id' });
+                }
+            };
+            req.onsuccess = function(e) { resolve(e.target.result); };
+            req.onerror = function(e) { reject(e); };
+        });
+    },
+
+    saveFile: function(id, fileName, fileData) {
+        if (!fileData) return Promise.resolve(false);
+        return this.getDb().then(function(db) {
+            return new Promise(function(resolve, reject) {
+                const tx = db.transaction(PRO_C2S_IDB.storeName, 'readwrite');
+                tx.objectStore(PRO_C2S_IDB.storeName).put({ id: id, fileName: fileName, fileData: fileData });
+                tx.oncomplete = function() { resolve(true); };
+                tx.onerror = function() { reject(tx.error); };
+            });
+        }).catch(function(err) {
+            console.warn('IDB save error:', err);
+            return false;
+        });
+    },
+
+    getFile: function(id) {
+        return this.getDb().then(function(db) {
+            return new Promise(function(resolve, reject) {
+                const tx = db.transaction(PRO_C2S_IDB.storeName, 'readonly');
+                const req = tx.objectStore(PRO_C2S_IDB.storeName).get(id);
+                req.onsuccess = function() { resolve(req.result ? req.result.fileData : null); };
+                req.onerror = function() { reject(req.error); };
+            });
+        }).catch(function() { return null; });
+    }
+};
+
+
+// ==========================================
 // CENTRAL DATABASE ENGINE (PRO C2S DATA STORE)
 // Saves all applications & devis directly to Database
 // Real-time synchronization across all tabs and windows
@@ -9,12 +59,15 @@ window.PRO_C2S_DB = {
 
     saveCandidate: function(cand) {
         try {
+            if (cand.fileData) {
+                PRO_C2S_IDB.saveFile(cand.id, cand.fileName, cand.fileData);
+            }
             let list = JSON.parse(localStorage.getItem('proc2s_candidatures') || '[]');
             list.unshift(cand);
             try {
                 localStorage.setItem('proc2s_candidatures', JSON.stringify(list));
             } catch(e) {
-                console.warn('LocalStorage quota warning, storing without heavy fileData:', e);
+                console.warn('LocalStorage quota warning, storing lightweight copy (full file safe in IndexedDB):', e);
                 cand.fileData = null;
                 localStorage.setItem('proc2s_candidatures', JSON.stringify(list));
             }
@@ -28,7 +81,6 @@ window.PRO_C2S_DB = {
             return false;
         }
     },
-
     saveDevis: function(devis) {
         try {
             let list = JSON.parse(localStorage.getItem('proc2s_devis') || '[]');

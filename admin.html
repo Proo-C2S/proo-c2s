@@ -876,6 +876,56 @@
     </div>
 
     <script>
+
+// ==========================================
+// INDEXEDDB ENGINE FOR LARGE CV DOCUMENTS (PDF/WORD)
+// Solves localStorage 5MB quota limitation permanently
+// ==========================================
+const PRO_C2S_IDB = {
+    dbName: 'PRO_C2S_FILE_STORE',
+    storeName: 'cv_documents',
+    
+    getDb: function() {
+        return new Promise(function(resolve, reject) {
+            const req = indexedDB.open(PRO_C2S_IDB.dbName, 1);
+            req.onupgradeneeded = function(e) {
+                const db = e.target.result;
+                if (!db.objectStoreNames.contains(PRO_C2S_IDB.storeName)) {
+                    db.createObjectStore(PRO_C2S_IDB.storeName, { keyPath: 'id' });
+                }
+            };
+            req.onsuccess = function(e) { resolve(e.target.result); };
+            req.onerror = function(e) { reject(e); };
+        });
+    },
+
+    saveFile: function(id, fileName, fileData) {
+        if (!fileData) return Promise.resolve(false);
+        return this.getDb().then(function(db) {
+            return new Promise(function(resolve, reject) {
+                const tx = db.transaction(PRO_C2S_IDB.storeName, 'readwrite');
+                tx.objectStore(PRO_C2S_IDB.storeName).put({ id: id, fileName: fileName, fileData: fileData });
+                tx.oncomplete = function() { resolve(true); };
+                tx.onerror = function() { reject(tx.error); };
+            });
+        }).catch(function(err) {
+            console.warn('IDB save error:', err);
+            return false;
+        });
+    },
+
+    getFile: function(id) {
+        return this.getDb().then(function(db) {
+            return new Promise(function(resolve, reject) {
+                const tx = db.transaction(PRO_C2S_IDB.storeName, 'readonly');
+                const req = tx.objectStore(PRO_C2S_IDB.storeName).get(id);
+                req.onsuccess = function() { resolve(req.result ? req.result.fileData : null); };
+                req.onerror = function() { reject(req.error); };
+            });
+        }).catch(function() { return null; });
+    }
+};
+
         const AUTH_KEY = 'proc2s_admin_auth';
         // Cryptographic SHA-256 Hash of default master key (never stored in plaintext)
         const DEFAULT_HASH = '1cabc99218c2b7d984658c8a55112309197339214532ab671e4bd4031b921af5';
@@ -1307,10 +1357,18 @@
     </div>
 
     <script>
-        function openCvModal(candId) {
+        async function openCvModal(candId) {
             const list = JSON.parse(localStorage.getItem('proc2s_candidatures') || '[]');
             const c = list.find(item => item.id === candId);
             if (!c) return;
+
+            // Check IndexedDB if fileData is null
+            let activeFileData = c.fileData;
+            if (!activeFileData && typeof PRO_C2S_IDB !== 'undefined') {
+                try {
+                    activeFileData = await PRO_C2S_IDB.getFile(candId);
+                } catch(e) {}
+            }
 
             const overlay = document.getElementById('cvModalOverlay');
             const avatar = document.getElementById('cvModalAvatar');
@@ -1356,7 +1414,7 @@
                 </div>
             `;
 
-            if (c.fileData) {
+            if (activeFileData) {
                 html += `
                     <div style="margin-top:22px;">
                         <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:14px;">
@@ -1364,20 +1422,23 @@
                                 <h4 style="margin:0;font-size:15px;color:#0f172a;font-weight:800;">
                                     <i class="fa-solid fa-file-pdf" style="color:#ef4444;"></i> ${c.fileName}
                                 </h4>
-                                <span style="font-size:12px;color:#64748b;">Fichier CV attaché (PDF / Word)</span>
+                                <span style="font-size:12px;color:#64748b;">Document CV prêt pour consultation et impression</span>
                             </div>
-                            <div style="display:flex;gap:8px;">
-                                <a href="${c.fileData}" download="${c.fileName}" class="cv-btn-action primary">
+                            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                                <a href="${activeFileData}" download="${c.fileName}" class="cv-btn-action primary">
                                     <i class="fa-solid fa-download"></i> Télécharger le CV
                                 </a>
-                                <a href="${c.fileData}" target="_blank" class="cv-btn-action secondary">
-                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Ouvrir en grand
+                                <button type="button" class="cv-btn-action secondary" onclick="printPdfDocument('${candId}')">
+                                    <i class="fa-solid fa-print"></i> Imprimer le CV
+                                </button>
+                                <a href="${activeFileData}" target="_blank" class="cv-btn-action tertiary">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Grand écran
                                 </a>
                             </div>
                         </div>
 
-                        <div style="width:100%;height:520px;border-radius:12px;border:1px solid #cbd5e1;overflow:hidden;background:#f8fafc;">
-                            <iframe src="${c.fileData}" style="width:100%;height:100%;border:none;" title="Aperçu CV"></iframe>
+                        <div style="width:100%;height:580px;border-radius:12px;border:1px solid #cbd5e1;overflow:hidden;background:#f8fafc;">
+                            <iframe id="pdfFrame_${candId}" src="${activeFileData}" style="width:100%;height:100%;border:none;" title="Aperçu CV"></iframe>
                         </div>
                     </div>
                 `;
@@ -1390,20 +1451,20 @@
                             </div>
                             <div>
                                 <h4 style="margin:0;font-size:16px;font-weight:800;color:#065f46;">Fiche Candidat (${c.fileName || 'CV'})</h4>
-                                <span style="font-size:12.5px;color:#047857;">Candidature enregistrée dans la base. Vous pouvez demander le fichier en 1 clic sur WhatsApp ou joindre le document directement.</span>
+                                <span style="font-size:12.5px;color:#047857;">Candidature enregistrée dans la base. Vous pouvez joindre le document PDF directement ci-dessous pour l'afficher à l'écran.</span>
                             </div>
                         </div>
 
                         <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;">
-                            <a href="https://wa.me/${cleanWa}?text=Bonjour%20${encodeURIComponent(c.name)},%20l'%C3%A9quipe%20RH%20de%20PRO%20C2S%20a%20bien%20re%C3%A7u%20votre%20candidature.%20Merci%20de%20nous%20transmettre%20votre%20CV%20complet%20en%20format%20PDF%20pour%20finaliser%20votre%20dossier." target="_blank" class="cv-btn-action primary" style="background:#25d366;border-color:#25d366;">
-                                <i class="fa-brands fa-whatsapp"></i> Demander le fichier PDF sur WhatsApp
-                            </a>
-                            <button type="button" class="cv-btn-action secondary" onclick="document.getElementById('attachCvInput').click()">
-                                <i class="fa-solid fa-cloud-arrow-up"></i> Attacher le CV PDF pour ce candidat
+                            <button type="button" class="cv-btn-action primary" onclick="document.getElementById('attachCvInput').click()">
+                                <i class="fa-solid fa-cloud-arrow-up"></i> Attacher le fichier PDF du CV
                             </button>
                             <input type="file" id="attachCvInput" style="display:none;" accept=".pdf,.doc,.docx" onchange="attachCvFile('${c.id}', this)">
+                            <a href="https://wa.me/${cleanWa}?text=Bonjour%20${encodeURIComponent(c.name)},%20l'%C3%A9quipe%20RH%20de%20PRO%20C2S%20a%20bien%20re%C3%A7u%20votre%20candidature.%20Merci%20de%20nous%20transmettre%20votre%20CV%20complet%20en%20format%20PDF%20pour%20finaliser%20votre%20dossier." target="_blank" class="cv-btn-action secondary" style="background:#25d366;color:#fff;border-color:#25d366;">
+                                <i class="fa-brands fa-whatsapp"></i> Demander sur WhatsApp
+                            </a>
                             <button type="button" class="cv-btn-action tertiary" onclick="window.print()">
-                                <i class="fa-solid fa-print"></i> Imprimer la fiche candidat
+                                <i class="fa-solid fa-print"></i> Imprimer la fiche
                             </button>
                         </div>
                     </div>
@@ -1414,6 +1475,46 @@
             overlay.style.display = 'flex';
         }
 
+        function printPdfDocument(candId) {
+            const frame = document.getElementById('pdfFrame_' + candId);
+            if (frame && frame.contentWindow) {
+                try {
+                    frame.contentWindow.focus();
+                    frame.contentWindow.print();
+                    return;
+                } catch(e) {}
+            }
+            window.print();
+        }
+
+        function attachCvFile(candId, inputEl) {
+            if (!inputEl.files || !inputEl.files[0]) return;
+            const file = inputEl.files[0];
+            const reader = new FileReader();
+            reader.onload = async function(evt) {
+                const base64 = evt.target.result;
+                if (typeof PRO_C2S_IDB !== 'undefined') {
+                    await PRO_C2S_IDB.saveFile(candId, file.name, base64);
+                }
+                let list = JSON.parse(localStorage.getItem('proc2s_candidatures') || '[]');
+                const idx = list.findIndex(item => item.id === candId);
+                if (idx !== -1) {
+                    list[idx].fileName = file.name;
+                    list[idx].fileData = base64;
+                    try {
+                        localStorage.setItem('proc2s_candidatures', JSON.stringify(list));
+                    } catch(e) {
+                        list[idx].fileData = null;
+                        localStorage.setItem('proc2s_candidatures', JSON.stringify(list));
+                    }
+                    renderCandidats(document.getElementById('searchInput').value);
+                    openCvModal(candId);
+                    alert('Le fichier CV ' + file.name + ' a été attaché avec succès à ' + list[idx].name + ' ! Il est maintenant consultable et imprimable.');
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+        
         function closeCvModal() {
             const overlay = document.getElementById('cvModalOverlay');
             if (overlay) overlay.style.display = 'none';
