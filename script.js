@@ -977,4 +977,255 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+
+    // 7. Senior Engineer Interactive Tech Network Canvas (Service Pages)
+    (function initServiceTechCanvas() {
+        const heroSection = document.querySelector('.service-page-hero');
+        if (!heroSection) return;
+
+        const canvas = heroSection.querySelector('.tech-hero-canvas');
+        if (!canvas) return;
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        let width = 0;
+        let height = 0;
+        let particles = [];
+        let pulses = [];
+        let animationFrameId = null;
+        let isVisible = true;
+
+        const isInfo = document.body.classList.contains('page-informatique');
+        const isNettoyage = document.body.classList.contains('page-nettoyage');
+
+        // Color palettes tuned for engineering aesthetic
+        const palette = isInfo 
+            ? ['#06b6d4', '#10b981', '#3b82f6', '#0ea5e9']
+            : isNettoyage 
+                ? ['#10b981', '#2dd4bf', '#0284c7', '#34d399']
+                : ['#10b981', '#059669', '#34d399', '#0d9488'];
+
+        const mouse = {
+            x: -2000,
+            y: -2000,
+            targetX: -2000,
+            targetY: -2000,
+            radius: 170
+        };
+
+        function resize() {
+            const rect = heroSection.getBoundingClientRect();
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            width = rect.width;
+            height = rect.height;
+
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
+            ctx.scale(dpr, dpr);
+
+            initParticles();
+        }
+
+        class TechNode {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.75;
+                this.vy = (Math.random() - 0.5) * 0.75;
+                this.baseRadius = Math.random() * 2 + 1.6;
+                this.radius = this.baseRadius;
+                this.color = palette[Math.floor(Math.random() * palette.length)];
+                this.pulsePhase = Math.random() * Math.PI * 2;
+                this.pulseSpeed = 0.02 + Math.random() * 0.025;
+            }
+
+            update() {
+                this.pulsePhase += this.pulseSpeed;
+                this.radius = this.baseRadius + Math.sin(this.pulsePhase) * 0.8;
+
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0) { this.x = 0; this.vx *= -1; }
+                if (this.x > width) { this.x = width; this.vx *= -1; }
+                if (this.y < 0) { this.y = 0; this.vy *= -1; }
+                if (this.y > height) { this.y = height; this.vy *= -1; }
+
+                const dx = mouse.x - this.x;
+                const dy = mouse.y - this.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < mouse.radius && dist > 0) {
+                    const angle = Math.atan2(dy, dx);
+                    const force = (mouse.radius - dist) / mouse.radius;
+                    this.x -= Math.cos(angle) * force * 2.2;
+                    this.y -= Math.sin(angle) * force * 2.2;
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, Math.max(0.5, this.radius), 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.shadowColor = this.color;
+                ctx.shadowBlur = 8;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        class DataPulse {
+            constructor(nodeA, nodeB, color) {
+                this.nodeA = nodeA;
+                this.nodeB = nodeB;
+                this.progress = 0;
+                this.speed = 0.015 + Math.random() * 0.02;
+                this.color = color;
+                this.dead = false;
+            }
+
+            update() {
+                this.progress += this.speed;
+                if (this.progress >= 1) {
+                    this.dead = true;
+                }
+            }
+
+            draw() {
+                const curX = this.nodeA.x + (this.nodeB.x - this.nodeA.x) * this.progress;
+                const curY = this.nodeA.y + (this.nodeB.y - this.nodeA.y) * this.progress;
+                ctx.beginPath();
+                ctx.arc(curX, curY, 2.4, 0, Math.PI * 2);
+                ctx.fillStyle = '#ffffff';
+                ctx.shadowColor = this.color;
+                ctx.shadowBlur = 10;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            pulses = [];
+            const count = Math.min(55, Math.max(25, Math.floor((width * height) / 16000)));
+            for (let i = 0; i < count; i++) {
+                particles.push(new TechNode());
+            }
+        }
+
+        heroSection.addEventListener('mousemove', (e) => {
+            const rect = heroSection.getBoundingClientRect();
+            mouse.targetX = e.clientX - rect.left;
+            mouse.targetY = e.clientY - rect.top;
+        }, { passive: true });
+
+        heroSection.addEventListener('mouseleave', () => {
+            mouse.targetX = -2000;
+            mouse.targetY = -2000;
+        }, { passive: true });
+
+        heroSection.addEventListener('touchmove', (e) => {
+            if (e.touches && e.touches.length > 0) {
+                const rect = heroSection.getBoundingClientRect();
+                mouse.targetX = e.touches[0].clientX - rect.left;
+                mouse.targetY = e.touches[0].clientY - rect.top;
+            }
+        }, { passive: true });
+
+        heroSection.addEventListener('touchend', () => {
+            mouse.targetX = -2000;
+            mouse.targetY = -2000;
+        }, { passive: true });
+
+        const maxDist = 135;
+
+        function animate() {
+            if (!isVisible) {
+                animationFrameId = requestAnimationFrame(animate);
+                return;
+            }
+
+            ctx.clearRect(0, 0, width, height);
+
+            mouse.x += (mouse.targetX - mouse.x) * 0.12;
+            mouse.y += (mouse.targetY - mouse.y) * 0.12;
+
+            const len = particles.length;
+            for (let i = 0; i < len; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+
+            for (let i = 0; i < len; i++) {
+                const pA = particles[i];
+                for (let j = i + 1; j < len; j++) {
+                    const pB = particles[j];
+                    const dx = pA.x - pB.x;
+                    const dy = pA.y - pB.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < maxDist) {
+                        const alpha = (1 - dist / maxDist) * 0.35;
+                        ctx.beginPath();
+                        ctx.moveTo(pA.x, pA.y);
+                        ctx.lineTo(pB.x, pB.y);
+                        ctx.strokeStyle = 'rgba(16, 185, 129, ' + alpha + ')';
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+
+                        if (Math.random() < 0.0008 && pulses.length < 8) {
+                            pulses.push(new DataPulse(pA, pB, pA.color));
+                        }
+                    }
+                }
+
+                const mdx = mouse.x - pA.x;
+                const mdy = mouse.y - pA.y;
+                const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+                if (mDist < mouse.radius) {
+                    const alpha = (1 - mDist / mouse.radius) * 0.55;
+                    ctx.beginPath();
+                    ctx.moveTo(pA.x, pA.y);
+                    ctx.lineTo(mouse.x, mouse.y);
+                    ctx.strokeStyle = 'rgba(6, 182, 212, ' + alpha + ')';
+                    ctx.lineWidth = 1.3;
+                    ctx.stroke();
+                }
+            }
+
+            for (let i = pulses.length - 1; i >= 0; i--) {
+                pulses[i].update();
+                pulses[i].draw();
+                if (pulses[i].dead) {
+                    pulses.splice(i, 1);
+                }
+            }
+
+            animationFrameId = requestAnimationFrame(animate);
+        }
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    isVisible = entry.isIntersecting;
+                });
+            }, { threshold: 0.05 });
+            observer.observe(heroSection);
+        }
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(resize, 200);
+        }, { passive: true });
+
+        resize();
+        animate();
+    })();
+
 })();
