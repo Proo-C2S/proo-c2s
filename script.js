@@ -768,111 +768,340 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }, { passive: true });
 
-    // 3. Hero Particle Canvas (Senior Tech Agency Grade)
+    // 3. Executive World-Class Fluid Wave & Interactive Neural Aurora Engine (Stripe/Linear Grade)
     const canvas = document.getElementById('heroParticles');
     if (canvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         const ctx = canvas.getContext('2d');
-        let width = canvas.width = canvas.parentElement.offsetWidth || window.innerWidth;
-        let height = canvas.height = canvas.parentElement.offsetHeight || 600;
-        let particles = [];
-        const particleCount = Math.min(45, Math.floor((width * height) / 18000));
-        let mouse = { x: -1000, y: -1000, radius: 120 };
+        const heroSection = canvas.closest('.hero') || canvas.parentElement;
 
-        function onResize() {
-            if (!canvas.parentElement) return;
-            width = canvas.width = canvas.parentElement.offsetWidth;
-            height = canvas.height = canvas.parentElement.offsetHeight;
+        let width = 0;
+        let height = 0;
+        let dpr = 1;
+        let time = 0;
+        let animationFrameId = null;
+        let isHeroVisible = true;
+
+        const mouse = {
+            x: -2000,
+            y: -2000,
+            targetX: -2000,
+            targetY: -2000,
+            intensity: 0,
+            targetIntensity: 0,
+            radius: 190
+        };
+
+        function resize() {
+            if (!heroSection) return;
+            const rect = heroSection.getBoundingClientRect();
+            dpr = Math.min(window.devicePixelRatio || 1, 2);
+            width = rect.width;
+            height = rect.height;
+
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
+            ctx.scale(dpr, dpr);
         }
-        window.addEventListener('resize', onResize, { passive: true });
 
-        canvas.parentElement.addEventListener('mousemove', (e) => {
-            const rect = canvas.getBoundingClientRect();
-            mouse.x = e.clientX - rect.left;
-            mouse.y = e.clientY - rect.top;
-        }, { passive: true });
+        // --- Constellation Nodes ---
+        const particleCount = Math.min(50, Math.max(26, Math.floor((window.innerWidth * 650) / 20000)));
+        const particles = [];
+        const pulses = [];
 
-        canvas.parentElement.addEventListener('mouseleave', () => {
-            mouse.x = -1000;
-            mouse.y = -1000;
-        }, { passive: true });
-
-        class Particle {
+        class WaveNode {
             constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.7;
-                this.vy = (Math.random() - 0.5) * 0.7;
-                this.radius = Math.random() * 2 + 1;
-                this.color = Math.random() > 0.4 ? 'rgba(16, 185, 129, ' : 'rgba(0, 230, 118, ';
-                this.alpha = Math.random() * 0.5 + 0.2;
+                this.reset(true);
             }
-
+            reset(initial = false) {
+                this.x = initial ? Math.random() * width : (Math.random() > 0.5 ? -10 : width + 10);
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.75;
+                this.vy = (Math.random() - 0.5) * 0.75;
+                this.baseRadius = Math.random() * 2.4 + 1.4;
+                this.radius = this.baseRadius;
+                this.color = Math.random() > 0.45 
+                    ? 'rgba(16, 185, 129, ' 
+                    : (Math.random() > 0.5 ? 'rgba(52, 211, 153, ' : 'rgba(6, 182, 212, ');
+                this.alpha = Math.random() * 0.45 + 0.45;
+                this.pulseSpeed = 0.02 + Math.random() * 0.03;
+                this.phase = Math.random() * Math.PI * 2;
+            }
             update() {
+                this.phase += this.pulseSpeed;
+                this.radius = this.baseRadius + Math.sin(this.phase) * 0.8;
                 this.x += this.vx;
                 this.y += this.vy;
 
-                if (this.x < 0 || this.x > width) this.vx *= -1;
-                if (this.y < 0 || this.y > height) this.vy *= -1;
+                if (this.x < -30 || this.x > width + 30 || this.y < -30 || this.y > height + 30) {
+                    this.reset(false);
+                }
 
-                // Mouse push
+                // Interactive mouse repulsion/orbit
                 const dx = mouse.x - this.x;
                 const dy = mouse.y - this.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
                 if (dist < mouse.radius && dist > 0) {
                     const angle = Math.atan2(dy, dx);
                     const force = (mouse.radius - dist) / mouse.radius;
-                    this.x -= Math.cos(angle) * force * 2;
-                    this.y -= Math.sin(angle) * force * 2;
+                    this.x -= Math.cos(angle) * force * 2.8;
+                    this.y -= Math.sin(angle) * force * 2.8;
                 }
             }
-
             draw() {
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.arc(this.x, this.y, Math.max(0.5, this.radius), 0, Math.PI * 2);
                 ctx.fillStyle = this.color + this.alpha + ')';
+                ctx.shadowColor = this.color + '0.9)';
+                ctx.shadowBlur = 10;
                 ctx.fill();
+                ctx.shadowBlur = 0;
             }
         }
 
         for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
+            particles.push(new WaveNode());
         }
 
-        let isHeroVisible = true;
-        const heroObserver = new IntersectionObserver((entries) => {
-            isHeroVisible = entries[0].isIntersecting;
-        }, { threshold: 0.05 });
-        if (canvas.parentElement) heroObserver.observe(canvas.parentElement);
+        // --- Data Pulses along lines ---
+        class DataPulse {
+            constructor(pA, pB, color) {
+                this.pA = pA;
+                this.pB = pB;
+                this.progress = 0;
+                this.speed = 0.018 + Math.random() * 0.025;
+                this.color = color;
+                this.dead = false;
+            }
+            update() {
+                this.progress += this.speed;
+                if (this.progress >= 1) this.dead = true;
+            }
+            draw() {
+                const cx = this.pA.x + (this.pB.x - this.pA.x) * this.progress;
+                const cy = this.pA.y + (this.pB.y - this.pA.y) * this.progress;
+                ctx.beginPath();
+                ctx.arc(cx, cy, 2.5, 0, Math.PI * 2);
+                ctx.fillStyle = '#ffffff';
+                ctx.shadowColor = this.color + '1)';
+                ctx.shadowBlur = 12;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
 
-        function animateParticles() {
-            if (isHeroVisible) {
-                ctx.clearRect(0, 0, width, height);
+        // --- Fluid Aurora Waves ---
+        const waves = [
+            {
+                baseYRatio: 0.70,
+                amplitude: 42,
+                frequency: 0.0030,
+                speed: 0.0016,
+                colorStart: 'rgba(16, 185, 129, 0.18)',
+                colorEnd: 'rgba(5, 150, 105, 0.02)',
+                stroke: 'rgba(16, 185, 129, 0.45)'
+            },
+            {
+                baseYRatio: 0.78,
+                amplitude: 52,
+                frequency: 0.0022,
+                speed: -0.0019,
+                colorStart: 'rgba(6, 182, 212, 0.16)',
+                colorEnd: 'rgba(14, 165, 233, 0.01)',
+                stroke: 'rgba(6, 182, 212, 0.40)'
+            },
+            {
+                baseYRatio: 0.86,
+                amplitude: 36,
+                frequency: 0.0038,
+                speed: 0.0024,
+                colorStart: 'rgba(52, 211, 153, 0.22)',
+                colorEnd: 'rgba(16, 185, 129, 0.02)',
+                stroke: 'rgba(52, 211, 153, 0.50)'
+            }
+        ];
 
-                // Connect nearby particles
-                for (let i = 0; i < particles.length; i++) {
-                    for (let j = i + 1; j < particles.length; j++) {
-                        const dx = particles[i].x - particles[j].x;
-                        const dy = particles[i].y - particles[j].y;
-                        const dist = Math.sqrt(dx * dx + dy * dy);
-                        if (dist < 110) {
-                            ctx.beginPath();
-                            ctx.moveTo(particles[i].x, particles[i].y);
-                            ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.strokeStyle = `rgba(16, 185, 129, ${0.18 * (1 - dist / 110)})`;
-                            ctx.lineWidth = 0.8;
-                            ctx.stroke();
+        function drawAuroraWave(wConfig, t) {
+            const baseY = height * wConfig.baseYRatio;
+            ctx.beginPath();
+            ctx.moveTo(0, height);
+
+            const step = Math.max(12, Math.floor(width / 75));
+            for (let x = 0; x <= width + step; x += step) {
+                let y = baseY + 
+                    Math.sin(x * wConfig.frequency + t * wConfig.speed * 1000) * wConfig.amplitude +
+                    Math.cos(x * wConfig.frequency * 0.55 + t * 0.0012) * (wConfig.amplitude * 0.45);
+
+                if (mouse.intensity > 0.01) {
+                    const dx = x - mouse.x;
+                    const dy = y - mouse.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 340) {
+                        const ripple = Math.sin(dist * 0.035 - t * 6) * Math.exp(-dist * 0.008) * (mouse.intensity * 28);
+                        y += ripple;
+                    }
+                }
+
+                if (x === 0) {
+                    ctx.lineTo(0, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+
+            ctx.lineTo(width, height);
+            ctx.closePath();
+
+            const grad = ctx.createLinearGradient(0, baseY - wConfig.amplitude, 0, height);
+            grad.addColorStop(0, wConfig.colorStart);
+            grad.addColorStop(1, wConfig.colorEnd);
+            ctx.fillStyle = grad;
+            ctx.fill();
+
+            ctx.strokeStyle = wConfig.stroke;
+            ctx.lineWidth = 1.8;
+            ctx.stroke();
+        }
+
+        // --- Mouse and Parallax Listeners ---
+        const heroVisual = heroSection.querySelector('.hero-visual-inner');
+        const floatingBoxes = heroSection.querySelectorAll('.floating-box, .floating-box-delayed');
+
+        function onMouseMove(e) {
+            const rect = heroSection.getBoundingClientRect();
+            mouse.targetX = e.clientX - rect.left;
+            mouse.targetY = e.clientY - rect.top;
+            mouse.targetIntensity = 1;
+
+            if (heroVisual && window.innerWidth > 900) {
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const relX = (e.clientX - rect.left - centerX) / centerX;
+                const relY = (e.clientY - rect.top - centerY) / centerY;
+                heroVisual.style.transform = `perspective(1000px) rotateY(${relX * 6}deg) rotateX(${-relY * 6}deg) translateZ(12px)`;
+
+                floatingBoxes.forEach((box, idx) => {
+                    const factor = idx === 0 ? 14 : -14;
+                    box.style.transform = `translate(${relX * factor}px, ${relY * factor}px)`;
+                });
+            }
+        }
+
+        function onMouseLeave() {
+            mouse.targetX = -2000;
+            mouse.targetY = -2000;
+            mouse.targetIntensity = 0;
+            if (heroVisual) {
+                heroVisual.style.transform = '';
+                floatingBoxes.forEach(box => box.style.transform = '');
+            }
+        }
+
+        heroSection.addEventListener('mousemove', onMouseMove, { passive: true });
+        heroSection.addEventListener('mouseleave', onMouseLeave, { passive: true });
+
+        heroSection.addEventListener('touchmove', (e) => {
+            if (e.touches && e.touches.length > 0) {
+                const rect = heroSection.getBoundingClientRect();
+                mouse.targetX = e.touches[0].clientX - rect.left;
+                mouse.targetY = e.touches[0].clientY - rect.top;
+                mouse.targetIntensity = 1;
+            }
+        }, { passive: true });
+
+        heroSection.addEventListener('touchend', onMouseLeave, { passive: true });
+
+        // --- Animation Loop ---
+        function render(now) {
+            if (!isHeroVisible) {
+                animationFrameId = requestAnimationFrame(render);
+                return;
+            }
+
+            time = now * 0.001;
+            ctx.clearRect(0, 0, width, height);
+
+            mouse.x += (mouse.targetX - mouse.x) * 0.1;
+            mouse.y += (mouse.targetY - mouse.y) * 0.1;
+            mouse.intensity += (mouse.targetIntensity - mouse.intensity) * 0.05;
+
+            // 1. Draw Aurora Waves
+            for (let i = 0; i < waves.length; i++) {
+                drawAuroraWave(waves[i], time);
+            }
+
+            // 2. Draw Constellation Network
+            const len = particles.length;
+            for (let i = 0; i < len; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+
+            const maxDist = 125;
+            for (let i = 0; i < len; i++) {
+                const pA = particles[i];
+                for (let j = i + 1; j < len; j++) {
+                    const pB = particles[j];
+                    const dx = pA.x - pB.x;
+                    const dy = pA.y - pB.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < maxDist) {
+                        const alpha = (1 - dist / maxDist) * 0.32;
+                        ctx.beginPath();
+                        ctx.moveTo(pA.x, pA.y);
+                        ctx.lineTo(pB.x, pB.y);
+                        ctx.strokeStyle = 'rgba(16, 185, 129, ' + alpha + ')';
+                        ctx.lineWidth = 1.1;
+                        ctx.stroke();
+
+                        if (Math.random() < 0.0007 && pulses.length < 8) {
+                            pulses.push(new DataPulse(pA, pB, pA.color));
                         }
                     }
                 }
 
-                particles.forEach(p => {
-                    p.update();
-                    p.draw();
-                });
+                // Interactive beam to cursor
+                const mdx = mouse.x - pA.x;
+                const mdy = mouse.y - pA.y;
+                const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+                if (mDist < mouse.radius) {
+                    const alpha = (1 - mDist / mouse.radius) * 0.65;
+                    ctx.beginPath();
+                    ctx.moveTo(pA.x, pA.y);
+                    ctx.lineTo(mouse.x, mouse.y);
+                    ctx.strokeStyle = 'rgba(6, 182, 212, ' + alpha + ')';
+                    ctx.lineWidth = 1.5;
+                    ctx.stroke();
+                }
             }
-            requestAnimationFrame(animateParticles);
+
+            // Update & draw pulses
+            for (let i = pulses.length - 1; i >= 0; i--) {
+                pulses[i].update();
+                pulses[i].draw();
+                if (pulses[i].dead) pulses.splice(i, 1);
+            }
+
+            animationFrameId = requestAnimationFrame(render);
         }
-        animateParticles();
+
+        if ('IntersectionObserver' in window && heroSection) {
+            const heroObs = new IntersectionObserver((entries) => {
+                isHeroVisible = entries[0].isIntersecting;
+            }, { threshold: 0.05 });
+            heroObs.observe(heroSection);
+        }
+
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(resize, 180);
+        }, { passive: true });
+
+        resize();
+        requestAnimationFrame(render);
     }
 
     // 4. Sector Card Modal Activation
