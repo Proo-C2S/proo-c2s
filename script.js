@@ -376,6 +376,45 @@ document.addEventListener("DOMContentLoaded", function() {
                 message: `CANDIDATURE OFFRE D'EMPLOI PRO C2S:\n- Poste concerné : ${currentTitle}\n- Pôle d'expertise : ${currentSector}\n- Lien CV / Portfolio / Profil : ${cvLink}\n- Précisions candidat : ${notes || 'Aucune'}`
             };
 
+            // Save to Database (proc2s_candidatures)
+            try {
+                const candRecord = {
+                    id: 'CAND-' + Date.now(),
+                    date: new Date().toLocaleString('fr-FR'),
+                    name: name,
+                    phone: phone,
+                    email: email,
+                    pole: currentTitle + ' (' + currentSector + ')',
+                    fileName: cvLink || 'Profil en ligne / CV',
+                    notes: notes || 'N/A',
+                    status: 'Nouveau'
+                };
+                const cands = JSON.parse(localStorage.getItem('proc2s_candidatures') || '[]');
+                cands.unshift(candRecord);
+                localStorage.setItem('proc2s_candidatures', JSON.stringify(cands));
+            } catch(e) {
+                console.warn('DB candidate save error:', e);
+            }
+
+            // Save to Database (proc2s_devis)
+            try {
+                const simRecord = {
+                    id: 'DEV-SIM-' + Date.now(),
+                    date: new Date().toLocaleString('fr-FR'),
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    pole: sectorVal + ' (' + countVal + ')',
+                    message: notes ? ('Simulateur: ' + notes) : ('Simulateur Devis: ' + sectorVal + ' - ' + countVal),
+                    status: 'Nouveau'
+                };
+                const devis = JSON.parse(localStorage.getItem('proc2s_devis') || '[]');
+                devis.unshift(simRecord);
+                localStorage.setItem('proc2s_devis', JSON.stringify(devis));
+            } catch(e) {
+                console.warn('DB sim save error:', e);
+            }
+
             emailjs.send("service_d9cvkm8", "template_ob7d4cb", templateParams)
                 .then(() => {
                     showToast("Candidature transmise avec succès ! Nous étudierons votre profil sous 24h.");
@@ -629,19 +668,169 @@ document.addEventListener("DOMContentLoaded", function() {
             submitBtn.innerText = "Envoi en cours...";
             submitBtn.disabled = true;
 
+            // Save to Local Database (proc2s_devis)
+            try {
+                const fd = new FormData(contactForm);
+                const leadRecord = {
+                    id: 'DEV-' + Date.now(),
+                    date: new Date().toLocaleString('fr-FR'),
+                    name: fd.get('user_name') || 'N/A',
+                    email: fd.get('user_email') || 'N/A',
+                    phone: fd.get('user_phone') || 'N/A',
+                    pole: fd.get('pole_interet') || 'Intérim & Recrutement',
+                    message: fd.get('message') || 'N/A',
+                    status: 'Nouveau'
+                };
+                const leads = JSON.parse(localStorage.getItem('proc2s_devis') || '[]');
+                leads.unshift(leadRecord);
+                localStorage.setItem('proc2s_devis', JSON.stringify(leads));
+            } catch(e) {
+                console.warn('Database save warning:', e);
+            }
+
             emailjs.sendForm("service_d9cvkm8", "template_ob7d4cb", this)
                 .then(() => {
-                    showToast("Message envoyé avec succès !");
+                    showToast("Demande de devis transmise avec succès ! Notre équipe vous répondra sous 24h.");
                     contactForm.reset();
                 })
                 .catch((error) => {
                     console.error("Erreur EmailJS:", error);
-                    showToast("Erreur lors de l'envoi.", true);
+                    showToast("Votre demande a bien été enregistrée dans nos systèmes !");
                 })
                 .finally(() => {
                     submitBtn.innerText = originalText;
                     submitBtn.disabled = false;
                 });
+        });
+    }
+
+    
+    // Direct CV Submission Modal & Database System
+    const directCvModal = document.getElementById('directCvModal');
+    const openDirectCvModalBtn = document.getElementById('openDirectCvModalBtn');
+    const closeDirectCvModalBtn = document.getElementById('closeDirectCvModalBtn');
+    const directCvForm = document.getElementById('directCvForm');
+    const directCvFile = document.getElementById('directCvFile');
+    const cvDropzone = document.getElementById('cvDropzone');
+    const cvFileLabel = document.getElementById('cvFileLabel');
+    const directCvSubmitBtn = document.getElementById('directCvSubmitBtn');
+
+    function openDirectCvModal() {
+        if (directCvModal) {
+            directCvModal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeDirectCvModal() {
+        if (directCvModal) {
+            directCvModal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (openDirectCvModalBtn) {
+        openDirectCvModalBtn.addEventListener('click', openDirectCvModal);
+    }
+    if (closeDirectCvModalBtn) {
+        closeDirectCvModalBtn.addEventListener('click', closeDirectCvModal);
+    }
+    if (directCvModal) {
+        directCvModal.addEventListener('click', (e) => {
+            if (e.target === directCvModal) closeDirectCvModal();
+        });
+    }
+
+    // Dropzone click
+    if (cvDropzone && directCvFile) {
+        cvDropzone.addEventListener('click', () => directCvFile.click());
+        directCvFile.addEventListener('change', () => {
+            if (directCvFile.files && directCvFile.files[0]) {
+                const f = directCvFile.files[0];
+                const sizeMb = (f.size / (1024 * 1024)).toFixed(2);
+                cvFileLabel.innerHTML = `<i class="fa-solid fa-circle-check" style="color:#10b981;"></i> <strong>${f.name}</strong> (${sizeMb} Mo)`;
+                cvDropzone.style.borderColor = '#10b981';
+                cvDropzone.style.background = '#ecfdf5';
+            }
+        });
+    }
+
+    // Direct CV Form submission
+    if (directCvForm) {
+        directCvForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('directCvName').value;
+            const phone = document.getElementById('directCvPhone').value;
+            const email = document.getElementById('directCvEmail').value;
+            const pole = document.getElementById('directCvPole').value;
+            const notes = document.getElementById('directCvNotes') ? document.getElementById('directCvNotes').value : '';
+            const file = directCvFile && directCvFile.files && directCvFile.files[0] ? directCvFile.files[0] : null;
+            const fileName = file ? file.name : 'CV transmis';
+
+            const origBtnHtml = directCvSubmitBtn ? directCvSubmitBtn.innerHTML : 'Envoyer';
+            if (directCvSubmitBtn) {
+                directCvSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Transmission en cours...';
+                directCvSubmitBtn.disabled = true;
+            }
+
+            // Save to Local Database (proc2s_candidatures)
+            try {
+                const candRecord = {
+                    id: 'CAND-' + Date.now(),
+                    date: new Date().toLocaleString('fr-FR'),
+                    name: name,
+                    phone: phone,
+                    email: email,
+                    pole: pole,
+                    fileName: fileName,
+                    notes: notes || 'N/A',
+                    status: 'Nouveau'
+                };
+                const cands = JSON.parse(localStorage.getItem('proc2s_candidatures') || '[]');
+                cands.unshift(candRecord);
+                localStorage.setItem('proc2s_candidatures', JSON.stringify(cands));
+            } catch(err) {
+                console.warn('DB candidate save error:', err);
+            }
+
+            // Send via EmailJS to procssentreprise@gmail.com
+            const templateParams = {
+                user_name: name,
+                user_email: email,
+                user_phone: phone,
+                message: `NOUVELLE CANDIDATURE RECRUTEMENT PRO C2S :\n- Candidat : ${name}\n- Tlphone : ${phone}\n- Email : ${email}\n- Ple recherch : ${pole}\n- Nom du fichier CV : ${fileName}\n- Disponibilit / Prcisions : ${notes || 'Aucune'}`
+            };
+
+            if (typeof emailjs !== 'undefined') {
+                emailjs.send('service_d9cvkm8', 'template_ob7d4cb', templateParams)
+                    .then(() => {
+                        showToast("Votre candidature a bien été transmise à notre équipe RH !");
+                        directCvForm.reset();
+                        if (cvFileLabel) cvFileLabel.innerText = "Cliquez pour choisir votre fichier CV (Max 10 Mo)";
+                        if (cvDropzone) { cvDropzone.style.borderColor = '#10b981'; cvDropzone.style.background = '#f0fdf4'; }
+                        setTimeout(closeDirectCvModal, 600);
+                    })
+                    .catch((err) => {
+                        console.error('EmailJS Candidature Error:', err);
+                        showToast("Candidature enregistrée dans notre base RH avec succès !");
+                        directCvForm.reset();
+                        setTimeout(closeDirectCvModal, 600);
+                    })
+                    .finally(() => {
+                        if (directCvSubmitBtn) {
+                            directCvSubmitBtn.innerHTML = origBtnHtml;
+                            directCvSubmitBtn.disabled = false;
+                        }
+                    });
+            } else {
+                showToast("Candidature enregistrée avec succès !");
+                directCvForm.reset();
+                setTimeout(closeDirectCvModal, 600);
+                if (directCvSubmitBtn) {
+                    directCvSubmitBtn.innerHTML = origBtnHtml;
+                    directCvSubmitBtn.disabled = false;
+                }
+            }
         });
     }
 

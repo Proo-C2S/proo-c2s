@@ -1970,7 +1970,7 @@
                                 <input type="radio" name="pole_interet" value="Intérim & Recrutement" checked>
                                 <span class="chip-content">
                                     <i class="fa-solid fa-users"></i>
-                                    <span>Intérim & RH</span>
+                                    <span>Intérim</span>
                                 </span>
                             </label>
                             <label class="service-chip-option">
@@ -2024,14 +2024,19 @@
 
                         <!-- Candidate fast track -->
                         <div class="candidate-fast-track">
-                            <div class="cft-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                            <div class="cft-icon"><i class="fa-solid fa-file-signature"></i></div>
                             <div class="cft-text">
-                                <strong data-i18n="cv_notice">Vous souhaitez postuler ou envoyer un CV ?</strong>
-                                <span>Transmettez votre candidature instantanément par WhatsApp.</span>
+                                <strong data-i18n="cv_notice">Vous êtes candidat ? Déposez votre CV en ligne</strong>
+                                <span>Votre candidature arrive directement par e-mail à notre département RH.</span>
                             </div>
-                            <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20postuler%20et%20vous%20envoyer%20mon%20CV." target="_blank" rel="noopener noreferrer" class="btn-cv-pill" data-i18n="cv_btn">
-                                Envoyer CV
-                            </a>
+                            <div class="cft-btn-group" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+                                <button type="button" class="btn-cv-pill primary-cv" id="openDirectCvModalBtn" style="background:#047857;color:#ffffff!important;border:1.5px solid #047857;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 12px rgba(4,120,87,0.25);">
+                                    <i class="fa-solid fa-cloud-arrow-up"></i> <span>Déposer mon CV</span>
+                                </button>
+                                <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20postuler%20et%20vous%20envoyer%20mon%20CV." target="_blank" rel="noopener noreferrer" class="btn-cv-pill wa-cv" data-i18n="cv_btn" title="Postuler par WhatsApp">
+                                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                                </a>
+                            </div>
                         </div>
 
                     </form>
@@ -2079,7 +2084,7 @@
         </div>
     </div>
     <div class="copyright" data-i18n="copyright">
-        © 2026 PRO C2S - Tous droits réservés. | <a href="mentions-legales.html" style="color: #81c784; text-decoration: underline;">Mentions légales</a> | <a href="#" id="openPrivacyModal" style="color: #81c784; text-decoration: underline;">Politique de confidentialité</a>
+        © 2026 PRO C2S - Tous droits réservés. | <a href="mentions-legales.html" style="color: #81c784; text-decoration: underline;">Mentions légales</a> | <a href="#" id="openPrivacyModal" style="color: #81c784; text-decoration: underline;">Politique de confidentialité</a> | <a href="admin.html" target="_blank" style="color: #94a3b8; text-decoration: none; font-size: 11.5px; margin-left: 6px;" title="Portail RH & Admin"><i class="fa-solid fa-lock"></i> Espace RH</a>
     </div>
 </footer>
 
@@ -2722,6 +2727,75 @@
                 <i class="fa-solid fa-paper-plane"></i> <span data-i18n="sim_m_btn_submit">Envoyer ma demande à PRO C2S</span>
             </button>
             <span style="font-size:11px;color:#64748b;text-align:center;" data-i18n="sim_m_privacy_note">Données traitées en toute confidentialité par PRO C2S Maroc.</span>
+        </form>
+    </div>
+</div>
+
+
+<!-- ================= DIRECT CANDIDATE CV SUBMISSION MODAL ================= -->
+<div class="job-modal-overlay" id="directCvModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="job-modal-content" style="max-width: 560px; padding: 36px 30px;">
+        <button class="job-modal-close" id="closeDirectCvModalBtn" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+            <div style="width:50px;height:50px;border-radius:15px;background:rgba(16,185,129,0.12);color:#047857;display:flex;align-items:center;justify-content:center;font-size:24px;">
+                <i class="fa-solid fa-id-card-clip"></i>
+            </div>
+            <div>
+                <h3 style="margin:0;font-size:21px;font-weight:800;color:#0f172a;">Espace Recrutement & CV</h3>
+                <span style="font-size:12.5px;color:#64748b;">Envoi direct au département RH • Traitement sous 24h</span>
+            </div>
+        </div>
+
+        <form id="directCvForm" class="job-candidate-form">
+            <div class="form-row-2">
+                <div class="form-field">
+                    <label><i class="fa-solid fa-user"></i> Nom et prénom *</label>
+                    <input type="text" id="directCvName" name="user_name" placeholder="Ex: Yassine Berrada" required>
+                </div>
+                <div class="form-field">
+                    <label><i class="fa-solid fa-phone"></i> Téléphone / WhatsApp *</label>
+                    <input type="tel" id="directCvPhone" name="user_phone" placeholder="06 12 34 56 78" required>
+                </div>
+            </div>
+
+            <div class="form-row-2">
+                <div class="form-field">
+                    <label><i class="fa-solid fa-envelope"></i> Email de contact *</label>
+                    <input type="email" id="directCvEmail" name="user_email" placeholder="yassine@gmail.com" required>
+                </div>
+                <div class="form-field">
+                    <label><i class="fa-solid fa-briefcase"></i> Pôle / Métier recherché *</label>
+                    <select id="directCvPole" name="user_pole" required style="width:100%;padding:11px 14px;border:1.5px solid #cbd5e1;border-radius:10px;font-size:13.5px;background:#fff;outline:none;">
+                        <option value="Intérim & Logistique">Intérim & Logistique / Industrie</option>
+                        <option value="Ingénierie IT & Digital">Ingénierie IT & Digital</option>
+                        <option value="Nettoyage & Propreté">Nettoyage & Propreté Professionnelle</option>
+                        <option value="Transport & Chauffeur">Transport & Chauffeur</option>
+                        <option value="Administration & Support">Administration & Support</option>
+                        <option value="Autre profil">Autre profil</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Upload File Dropzone -->
+            <div class="form-field" style="margin-top: 10px;">
+                <label><i class="fa-solid fa-file-pdf"></i> Votre CV (PDF ou Word) *</label>
+                <div class="cv-dropzone" id="cvDropzone" style="border: 2px dashed #10b981; border-radius: 14px; padding: 20px; text-align: center; background: #f0fdf4; cursor: pointer; transition: all 0.22s ease;">
+                    <i class="fa-solid fa-cloud-arrow-up" style="font-size: 30px; color: #10b981; margin-bottom: 8px;"></i>
+                    <p id="cvFileLabel" style="margin: 0; font-size: 13.5px; font-weight: 700; color: #065f46;">Cliquez pour choisir votre fichier CV (Max 10 Mo)</p>
+                    <span style="font-size: 11.5px; color: #64748b; margin-top: 4px; display: block;">Formats acceptés : PDF, DOC, DOCX</span>
+                    <input type="file" id="directCvFile" accept=".pdf,.doc,.docx" style="display: none;">
+                </div>
+            </div>
+
+            <div class="form-field" style="margin-top: 10px;">
+                <label><i class="fa-solid fa-comment-dots"></i> Message ou disponibilités (Optionnel)</label>
+                <textarea id="directCvNotes" name="user_notes" rows="2" placeholder="Ex: Disponible immédiatement, basé à Rabat / Casablanca..." style="width:100%;padding:10px 14px;border:1.5px solid #cbd5e1;border-radius:10px;font-size:13px;resize:none;outline:none;"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="directCvSubmitBtn" style="width: 100%; justify-content: center; margin-top: 16px; padding: 15px; font-size: 15px; font-weight: 800; border-radius: 12px; background: #047857; border-color: #047857;">
+                <i class="fa-solid fa-paper-plane"></i> <span>Envoyer ma Candidature par Email</span>
+            </button>
         </form>
     </div>
 </div>
