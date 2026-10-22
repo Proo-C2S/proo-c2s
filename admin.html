@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Espace Direction & Base de Données RH | PRO C2S</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -874,8 +877,15 @@
 
     <script>
         const AUTH_KEY = 'proc2s_admin_auth';
-        const MASTER_PASS = 'proc2s2026';
+        // Cryptographic SHA-256 Hash of default master key (never stored in plaintext)
+        const DEFAULT_HASH = '1cabc99218c2b7d984658c8a55112309197339214532ab671e4bd4031b921af5';
         let currentTab = 'candidats';
+
+        async function sha256Hex(text) {
+            const enc = new TextEncoder().encode(text);
+            const buf = await crypto.subtle.digest('SHA-256', enc);
+            return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+        }
 
         // Check authentication
         function checkAuth() {
@@ -889,18 +899,71 @@
             }
         }
 
-        document.getElementById('loginBtn').addEventListener('click', () => {
-            const val = document.getElementById('passInput').value;
-            if (val === MASTER_PASS) {
+        async function handleLogin() {
+            const now = Date.now();
+            const lockUntil = parseInt(sessionStorage.getItem('login_locked_until') || '0');
+            if (lockUntil && now < lockUntil) {
+                const rem = Math.ceil((lockUntil - now) / 1000);
+                alert('Sécurité renforcée : Accès verrouillé suite à plusieurs tentatives erronées. Patientez ' + rem + ' secondes.');
+                return;
+            }
+
+            const inputEl = document.getElementById('passInput');
+            const val = inputEl ? inputEl.value : '';
+            if (!val) {
+                alert('Veuillez saisir votre mot de passe.');
+                return;
+            }
+
+            const inputHash = await sha256Hex(val);
+            const currentHash = localStorage.getItem('proc2s_admin_pwd_hash') || DEFAULT_HASH;
+
+            if (inputHash === currentHash) {
+                sessionStorage.setItem('login_attempts', '0');
+                sessionStorage.removeItem('login_locked_until');
                 sessionStorage.setItem(AUTH_KEY, 'true');
+                if (inputEl) inputEl.value = '';
                 checkAuth();
             } else {
-                alert('Mot de passe incorrect. Veuillez réessayer.');
+                let attempts = parseInt(sessionStorage.getItem('login_attempts') || '0') + 1;
+                sessionStorage.setItem('login_attempts', attempts);
+                if (attempts >= 3) {
+                    sessionStorage.setItem('login_locked_until', Date.now() + 5 * 60 * 1000);
+                    alert('Sécurité : 3 tentatives échouées. Accès temporairement verrouillé pendant 5 minutes.');
+                } else {
+                    alert('Mot de passe incorrect. Tentatives restantes : ' + (3 - attempts));
+                }
             }
-        });
+        }
+
+        async function promptChangePassword() {
+            const currentPass = prompt('Entrez votre mot de passe secret actuel :');
+            if (!currentPass) return;
+            const currentHash = await sha256Hex(currentPass);
+            const activeHash = localStorage.getItem('proc2s_admin_pwd_hash') || DEFAULT_HASH;
+            if (currentHash !== activeHash) {
+                alert('Mot de passe actuel incorrect !');
+                return;
+            }
+            const newPass = prompt('Entrez votre NOUVEAU mot de passe secret (min 6 caractères) :');
+            if (!newPass || newPass.length < 6) {
+                alert('Le mot de passe doit comporter au moins 6 caractères !');
+                return;
+            }
+            const confirmPass = prompt('Confirmez votre nouveau mot de passe :');
+            if (newPass !== confirmPass) {
+                alert('Les mots de passe ne correspondent pas !');
+                return;
+            }
+            const newHash = await sha256Hex(newPass);
+            localStorage.setItem('proc2s_admin_pwd_hash', newHash);
+            alert('Succès : Votre mot de passe a été modifié et sécurisé ! Notez-le bien.');
+        }
+
+        document.getElementById('loginBtn').addEventListener('click', handleLogin);
 
         document.getElementById('passInput').addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') document.getElementById('loginBtn').click();
+            if (e.key === 'Enter') handleLogin();
         });
 
         document.getElementById('logoutBtn').addEventListener('click', () => {
@@ -908,7 +971,6 @@
             checkAuth();
         });
 
-        // Seed demo data if empty so the user sees a full populated database immediately
         function seedInitialData() {
             if (!localStorage.getItem('proc2s_candidatures')) {
                 const sampleCands = [
