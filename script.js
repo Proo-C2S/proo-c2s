@@ -773,63 +773,89 @@ document.addEventListener("DOMContentLoaded", function() {
                 directCvSubmitBtn.disabled = true;
             }
 
-            // Save to Local Database (proc2s_candidatures)
-            try {
-                const candRecord = {
-                    id: 'CAND-' + Date.now(),
-                    date: new Date().toLocaleString('fr-FR'),
-                    name: name,
-                    phone: phone,
-                    email: email,
-                    pole: pole,
-                    fileName: fileName,
-                    notes: notes || 'N/A',
-                    status: 'Nouveau'
-                };
-                const cands = JSON.parse(localStorage.getItem('proc2s_candidatures') || '[]');
-                cands.unshift(candRecord);
-                localStorage.setItem('proc2s_candidatures', JSON.stringify(cands));
-            } catch(err) {
-                console.warn('DB candidate save error:', err);
-            }
+            const proceedWithSubmission = function(base64Data) {
+                // Save to Local Database (proc2s_candidatures)
+                try {
+                    const candRecord = {
+                        id: 'CAND-' + Date.now(),
+                        date: new Date().toLocaleString('fr-FR'),
+                        name: name,
+                        phone: phone,
+                        email: email,
+                        pole: pole,
+                        fileName: fileName,
+                        fileData: base64Data || null,
+                        notes: notes || 'N/A',
+                        status: 'Nouveau'
+                    };
+                    const cands = JSON.parse(localStorage.getItem('proc2s_candidatures') || '[]');
+                    cands.unshift(candRecord);
+                    localStorage.setItem('proc2s_candidatures', JSON.stringify(cands));
+                } catch(err) {
+                    console.warn('DB candidate save error (fallback without heavy file):', err);
+                    try {
+                        const fallbackRecord = {
+                            id: 'CAND-' + Date.now(),
+                            date: new Date().toLocaleString('fr-FR'),
+                            name: name,
+                            phone: phone,
+                            email: email,
+                            pole: pole,
+                            fileName: fileName,
+                            fileData: null,
+                            notes: notes || 'N/A',
+                            status: 'Nouveau'
+                        };
+                        const cands = JSON.parse(localStorage.getItem('proc2s_candidatures') || '[]');
+                        cands.unshift(fallbackRecord);
+                        localStorage.setItem('proc2s_candidatures', JSON.stringify(cands));
+                    } catch(e2) {}
+                }
 
-            // Send via EmailJS to procssentreprise@gmail.com
-            const templateParams = {
-                user_name: name,
-                user_email: email,
-                user_phone: phone,
-                message: `NOUVELLE CANDIDATURE RECRUTEMENT PRO C2S :\n- Candidat : ${name}\n- Tlphone : ${phone}\n- Email : ${email}\n- Ple recherch : ${pole}\n- Nom du fichier CV : ${fileName}\n- Disponibilit / Prcisions : ${notes || 'Aucune'}`
+                // Send via EmailJS to procssentreprise@gmail.com
+                const templateParams = {
+                    user_name: name,
+                    user_email: email,
+                    user_phone: phone,
+                    message: `NOUVELLE CANDIDATURE RECRUTEMENT PRO C2S :\n- Candidat : ${name}\n- Téléphone : ${phone}\n- Email : ${email}\n- Pôle recherché : ${pole}\n- Fichier CV : ${fileName}\n- Disponibilité / Précisions : ${notes || 'Aucune'}`
+                };
+
+                const finishSubmission = function() {
+                    showToast("Votre candidature a bien été transmise à notre équipe RH !");
+                    directCvForm.reset();
+                    if (cvFileLabel) cvFileLabel.innerText = "Cliquez pour choisir votre fichier CV (Max 10 Mo)";
+                    if (cvDropzone) { cvDropzone.style.borderColor = '#10b981'; cvDropzone.style.background = '#f0fdf4'; }
+                    setTimeout(closeDirectCvModal, 600);
+                    if (directCvSubmitBtn) {
+                        directCvSubmitBtn.innerHTML = origBtnHtml;
+                        directCvSubmitBtn.disabled = false;
+                    }
+                };
+
+                if (typeof emailjs !== 'undefined') {
+                    emailjs.send('service_d9cvkm8', 'template_ob7d4cb', templateParams)
+                        .then(() => finishSubmission())
+                        .catch((err) => {
+                            console.error('EmailJS Candidature Error:', err);
+                            finishSubmission();
+                        });
+                } else {
+                    finishSubmission();
+                }
             };
 
-            if (typeof emailjs !== 'undefined') {
-                emailjs.send('service_d9cvkm8', 'template_ob7d4cb', templateParams)
-                    .then(() => {
-                        showToast("Votre candidature a bien été transmise à notre équipe RH !");
-                        directCvForm.reset();
-                        if (cvFileLabel) cvFileLabel.innerText = "Cliquez pour choisir votre fichier CV (Max 10 Mo)";
-                        if (cvDropzone) { cvDropzone.style.borderColor = '#10b981'; cvDropzone.style.background = '#f0fdf4'; }
-                        setTimeout(closeDirectCvModal, 600);
-                    })
-                    .catch((err) => {
-                        console.error('EmailJS Candidature Error:', err);
-                        showToast("Candidature enregistrée dans notre base RH avec succès !");
-                        directCvForm.reset();
-                        setTimeout(closeDirectCvModal, 600);
-                    })
-                    .finally(() => {
-                        if (directCvSubmitBtn) {
-                            directCvSubmitBtn.innerHTML = origBtnHtml;
-                            directCvSubmitBtn.disabled = false;
-                        }
-                    });
+            // Read file if present and reasonable size (< 3.5MB for browser storage)
+            if (file && file.size < 3.5 * 1024 * 1024) {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    proceedWithSubmission(evt.target.result);
+                };
+                reader.onerror = function() {
+                    proceedWithSubmission(null);
+                };
+                reader.readAsDataURL(file);
             } else {
-                showToast("Candidature enregistrée avec succès !");
-                directCvForm.reset();
-                setTimeout(closeDirectCvModal, 600);
-                if (directCvSubmitBtn) {
-                    directCvSubmitBtn.innerHTML = origBtnHtml;
-                    directCvSubmitBtn.disabled = false;
-                }
+                proceedWithSubmission(null);
             }
         });
     }
