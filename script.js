@@ -1,5 +1,33 @@
 
 // ==========================================
+// GOOGLE FIREBASE CLOUD DATABASE ENGINE (CLIENT)
+// ==========================================
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAlGc52YhiU9t8-nDB8fTZWwj6ERKsNl4g",
+  authDomain: "proc2s.firebaseapp.com",
+  projectId: "proc2s",
+  storageBucket: "proc2s.firebasestorage.app",
+  messagingSenderId: "98548191465",
+  appId: "1:98548191465:web:545f9922984746a1032078",
+  measurementId: "G-599077BZD9"
+};
+
+let fbDb = null;
+let fbStorage = null;
+try {
+    if (typeof firebase !== 'undefined') {
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+        fbDb = firebase.firestore();
+        fbStorage = firebase.storage();
+    }
+} catch(e) {
+    console.warn('Firebase Client init:', e);
+}
+
+// ==========================================
 // INDEXEDDB ENGINE FOR LARGE CV DOCUMENTS (PDF/WORD)
 // Solves localStorage 5MB quota limitation permanently
 // ==========================================
@@ -83,6 +111,19 @@ window.PRO_C2S_DB = {
                 }).catch(function() {});
             } catch(e) {}
 
+            // Cloud Database Push to Firestore
+            if (fbDb) {
+                try {
+                    const fireCand = Object.assign({}, cand);
+                    if (fireCand.fileData && fireCand.fileData.length > 800000) {
+                        fireCand.fileData = null; // Prevent Firestore 1MB doc limit exceeded
+                    }
+                    fbDb.collection('proc2s_candidatures').doc(cand.id).set(fireCand).catch(function(err){
+                        console.warn('Firestore cand save err:', err);
+                    });
+                } catch(e) {}
+            }
+
             if (this.channel) {
                 this.channel.postMessage({ type: 'NEW_CANDIDATE', data: cand });
             }
@@ -109,6 +150,13 @@ window.PRO_C2S_DB = {
                 }).catch(function() {});
             } catch(e) {}
 
+            // Cloud Database Push to Firestore
+            if (fbDb) {
+                fbDb.collection('proc2s_devis').doc(devis.id).set(devis).catch(function(err){
+                    console.warn('Firestore devis save err:', err);
+                });
+            }
+
             if (this.channel) {
                 this.channel.postMessage({ type: 'NEW_DEVIS', data: devis });
             }
@@ -134,6 +182,13 @@ window.PRO_C2S_DB = {
                     body: JSON.stringify(msg)
                 }).catch(function() {});
             } catch(e) {}
+
+            // Cloud Database Push to Firestore
+            if (fbDb) {
+                fbDb.collection('proc2s_messages').doc(msg.id).set(msg).catch(function(err){
+                    console.warn('Firestore msg save err:', err);
+                });
+            }
 
             if (this.channel) {
                 this.channel.postMessage({ type: 'NEW_MESSAGE', data: msg });

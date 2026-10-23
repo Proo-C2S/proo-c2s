@@ -921,6 +921,10 @@
         </div>
     </div>
 
+        <!-- Google Firebase Cloud Database SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
     <script>
 
 // ==========================================
@@ -976,6 +980,69 @@ const PRO_C2S_IDB = {
         // Cryptographic SHA-256 Hash of default master key (never stored in plaintext)
         const DEFAULT_HASH = '1cabc99218c2b7d984658c8a55112309197339214532ab671e4bd4031b921af5';
         let currentTab = 'candidats';
+
+        // ==========================================
+        // GOOGLE FIREBASE CLOUD DATABASE REAL-TIME ENGINE
+        // ==========================================
+        
+const firebaseConfig = {
+  apiKey: "AIzaSyAlGc52YhiU9t8-nDB8fTZWwj6ERKsNl4g",
+  authDomain: "proc2s.firebaseapp.com",
+  projectId: "proc2s",
+  storageBucket: "proc2s.firebasestorage.app",
+  messagingSenderId: "98548191465",
+  appId: "1:98548191465:web:545f9922984746a1032078",
+  measurementId: "G-599077BZD9"
+};
+
+        let fbDb = null;
+        try {
+            if (typeof firebase !== 'undefined') {
+                if (!firebase.apps.length) {
+                    firebase.initializeApp(firebaseConfig);
+                }
+                fbDb = firebase.firestore();
+
+                // 1. Listen to Candidatures in real time from cloud
+                fbDb.collection('proc2s_candidatures').onSnapshot(function(snapshot) {
+                    let fireList = [];
+                    snapshot.forEach(function(doc) { fireList.push(doc.data()); });
+                    if (fireList.length > 0) {
+                        fireList.sort(function(a, b) { return (b.id || '').localeCompare(a.id || ''); });
+                        localStorage.setItem('proc2s_candidatures', JSON.stringify(fireList));
+                        renderCandidats(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '');
+                        updateKPIs();
+                    }
+                }, function(err) { console.warn('Firestore Cands listener:', err); });
+
+                // 2. Listen to Devis in real time from cloud
+                fbDb.collection('proc2s_devis').onSnapshot(function(snapshot) {
+                    let fireList = [];
+                    snapshot.forEach(function(doc) { fireList.push(doc.data()); });
+                    if (fireList.length > 0) {
+                        fireList.sort(function(a, b) { return (b.id || '').localeCompare(a.id || ''); });
+                        localStorage.setItem('proc2s_devis', JSON.stringify(fireList));
+                        renderDevis(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '');
+                        updateKPIs();
+                    }
+                }, function(err) { console.warn('Firestore Devis listener:', err); });
+
+                // 3. Listen to Messages in real time from cloud
+                fbDb.collection('proc2s_messages').onSnapshot(function(snapshot) {
+                    let fireList = [];
+                    snapshot.forEach(function(doc) { fireList.push(doc.data()); });
+                    if (fireList.length > 0) {
+                        fireList.sort(function(a, b) { return (b.id || '').localeCompare(a.id || ''); });
+                        localStorage.setItem('proc2s_messages', JSON.stringify(fireList));
+                        renderMessages(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '');
+                        updateKPIs();
+                    }
+                }, function(err) { console.warn('Firestore Messages listener:', err); });
+            }
+        } catch(e) {
+            console.warn('Firebase Admin init:', e);
+        }
+
 
         async function sha256Hex(text) {
             const enc = new TextEncoder().encode(text);
@@ -1352,6 +1419,7 @@ const PRO_C2S_IDB = {
         }
 
         function updateCandStatus(id, newStatus) {
+            if (fbDb) { fbDb.collection('proc2s_candidatures').doc(id).update({ status: newStatus }).catch(function(){}); }
             const list = JSON.parse(localStorage.getItem('proc2s_candidatures') || '[]');
             const item = list.find(c => c.id === id);
             if (item) {
@@ -1362,6 +1430,7 @@ const PRO_C2S_IDB = {
         }
 
         function updateDevisStatus(id, newStatus) {
+            if (fbDb) { fbDb.collection('proc2s_devis').doc(id).update({ status: newStatus }).catch(function(){}); }
             const list = JSON.parse(localStorage.getItem('proc2s_devis') || '[]');
             const item = list.find(d => d.id === id);
             if (item) {
@@ -1372,6 +1441,7 @@ const PRO_C2S_IDB = {
         }
 
         function deleteCand(id) {
+            if (fbDb) { fbDb.collection('proc2s_candidatures').doc(id).delete().catch(function(){}); }
             if (confirm('Voulez-vous vraiment supprimer cette candidature ?')) {
                 let list = JSON.parse(localStorage.getItem('proc2s_candidatures') || '[]');
                 list = list.filter(c => c.id !== id);
@@ -1382,6 +1452,7 @@ const PRO_C2S_IDB = {
         }
 
         function deleteDevis(id) {
+            if (fbDb) { fbDb.collection('proc2s_devis').doc(id).delete().catch(function(){}); }
             if (confirm('Voulez-vous vraiment supprimer cette demande de devis ?')) {
                 let list = JSON.parse(localStorage.getItem('proc2s_devis') || '[]');
                 list = list.filter(d => d.id !== id);
@@ -1465,6 +1536,7 @@ const PRO_C2S_IDB = {
         }
 
         function updateMessageStatus(id, newStatus) {
+            if (fbDb) { fbDb.collection('proc2s_messages').doc(id).update({ status: newStatus }).catch(function(){}); }
             const list = JSON.parse(localStorage.getItem('proc2s_messages') || '[]');
             const item = list.find(m => m.id === id);
             if (item) {
@@ -1481,6 +1553,7 @@ const PRO_C2S_IDB = {
         }
 
         function deleteMessage(id) {
+            if (fbDb) { fbDb.collection('proc2s_messages').doc(id).delete().catch(function(){}); }
             if (confirm('Voulez-vous vraiment supprimer ce message ?')) {
                 let list = JSON.parse(localStorage.getItem('proc2s_messages') || '[]');
                 list = list.filter(m => m.id !== id);
