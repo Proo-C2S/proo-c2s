@@ -1007,36 +1007,30 @@ const firebaseConfig = {
                 fbDb.collection('proc2s_candidatures').onSnapshot(function(snapshot) {
                     let fireList = [];
                     snapshot.forEach(function(doc) { fireList.push(doc.data()); });
-                    if (fireList.length > 0) {
-                        fireList.sort(function(a, b) { return (b.id || '').localeCompare(a.id || ''); });
-                        localStorage.setItem('proc2s_candidatures', JSON.stringify(fireList));
-                        renderCandidats(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '');
-                        updateKPIs();
-                    }
+                    fireList.sort(function(a, b) { return (b.id || '').localeCompare(a.id || ''); });
+                    localStorage.setItem('proc2s_candidatures', JSON.stringify(fireList));
+                    renderCandidats(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '');
+                    updateKPIs();
                 }, function(err) { console.warn('Firestore Cands listener:', err); });
 
                 // 2. Listen to Devis in real time from cloud
                 fbDb.collection('proc2s_devis').onSnapshot(function(snapshot) {
                     let fireList = [];
                     snapshot.forEach(function(doc) { fireList.push(doc.data()); });
-                    if (fireList.length > 0) {
-                        fireList.sort(function(a, b) { return (b.id || '').localeCompare(a.id || ''); });
-                        localStorage.setItem('proc2s_devis', JSON.stringify(fireList));
-                        renderDevis(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '');
-                        updateKPIs();
-                    }
+                    fireList.sort(function(a, b) { return (b.id || '').localeCompare(a.id || ''); });
+                    localStorage.setItem('proc2s_devis', JSON.stringify(fireList));
+                    renderDevis(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '');
+                    updateKPIs();
                 }, function(err) { console.warn('Firestore Devis listener:', err); });
 
                 // 3. Listen to Messages in real time from cloud
                 fbDb.collection('proc2s_messages').onSnapshot(function(snapshot) {
                     let fireList = [];
                     snapshot.forEach(function(doc) { fireList.push(doc.data()); });
-                    if (fireList.length > 0) {
-                        fireList.sort(function(a, b) { return (b.id || '').localeCompare(a.id || ''); });
-                        localStorage.setItem('proc2s_messages', JSON.stringify(fireList));
-                        renderMessages(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '');
-                        updateKPIs();
-                    }
+                    fireList.sort(function(a, b) { return (b.id || '').localeCompare(a.id || ''); });
+                    localStorage.setItem('proc2s_messages', JSON.stringify(fireList));
+                    renderMessages(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '');
+                    updateKPIs();
                 }, function(err) { console.warn('Firestore Messages listener:', err); });
             }
         } catch(e) {
