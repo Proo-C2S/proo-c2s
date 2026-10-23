@@ -1699,6 +1699,29 @@ const firebaseConfig = {
                 }
             }
 
+            // If not found yet and Firebase Firestore is available, fetch chunks from cloud
+            if (!activeFileData && typeof fbDb !== 'undefined' && fbDb) {
+                try {
+                    const snap = await fbDb.collection('proc2s_candidatures').doc(candId).collection('chunks').orderBy('idx').get();
+                    if (!snap.empty) {
+                        let combined = '';
+                        snap.forEach(doc => {
+                            combined += (doc.data().data || '');
+                        });
+                        if (combined) {
+                            activeFileData = combined;
+                            c.fileData = combined;
+                            // Cache in IDB for instant access next time
+                            if (typeof PRO_C2S_IDB !== 'undefined') {
+                                PRO_C2S_IDB.saveFile(candId, c.fileName, combined);
+                            }
+                        }
+                    }
+                } catch(cErr) {
+                    console.warn('Cloud chunks lookup error:', cErr);
+                }
+            }
+
             const overlay = document.getElementById('cvModalOverlay');
             const avatar = document.getElementById('cvModalAvatar');
             const nameEl = document.getElementById('cvModalName');

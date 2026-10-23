@@ -117,14 +117,29 @@ window.PRO_C2S_DB = {
                     const fireCand = Object.assign({}, cand);
                     delete fireCand.rawFile; // Don't save binary DOM File object directly in Firestore
 
+                    const fullBase64 = fireCand.fileData;
                     if (fireCand.fileData && fireCand.fileData.length > 800000) {
                         fireCand.fileData = null; // Prevent Firestore 1MB doc limit exceeded
+                        fireCand.hasChunks = true;
                     }
 
                     // Save document to Firestore
                     fbDb.collection('proc2s_candidatures').doc(cand.id).set(fireCand).catch(function(err){
                         console.warn('Firestore cand save err:', err);
                     });
+
+                    // If file is large (>800KB), automatically save in Firestore chunks (Guaranteed 0-config cloud storage)
+                    if (fullBase64 && fullBase64.length > 800000) {
+                        const CHUNK_SZ = 400000;
+                        const total = Math.ceil(fullBase64.length / CHUNK_SZ);
+                        for (let i = 0; i < total; i++) {
+                            const part = fullBase64.substring(i * CHUNK_SZ, (i + 1) * CHUNK_SZ);
+                            fbDb.collection('proc2s_candidatures').doc(cand.id).collection('chunks').doc(String(i)).set({
+                                idx: i,
+                                data: part
+                            }).catch(function(e){ console.warn('chunk write err:', e); });
+                        }
+                    }
 
                     // If file object is available and Storage is ready, upload to Firebase Storage
                     if (cand.rawFile && fbStorage) {
