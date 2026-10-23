@@ -1689,8 +1689,8 @@ const firebaseConfig = {
             const c = list.find(item => item.id === candId);
             if (!c) return;
 
-            // Fetch from IndexedDB if not in local storage object
-            let activeFileData = c.fileData;
+            // Check Cloud File URL, then fileData, then IndexedDB
+            let activeFileData = c.fileUrl || c.fileData;
             if (!activeFileData && typeof PRO_C2S_IDB !== 'undefined') {
                 try {
                     activeFileData = await PRO_C2S_IDB.getFile(candId);
@@ -1746,7 +1746,7 @@ const firebaseConfig = {
             if (activeFileData) {
                 let blobUrl = activeFileData;
                 try {
-                    if (activeFileData.startsWith('data:')) {
+                    if (typeof activeFileData === 'string' && activeFileData.startsWith('data:')) {
                         const parts = activeFileData.split(',');
                         const mime = parts[0].match(/:(.*?);/)[1] || 'application/pdf';
                         const bstr = atob(parts[1]);

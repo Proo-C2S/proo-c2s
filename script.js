@@ -111,17 +111,44 @@ window.PRO_C2S_DB = {
                 }).catch(function() {});
             } catch(e) {}
 
-            // Cloud Database Push to Firestore
+            // Cloud Database Push to Firestore & Cloud Storage
             if (fbDb) {
                 try {
                     const fireCand = Object.assign({}, cand);
+                    delete fireCand.rawFile; // Don't save binary DOM File object directly in Firestore
+
                     if (fireCand.fileData && fireCand.fileData.length > 800000) {
                         fireCand.fileData = null; // Prevent Firestore 1MB doc limit exceeded
                     }
+
+                    // Save document to Firestore
                     fbDb.collection('proc2s_candidatures').doc(cand.id).set(fireCand).catch(function(err){
                         console.warn('Firestore cand save err:', err);
                     });
-                } catch(e) {}
+
+                    // If file object is available and Storage is ready, upload to Firebase Storage
+                    if (cand.rawFile && fbStorage) {
+                        const safeFileName = (cand.fileName || 'cv.pdf').replace(/[^a-zA-Z0-9._-]/g, '_');
+                        const storageRef = fbStorage.ref('cv_documents/' + cand.id + '_' + safeFileName);
+                        storageRef.put(cand.rawFile).then(function(snapshot) {
+                            return snapshot.ref.getDownloadURL();
+                        }).then(function(downloadUrl) {
+                            cand.fileUrl = downloadUrl;
+                            fbDb.collection('proc2s_candidatures').doc(cand.id).update({ fileUrl: downloadUrl }).catch(function(){});
+                            // Also update localStorage
+                            let list = JSON.parse(localStorage.getItem('proc2s_candidatures') || '[]');
+                            const idx = list.findIndex(function(x){ return x.id === cand.id; });
+                            if (idx >= 0) {
+                                list[idx].fileUrl = downloadUrl;
+                                localStorage.setItem('proc2s_candidatures', JSON.stringify(list));
+                            }
+                        }).catch(function(sErr) {
+                            console.warn('Firebase Storage upload error:', sErr);
+                        });
+                    }
+                } catch(e) {
+                    console.warn('Cloud save error:', e);
+                }
             }
 
             if (this.channel) {
@@ -610,6 +637,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     pole: currentTitle + ' (' + currentSector + ')',
                     fileName: fileName,
                     fileData: base64Data || null,
+                    rawFile: file || null,
                     notes: notes || 'N/A',
                     status: 'Nouveau'
                 };
@@ -984,6 +1012,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     pole: pole,
                     fileName: fileName,
                     fileData: base64Data || null,
+                    rawFile: file || null,
                     notes: notes || 'N/A',
                     status: 'Nouveau'
                 };
