@@ -1,23 +1,37 @@
 ================================================================
-PRO C2S - SITE WEB OFFICIEL (VERSION FINALE)
+PRO C2S - SITE WEB OFFICIEL (VERSION PRO & BASE DE DONNÉES)
 Solutions RH, Travail Temporaire & Recrutement au Maroc
 ================================================================
 
 1. ACCÈS DIRECT AU SITE WEB
 ----------------------------
 - Double-cliquez simplement sur "Ouvrir le site.bat" ou sur "index.html"
-- Le site s'ouvre directement dans votre navigateur par défaut (Chrome, Edge, Firefox, Safari).
+- Pour lancer avec le serveur local et synchronisation automatique de la base :
+  Double-cliquez sur "Lancer le serveur local (Optionnel).bat" (http://localhost:5500)
 
-2. LIEN EN LIGNE (GITHUB PAGES)
---------------------------------
-- Site en ligne : https://proo-c2s.github.io/proo-c2s/
-- Dépôt GitHub : https://github.com/Proo-C2S/proo-c2s
+2. ESPACE ADMINISTRATION & BASE DE DONNÉES (ADMIN)
+--------------------------------------------------
+- Ouvrez "admin.html" dans votre navigateur ou via http://localhost:5500/admin.html
+- Mot de passe d'accès sécurisé : proc2s2026
+- Vous y trouverez :
+  1. Candidatures & CVs : Tous les CVs déposés (Word/PDF) avec aperçu direct et téléchargement 1-clic.
+  2. Demandes de Devis (Simulateur RH) : Toutes les estimations et demandes d'équipes chiffrées.
+  3. Messages Direction : Tous les messages envoyés à la Direction Générale (Partenariats, RDV, Marchés).
+  4. Exportation Excel / CSV pour chaque tableau en un clic.
 
-3. FONCTIONNALITÉS INTÉGRÉES
-----------------------------
-- Simulateur de délégation RH interactif avec sélection des pôles (Intérim, IT Full-Stack, Nettoyage, Chauffeurs B/C/D, Maîtres-Nageurs, Assistantes RH & Option personnalisée "Autre").
-- Envoi de devis express par Email avec EmailJS (Clé publique configurée).
-- Contact direct et WhatsApp direct (+212 663-449824).
-- Design responsive haute performance (Mobile, Tablette, Desktop).
+3. ARCHITECTURE SANS GMAIL (100% BASE DE DONNÉES)
+-------------------------------------------------
+- Aucun email n'est envoyé à Gmail.
+- Toutes les soumissions du site (CV, devis, message) sont enregistrées automatiquement :
+  * Dans la base de données IndexedDB + LocalStorage (stockage local illimité pour les gros fichiers CV).
+  * Dans le fichier physique "database.json" sur votre disque dès que le serveur local tourne.
+  * Synchronisation en temps réel entre toutes les fenêtres ouvertes.
 
-Date d'export : 20 Octobre 2026
+4. SECTIONS HARMONISÉES SANS AUCUN DOUBLON
+-------------------------------------------
+- Section Noire (Simulateur de délégation RH) :
+  Calculateur interactif d'équipes RH (Intérim, IT, Nettoyage, Chauffeurs, etc.) et demande de Devis Express sous 24h.
+- Section Contact en bas (Direction & Siège) :
+  Contact direct avec la Direction Générale & Youssef Naji (Partenariats, Rendez-vous, Appels d'offres) sans répéter les pôles.
+
+Date de mise à jour : 23 Octobre 2026

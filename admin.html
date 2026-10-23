@@ -776,7 +776,7 @@
         <div class="dash-container">
             
             <!-- KPI Statistics -->
-            <div class="kpi-grid">
+            <div class="kpi-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
                 <div class="kpi-card">
                     <div class="kpi-icon"><i class="fa-solid fa-id-card"></i></div>
                     <div class="kpi-info">
@@ -788,15 +788,23 @@
                 <div class="kpi-card">
                     <div class="kpi-icon blue"><i class="fa-solid fa-file-invoice-dollar"></i></div>
                     <div class="kpi-info">
-                        <span>Demandes de Devis (Clients)</span>
+                        <span>Devis (Simulateur RH)</span>
                         <h2 id="kpiDevisCount">0</h2>
+                    </div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="background: rgba(14, 165, 233, 0.12); color: #0284c7;"><i class="fa-solid fa-envelope-open-text"></i></div>
+                    <div class="kpi-info">
+                        <span>Messages Direction</span>
+                        <h2 id="kpiMessagesCount">0</h2>
                     </div>
                 </div>
 
                 <div class="kpi-card">
                     <div class="kpi-icon purple"><i class="fa-solid fa-bolt"></i></div>
                     <div class="kpi-info">
-                        <span>Nouveaux Leads (À traiter)</span>
+                        <span>Nouveaux Dossiers</span>
                         <h2 id="kpiNewCount">0</h2>
                     </div>
                 </div>
@@ -810,8 +818,12 @@
                         <span class="badge-count" id="tabCandsCount">0</span>
                     </button>
                     <button class="tab-btn" id="tabDevisBtn" onclick="switchTab('devis')">
-                        <i class="fa-solid fa-briefcase"></i> <span>Demandes de Devis (Entreprises)</span>
+                        <i class="fa-solid fa-calculator"></i> <span>Devis (Simulateur RH)</span>
                         <span class="badge-count" id="tabDevisCount">0</span>
+                    </button>
+                    <button class="tab-btn" id="tabMessagesBtn" onclick="switchTab('messages')">
+                        <i class="fa-solid fa-envelope"></i> <span>Messages Direction</span>
+                        <span class="badge-count" id="tabMessagesCount">0</span>
                     </button>
                 </div>
 
@@ -849,7 +861,7 @@
                 </div>
             </div>
 
-            <!-- Table Section: Devis Clients -->
+            <!-- Table Section: Devis Clients (Simulateur RH) -->
             <div class="table-card" id="devisTableWrapper" style="display: none;">
                 <div class="table-responsive">
                     <table class="dash-table">
@@ -866,6 +878,29 @@
                             </tr>
                         </thead>
                         <tbody id="devisTableBody">
+                            <!-- Injected by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Table Section: Messages Direction & Partenariats -->
+            <div class="table-card" id="messagesTableWrapper" style="display: none;">
+                <div class="table-responsive">
+                    <table class="dash-table">
+                        <thead>
+                            <tr>
+                                <th>Date & Heure</th>
+                                <th>Expéditeur / Société</th>
+                                <th>Contact Téléphone</th>
+                                <th>Email Professionnel</th>
+                                <th>Objet de la démarche</th>
+                                <th>Message complet</th>
+                                <th>Statut Direction</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="messagesTableBody">
                             <!-- Injected by JS -->
                         </tbody>
                     </table>
@@ -1050,6 +1085,23 @@ const PRO_C2S_IDB = {
                 localStorage.setItem('proc2s_candidatures', JSON.stringify(sampleCands));
             }
 
+            if (!localStorage.getItem('proc2s_messages')) {
+                const sampleMessages = [
+                    {
+                        id: 'MSG-001',
+                        date: '22/10/2026 14:10',
+                        name: 'Mehdi Benkiran',
+                        company: 'Groupe OCP / Sous-traitance',
+                        phone: '0661223344',
+                        email: 'm.benkiran@groupe-industriel.ma',
+                        subject: 'Partenariat Commercial & Grand Compte',
+                        message: 'Bonjour M. Naji, nous souhaiterions planifier une réunion de cadrage pour la mise en place d\'un contrat-cadre d\'intérim pour nos sites industriels.',
+                        status: 'Nouveau'
+                    }
+                ];
+                localStorage.setItem('proc2s_messages', JSON.stringify(sampleMessages));
+            }
+
             if (!localStorage.getItem('proc2s_devis')) {
                 const sampleDevis = [
                     {
@@ -1085,6 +1137,7 @@ const PRO_C2S_IDB = {
                 console.log('Live DB sync received:', e.data);
                 renderCandidats(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '');
                 renderDevis(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '');
+                renderMessages(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '');
                 updateKPIs();
             };
         }
@@ -1110,22 +1163,22 @@ const PRO_C2S_IDB = {
             seedInitialData();
             renderCandidats();
             renderDevis();
+            renderMessages();
+            syncWithServer();
             updateKPIs();
         }
 
         function switchTab(tab) {
             currentTab = tab;
-            if (tab === 'candidats') {
-                document.getElementById('candsTableWrapper').style.display = 'block';
-                document.getElementById('devisTableWrapper').style.display = 'none';
-                document.getElementById('tabCandsBtn').classList.add('active');
-                document.getElementById('tabDevisBtn').classList.remove('active');
-            } else {
-                document.getElementById('candsTableWrapper').style.display = 'none';
-                document.getElementById('devisTableWrapper').style.display = 'block';
-                document.getElementById('tabCandsBtn').classList.remove('active');
-                document.getElementById('tabDevisBtn').classList.add('active');
-            }
+            document.getElementById('candsTableWrapper').style.display = tab === 'candidats' ? 'block' : 'none';
+            document.getElementById('devisTableWrapper').style.display = tab === 'devis' ? 'block' : 'none';
+            document.getElementById('messagesTableWrapper').style.display = tab === 'messages' ? 'block' : 'none';
+
+            document.getElementById('tabCandsBtn').classList.toggle('active', tab === 'candidats');
+            document.getElementById('tabDevisBtn').classList.toggle('active', tab === 'devis');
+            document.getElementById('tabMessagesBtn').classList.toggle('active', tab === 'messages');
+            
+            handleSearch();
         }
 
         function renderCandidats(filterText = '') {
@@ -1297,12 +1350,171 @@ const PRO_C2S_IDB = {
             }
         }
 
+        function renderMessages(filterText = '') {
+            const list = JSON.parse(localStorage.getItem('proc2s_messages') || '[]');
+            const tbody = document.getElementById('messagesTableBody');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+
+            const filtered = list.filter(item => {
+                const query = filterText.toLowerCase();
+                return (item.name || '').toLowerCase().includes(query) ||
+                       (item.company || '').toLowerCase().includes(query) ||
+                       (item.phone || '').toLowerCase().includes(query) ||
+                       (item.email || '').toLowerCase().includes(query) ||
+                       (item.subject || '').toLowerCase().includes(query) ||
+                       (item.message || '').toLowerCase().includes(query);
+            });
+
+            if (document.getElementById('tabMessagesCount')) {
+                document.getElementById('tabMessagesCount').innerText = list.length;
+            }
+            if (document.getElementById('kpiMessagesCount')) {
+                document.getElementById('kpiMessagesCount').innerText = list.length;
+            }
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8" class="empty-placeholder"><i class="fa-solid fa-folder-open"></i><p>Aucun message reçu pour le moment</p></td></tr>';
+                return;
+            }
+
+            filtered.forEach(item => {
+                const tr = document.createElement('tr');
+                const isNew = item.status === 'Nouveau';
+                const statusClass = isNew ? 'status-new' : (item.status === 'En cours' ? 'status-progress' : (item.status === 'Traité' ? 'status-done' : 'status-archived'));
+
+                tr.innerHTML = `
+                    <td><strong>${escapeHtml(item.date)}</strong></td>
+                    <td>
+                        <div class="cand-cell">
+                            <span class="cand-name">${escapeHtml(item.name)}</span>
+                            <span class="cand-sub"><i class="fa-solid fa-building"></i> ${escapeHtml(item.company || 'Particulier / Non précisé')}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="tel:${escapeHtml(item.phone)}" class="contact-pill"><i class="fa-solid fa-phone"></i> ${escapeHtml(item.phone)}</a>
+                    </td>
+                    <td>
+                        <a href="mailto:${escapeHtml(item.email)}" class="contact-pill email"><i class="fa-solid fa-envelope"></i> ${escapeHtml(item.email)}</a>
+                    </td>
+                    <td>
+                        <span class="pole-badge">${escapeHtml(item.subject || 'Général')}</span>
+                    </td>
+                    <td>
+                        <div class="desc-cell" title="${escapeHtml(item.message)}">
+                            ${escapeHtml(item.message)}
+                        </div>
+                    </td>
+                    <td>
+                        <select class="status-select ${statusClass}" onchange="updateMessageStatus('${item.id}', this.value)">
+                            <option value="Nouveau" ${item.status === 'Nouveau' ? 'selected' : ''}>🔵 Nouveau</option>
+                            <option value="En cours" ${item.status === 'En cours' ? 'selected' : ''}>🟡 En cours</option>
+                            <option value="Traité" ${item.status === 'Traité' ? 'selected' : ''}>🟢 Traité</option>
+                            <option value="Archivé" ${item.status === 'Archivé' ? 'selected' : ''}>⚪ Archivé</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button type="button" class="btn-action-delete" onclick="deleteMessage('${item.id}')" title="Supprimer">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function updateMessageStatus(id, newStatus) {
+            const list = JSON.parse(localStorage.getItem('proc2s_messages') || '[]');
+            const item = list.find(m => m.id === id);
+            if (item) {
+                item.status = newStatus;
+                localStorage.setItem('proc2s_messages', JSON.stringify(list));
+                updateKPIs();
+                // Sync to server API
+                fetch('/api/update-status', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ type: 'message', id: id, status: newStatus })
+                }).catch(() => {});
+            }
+        }
+
+        function deleteMessage(id) {
+            if (confirm('Voulez-vous vraiment supprimer ce message ?')) {
+                let list = JSON.parse(localStorage.getItem('proc2s_messages') || '[]');
+                list = list.filter(m => m.id !== id);
+                localStorage.setItem('proc2s_messages', JSON.stringify(list));
+                renderMessages(document.getElementById('searchInput').value);
+                updateKPIs();
+                // Sync to server API
+                fetch('/api/delete', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ type: 'message', id: id })
+                }).catch(() => {});
+            }
+        }
+
+        function syncWithServer() {
+            fetch('/api/data')
+                .then(r => r.json())
+                .then(res => {
+                    if (res && res.success && res.data) {
+                        const sData = res.data;
+                        let changed = false;
+
+                        if (sData.candidatures && sData.candidatures.length > 0) {
+                            let localCands = JSON.parse(localStorage.getItem('proc2s_candidatures') || '[]');
+                            sData.candidatures.forEach(sc => {
+                                if (!localCands.some(lc => lc.id === sc.id)) {
+                                    localCands.unshift(sc);
+                                    changed = true;
+                                }
+                            });
+                            localStorage.setItem('proc2s_candidatures', JSON.stringify(localCands));
+                        }
+
+                        if (sData.devis && sData.devis.length > 0) {
+                            let localDevis = JSON.parse(localStorage.getItem('proc2s_devis') || '[]');
+                            sData.devis.forEach(sd => {
+                                if (!localDevis.some(ld => ld.id === sd.id)) {
+                                    localDevis.unshift(sd);
+                                    changed = true;
+                                }
+                            });
+                            localStorage.setItem('proc2s_devis', JSON.stringify(localDevis));
+                        }
+
+                        if (sData.messages && sData.messages.length > 0) {
+                            let localMessages = JSON.parse(localStorage.getItem('proc2s_messages') || '[]');
+                            sData.messages.forEach(sm => {
+                                if (!localMessages.some(lm => lm.id === sm.id)) {
+                                    localMessages.unshift(sm);
+                                    changed = true;
+                                }
+                            });
+                            localStorage.setItem('proc2s_messages', JSON.stringify(localMessages));
+                        }
+
+                        if (changed) {
+                            renderCandidats(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '');
+                            renderDevis(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '');
+                            renderMessages(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '');
+                            updateKPIs();
+                        }
+                    }
+                })
+                .catch(() => {});
+        }
+
         function handleSearch() {
-            const val = document.getElementById('searchInput').value;
+            const val = document.getElementById('searchInput') ? document.getElementById('searchInput').value : '';
             if (currentTab === 'candidats') {
                 renderCandidats(val);
-            } else {
+            } else if (currentTab === 'devis') {
                 renderDevis(val);
+            } else {
+                renderMessages(val);
             }
         }
 
@@ -1314,13 +1526,20 @@ const PRO_C2S_IDB = {
                     csv += `"${c.id}","${c.date}","${c.name}","${c.phone}","${c.email}","${c.pole}","${c.fileName}","${c.status}","${(c.notes||'').replace(/"/g, '""')}"\n`;
                 });
                 downloadFile(csv, 'Candidatures_PRO_C2S_' + new Date().toISOString().slice(0,10) + '.csv');
-            } else {
+            } else if (currentTab === 'devis') {
                 const list = JSON.parse(localStorage.getItem('proc2s_devis') || '[]');
                 let csv = 'ID,Date,Client_Entreprise,Telephone,Email,Pole,Statut,Message\n';
                 list.forEach(d => {
                     csv += `"${d.id}","${d.date}","${d.name}","${d.phone}","${d.email}","${d.pole}","${d.status}","${(d.message||'').replace(/"/g, '""')}"\n`;
                 });
-                downloadFile(csv, 'Devis_Clients_PRO_C2S_' + new Date().toISOString().slice(0,10) + '.csv');
+                downloadFile(csv, 'Devis_Simulateur_PRO_C2S_' + new Date().toISOString().slice(0,10) + '.csv');
+            } else {
+                const list = JSON.parse(localStorage.getItem('proc2s_messages') || '[]');
+                let csv = 'ID,Date,Nom,Societe,Telephone,Email,Objet,Statut,Message\n';
+                list.forEach(m => {
+                    csv += `"${m.id}","${m.date}","${m.name}","${m.company||''}","${m.phone}","${m.email}","${m.subject||''}","${m.status}","${(m.message||'').replace(/"/g, '""')}"\n`;
+                });
+                downloadFile(csv, 'Messages_Direction_PRO_C2S_' + new Date().toISOString().slice(0,10) + '.csv');
             }
         }
 

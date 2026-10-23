@@ -969,7 +969,7 @@
                 </div>
 
                 <button type="button" id="simOpenModalBtn" class="btn btn-sim-action" style="width: 100%; justify-content: center; font-size: 15px; margin-bottom: 10px;">
-                    <i class="fa-solid fa-paper-plane"></i> <span data-i18n="sim_email_btn">Demander ce devis par Email</span>
+                    <i class="fa-solid fa-calculator"></i> <span data-i18n="sim_email_btn">Obtenir mon Devis Express</span>
                 </button>
                 
                 <a href="#" id="simWhatsAppBtn" target="_blank" rel="noopener noreferrer" class="sim-btn-secondary">
@@ -1853,10 +1853,10 @@
         <!-- Section Header -->
         <div class="contact-header-center">
             <span class="badge-crit" data-i18n="contact_badge">
-                <i class="fa-solid fa-headset"></i> CONTACT & DÉVELOPPEMENT D'AFFAIRES
+                <i class="fa-solid fa-handshake"></i> DIRECTION GÉNÉRALE & PARTENARIATS
             </span>
-            <h2 data-i18n="contact_title">Parlons de votre <span style="background: linear-gradient(135deg, #047857 0%, #10b981 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Projet & Recrutement</span></h2>
-            <p data-i18n="contact_desc">Contactez-nous pour discuter de vos besoins et demander votre devis gratuit et personnalisé sous 24h.</p>
+            <h2 data-i18n="contact_title">Échangez avec la <span style="background: linear-gradient(135deg, #047857 0%, #10b981 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Direction Générale</span></h2>
+            <p data-i18n="contact_desc">Prenez contact directement avec notre direction pour un partenariat stratégique, un rendez-vous ou une collaboration d'entreprise.</p>
         </div>
 
         <div class="executive-contact-grid">
@@ -1963,35 +1963,35 @@
             <div class="contact-right-col">
                 <div class="exec-form-wrapper">
                     <div class="form-header">
-                        <div class="form-kicker"><i class="fa-solid fa-bolt"></i> DEVIS GRATUIT & CONFIDENTIEL</div>
-                        <h3>Transmettez votre Demande</h3>
-                        <p>Notre équipe RH & opérations analyse vos critères et vous répond sous 24h ouvrées.</p>
+                        <div class="form-kicker"><i class="fa-solid fa-envelope"></i> CONTACT DIRECTION & SIÈGE</div>
+                        <h3 data-i18n="contact_form_title">Prendre Contact avec la Direction</h3>
+                        <p data-i18n="contact_form_subtitle">Échangez directement avec notre direction générale et nos consultants pour vos partenariats et projets.</p>
                     </div>
 
                     <form class="contact-form executive-form" id="contact-form">
                         
-                        <!-- Pôle Selector (B2B Choice) -->
-                        <span class="service-selector-label">Pôle de service concerné :</span>
+                        <!-- Objet de la démarche -->
+                        <span class="service-selector-label" data-i18n="contact_subject_label">Objet de votre démarche :</span>
                         <div class="service-selector-grid">
                             <label class="service-chip-option">
-                                <input type="radio" name="pole_interet" value="Intérim & Recrutement" checked>
+                                <input type="radio" name="user_subject" value="Partenariat Commercial & Grand Compte" checked>
                                 <span class="chip-content">
-                                    <i class="fa-solid fa-users"></i>
-                                    <span>Intérim</span>
+                                    <i class="fa-solid fa-handshake"></i>
+                                    <span data-i18n="sub_partner">Partenariat</span>
                                 </span>
                             </label>
                             <label class="service-chip-option">
-                                <input type="radio" name="pole_interet" value="Ingénierie IT">
+                                <input type="radio" name="user_subject" value="Rendez-vous Direction">
                                 <span class="chip-content">
-                                    <i class="fa-solid fa-laptop-code"></i>
-                                    <span>Ingénierie IT</span>
+                                    <i class="fa-solid fa-calendar-check"></i>
+                                    <span data-i18n="sub_rdv">Rendez-vous</span>
                                 </span>
                             </label>
                             <label class="service-chip-option">
-                                <input type="radio" name="pole_interet" value="Nettoyage & Facility Management">
+                                <input type="radio" name="user_subject" value="Demande Institutionnelle & Marché">
                                 <span class="chip-content">
-                                    <i class="fa-solid fa-wand-magic-sparkles"></i>
-                                    <span>Nettoyage Pro</span>
+                                    <i class="fa-solid fa-landmark"></i>
+                                    <span data-i18n="sub_inst">Institutionnel</span>
                                 </span>
                             </label>
                         </div>
@@ -2001,6 +2001,11 @@
                             <div class="input-field-wrap">
                                 <input type="text" name="user_name" placeholder="Nom et prénom *" data-i18n-placeholder="form_name" aria-label="Nom complet" autocomplete="name" required>
                                 <i class="fa-solid fa-user field-icon"></i>
+                            </div>
+
+                            <div class="input-field-wrap">
+                                <input type="text" name="user_company" placeholder="Société / Organisme (Optionnel)" data-i18n-placeholder="form_company" aria-label="Société" autocomplete="organization">
+                                <i class="fa-solid fa-building field-icon"></i>
                             </div>
 
                             <div class="input-field-wrap">
@@ -2014,7 +2019,7 @@
                             </div>
 
                             <div class="input-field-wrap">
-                                <textarea name="message" placeholder="Détaillez vos besoins (profils recherchés, délais, volumes, ville)... *" data-i18n-placeholder="form_msg" aria-label="Votre message" required></textarea>
+                                <textarea name="message" placeholder="Votre message à la direction (projet, partenariat, demande de RDV)... *" data-i18n-placeholder="form_msg" aria-label="Votre message" required></textarea>
                                 <i class="fa-solid fa-comment-dots field-icon textarea-icon"></i>
                             </div>
                         </div>
@@ -2025,7 +2030,7 @@
                         </div>
 
                         <button type="submit" class="btn btn-exec-submit" data-i18n="form_submit">
-                            <span>Envoyer ma Demande de Devis</span>
+                            <span>Transmettre mon Message à la Direction</span>
                             <i class="fa-solid fa-arrow-right"></i>
                         </button>
 
@@ -2050,9 +2055,9 @@
 
                     <!-- Trust Footer Ribbon -->
                     <div class="form-trust-ribbon">
+                        <div class="ft-item"><i class="fa-solid fa-handshake"></i> Ligne Directe Direction</div>
+                        <div class="ft-item"><i class="fa-solid fa-shield-halved"></i> 100% Confidentiel</div>
                         <div class="ft-item"><i class="fa-solid fa-bolt"></i> Réponse sous 24h</div>
-                        <div class="ft-item"><i class="fa-solid fa-file-shield"></i> Devis 100% Gratuit</div>
-                        <div class="ft-item"><i class="fa-solid fa-handshake"></i> Sans engagement</div>
                     </div>
                 </div>
             </div>
@@ -2196,7 +2201,7 @@
             sim_guar: "Délégation garantie sous",
             sim_pool_stat: "Vivier actif de plus de 15 000 profils vérifiés",
             sim_speed_stat: "Délégation garantie sous 24h à 48h",
-            sim_email_btn: "Demander un devis détaillé",
+            sim_email_btn: "Obtenir mon Devis Express",
             sim_wa_btn: "Commander cette équipe",
             sim_btn: "Demander cette équipe",
 
@@ -2305,9 +2310,9 @@
             fq4_a: "Oui, PRO C2S déploie des équipes opérationnelles sur l'ensemble du territoire national : Tanger, Kénitra, Fès, Oujda, Marrakech, Agadir et les régions du Sud.",
 
             // Contact
-            contact_badge: "CONTACT",
-            contact_title: "Parlons de votre projet",
-            contact_desc: "Contactez-nous pour discuter de vos besoins et demander votre devis gratuit et personnalisé.",
+            contact_badge: "DIRECTION GÉNÉRALE & PARTENARIATS",
+            contact_title: "Échangez avec la Direction Générale",
+            contact_desc: "Prenez contact directement avec notre direction pour un partenariat stratégique, un rendez-vous ou une collaboration.",
             c_contact: "Contact",
             c_phone: "Téléphone",
             c_addr: "Adresse",
@@ -2318,7 +2323,14 @@
             form_msg: "Votre message",
             form_privacy: "En envoyant ce formulaire, vous acceptez que vos données soient utilisées pour répondre à votre demande. Voir notre",
             form_privacy_link: "politique de confidentialité",
-            form_submit: "Envoyer",
+            form_submit: "Transmettre à la Direction",
+            contact_form_title: "Prendre Contact avec la Direction",
+            contact_form_subtitle: "Échangez directement avec notre direction générale et nos experts RH.",
+            contact_subject_label: "Objet de votre démarche :",
+            sub_partner: "Partenariat",
+            sub_rdv: "Rendez-vous",
+            sub_inst: "Institutionnel",
+            form_company: "Société / Organisme (Optionnel)",
             cv_notice: "Vous souhaitez postuler ou envoyer un CV ?",
             cv_btn: "Envoyer mon CV via WhatsApp",
 
@@ -2340,7 +2352,7 @@
             sim_m_lbl_email: "Email professionnel *",
             sim_m_lbl_notes: "Précisions sur la mission (facultatif)",
             sim_m_btn_submit: "Envoyer ma demande à PRO C2S",
-            sim_m_privacy_note: "Données traitées en toute confidentialité par PRO C2S Maroc.",
+            sim_m_privacy_note: "Enregistrement direct dans notre Base RH • Traitement garanti sous 24h.",
             sec_modal_wa_btn: "Demander cette équipe via WhatsApp",
             priv_modal_title: "Politique de Confidentialité & Cookies"
         },
@@ -2418,7 +2430,7 @@
             sim_guar: "Guaranteed deployment within",
             sim_pool_stat: "Active talent pool of over 15,000 verified profiles",
             sim_speed_stat: "Guaranteed delegation within 24h to 48h",
-            sim_email_btn: "Request a Detailed Quote",
+            sim_email_btn: "Get Express Quote",
             sim_wa_btn: "Order this Team via WhatsApp",
             sim_btn: "Request This Team",
 
@@ -2527,9 +2539,9 @@
             fq4_a: "Yes, PRO C2S manages operational deployments across the entire Kingdom of Morocco: Tangier, Kenitra, Fez, Oujda, Marrakech, Agadir, and the Southern economic zones.",
 
             // Contact
-            contact_badge: "CONTACT US",
-            contact_title: "Let's Discuss Your Project",
-            contact_desc: "Reach out to discuss your staffing goals and receive your customized, free estimate.",
+            contact_badge: "EXECUTIVE LEADERSHIP & PARTNERSHIPS",
+            contact_title: "Connect with Executive Management",
+            contact_desc: "Reach out directly to our leadership for strategic partnerships, executive meetings, or institutional agreements.",
             c_contact: "Contact Person",
             c_phone: "Direct Phone",
             c_addr: "Head Office Address",
@@ -2540,7 +2552,14 @@
             form_msg: "Your Project / Staffing Needs",
             form_privacy: "By sending this form, you agree that your information will be processed to address your inquiry. View our",
             form_privacy_link: "privacy policy",
-            form_submit: "Send Message",
+            form_submit: "Send Message to Management",
+            contact_form_title: "Contact Executive Management",
+            contact_form_subtitle: "Connect directly with our managing director and senior HR consultants.",
+            contact_subject_label: "Purpose of your inquiry:",
+            sub_partner: "Partnership",
+            sub_rdv: "Appointment",
+            sub_inst: "Institutional",
+            form_company: "Company / Organization (Optional)",
             cv_notice: "Are you a candidate seeking to send your CV?",
             cv_btn: "Submit CV via WhatsApp",
 
@@ -2698,8 +2717,8 @@
                 <i class="fa-solid fa-file-invoice"></i>
             </div>
             <div>
-                <h3 style="margin:0;font-size:19px;font-weight:800;color:#0f172a;" data-i18n="sim_m_title">Demande de Devis Express</h3>
-                <span style="font-size:12px;color:#64748b;" data-i18n="sim_m_sub">Réponse et cadrage sous 24h ouvrées</span>
+                <h3 style="margin:0;font-size:19px;font-weight:800;color:#0f172a;" data-i18n="sim_m_title">Demande de Devis d'Équipe RH</h3>
+                <span style="font-size:12px;color:#64748b;" data-i18n="sim_m_sub">Cadrage opérationnel & Chiffrage précis sous 24h ouvrées</span>
             </div>
         </div>
 
@@ -2731,7 +2750,7 @@
             </div>
 
             <button type="submit" id="simModalSubmitBtn" class="btn" style="width:100%;justify-content:center;padding:13px;font-size:14.5px;margin-top:4px;">
-                <i class="fa-solid fa-paper-plane"></i> <span data-i18n="sim_m_btn_submit">Envoyer ma demande à PRO C2S</span>
+                <i class="fa-solid fa-check-circle"></i> <span data-i18n="sim_m_btn_submit">Confirmer ma Demande de Devis</span>
             </button>
             <span style="font-size:11px;color:#64748b;text-align:center;" data-i18n="sim_m_privacy_note">Données traitées en toute confidentialité par PRO C2S Maroc.</span>
         </form>

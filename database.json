@@ -1,0 +1,41 @@
+{
+  "candidatures": [
+    {
+      "id": "TEST-CAND-001",
+      "date": "23/10/2026 11:30",
+      "name": "Amine Tahiri",
+      "phone": "0611223344",
+      "email": "amine.tahiri@gmail.com",
+      "pole": "Développeur Full-Stack (Informatique)",
+      "fileName": "CV_Amine_Tahiri.pdf",
+      "notes": "Test CV submission",
+      "status": "Nouveau"
+    }
+  ],
+  "devis": [
+    {
+      "id": "TEST-DEV-001",
+      "date": "23/10/2026 11:31",
+      "name": "Société Marocaine de Construction",
+      "phone": "0522998877",
+      "email": "rh@smc-btp.ma",
+      "pole": "Intérim & Ouvriers",
+      "effectif": "6 à 15 profils",
+      "message": "Besoin de 10 maçons et coffreurs pour chantier Casa Anfa",
+      "status": "Nouveau"
+    }
+  ],
+  "messages": [
+    {
+      "id": "TEST-MSG-001",
+      "date": "23/10/2026 11:32",
+      "name": "Hassan Kabbaj",
+      "company": "Kabbaj Holdings",
+      "phone": "0661001122",
+      "email": "h.kabbaj@holdings.ma",
+      "subject": "Partenariat Commercial & Grand Compte",
+      "message": "Demande de rendez-vous avec M. Youssef Naji la semaine prochaine.",
+      "status": "Nouveau"
+    }
+  ]
+}

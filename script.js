@@ -67,10 +67,22 @@ window.PRO_C2S_DB = {
             try {
                 localStorage.setItem('proc2s_candidatures', JSON.stringify(list));
             } catch(e) {
-                console.warn('LocalStorage quota warning, storing lightweight copy (full file safe in IndexedDB):', e);
-                cand.fileData = null;
-                localStorage.setItem('proc2s_candidatures', JSON.stringify(list));
+                console.warn('LocalStorage quota, storing lightweight copy (full file safe in IndexedDB):', e);
+                const light = Object.assign({}, cand, { fileData: null });
+                let lightList = JSON.parse(localStorage.getItem('proc2s_candidatures') || '[]');
+                lightList.unshift(light);
+                localStorage.setItem('proc2s_candidatures', JSON.stringify(lightList));
             }
+
+            // Sync to local server API if active
+            try {
+                fetch('/api/candidate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(cand)
+                }).catch(function() {});
+            } catch(e) {}
+
             if (this.channel) {
                 this.channel.postMessage({ type: 'NEW_CANDIDATE', data: cand });
             }
@@ -81,11 +93,22 @@ window.PRO_C2S_DB = {
             return false;
         }
     },
+
     saveDevis: function(devis) {
         try {
             let list = JSON.parse(localStorage.getItem('proc2s_devis') || '[]');
             list.unshift(devis);
             localStorage.setItem('proc2s_devis', JSON.stringify(list));
+
+            // Sync to local server API if active
+            try {
+                fetch('/api/devis', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(devis)
+                }).catch(function() {});
+            } catch(e) {}
+
             if (this.channel) {
                 this.channel.postMessage({ type: 'NEW_DEVIS', data: devis });
             }
@@ -93,6 +116,32 @@ window.PRO_C2S_DB = {
             return true;
         } catch(err) {
             console.error('PRO_C2S_DB saveDevis error:', err);
+            return false;
+        }
+    },
+
+    saveMessage: function(msg) {
+        try {
+            let list = JSON.parse(localStorage.getItem('proc2s_messages') || '[]');
+            list.unshift(msg);
+            localStorage.setItem('proc2s_messages', JSON.stringify(list));
+
+            // Sync to local server API if active
+            try {
+                fetch('/api/message', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(msg)
+                }).catch(function() {});
+            } catch(e) {}
+
+            if (this.channel) {
+                this.channel.postMessage({ type: 'NEW_MESSAGE', data: msg });
+            }
+            window.dispatchEvent(new CustomEvent('proc2s_db_updated', { detail: { type: 'message', data: msg } }));
+            return true;
+        } catch(err) {
+            console.error('PRO_C2S_DB saveMessage error:', err);
             return false;
         }
     }
@@ -170,7 +219,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // Initialize EmailJS with client key
     if (typeof emailjs !== 'undefined') {
         try {
-            emailjs.init({ publicKey: "W70dwCkNbwmFHeSOA" });
+            // EmailJS disabled - 100% Database Storage
+            // emailjs.init({ publicKey: "W70dwCkNbwmFHeSOA" });
         } catch(e) {}
     }
 
@@ -530,16 +580,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 };
 
-                if (typeof emailjs !== 'undefined') {
-                    emailjs.send('service_d9cvkm8', 'template_ob7d4cb', templateParams)
-                        .then(() => finish())
-                        .catch((err) => {
-                            console.warn('EmailJS fallback:', err);
-                            finish();
-                        });
-                } else {
-                    finish();
-                }
+                finish();
             };
 
             if (file && file.size <= 20 * 1024 * 1024) {
@@ -780,43 +821,31 @@ document.addEventListener("DOMContentLoaded", function() {
 
         contactForm.addEventListener("submit", function(event) {
             event.preventDefault();
-            const originalText = submitBtn ? submitBtn.innerText : "Envoyer";
+            const originalText = submitBtn ? submitBtn.innerHTML : "Envoyer";
             if (submitBtn) {
-                submitBtn.innerText = "Envoi en cours...";
+                submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Transmission...';
                 submitBtn.disabled = true;
             }
 
             const fd = new FormData(contactForm);
-            const leadRecord = {
-                id: 'DEV-' + Date.now(),
+            const msgRecord = {
+                id: 'MSG-' + Date.now(),
                 date: new Date().toLocaleString('fr-FR'),
                 name: fd.get('user_name') || 'N/A',
+                company: fd.get('user_company') || 'N/A',
                 email: fd.get('user_email') || 'N/A',
                 phone: fd.get('user_phone') || 'N/A',
-                pole: fd.get('pole_interet') || 'Intérim & Recrutement',
+                subject: fd.get('user_subject') || 'Partenariat Commercial & Grand Compte',
                 message: fd.get('message') || 'N/A',
                 status: 'Nouveau'
             };
-            window.PRO_C2S_DB.saveDevis(leadRecord);
+            window.PRO_C2S_DB.saveMessage(msgRecord);
 
-            const finish = function() {
-                showToast("Votre demande de devis a été transmise avec succès ! Notre équipe vous répondra sous 24h.");
-                contactForm.reset();
-                if (submitBtn) {
-                    submitBtn.innerText = originalText;
-                    submitBtn.disabled = false;
-                }
-            };
-
-            if (typeof emailjs !== 'undefined') {
-                emailjs.sendForm('service_d9cvkm8', 'template_ob7d4cb', contactForm)
-                    .then(() => finish())
-                    .catch((err) => {
-                        console.warn('EmailJS fallback:', err);
-                        finish();
-                    });
-            } else {
-                finish();
+            showToast("Votre message a été transmis directement à la Direction Générale ! Nous vous répondrons sous 24h ouvrées.");
+            contactForm.reset();
+            if (submitBtn) {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
             }
         });
     }
@@ -925,16 +954,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 };
 
-                if (typeof emailjs !== 'undefined') {
-                    emailjs.send('service_d9cvkm8', 'template_ob7d4cb', templateParams)
-                        .then(() => finish())
-                        .catch((err) => {
-                            console.warn('EmailJS fallback:', err);
-                            finish();
-                        });
-                } else {
-                    finish();
-                }
+                finish();
             };
 
             if (file && file.size <= 20 * 1024 * 1024) {
@@ -983,12 +1003,12 @@ document.addEventListener("DOMContentLoaded", function() {
             const phone = document.getElementById("simModalPhone").value;
             const email = document.getElementById("simModalEmail").value;
             const notes = document.getElementById("simModalNotes") ? document.getElementById("simModalNotes").value : "";
-            const sectorVal = simSector ? simSector.value : "Non précisé";
-            const countVal = simCount ? simCount.value : "Non précisé";
+            const sectorVal = simSector ? simSector.value : "Intérim & Production";
+            const countVal = simCount ? simCount.value : "3 à 5 profils";
 
             const origText = simModalSubmitBtn ? simModalSubmitBtn.innerHTML : "Envoyer";
             if (simModalSubmitBtn) {
-                simModalSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Transmission...';
+                simModalSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enregistrement en base...';
                 simModalSubmitBtn.disabled = true;
             }
 
@@ -998,38 +1018,19 @@ document.addEventListener("DOMContentLoaded", function() {
                 name: name,
                 email: email,
                 phone: phone,
-                pole: sectorVal + ' (' + countVal + ')',
-                message: notes ? ('Simulation: ' + notes) : ('Simulation Devis: ' + sectorVal + ' - ' + countVal),
+                pole: sectorVal,
+                effectif: countVal,
+                message: notes ? ('Précisions : ' + notes) : ('Demande de devis pour ' + sectorVal + ' (' + countVal + ')'),
                 status: 'Nouveau'
             };
             window.PRO_C2S_DB.saveDevis(simRecord);
 
-            const templateParams = {
-                user_name: name,
-                user_phone: phone,
-                user_email: email,
-                message: `DEMANDE DE DEVIS SIMULATEUR PRO C2S:\n- Secteur : ${sectorVal}\n- Effectif : ${countVal}\n- Client : ${name}\n- Téléphone : ${phone}\n- Email : ${email}\n- Précisions : ${notes || 'Aucune'}`
-            };
-
-            const finish = function() {
-                showToast("Votre demande de simulation a été transmise avec succès !");
-                simEmailForm.reset();
-                if (simEmailModal) simEmailModal.classList.remove("open");
-                if (simModalSubmitBtn) {
-                    simModalSubmitBtn.innerHTML = origText;
-                    simModalSubmitBtn.disabled = false;
-                }
-            };
-
-            if (typeof emailjs !== 'undefined') {
-                emailjs.send('service_d9cvkm8', 'template_ob7d4cb', templateParams)
-                    .then(() => finish())
-                    .catch((err) => {
-                        console.warn('EmailJS fallback:', err);
-                        finish();
-                    });
-            } else {
-                finish();
+            showToast("Votre demande de devis a été enregistrée avec succès dans notre Base de Données RH ! Notre équipe prend contact sous 24h.");
+            simEmailForm.reset();
+            if (simEmailModal) simEmailModal.classList.remove("open");
+            if (simModalSubmitBtn) {
+                simModalSubmitBtn.innerHTML = origText;
+                simModalSubmitBtn.disabled = false;
             }
         });
     }
