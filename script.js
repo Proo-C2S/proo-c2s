@@ -806,6 +806,17 @@ document.addEventListener("DOMContentLoaded", function() {
                         jobCandidateSubmitBtn.innerHTML = origHtml;
                         jobCandidateSubmitBtn.disabled = false;
                     }
+                    if (typeof window.showExecutiveConfirmation === 'function') {
+                        window.showExecutiveConfirmation({
+                            type: 'candidate',
+                            refId: candRecord.id,
+                            name: name,
+                            subject: currentTitle + ' (' + currentSector + ')',
+                            fileName: fileName,
+                            phone: phone,
+                            email: email
+                        });
+                    }
                 };
 
                 finish();
@@ -1039,12 +1050,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const toast = document.getElementById("toastNotification");
     const toastMsg = document.getElementById("toastMsg");
 
-    function showToast(message, isError = false) {
+    function showToast(message, type = "success") {
         if(toast && toastMsg) {
             toastMsg.innerText = message;
-            toast.style.background = isError ? "#e11d48" : "#1b5e20";
+            const isErr = (type === true || type === "error");
+            toast.style.background = isErr ? "#e11d48" : "#047857";
             toast.classList.add("show");
-            setTimeout(() => toast.classList.remove("show"), 4000);
+            setTimeout(() => toast.classList.remove("show"), 4500);
         }
     }
 
@@ -1074,11 +1086,22 @@ document.addEventListener("DOMContentLoaded", function() {
             window.PRO_C2S_DB.saveMessage(msgRecord);
 
             const isEn = localStorage.getItem("proC2sLang") === "en";
-                        showToast(isEn ? "Your message has been sent directly to Executive Management! We will respond within 24 business hours." : "Votre message a été transmis directement à la Direction Générale ! Nous vous répondrons sous 24h ouvrées.", "success");
+            showToast(isEn ? "Your message has been sent directly to Executive Management! We will respond within 24 business hours." : "Votre message a été transmis directement à la Direction Générale ! Nous vous répondrons sous 24h ouvrées.", "success");
             contactForm.reset();
             if (submitBtn) {
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
+            }
+            if (typeof window.showExecutiveConfirmation === 'function') {
+                window.showExecutiveConfirmation({
+                    type: 'contact',
+                    refId: msgRecord.id,
+                    name: msgRecord.name,
+                    company: msgRecord.company,
+                    subject: msgRecord.subject,
+                    phone: msgRecord.phone,
+                    email: msgRecord.email
+                });
             }
         });
     }
@@ -1186,6 +1209,17 @@ document.addEventListener("DOMContentLoaded", function() {
                     if (directCvSubmitBtn) {
                         directCvSubmitBtn.innerHTML = origBtnHtml;
                         directCvSubmitBtn.disabled = false;
+                    }
+                    if (typeof window.showExecutiveConfirmation === 'function') {
+                        window.showExecutiveConfirmation({
+                            type: 'candidate',
+                            refId: candRecord.id,
+                            name: name,
+                            subject: pole || 'Dépôt Direct de CV',
+                            fileName: fileName,
+                            phone: phone,
+                            email: email
+                        });
                     }
                 };
 

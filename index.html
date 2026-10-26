@@ -1996,7 +1996,7 @@
                 <div class="qc-content">
                     <span class="qc-label" data-i18n="c_phone">Lignes Directes Siège</span>
                     <div class="qc-title">
-                        <a href="tel:+212520704830" class="qc-link">05 20 70 48 30</a> / <a href="tel:+212663449824" class="qc-link">06 63 44 98 24</a>
+                        <a href="tel:+212520704830" class="qc-link">05 20 70 48 30</a> / <a href="tel:+212663449824" class="qc-link" style="color:#047857;font-weight:800;">06 63 44 98 24</a>
                     </div>
                     <p class="qc-subtext"><span>Lun - Ven 08h30 - 18h30</span> • <strong>Ligne Directe</strong></p>
                 </div>
@@ -2063,26 +2063,31 @@
                 <form class="contact-form" id="contactForm" novalidate>
                     <div class="form-fields-grid">
                         <div class="input-field-wrap">
-                            <input type="text" name="user_name" placeholder="Nom et prénom *" data-i18n-placeholder="form_name" aria-label="Nom complet" autocomplete="name" required>
-                            <i class="fa-solid fa-user field-icon"></i>
+                            <label class="field-label" data-i18n="lbl_name">Nom et prénom *</label>
+                            <input type="text" name="user_name" placeholder="Ex: Karim Bennani" data-i18n-placeholder="form_name" aria-label="Nom complet" autocomplete="name" required>
+                            <i class="fa-solid fa-user field-icon" style="top:38px;"></i>
                         </div>
 
                         <div class="input-field-wrap">
-                            <input type="text" name="user_company" placeholder="Société / Organisme (Optionnel)" data-i18n-placeholder="form_company" aria-label="Société" autocomplete="organization">
-                            <i class="fa-solid fa-building field-icon"></i>
+                            <label class="field-label" data-i18n="lbl_company">Société / Organisme</label>
+                            <input type="text" name="user_company" placeholder="Ex: Entreprise SARL" data-i18n-placeholder="form_company" aria-label="Société" autocomplete="organization">
+                            <i class="fa-solid fa-building field-icon" style="top:38px;"></i>
                         </div>
 
                         <div class="input-field-wrap">
-                            <input type="email" name="user_email" placeholder="Adresse e-mail professionnelle *" data-i18n-placeholder="form_email" aria-label="Adresse e-mail" autocomplete="email" required>
-                            <i class="fa-solid fa-envelope field-icon"></i>
+                            <label class="field-label" data-i18n="lbl_email">Adresse e-mail professionnelle *</label>
+                            <input type="email" name="user_email" placeholder="contact@entreprise.ma" data-i18n-placeholder="form_email" aria-label="Adresse e-mail" autocomplete="email" required>
+                            <i class="fa-solid fa-envelope field-icon" style="top:38px;"></i>
                         </div>
 
                         <div class="input-field-wrap">
-                            <input type="tel" name="user_phone" placeholder="Numéro de téléphone *" data-i18n-placeholder="form_phone" aria-label="Téléphone" autocomplete="tel" required>
-                            <i class="fa-solid fa-phone field-icon"></i>
+                            <label class="field-label" data-i18n="lbl_phone">Numéro de téléphone *</label>
+                            <input type="tel" name="user_phone" placeholder="06 XX XX XX XX" data-i18n-placeholder="form_phone" aria-label="Téléphone" autocomplete="tel" required>
+                            <i class="fa-solid fa-phone field-icon" style="top:38px;"></i>
                         </div>
 
                         <div class="input-field-wrap" style="grid-column: 1 / -1;">
+                            <label class="field-label" data-i18n="lbl_subject">Objet de votre demande *</label>
                             <select name="user_subject" id="contactSubjectSelect" aria-label="Objet de la demande" style="width:100%;padding:14px 18px 14px 44px;border:1.5px solid #e2e8f0;border-radius:14px;background:#f8fafc;font-size:14px;color:#0f172a;font-weight:600;outline:none;appearance:none;-webkit-appearance:none;cursor:pointer;">
                                 <option value="Recrutement & Délégation d'Intérim Urgent">⚡ Recrutement & Délégation d'Intérim Urgent</option>
                                 <option value="Partenariat Commercial & Grand Compte">🤝 Partenariat Commercial & Grand Compte</option>
@@ -2090,13 +2095,14 @@
                                 <option value="Services Informatiques & Facility Management">💻 Services Informatiques & Propreté Pro</option>
                                 <option value="Autre Demande Spécifique">📋 Autre Demande Spécifique</option>
                             </select>
-                            <i class="fa-solid fa-list-check field-icon" style="top:16px;"></i>
-                            <i class="fa-solid fa-chevron-down" style="position:absolute;right:18px;top:18px;font-size:12px;color:#94a3b8;pointer-events:none;"></i>
+                            <i class="fa-solid fa-list-check field-icon" style="top:38px;"></i>
+                            <i class="fa-solid fa-chevron-down" style="position:absolute;right:18px;top:40px;font-size:12px;color:#94a3b8;pointer-events:none;"></i>
                         </div>
 
-                        <div class="input-field-wrap">
-                            <textarea name="message" placeholder="Votre message à la direction (projet, partenariat, demande de RDV)... *" data-i18n-placeholder="form_msg" aria-label="Votre message" required></textarea>
-                            <i class="fa-solid fa-comment-dots field-icon textarea-icon"></i>
+                        <div class="input-field-wrap" style="grid-column: 1 / -1;">
+                            <label class="field-label" data-i18n="lbl_msg">Votre message détaillé *</label>
+                            <textarea name="message" placeholder="Décrivez votre besoin, vos effectifs ou l'objet de votre échange..." data-i18n-placeholder="form_msg" aria-label="Votre message" required style="min-height:120px;"></textarea>
+                            <i class="fa-solid fa-comment-dots field-icon textarea-icon" style="top:40px;"></i>
                         </div>
                     </div>
 
@@ -2136,29 +2142,60 @@
                     </div>
                 </div>
 
-                <div class="map-frame-box">
-                    <iframe title="Carte interactive officielle de localisation PRO C2S - Hassan Rabat" 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.382878401314!2d-6.835489724285816!3d34.02120087316937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76b8826543d23%3A0x892a0fefc2aef89a!2sAvenue%20Patrice%20Lumumba%2C%20Rabat!5e0!3m2!1sfr!2sma!4v1726570000000!5m2!1sfr!2sma" 
+                <div class="map-frame-box" style="position:relative;height:320px;overflow:hidden;">
+                    <iframe title="Carte de localisation PRO C2S - Hassan Rabat" 
+                        src="https://maps.google.com/maps?q=34.0212008,-6.8354897&hl=fr&z=16&output=embed" 
+                        style="width:100%;height:100%;border:0;" 
                         allowfullscreen="" 
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
+                </div>
 
-                    <!-- Floating Glassmorphism Badge -->
-                    <div class="map-floating-overlay">
-                        <div class="mfo-meta">
-                            <span class="mfo-live-pill">
-                                <span class="status-dot"></span>
-                                <span data-i18n="map_open_hours">Bureaux Ouverts : 08h30 - 18h30</span>
-                            </span>
-                            <p class="mfo-address" data-i18n="c_addr_val">Imm. 69, 4ème Étage, Appt 04, Av. Patrice Lumumba, Hassan - Rabat</p>
-                            <p class="mfo-transit">
-                                <span><i class="fa-solid fa-train-subway" style="color:#047857;"></i> Tram Place Al Joulane (3 min)</span>
-                                <span><i class="fa-solid fa-square-parking" style="color:#047857;"></i> Parking Visiteurs</span>
-                            </p>
+                <!-- Office Access & Directions Details Card -->
+                <div class="map-office-details">
+                    <div class="mod-header">
+                        <div class="mod-status-badge">
+                            <span class="online-indicator-pulse"></span>
+                            <strong data-i18n="map_open_hours">Bureaux Ouverts : 08h30 - 18h30</strong>
                         </div>
-                        <a href="https://maps.google.com/?q=Imm+69+Avenue+Patrice+Lumumba+Hassan+Rabat" target="_blank" rel="noopener noreferrer" class="mfo-action-btn">
-                            <i class="fa-solid fa-location-arrow"></i> <span data-i18n="map_open_app">Ouvrir l'application</span>
+                        <span class="mod-badge-city"><i class="fa-solid fa-location-dot"></i> Rabat Hassan</span>
+                    </div>
+
+                    <div class="mod-address-box">
+                        <i class="fa-solid fa-building-flag mod-addr-icon"></i>
+                        <div>
+                            <strong data-i18n="c_addr_val">Imm. 69, 4ème Étage, Appt 04, Av. Patrice Lumumba, Hassan - Rabat</strong>
+                            <span class="mod-addr-note">À proximité immédiate de la Place Al Joulane & Bank Al-Maghrib</span>
+                        </div>
+                    </div>
+
+                    <div class="mod-transit-grid">
+                        <div class="mod-transit-item">
+                            <i class="fa-solid fa-train-subway"></i>
+                            <div>
+                                <strong>Tramway L1 & L2</strong>
+                                <span>Station Place Al Joulane (250m / 3 min à pied)</span>
+                            </div>
+                        </div>
+                        <div class="mod-transit-item">
+                            <i class="fa-solid fa-square-parking"></i>
+                            <div>
+                                <strong>Accès Voiture & Parking</strong>
+                                <span>Stationnement réservé visiteurs sur Av. Patrice Lumumba</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mod-actions-row">
+                        <a href="https://maps.google.com/?q=Imm+69+Avenue+Patrice+Lumumba+Hassan+Rabat" target="_blank" rel="noopener noreferrer" class="btn-mod-nav primary">
+                            <i class="fa-solid fa-diamond-turn-right"></i> <span data-i18n="map_open_app">Ouvrir dans Google Maps</span>
+                        </a>
+                        <a href="https://waze.com/ul?ll=34.0212008,-6.8354897&navigate=yes" target="_blank" rel="noopener noreferrer" class="btn-mod-nav waze">
+                            <i class="fa-brands fa-waze"></i> Waze
+                        </a>
+                        <a href="tel:+212520704830" class="btn-mod-nav phone">
+                            <i class="fa-solid fa-phone"></i> Appeler
                         </a>
                     </div>
                 </div>
@@ -2606,6 +2643,12 @@
         "btn_gps": "Itinéraire GPS",
         "form_title": "Formulaire de Prise de Contact Officielle",
         "form_desc": "Remplissez ce formulaire pour échanger avec notre direction ou planifier un rendez-vous.",
+        "lbl_name": "Nom et prénom *",
+        "lbl_company": "Société / Organisme",
+        "lbl_email": "Adresse e-mail professionnelle *",
+        "lbl_phone": "Numéro de téléphone *",
+        "lbl_subject": "Objet de votre demande *",
+        "lbl_msg": "Votre message détaillé *",
         "cv_notice_sub": "Votre candidature est enregistrée directement dans notre base de données RH.",
         "btn_drop_cv": "Déposer mon CV",
         "ft_direct": "Ligne Directe Direction",
@@ -2964,6 +3007,12 @@
         "btn_gps": "GPS Directions",
         "form_title": "Official Direct Contact Form",
         "form_desc": "Fill in this form to speak directly with our executive leadership or schedule an appointment.",
+        "lbl_name": "Full Name *",
+        "lbl_company": "Company / Organization",
+        "lbl_email": "Professional Email *",
+        "lbl_phone": "Phone Number *",
+        "lbl_subject": "Inquiry Subject *",
+        "lbl_msg": "Detailed Message *",
         "cv_notice_sub": "Your candidate profile is recorded directly into our secure HR database.",
         "btn_drop_cv": "Submit My CV",
         "ft_direct": "Executive Direct Line",
