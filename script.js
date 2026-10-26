@@ -570,13 +570,13 @@ document.addEventListener("DOMContentLoaded", function() {
             const location = (isEn && card.getAttribute("data-location-en")) ? card.getAttribute("data-location-en") : card.getAttribute("data-location");
             const req = (isEn && card.getAttribute("data-req-en")) ? card.getAttribute("data-req-en") : card.getAttribute("data-req");
             const desc = (isEn && card.getAttribute("data-desc-en")) ? card.getAttribute("data-desc-en") : card.getAttribute("data-desc");
-            const wa = card.getAttribute("data-wa");
+            const wa = (isEn && card.getAttribute("data-wa-en")) ? card.getAttribute("data-wa-en") : card.getAttribute("data-wa");
 
             if (modalTitle) modalTitle.innerText = title;
             if (jobModalHiddenTitle) jobModalHiddenTitle.value = title;
             if (jobModalHiddenSector) jobModalHiddenSector.value = sector;
             if (modalBadge) {
-                modalBadge.innerText = card.getAttribute("data-type") || "Intérim";
+                modalBadge.innerText = isEn ? "Temporary Staffing" : (card.getAttribute("data-type") || "Intérim");
                 modalBadge.className = `modal-header-badge job-badge ${badge}`;
             }
             if (modalSector) modalSector.innerHTML = `<i class="fa-solid fa-briefcase"></i> ${sector}`;
@@ -667,9 +667,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 };
 
                 const finish = function() {
-                    showToast("Votre candidature a été transmise et enregistrée avec succès !");
+                    const isEn = localStorage.getItem("proC2sLang") === "en";
+                    showToast(isEn ? "Your application has been successfully submitted and recorded in our database!" : "Votre candidature a été transmise et enregistrée avec succès !", "success");
                     jobCandidateEmailForm.reset();
-                    if (jobCvFileLabel) jobCvFileLabel.innerText = "Cliquez pour choisir votre fichier CV (PDF, Word)";
+                    if (jobCvFileLabel) jobCvFileLabel.innerText = isEn ? "Click to choose your CV file (PDF, Word)" : "Cliquez pour choisir votre fichier CV (PDF, Word)";
                     if (jobCvDropzone) { jobCvDropzone.style.borderColor = '#10b981'; jobCvDropzone.style.background = '#f0fdf4'; }
                     if (modal) modal.classList.remove("open");
                     if (jobCandidateSubmitBtn) {
@@ -806,12 +807,13 @@ document.addEventListener("DOMContentLoaded", function() {
             const shareUrl = window.location.origin + window.location.pathname + "#actualites";
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(shareUrl).then(() => {
+                    const isEn = localStorage.getItem("proC2sLang") === "en";
                     const originalText = articleModalShareText.innerText;
-                    articleModalShareText.innerText = "Lien copié !";
+                    articleModalShareText.innerText = isEn ? "Link copied!" : "Lien copié !";
                     articleModalShareBtn.style.background = "rgba(16, 185, 129, 0.25)";
                     articleModalShareBtn.style.borderColor = "#10b981";
                     setTimeout(() => {
-                        articleModalShareText.innerText = originalText;
+                        articleModalShareText.innerText = isEn ? "Share this Article" : originalText;
                         articleModalShareBtn.style.background = "";
                         articleModalShareBtn.style.borderColor = "";
                     }, 2500);
@@ -833,9 +835,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function updateSimLink() {
         if(simSector && simWhatsAppBtn) {
-            const count = simCount ? simCount.value : "3 à 5 profils";
+            const isEn = localStorage.getItem("proC2sLang") === "en";
+            const count = simCount ? simCount.value : (isEn ? "3 to 5 profiles" : "3 à 5 profils");
             const sector = simSector.value;
-            const msg = `Bonjour PRO C2S, nous souhaitons une délégation de ${count} dans le secteur : ${sector}. Merci de nous transmettre une proposition et devis.`;
+            const msg = isEn 
+                ? `Hello PRO C2S, we would like to request staffing delegation of ${count} in the sector: ${sector}. Please provide a quote and staffing proposal.`
+                : `Bonjour PRO C2S, nous souhaitons une délégation de ${count} dans le secteur : ${sector}. Merci de nous transmettre une proposition et devis.`;
             simWhatsAppBtn.href = `https://wa.me/212663449824?text=${encodeURIComponent(msg)}`;
         }
     }
@@ -939,7 +944,8 @@ document.addEventListener("DOMContentLoaded", function() {
             };
             window.PRO_C2S_DB.saveMessage(msgRecord);
 
-            showToast("Votre message a été transmis directement à la Direction Générale ! Nous vous répondrons sous 24h ouvrées.");
+            const isEn = localStorage.getItem("proC2sLang") === "en";
+                        showToast(isEn ? "Your message has been sent directly to Executive Management! We will respond within 24 business hours." : "Votre message a été transmis directement à la Direction Générale ! Nous vous répondrons sous 24h ouvrées.", "success");
             contactForm.reset();
             if (submitBtn) {
                 submitBtn.innerHTML = originalText;
@@ -1042,9 +1048,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 };
 
                 const finish = function() {
-                    showToast("Votre candidature a bien été enregistrée et transmise à notre équipe RH !");
+                    const isEn = localStorage.getItem("proC2sLang") === "en";
+                    showToast(isEn ? "Your application has been successfully recorded and sent to our HR team!" : "Votre candidature a bien été enregistrée et transmise à notre équipe RH !", "success");
                     directCvForm.reset();
-                    if (cvFileLabel) cvFileLabel.innerText = "Cliquez pour choisir votre fichier CV (Max 10 Mo)";
+                    if (cvFileLabel) cvFileLabel.innerText = isEn ? "Click to choose your CV file (Max 10 MB)" : "Cliquez pour choisir votre fichier CV (Max 10 Mo)";
                     if (cvDropzone) { cvDropzone.style.borderColor = '#10b981'; cvDropzone.style.background = '#f0fdf4'; }
                     closeDirectCvModal();
                     if (directCvSubmitBtn) {
@@ -1124,11 +1131,12 @@ document.addEventListener("DOMContentLoaded", function() {
             };
             window.PRO_C2S_DB.saveDevis(simRecord);
 
-            showToast("Votre demande de devis a été enregistrée avec succès dans notre Base de Données RH ! Notre équipe prend contact sous 24h.");
+            const isEn = localStorage.getItem("proC2sLang") === "en";
+            showToast(isEn ? "Your quote request has been recorded successfully in our HR database! Our team will contact you within 24h." : "Votre demande de devis a été enregistrée avec succès dans notre Base de Données RH ! Notre équipe prend contact sous 24h.");
             simEmailForm.reset();
             if (simEmailModal) simEmailModal.classList.remove("open");
             if (simModalSubmitBtn) {
-                simModalSubmitBtn.innerHTML = origText;
+                simModalSubmitBtn.innerHTML = isEn ? '<i class="fa-solid fa-check-circle"></i> Confirm Quote Request' : origText;
                 simModalSubmitBtn.disabled = false;
             }
         });
@@ -1537,9 +1545,10 @@ document.addEventListener("DOMContentLoaded", function() {
         card.setAttribute('title', 'Cliquer pour voir les détails et demander un devis');
 
         function openModal() {
-            const title = card.getAttribute('data-title') || card.innerText.trim();
-            const desc = card.getAttribute('data-desc') || '';
-            const wa = card.getAttribute('data-wa') || `Bonjour PRO C2S, je souhaite demander une équipe dans le secteur: ${title}`;
+            const isEn = localStorage.getItem("proC2sLang") === "en";
+            const title = (isEn && card.getAttribute('data-title-en')) ? card.getAttribute('data-title-en') : (card.getAttribute('data-title') || card.innerText.trim());
+            const desc = (isEn && card.getAttribute('data-desc-en')) ? card.getAttribute('data-desc-en') : (card.getAttribute('data-desc') || '');
+            const wa = (isEn && card.getAttribute('data-wa-en')) ? card.getAttribute('data-wa-en') : (card.getAttribute('data-wa') || (isEn ? `Hello PRO C2S, I would like to request a team in the sector: ${title}` : `Bonjour PRO C2S, je souhaite demander une équipe dans le secteur: ${title}`));
             const iconEl = card.querySelector('i');
 
             if (sectorModalTitle) sectorModalTitle.innerText = title;
@@ -1549,7 +1558,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             if (sectorModalWaBtn) {
                 sectorModalWaBtn.href = `https://wa.me/212663449824?text=${encodeURIComponent(wa)}`;
-                sectorModalWaBtn.innerHTML = `<i class="fa-brands fa-whatsapp"></i> Demander une équipe (${title})`;
+                sectorModalWaBtn.innerHTML = `<i class="fa-brands fa-whatsapp"></i> ${isEn ? 'Request a team (' + title + ')' : 'Demander une équipe (' + title + ')'}`;
             }
             if (sectorModal) {
                 sectorModal.classList.add('open');
