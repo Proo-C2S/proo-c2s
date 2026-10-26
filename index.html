@@ -1986,210 +1986,210 @@
             <p data-i18n="contact_desc">Prenez contact directement avec notre direction pour un partenariat stratégique, un rendez-vous ou une collaboration d'entreprise.</p>
         </div>
 
-        <div class="executive-contact-grid">
-
-            <!-- Left Column: Leadership & Interactive Channels & Premium Map -->
-            <div class="contact-left-col">
-
-                <!-- Director Contact Card -->
-                <div class="director-card">
-                    <div class="exec-avatar-wrap">
-                        <div class="exec-avatar-initials">YN</div>
-                        <span class="online-indicator-pulse" title="Disponible en ligne"></span>
+        <!-- 1. Executive Quick Access Bar (4 Modern Cards) -->
+        <div class="executive-quick-bar">
+            <!-- Card 1: Phones & Direct Line -->
+            <div class="quick-contact-card">
+                <div class="qc-icon-box">
+                    <i class="fa-solid fa-phone-volume"></i>
+                </div>
+                <div class="qc-content">
+                    <span class="qc-label" data-i18n="c_phone">Lignes Directes Siège</span>
+                    <div class="qc-title">
+                        <a href="tel:+212520704830" class="qc-link">05 20 70 48 30</a> / <a href="tel:+212663449824" class="qc-link">06 63 44 98 24</a>
                     </div>
-                    <div class="exec-meta">
-                        <span class="exec-tag" data-i18n="exec_tag">Interlocuteur Principal</span>
-                        <h3 class="exec-name" data-i18n="c_contact">YOUSSEF NAJI</h3>
-                        <p class="exec-role" data-i18n="exec_role">Direction Générale & Partenariats Entreprises</p>
+                    <p class="qc-subtext"><span>Lun - Ven 08h30 - 18h30</span> • <strong>Ligne Directe</strong></p>
+                </div>
+            </div>
+
+            <!-- Card 2: WhatsApp Desk -->
+            <div class="quick-contact-card">
+                <div class="qc-icon-box" style="background:#f0fdf4;color:#25d366;border-color:#bbf7d0;">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <div class="qc-content">
+                    <span class="qc-label" data-i18n="qc_desk_wa">Desk WhatsApp Pro</span>
+                    <div class="qc-title">
+                        <a href="https://wa.me/212663449824?text=Bonjour%20PRO%20C2S,%20je%20souhaite%20un%20renseignement%20professionnel." target="_blank" rel="noopener noreferrer" class="qc-link" style="color:#059669;">
+                            +212 663-449824
+                        </a>
                     </div>
+                    <p class="qc-subtext"><span class="online-indicator-pulse" style="position:static;display:inline-block;margin-right:4px;"></span> <strong data-i18n="qc_instant_resp">Réponse immédiate garantie</strong></p>
+                </div>
+            </div>
+
+            <!-- Card 3: Official Email -->
+            <div class="quick-contact-card">
+                <div class="qc-icon-box">
+                    <i class="fa-solid fa-envelope-open-text"></i>
+                </div>
+                <div class="qc-content">
+                    <span class="qc-label" data-i18n="channel_email_lbl">Courriel Officiel</span>
+                    <div class="qc-title">
+                        <a href="mailto:procssentreprise@gmail.com" class="qc-link" style="font-size:13.5px;">procssentreprise@gmail.com</a>
+                    </div>
+                    <p class="qc-subtext"><i class="fa-solid fa-bolt" style="color:#10b981;"></i> <span data-i18n="qc_email_sla">Accusé & traitement &lt; 2h</span></p>
+                </div>
+            </div>
+
+            <!-- Card 4: Address & HQ -->
+            <div class="quick-contact-card">
+                <div class="qc-icon-box">
+                    <i class="fa-solid fa-building-columns"></i>
+                </div>
+                <div class="qc-content">
+                    <span class="qc-label" data-i18n="c_addr">Siège National</span>
+                    <div class="qc-title" style="font-size:13px;line-height:1.35;" data-i18n="c_addr_val">
+                        Av. Patrice Lumumba, Hassan - Rabat
+                    </div>
+                    <p class="qc-subtext"><i class="fa-solid fa-train-subway" style="color:#047857;"></i> Tramway Place Al Joulane (3 min)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Main Executive Grid: Left Form + Right Google Maps Prestige -->
+        <div class="executive-main-grid">
+
+            <!-- Left: Contact Form -->
+            <div class="contact-form-card" style="box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.08); border-radius: 26px;">
+                <div class="form-card-header">
+                    <div class="form-header-badge">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span data-i18n="form_title">Formulaire de Prise de Contact Officielle</span>
+                    </div>
+                    <p data-i18n="form_desc">Remplissez ce formulaire pour échanger avec notre direction ou planifier un rendez-vous.</p>
                 </div>
 
-                <!-- Fast Contact Channel Cards -->
-                <div class="contact-channel-cards">
-                    <!-- Phone Card -->
-                    <div class="channel-card">
-                        <div class="channel-icon-box">
-                            <i class="fa-solid fa-phone-volume"></i>
+                <form class="contact-form" id="contactForm" novalidate>
+                    <div class="form-fields-grid">
+                        <div class="input-field-wrap">
+                            <input type="text" name="user_name" placeholder="Nom et prénom *" data-i18n-placeholder="form_name" aria-label="Nom complet" autocomplete="name" required>
+                            <i class="fa-solid fa-user field-icon"></i>
                         </div>
-                        <div class="channel-content">
-                            <span class="channel-label" data-i18n="c_phone">Lignes Téléphoniques Directes</span>
-                            <div class="channel-pills">
-                                <a href="tel:+212520704830" class="phone-pill">
-                                    <span class="pill-type" data-i18n="pill_fixe">Fixe Siège</span>
-                                    <strong class="pill-num">05 20 70 48 30</strong>
-                                </a>
-                                <a href="tel:+212663449824" class="phone-pill highlight">
-                                    <span class="pill-type" data-i18n="pill_mobile">Mobile Pro</span>
-                                    <strong class="pill-num">06 63 44 98 24</strong>
-                                </a>
-                            </div>
+
+                        <div class="input-field-wrap">
+                            <input type="text" name="user_company" placeholder="Société / Organisme (Optionnel)" data-i18n-placeholder="form_company" aria-label="Société" autocomplete="organization">
+                            <i class="fa-solid fa-building field-icon"></i>
+                        </div>
+
+                        <div class="input-field-wrap">
+                            <input type="email" name="user_email" placeholder="Adresse e-mail professionnelle *" data-i18n-placeholder="form_email" aria-label="Adresse e-mail" autocomplete="email" required>
+                            <i class="fa-solid fa-envelope field-icon"></i>
+                        </div>
+
+                        <div class="input-field-wrap">
+                            <input type="tel" name="user_phone" placeholder="Numéro de téléphone *" data-i18n-placeholder="form_phone" aria-label="Téléphone" autocomplete="tel" required>
+                            <i class="fa-solid fa-phone field-icon"></i>
+                        </div>
+
+                        <div class="input-field-wrap" style="grid-column: 1 / -1;">
+                            <select name="user_subject" id="contactSubjectSelect" aria-label="Objet de la demande" style="width:100%;padding:14px 18px 14px 44px;border:1.5px solid #e2e8f0;border-radius:14px;background:#f8fafc;font-size:14px;color:#0f172a;font-weight:600;outline:none;appearance:none;-webkit-appearance:none;cursor:pointer;">
+                                <option value="Recrutement & Délégation d'Intérim Urgent">⚡ Recrutement & Délégation d'Intérim Urgent</option>
+                                <option value="Partenariat Commercial & Grand Compte">🤝 Partenariat Commercial & Grand Compte</option>
+                                <option value="Externalisation RH, Paie & Audit Social">📑 Externalisation RH, Paie & Audit Social</option>
+                                <option value="Services Informatiques & Facility Management">💻 Services Informatiques & Propreté Pro</option>
+                                <option value="Autre Demande Spécifique">📋 Autre Demande Spécifique</option>
+                            </select>
+                            <i class="fa-solid fa-list-check field-icon" style="top:16px;"></i>
+                            <i class="fa-solid fa-chevron-down" style="position:absolute;right:18px;top:18px;font-size:12px;color:#94a3b8;pointer-events:none;"></i>
+                        </div>
+
+                        <div class="input-field-wrap">
+                            <textarea name="message" placeholder="Votre message à la direction (projet, partenariat, demande de RDV)... *" data-i18n-placeholder="form_msg" aria-label="Votre message" required></textarea>
+                            <i class="fa-solid fa-comment-dots field-icon textarea-icon"></i>
                         </div>
                     </div>
 
-                    <!-- Email Card -->
-                    <div class="channel-card">
-                        <div class="channel-icon-box">
-                            <i class="fa-solid fa-envelope-open-text"></i>
-                        </div>
-                        <div class="channel-content">
-                            <span class="channel-label" data-i18n="channel_email_lbl">E-mail Officiel Entreprise</span>
-                            <a href="mailto:procssentreprise@gmail.com" class="email-link">
-                                <strong>procssentreprise@gmail.com</strong>
-                                <span class="channel-subtext"><i class="fa-solid fa-circle-check"></i> Traitement garanti sous 24h</span>
-                            </a>
-                        </div>
+                    <div class="form-privacy-note">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <p><span data-i18n="form_privacy">En envoyant ce formulaire, vous acceptez que vos données soient traitées pour répondre à votre demande. Voir notre</span> <a href="#" id="openPrivacyForm" data-i18n="form_privacy_link">politique de confidentialité</a>.</p>
                     </div>
 
-                    <!-- Address Card -->
-                    <div class="channel-card">
-                        <div class="channel-icon-box">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </div>
-                        <div class="channel-content">
-                            <span class="channel-label" data-i18n="c_addr">Siège Social & Bureaux</span>
-                            <p class="channel-address" data-i18n="c_addr_val">Imm. 69, 4ème Étage, Appt 04, Av. Patrice Lumumba, Hassan - Rabat</p>
-                        </div>
-                    </div>
+                    <button type="submit" class="btn btn-exec-submit" data-i18n="form_submit">
+                        <span>Transmettre mon Message à la Direction</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <!-- Trust Footer Ribbon -->
+                <div class="form-trust-ribbon">
+                    <div class="ft-item"><i class="fa-solid fa-handshake"></i> <span data-i18n="ft_direct">Ligne Directe Direction</span></div>
+                    <div class="ft-item"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="ft_conf">100% Confidentiel</span></div>
+                    <div class="ft-item"><i class="fa-solid fa-bolt"></i> <span data-i18n="ft_speed">Réponse sous 24h</span></div>
                 </div>
+            </div>
 
-                <!-- World-Class Interactive Map Card ("LMAP TOP DU TOP") -->
-                <div class="executive-map-card">
-                    <div class="map-card-header">
-                        <div class="map-header-title">
-                            <i class="fa-solid fa-map-location-dot"></i>
-                            <div>
-                                <strong>Siège PRO C2S</strong>
-                                <span>Patrice Lumumba, Hassan - Rabat</span>
-                            </div>
+            <!-- Right: Interactive Google Maps Showcase ("LMAP TOP DU TOP") -->
+            <div class="map-showcase-container">
+                <div class="map-showcase-header">
+                    <div class="msh-left">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                        <div>
+                            <strong data-i18n="map_hq_title">Siège Social National PRO C2S</strong>
+                            <span data-i18n="map_hq_sub">Avenue Patrice Lumumba, Quartier Hassan - Rabat</span>
                         </div>
-                        <a href="https://maps.google.com/?q=Imm+69+Avenue+Patrice+Lumumba+Hassan+Rabat" target="_blank" rel="noopener noreferrer" class="btn-map-gps" title="Ouvrir l'itinéraire dans Google Maps">
+                    </div>
+                    <div class="msh-actions">
+                        <a href="https://maps.google.com/?q=Imm+69+Avenue+Patrice+Lumumba+Hassan+Rabat" target="_blank" rel="noopener noreferrer" class="btn-gps-action" title="Ouvrir dans Google Maps">
                             <i class="fa-solid fa-diamond-turn-right"></i> <span data-i18n="btn_gps">Itinéraire GPS</span>
                         </a>
                     </div>
-
-                    <div class="map-frame-wrapper">
-                        <iframe title="Localisation officielle de PRO C2S à Rabat" 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.382878401314!2d-6.835489724285816!3d34.02120087316937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76b8826543d23%3A0x892a0fefc2aef89a!2sAvenue%20Patrice%20Lumumba%2C%20Rabat!5e0!3m2!1sfr!2sma!4v1726570000000!5m2!1sfr!2sma" 
-                            width="100%" 
-                            height="100%" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy">
-                        </iframe>
-                    </div>
-
-                    <div class="map-card-footer">
-                        <span><i class="fa-solid fa-train-subway"></i> Tramway : Place Al Joulane (3 min)</span>
-                        <span><i class="fa-solid fa-square-parking"></i> Stationnement réservé visiteurs</span>
-                    </div>
                 </div>
 
-            </div>
+                <div class="map-frame-box">
+                    <iframe title="Carte interactive officielle de localisation PRO C2S - Hassan Rabat" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.382878401314!2d-6.835489724285816!3d34.02120087316937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76b8826543d23%3A0x892a0fefc2aef89a!2sAvenue%20Patrice%20Lumumba%2C%20Rabat!5e0!3m2!1sfr!2sma!4v1726570000000!5m2!1sfr!2sma" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
 
-            <!-- Right Column: Executive Quote & Contact Form -->
-            <div class="contact-right-col">
-                <div class="exec-form-wrapper">
-                    <div class="form-header">
-                        <div class="form-kicker"><i class="fa-solid fa-envelope"></i> CONTACT DIRECTION & SIÈGE</div>
-                        <h3 data-i18n="contact_form_title">Prendre Contact avec la Direction</h3>
-                        <p data-i18n="contact_form_subtitle">Échangez directement avec notre direction générale et nos consultants pour vos partenariats et projets.</p>
-                    </div>
-
-                    <form class="contact-form executive-form" id="contact-form">
-                        
-                        <!-- Objet de la démarche -->
-                        <span class="service-selector-label" data-i18n="contact_subject_label">Objet de votre démarche :</span>
-                        <div class="service-selector-grid">
-                            <label class="service-chip-option">
-                                <input type="radio" name="user_subject" value="Partenariat Commercial & Grand Compte" checked>
-                                <span class="chip-content">
-                                    <i class="fa-solid fa-handshake"></i>
-                                    <span data-i18n="sub_partner">Partenariat</span>
-                                </span>
-                            </label>
-                            <label class="service-chip-option">
-                                <input type="radio" name="user_subject" value="Rendez-vous Direction">
-                                <span class="chip-content">
-                                    <i class="fa-solid fa-calendar-check"></i>
-                                    <span data-i18n="sub_rdv">Rendez-vous</span>
-                                </span>
-                            </label>
-                            <label class="service-chip-option">
-                                <input type="radio" name="user_subject" value="Demande Institutionnelle & Marché">
-                                <span class="chip-content">
-                                    <i class="fa-solid fa-landmark"></i>
-                                    <span data-i18n="sub_inst">Institutionnel</span>
-                                </span>
-                            </label>
+                    <!-- Floating Glassmorphism Badge -->
+                    <div class="map-floating-overlay">
+                        <div class="mfo-meta">
+                            <span class="mfo-live-pill">
+                                <span class="status-dot"></span>
+                                <span data-i18n="map_open_hours">Bureaux Ouverts : 08h30 - 18h30</span>
+                            </span>
+                            <p class="mfo-address" data-i18n="c_addr_val">Imm. 69, 4ème Étage, Appt 04, Av. Patrice Lumumba, Hassan - Rabat</p>
+                            <p class="mfo-transit">
+                                <span><i class="fa-solid fa-train-subway" style="color:#047857;"></i> Tram Place Al Joulane (3 min)</span>
+                                <span><i class="fa-solid fa-square-parking" style="color:#047857;"></i> Parking Visiteurs</span>
+                            </p>
                         </div>
-
-                        <!-- Form Inputs with Icons -->
-                        <div class="form-inputs-group">
-                            <div class="input-field-wrap">
-                                <input type="text" name="user_name" placeholder="Nom et prénom *" data-i18n-placeholder="form_name" aria-label="Nom complet" autocomplete="name" required>
-                                <i class="fa-solid fa-user field-icon"></i>
-                            </div>
-
-                            <div class="input-field-wrap">
-                                <input type="text" name="user_company" placeholder="Société / Organisme (Optionnel)" data-i18n-placeholder="form_company" aria-label="Société" autocomplete="organization">
-                                <i class="fa-solid fa-building field-icon"></i>
-                            </div>
-
-                            <div class="input-field-wrap">
-                                <input type="email" name="user_email" placeholder="Adresse e-mail professionnelle *" data-i18n-placeholder="form_email" aria-label="Adresse e-mail" autocomplete="email" required>
-                                <i class="fa-solid fa-envelope field-icon"></i>
-                            </div>
-
-                            <div class="input-field-wrap">
-                                <input type="tel" name="user_phone" placeholder="Numéro de téléphone *" data-i18n-placeholder="form_phone" aria-label="Téléphone" autocomplete="tel" required>
-                                <i class="fa-solid fa-phone field-icon"></i>
-                            </div>
-
-                            <div class="input-field-wrap">
-                                <textarea name="message" placeholder="Votre message à la direction (projet, partenariat, demande de RDV)... *" data-i18n-placeholder="form_msg" aria-label="Votre message" required></textarea>
-                                <i class="fa-solid fa-comment-dots field-icon textarea-icon"></i>
-                            </div>
-                        </div>
-
-                        <div class="form-privacy-note">
-                            <i class="fa-solid fa-shield-halved"></i>
-                            <p><span data-i18n="form_privacy">En envoyant ce formulaire, vous acceptez que vos données soient traitées pour répondre à votre demande. Voir notre</span> <a href="#" id="openPrivacyForm" data-i18n="form_privacy_link">politique de confidentialité</a>.</p>
-                        </div>
-
-                        <button type="submit" class="btn btn-exec-submit" data-i18n="form_submit">
-                            <span>Transmettre mon Message à la Direction</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </button>
-
-                        <!-- Candidate fast track -->
-                        <div class="candidate-fast-track">
-                            <div class="cft-icon"><i class="fa-solid fa-file-signature"></i></div>
-                            <div class="cft-text">
-                                <strong data-i18n="cv_notice">Vous êtes candidat ? Déposez votre CV en ligne</strong>
-                                <span data-i18n="cv_notice_sub">Votre candidature est enregistrée directement dans notre base de données RH.</span>
-                            </div>
-                            <div class="cft-btn-group" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-                                <button type="button" class="btn-cv-pill primary-cv" id="openDirectCvModalBtn" style="background:#047857;color:#ffffff!important;border:1.5px solid #047857;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 12px rgba(4,120,87,0.25);">
-                                    <i class="fa-solid fa-cloud-arrow-up"></i> <span data-i18n="btn_drop_cv">Déposer mon CV</span>
-                                </button>
-                                <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20postuler%20et%20vous%20envoyer%20mon%20CV." target="_blank" rel="noopener noreferrer" class="btn-cv-pill wa-cv" data-i18n="cv_btn" title="Postuler par WhatsApp">
-                                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
-                                </a>
-                            </div>
-                        </div>
-
-                    </form>
-
-                    <!-- Trust Footer Ribbon -->
-                    <div class="form-trust-ribbon">
-                        <div class="ft-item"><i class="fa-solid fa-handshake"></i> <span data-i18n="ft_direct">Ligne Directe Direction</span></div>
-                        <div class="ft-item"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="ft_conf">100% Confidentiel</span></div>
-                        <div class="ft-item"><i class="fa-solid fa-bolt"></i> <span data-i18n="ft_speed">Réponse sous 24h</span></div>
+                        <a href="https://maps.google.com/?q=Imm+69+Avenue+Patrice+Lumumba+Hassan+Rabat" target="_blank" rel="noopener noreferrer" class="mfo-action-btn">
+                            <i class="fa-solid fa-location-arrow"></i> <span data-i18n="map_open_app">Ouvrir l'application</span>
+                        </a>
                     </div>
                 </div>
             </div>
 
         </div>
+
+        <!-- 3. Candidate Fast-Track Full-Width Banner -->
+        <div class="candidate-hub-card">
+            <div class="chc-left">
+                <div class="chc-icon-badge">
+                    <i class="fa-solid fa-user-graduate"></i>
+                </div>
+                <div class="chc-text">
+                    <h3 data-i18n="cv_notice">Vous êtes candidat ? Rejoignez le vivier de talents PRO C2S</h3>
+                    <p data-i18n="cv_notice_sub">Déposez votre CV directement en ligne dans notre base de données RH sécurisée ou postulez directement par WhatsApp.</p>
+                </div>
+            </div>
+            <div class="chc-buttons">
+                <button type="button" class="btn-chc-cv" id="openDirectCvModalBtn">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> <span data-i18n="btn_drop_cv">Déposer mon CV</span>
+                </button>
+                <a href="https://wa.me/212663449824?text=Bonjour,%20je%20souhaite%20postuler%20et%20vous%20envoyer%20mon%20CV." target="_blank" rel="noopener noreferrer" class="btn-chc-wa" data-i18n="cv_btn" title="Postuler par WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp RH
+                </a>
+                <a href="#carrieres" class="btn-chc-jobs">
+                    <i class="fa-solid fa-briefcase"></i> <span data-i18n="btn_see_jobs">Voir les Offres (9)</span>
+                </a>
+            </div>
+        </div>
+
     </div>
 </section>
 
@@ -2423,6 +2423,14 @@
         "contact_badge": "DIRECTION GÉNÉRALE & PARTENARIATS",
         "contact_title": "Échangez avec la Direction Générale",
         "contact_desc": "Prenez contact directement avec notre direction pour un partenariat stratégique, un rendez-vous ou une collaboration.",
+        "qc_desk_wa": "Desk WhatsApp Pro",
+        "qc_instant_resp": "Réponse immédiate garantie",
+        "qc_email_sla": "Accusé & traitement < 2h",
+        "map_hq_title": "Siège Social National PRO C2S",
+        "map_hq_sub": "Avenue Patrice Lumumba, Quartier Hassan - Rabat",
+        "map_open_hours": "Bureaux Ouverts : 08h30 - 18h30",
+        "map_open_app": "Ouvrir l'application",
+        "btn_see_jobs": "Voir les Offres (9)",
         "c_contact": "Contact",
         "c_phone": "Téléphone",
         "c_addr": "Adresse",
@@ -2596,6 +2604,8 @@
         "channel_email_lbl": "E-mail Officiel Entreprise",
         "pill_hq": "Siège PRO C2S",
         "btn_gps": "Itinéraire GPS",
+        "form_title": "Formulaire de Prise de Contact Officielle",
+        "form_desc": "Remplissez ce formulaire pour échanger avec notre direction ou planifier un rendez-vous.",
         "cv_notice_sub": "Votre candidature est enregistrée directement dans notre base de données RH.",
         "btn_drop_cv": "Déposer mon CV",
         "ft_direct": "Ligne Directe Direction",
@@ -2771,6 +2781,14 @@
         "contact_badge": "EXECUTIVE LEADERSHIP & PARTNERSHIPS",
         "contact_title": "Connect with Executive Management",
         "contact_desc": "Reach out directly to our leadership for strategic partnerships, executive meetings, or institutional agreements.",
+        "qc_desk_wa": "Enterprise WhatsApp Desk",
+        "qc_instant_resp": "Guaranteed instant response",
+        "qc_email_sla": "Acknowledgment & handling < 2h",
+        "map_hq_title": "PRO C2S National Headquarters",
+        "map_hq_sub": "Patrice Lumumba Ave, Hassan District - Rabat",
+        "map_open_hours": "Offices Open: 08:30 AM - 06:30 PM",
+        "map_open_app": "Open Navigation App",
+        "btn_see_jobs": "View Job Openings (9)",
         "c_contact": "Contact Person",
         "c_phone": "Direct Phone",
         "c_addr": "Head Office Address",
@@ -2944,6 +2962,8 @@
         "channel_email_lbl": "Official Corporate Email",
         "pill_hq": "PRO C2S Headquarters",
         "btn_gps": "GPS Directions",
+        "form_title": "Official Direct Contact Form",
+        "form_desc": "Fill in this form to speak directly with our executive leadership or schedule an appointment.",
         "cv_notice_sub": "Your candidate profile is recorded directly into our secure HR database.",
         "btn_drop_cv": "Submit My CV",
         "ft_direct": "Executive Direct Line",
@@ -3217,6 +3237,104 @@
                 <i class="fa-solid fa-database"></i> <span data-i18n="cv_m_submit">Enregistrer ma Candidature (Base RH)</span>
             </button>
         </form>
+    </div>
+</div>
+
+
+<!-- LUXURY EXECUTIVE SUCCESS CONFIRMATION MODAL -->
+<div class="confirmation-modal-overlay" id="executiveSuccessModal" aria-hidden="true" role="dialog">
+    <div class="confirmation-modal-content">
+        <button class="job-modal-close" id="closeExecutiveSuccessModalBtn" aria-label="Fermer la confirmation">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="conf-modal-header">
+            <div class="conf-success-icon-wrap">
+                <div class="conf-pulse-ring"></div>
+                <div class="conf-icon-circle">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+            </div>
+            <span class="conf-badge" id="confBadgeText">CONFIRMATION OFFICIELLE PRO C2S</span>
+            <h2 class="conf-title" id="confMainTitle">Candidature Enregistrée avec Succès !</h2>
+            <p class="conf-subtitle" id="confSubTitle">Votre dossier a été transmis directement au Pôle Recrutement & Ressources Humaines.</p>
+        </div>
+
+        <!-- Tracking Reference Bar -->
+        <div class="conf-ref-card">
+            <div class="conf-ref-left">
+                <span class="conf-ref-label" id="confRefLabel">Numéro de Référence Officiel</span>
+                <strong class="conf-ref-code" id="confRefCode">REF-C2S-849201</strong>
+            </div>
+            <div class="conf-status-pill">
+                <span class="status-dot"></span>
+                <span id="confStatusText">Dossier Actif & Validé</span>
+            </div>
+        </div>
+
+        <!-- Application Summary Card -->
+        <div class="conf-summary-card">
+            <div class="conf-summary-row">
+                <span class="conf-label" id="confLblName"><i class="fa-solid fa-user"></i> Candidat :</span>
+                <strong class="conf-val" id="confCandidateName">N/A</strong>
+            </div>
+            <div class="conf-summary-row">
+                <span class="conf-label" id="confLblPole"><i class="fa-solid fa-briefcase"></i> Poste / Pôle :</span>
+                <span class="conf-val" id="confCandidatePole">N/A</span>
+            </div>
+            <div class="conf-summary-row" id="confFileRow">
+                <span class="conf-label"><i class="fa-solid fa-file-pdf"></i> Document CV :</span>
+                <span class="conf-val file-highlight" id="confFileName">CV_Document.pdf</span>
+            </div>
+            <div class="conf-summary-row">
+                <span class="conf-label"><i class="fa-regular fa-clock"></i> Date & Heure :</span>
+                <span class="conf-val" id="confDateTime">N/A</span>
+            </div>
+        </div>
+
+        <!-- Next Steps Protocol -->
+        <div class="conf-steps-card">
+            <h4 class="conf-steps-title"><i class="fa-solid fa-shield-halved"></i> <span id="confStepsTitle">Déroulement du Traitement (Norme ISO RH) :</span></h4>
+            <div class="conf-steps-list">
+                <div class="conf-step-item">
+                    <div class="step-num">1</div>
+                    <div class="step-text">
+                        <strong id="confStep1T">Examen approfondi du profil</strong>
+                        <span id="confStep1D">Évaluation sous 24h à 48h ouvrées par un consultant métier dédié.</span>
+                    </div>
+                </div>
+                <div class="conf-step-item">
+                    <div class="step-num">2</div>
+                    <div class="step-text">
+                        <strong id="confStep2T">Prise de contact téléphonique</strong>
+                        <span id="confStep2D">Entretien de présélection et vérification des compétences techniques.</span>
+                    </div>
+                </div>
+                <div class="conf-step-item">
+                    <div class="step-num">3</div>
+                    <div class="step-text">
+                        <strong id="confStep3T">Délégation & Contrat sécurisé</strong>
+                        <span id="confStep3D">Mise en relation directe avec l'entreprise utilisatrice & contrat 100% conforme.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="conf-actions-group">
+            <a href="#" id="confWhatsAppAccelerateBtn" target="_blank" rel="noopener noreferrer" class="btn-conf-wa">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span id="confWaBtnText">Accélérer mon dossier via WhatsApp</span>
+            </a>
+            <button type="button" class="btn-conf-close" id="confReturnBtn">
+                <span id="confCloseBtnText">Retourner au site</span>
+            </button>
+        </div>
+
+        <div class="conf-footer-guarantee">
+            <i class="fa-solid fa-lock"></i>
+            <span id="confGuaranteeText">PRO C2S garantit la stricte confidentialité de vos données conformément à la loi 09-08 & CNDP.</span>
+        </div>
     </div>
 </div>
 

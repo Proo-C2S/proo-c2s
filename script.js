@@ -309,6 +309,135 @@ window.PRO_C2S_DB = {
     } else {
         initPreloader();
     }
+
+// ==========================================
+// LUXURY EXECUTIVE SUCCESS CONFIRMATION SYSTEM
+// ==========================================
+window.showExecutiveConfirmation = function(options) {
+    const isEn = localStorage.getItem("proC2sLang") === "en";
+    const modal = document.getElementById("executiveSuccessModal");
+    if (!modal) return;
+
+    const refId = options.refId || ('REF-C2S-' + Math.floor(100000 + Math.random() * 900000));
+    const nowStr = new Date().toLocaleString(isEn ? 'en-US' : 'fr-FR', {
+        day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit'
+    });
+
+    const isContactMsg = (options.type === 'contact');
+
+    // DOM Elements
+    const badge = document.getElementById("confBadgeText");
+    const title = document.getElementById("confMainTitle");
+    const subTitle = document.getElementById("confSubTitle");
+    const refCode = document.getElementById("confRefCode");
+    const refLabel = document.getElementById("confRefLabel");
+    const statusText = document.getElementById("confStatusText");
+    const lblName = document.getElementById("confLblName");
+    const candName = document.getElementById("confCandidateName");
+    const lblPole = document.getElementById("confLblPole");
+    const candPole = document.getElementById("confCandidatePole");
+    const fileRow = document.getElementById("confFileRow");
+    const fileName = document.getElementById("confFileName");
+    const dateTime = document.getElementById("confDateTime");
+    const stepsTitle = document.getElementById("confStepsTitle");
+    const s1T = document.getElementById("confStep1T");
+    const s1D = document.getElementById("confStep1D");
+    const s2T = document.getElementById("confStep2T");
+    const s2D = document.getElementById("confStep2D");
+    const s3T = document.getElementById("confStep3T");
+    const s3D = document.getElementById("confStep3D");
+    const waBtn = document.getElementById("confWhatsAppAccelerateBtn");
+    const waBtnText = document.getElementById("confWaBtnText");
+    const closeBtnText = document.getElementById("confCloseBtnText");
+    const guaranteeText = document.getElementById("confGuaranteeText");
+
+    if (refCode) refCode.innerText = refId;
+    if (dateTime) dateTime.innerText = nowStr;
+    if (candName) candName.innerText = options.name || (isEn ? "Not specified" : "Non spécifié");
+    if (candPole) candPole.innerText = options.subject || options.pole || (isEn ? "General Inquiry" : "Général");
+
+    if (refLabel) refLabel.innerText = isEn ? "Official Reference Number" : "Numéro de Référence Officiel";
+    if (statusText) statusText.innerText = isEn ? "Active & Verified Record" : "Dossier Actif & Validé";
+
+    if (isContactMsg) {
+        if (badge) badge.innerText = isEn ? "OFFICIAL TRANSMISSION TO MANAGEMENT" : "TRANSMISSION OFFICIELLE À LA DIRECTION";
+        if (title) title.innerText = isEn ? "Message Successfully Delivered!" : "Message Transmis avec Succès à la Direction !";
+        if (subTitle) subTitle.innerText = isEn ? "Your inquiry has been routed directly to Executive Management & Senior Advisory." : "Votre demande a été transmise directement à la Direction Générale & aux consultants seniors.";
+        if (lblName) lblName.innerHTML = '<i class="fa-solid fa-user"></i> ' + (isEn ? "Sender:" : "Expéditeur :");
+        if (lblPole) lblPole.innerHTML = '<i class="fa-solid fa-tag"></i> ' + (isEn ? "Subject:" : "Objet :");
+        if (fileRow) fileRow.style.display = 'none';
+
+        if (stepsTitle) stepsTitle.innerText = isEn ? "Corporate Response Protocol (ISO 9001):" : "Protocole de Traitement Entreprise (ISO 9001) :";
+        if (s1T) s1T.innerText = isEn ? "Direct Review by Leadership" : "Prise en charge par la Direction";
+        if (s1D) s1D.innerText = isEn ? "Your request is analyzed by General Management or a Senior Sector Lead within 2 to 4 business hours." : "Votre demande est analysée par la Direction Générale ou un Responsable de Pôle sous 2 à 4h ouvrées.";
+        if (s2T) s2T.innerText = isEn ? "Personalized Proposal / Meeting" : "Proposition sur-mesure & Échange";
+        if (s2D) s2D.innerText = isEn ? "A senior consultant contacts you with tailored rates, candidate profiles, or project scoping." : "Un consultant senior prend contact avec vous pour cadrer votre besoin, vos plannings et vos profils.";
+        if (s3T) s3T.innerText = isEn ? "Immediate Operational Launch" : "Déploiement Opérationnel Garanti";
+        if (s3D) s3D.innerText = isEn ? "Rapid contract finalization and workforce delegation within 24h to 48h nationwide." : "Mise à disposition rapide des effectifs et contractualisation 100% sécurisée partout au Maroc.";
+
+        const waMsg = isEn 
+            ? `Hello PRO C2S Management, I have sent an enterprise inquiry (Ref: ${refId}) regarding: ${options.subject || 'Partnership'}.`
+            : `Bonjour Direction PRO C2S, je viens d'envoyer une demande officielle (Réf: ${refId}) concernant: ${options.subject || 'Partenariat'}.`;
+        if (waBtn) waBtn.href = 'https://wa.me/212663449824?text=' + encodeURIComponent(waMsg);
+        if (waBtnText) waBtnText.innerText = isEn ? "Fast-Track via WhatsApp Direction" : "Échanger en direct sur WhatsApp";
+    } else {
+        // Candidate
+        if (badge) badge.innerText = isEn ? "OFFICIAL PRO C2S CONFIRMATION" : "CONFIRMATION OFFICIELLE PRO C2S";
+        if (title) title.innerText = isEn ? "Application Successfully Received!" : "Candidature Enregistrée avec Succès !";
+        if (subTitle) subTitle.innerText = isEn ? "Your application has been delivered directly to our Recruitment & HR Division." : "Votre dossier a été transmis directement au Pôle Recrutement & Ressources Humaines.";
+        if (lblName) lblName.innerHTML = '<i class="fa-solid fa-user"></i> ' + (isEn ? "Candidate:" : "Candidat :");
+        if (lblPole) lblPole.innerHTML = '<i class="fa-solid fa-briefcase"></i> ' + (isEn ? "Target Position:" : "Poste / Pôle :");
+        
+        if (fileRow) {
+            fileRow.style.display = 'flex';
+            if (fileName) fileName.innerText = options.fileName || 'CV Document';
+        }
+
+        if (stepsTitle) stepsTitle.innerText = isEn ? "Recruitment Screening Protocol:" : "Déroulement du Traitement (Norme ISO RH) :";
+        if (s1T) s1T.innerText = isEn ? "In-depth Profile Screening" : "Examen approfondi du profil";
+        if (s1D) s1D.innerText = isEn ? "Evaluation within 24 to 48 business hours by our specialized recruitment consultant." : "Évaluation sous 24h à 48h ouvrées par un consultant métier dédié.";
+        if (s2T) s2T.innerText = isEn ? "Pre-qualification Call" : "Prise de contact téléphonique";
+        if (s2D) s2D.innerText = isEn ? "Direct phone interview to validate skills, availability, and expectations." : "Entretien de présélection et vérification des compétences techniques.";
+        if (s3T) s3T.innerText = isEn ? "Mission Placement & Contract" : "Délégation & Contrat sécurisé";
+        if (s3D) s3D.innerText = isEn ? "Placement with partner enterprise under a 100% compliant Labor Code contract." : "Mise en relation directe avec l'entreprise utilisatrice & contrat 100% conforme.";
+
+        const waMsg = isEn 
+            ? `Hello PRO C2S Recruitment, I have submitted my application (Ref: ${refId}, Name: ${options.name}) for: ${options.subject || options.pole || 'Job Application'}.`
+            : `Bonjour Pôle Recrutement PRO C2S, je viens de postuler (Réf: ${refId}, Nom: ${options.name}) pour: ${options.subject || options.pole || 'Candidature'}.`;
+        if (waBtn) waBtn.href = 'https://wa.me/212663449824?text=' + encodeURIComponent(waMsg);
+        if (waBtnText) waBtnText.innerText = isEn ? "Fast-Track My Application on WhatsApp" : "Accélérer mon dossier via WhatsApp";
+    }
+
+    if (closeBtnText) closeBtnText.innerText = isEn ? "Return to Website" : "Retourner au site";
+    if (guaranteeText) guaranteeText.innerText = isEn 
+        ? "PRO C2S guarantees strict data confidentiality compliant with statutory CNDP privacy guidelines."
+        : "PRO C2S garantit la stricte confidentialité de vos données conformément à la loi 09-08 & CNDP.";
+
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+};
+
+window.closeExecutiveConfirmation = function() {
+    const modal = document.getElementById("executiveSuccessModal");
+    if (modal) {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+};
+
+(function initConfModalEvents() {
+    const closeBtn = document.getElementById("closeExecutiveSuccessModalBtn");
+    const returnBtn = document.getElementById("confReturnBtn");
+    const modal = document.getElementById("executiveSuccessModal");
+    if (closeBtn) closeBtn.addEventListener("click", window.closeExecutiveConfirmation);
+    if (returnBtn) returnBtn.addEventListener("click", window.closeExecutiveConfirmation);
+    if (modal) {
+        modal.addEventListener("click", function(e) {
+            if (e.target === modal) window.closeExecutiveConfirmation();
+        });
+    }
+})();
+
 })();
 
 document.addEventListener("DOMContentLoaded", function() {
