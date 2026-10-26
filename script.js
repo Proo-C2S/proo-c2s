@@ -921,7 +921,7 @@ document.addEventListener("DOMContentLoaded", function() {
         articleModalConsultBtn.addEventListener("click", () => {
             closeArticle();
             const contactSection = document.getElementById("contact");
-            const contactForm = document.getElementById("contact-form");
+            const contactForm = document.getElementById("contactForm") || document.getElementById("contact-form");
             const msgArea = contactForm ? contactForm.querySelector('textarea[name="message"]') : null;
             const nameInput = contactForm ? contactForm.querySelector('input[name="user_name"]') : null;
 
@@ -1046,7 +1046,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Contact EmailJS
-    const contactForm = document.getElementById("contact-form");
+    const contactForm = document.getElementById("contactForm") || document.getElementById("contact-form");
     const toast = document.getElementById("toastNotification");
     const toastMsg = document.getElementById("toastMsg");
 
@@ -1301,6 +1301,16 @@ document.addEventListener("DOMContentLoaded", function() {
             if (simModalSubmitBtn) {
                 simModalSubmitBtn.innerHTML = isEn ? '<i class="fa-solid fa-check-circle"></i> Confirm Quote Request' : origText;
                 simModalSubmitBtn.disabled = false;
+            }
+            if (typeof window.showExecutiveConfirmation === 'function') {
+                window.showExecutiveConfirmation({
+                    type: 'contact',
+                    refId: simRecord.id,
+                    name: simRecord.name,
+                    subject: 'Demande de Devis: ' + simRecord.pole + ' (' + simRecord.effectif + ')',
+                    phone: simRecord.phone,
+                    email: simRecord.email
+                });
             }
         });
     }

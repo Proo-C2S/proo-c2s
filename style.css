@@ -7598,3 +7598,551 @@ header.nav-visible {
   margin-bottom: 6px;
   letter-spacing: 0.2px;
 }
+
+/* ========================================================
+   WORLD-CLASS REFERENCE CONTACT SECTION (EXACT MOCKUP MATCH)
+   Dark Luxury Canvas + Emerald Green Brand Identity
+   ======================================================== */
+
+.contact-ref-section {
+  background: #080e1a;
+  background: radial-gradient(circle at 80% 20%, #0d1e36 0%, #080e1a 60%, #050912 100%);
+  padding: 100px 0 80px;
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+.contact-ref-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.3), transparent);
+}
+
+.contact-ref-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Two Columns Master Grid */
+.contact-ref-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr;
+  gap: 40px;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .contact-ref-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+}
+
+/* --- LEFT COLUMN: Header + 4 Info Cards + Map --- */
+.contact-ref-left {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.contact-ref-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #10b981;
+}
+
+.contact-ref-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 2px;
+  background: #10b981;
+}
+
+.contact-ref-title {
+  font-family: var(--font-display, "Plus Jakarta Sans", sans-serif);
+  font-size: clamp(34px, 4vw, 48px);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.18;
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+.contact-ref-title span {
+  color: #10b981;
+  background: linear-gradient(135deg, #34d399 0%, #10b981 50%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.contact-ref-desc {
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: #94a3b8;
+  margin: 0;
+  max-width: 620px;
+}
+
+/* 4 Cards Row */
+.contact-ref-cards-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 768px) {
+  .contact-ref-cards-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-ref-cards-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-ref-mini-card {
+  background: #0f1829;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.28s ease;
+  position: relative;
+}
+
+.contact-ref-mini-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(16, 185, 129, 0.15);
+}
+
+.crm-icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+}
+
+.crm-meta h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 4px 0;
+}
+
+.crm-meta p,
+.crm-meta a {
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.45;
+  margin: 0;
+  text-decoration: none;
+  word-break: break-word;
+  transition: color 0.2s ease;
+}
+
+.crm-meta a:hover {
+  color: #10b981;
+}
+
+.crm-meta .crm-subtext {
+  display: block;
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 3px;
+}
+
+/* Map Card */
+.contact-ref-map-box {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  height: 380px;
+  background: #0f1829;
+}
+
+.contact-ref-map-box iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Floating Google Review Card inside Map (exact like reference mockup) */
+.map-floating-place-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 14px 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  max-width: 260px;
+  z-index: 5;
+  color: #0f172a;
+}
+
+.mfp-title {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 2px 0;
+  line-height: 1.25;
+}
+
+.mfp-address {
+  font-size: 11px;
+  color: #64748b;
+  margin: 0 0 6px 0;
+  line-height: 1.35;
+}
+
+.mfp-rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: #d97706;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.mfp-rating .stars {
+  color: #f59e0b;
+  font-size: 10px;
+}
+
+.mfp-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 6px;
+}
+
+.mfp-links a {
+  color: #10b981;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.mfp-links a:hover {
+  text-decoration: underline;
+}
+
+/* --- RIGHT COLUMN: White Elevated Form Card --- */
+.contact-ref-form-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 38px 34px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+  color: #0f172a;
+  position: relative;
+}
+
+@media (max-width: 600px) {
+  .contact-ref-form-card {
+    padding: 26px 20px;
+  }
+}
+
+.crf-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #047857;
+  margin-bottom: 6px;
+}
+
+.crf-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 2px;
+  background: #047857;
+}
+
+.crf-title {
+  font-family: var(--font-display, "Plus Jakarta Sans", sans-serif);
+  font-size: 26px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.5px;
+}
+
+.crf-subtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0 0 24px 0;
+  line-height: 1.5;
+}
+
+/* Form 2-Columns Grid */
+.crf-fields-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 600px) {
+  .crf-fields-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.crf-field-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.crf-field-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.crf-field-icon {
+  position: absolute;
+  left: 16px;
+  color: #94a3b8;
+  font-size: 15px;
+  pointer-events: none;
+  transition: color 0.2s ease;
+  z-index: 2;
+}
+
+.crf-field-group input,
+.crf-field-group select {
+  width: 100%;
+  padding: 13px 16px 13px 44px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  font-size: 14px;
+  color: #0f172a;
+  font-weight: 500;
+  outline: none;
+  transition: all 0.25s ease;
+  font-family: inherit;
+}
+
+.crf-field-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.crf-select-arrow {
+  position: absolute;
+  right: 16px;
+  color: #94a3b8;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.crf-field-group textarea {
+  width: 100%;
+  padding: 14px 16px 14px 44px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  font-size: 14px;
+  color: #0f172a;
+  font-weight: 500;
+  outline: none;
+  min-height: 110px;
+  resize: vertical;
+  transition: all 0.25s ease;
+  font-family: inherit;
+}
+
+.crf-field-group input:focus,
+.crf-field-group select:focus,
+.crf-field-group textarea:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15);
+}
+
+.crf-field-group input:focus ~ .crf-field-icon,
+.crf-field-group select:focus ~ .crf-field-icon,
+.crf-field-group textarea:focus ~ .crf-field-icon {
+  color: #047857;
+}
+
+/* Privacy Checkbox */
+.crf-privacy-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-size: 12.5px;
+  color: #64748b;
+  line-height: 1.45;
+}
+
+.crf-privacy-row input[type="checkbox"] {
+  accent-color: #047857;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.crf-privacy-row a {
+  color: #047857;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* Submit Button in Site Emerald Green */
+.btn-crf-submit {
+  width: 100%;
+  background: linear-gradient(135deg, #047857 0%, #10b981 100%);
+  color: #ffffff !important;
+  border: none;
+  border-radius: 14px;
+  padding: 16px 24px;
+  font-size: 15px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.35);
+  transition: all 0.25s ease;
+}
+
+.btn-crf-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(16, 185, 129, 0.45);
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+}
+
+.btn-crf-submit:active {
+  transform: translateY(0);
+}
+
+/* Candidate Quick-Action pill inside form card */
+.crf-candidate-pill {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px dashed #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.crf-candidate-pill span {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.btn-crf-cand-trigger {
+  background: #f0fdf4;
+  color: #047857;
+  border: 1.5px solid #a7f3d0;
+  padding: 7px 14px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-crf-cand-trigger:hover {
+  background: #047857;
+  color: #ffffff;
+  border-color: #047857;
+}
+
+/* --- BOTTOM TRUST 4 PILLARS (Exact match from mockup) --- */
+.contact-ref-trust-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 900px) {
+  .contact-ref-trust-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .contact-ref-trust-bar {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+.crt-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.crt-icon {
+  font-size: 26px;
+  color: #10b981;
+  margin-bottom: 2px;
+}
+
+.crt-item strong {
+  font-size: 15px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.crt-item span {
+  font-size: 12.5px;
+  color: #94a3b8;
+  line-height: 1.4;
+}
