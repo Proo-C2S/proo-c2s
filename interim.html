@@ -424,7 +424,7 @@
             </div>
         </div>
         <div style="border-top:1px solid rgba(255,255,255,0.08);padding:18px 0;text-align:center;font-size:12.5px;color:#94a3b8;margin-top:40px;">
-            <p>&copy; 2026 PRO C2S. Tous droits réservés.</p>
+            <p><span data-i18n="f_copy">&copy; 2026 PRO C2S. Tous droits réservés.</span> | <a href="mentions-legales.html" style="color: #81c784; text-decoration: underline;" data-i18n="f_legal">Mentions légales</a> | <a href="index.html#contact" style="color: #81c784; text-decoration: underline;" data-i18n="f_privacy">Politique de confidentialité</a> | <a href="admin.html" style="color: #64748b; font-size: 11.5px; text-decoration: none; margin-left: 6px;" title="Accès Direction & RH"><i class="fa-solid fa-lock" style="font-size:10px;"></i> <span data-i18n="f_rh">Espace RH</span></a></p>
         </div>
     </footer>
 
@@ -515,6 +515,10 @@
                 footer_desc: "Partenaire stratégique de référence en Intérim, Ingénierie Informatique et Facility Management au Maroc.",
                 footer_col_nav: "Navigation",
                 footer_col_contact: "Contact Direct",
+                f_copy: "© 2026 PRO C2S. Tous droits réservés.",
+                f_legal: "Mentions légales",
+                f_privacy: "Politique de confidentialité",
+                f_rh: "Espace RH",
                 order_staff: "Commander du Personnel",
                 meta_title: "Intérim & Travail Temporaire | PRO C2S Recrutement"
             },
@@ -603,7 +607,11 @@
                 footer_col_nav: "Navigation",
                 footer_col_contact: "Direct Contact",
                 order_staff: "Request Staffing",
-                meta_title: "Temporary Staffing & Recruitment | PRO C2S Morocco"
+                meta_title: "Temporary Staffing & Recruitment | PRO C2S Morocco",
+                f_copy: "© 2026 PRO C2S. All rights reserved.",
+                f_legal: "Legal Notice",
+                f_privacy: "Privacy Policy",
+                f_rh: "HR Portal"
             }
         };
 
@@ -647,16 +655,22 @@
             setTimeout(dismissPreloader, 1800);
         })();
 
-        document.addEventListener("DOMContentLoaded", () => {
+        function initInterimLang() {
             const savedLang = localStorage.getItem("proC2sLang") || "fr";
             setLanguage(savedLang);
 
             document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
                     setLanguage(btn.getAttribute('data-lang'));
                 });
             });
-        });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener("DOMContentLoaded", initInterimLang);
+        } else {
+            initInterimLang();
+        }
     </script>
     <script src="script.js?v=7777"></script>
 </body>
