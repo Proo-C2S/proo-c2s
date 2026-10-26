@@ -1972,98 +1972,100 @@
     </div>
 </div>
 
-<section class="contact-ref-section reveal" id="contact">
-    <div class="contact-ref-container">
+<section class="executive-contact-master reveal" id="contact">
+    <div class="ecm-glow-1" aria-hidden="true"></div>
+    <div class="ecm-glow-2" aria-hidden="true"></div>
+
+    <div class="ecm-container">
         
-        <!-- Two Column Master Grid (Exact Reference Mockup Layout) -->
-        <div class="contact-ref-grid">
+        <!-- Section Header -->
+        <div class="ecm-header">
+            <span class="ecm-eyebrow" data-i18n="contact_eyebrow">
+                <i class="fa-solid fa-handshake"></i> CONTACTEZ-NOUS & PARTENARIATS
+            </span>
+            <h2 class="ecm-title">
+                <span data-i18n="contact_title_prefix">Un projet ? Une idée ?</span> 
+                <span data-i18n="contact_title_highlight">Parlons-en !</span>
+            </h2>
+            <p class="ecm-desc" data-i18n="contact_desc">
+                Prenez contact directement avec notre direction pour un partenariat stratégique, un rendez-vous ou une collaboration d'entreprise.
+            </p>
+        </div>
+
+        <!-- 1. Top 4 Information Cards (Full Width, Perfectly Balanced) -->
+        <div class="ecm-cards-grid">
+            <!-- 1. Siège / Adresse -->
+            <div class="ecm-info-card">
+                <div class="ecm-card-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="ecm-card-body">
+                    <span class="ecm-card-label" data-i18n="c_addr">Siège National</span>
+                    <span class="ecm-card-val" data-i18n="c_addr_val_short">Imm. 69, Av. Patrice Lumumba, Rabat</span>
+                    <span class="ecm-card-sub"><i class="fa-solid fa-train-subway"></i> Tram Place Al Joulane</span>
+                </div>
+            </div>
+
+            <!-- 2. Téléphones -->
+            <div class="ecm-info-card">
+                <div class="ecm-card-icon">
+                    <i class="fa-solid fa-phone-volume"></i>
+                </div>
+                <div class="ecm-card-body">
+                    <span class="ecm-card-label" data-i18n="c_phone">Lignes Directes</span>
+                    <span class="ecm-card-val">
+                        <a href="tel:+212520704830">05 20 70 48 30</a> / <a href="tel:+212663449824">06 63 44 98 24</a>
+                    </span>
+                    <span class="ecm-card-sub" data-i18n="c_phone_hours"><i class="fa-regular fa-clock"></i> Lun - Ven : 08h30 - 18h30</span>
+                </div>
+            </div>
+
+            <!-- 3. Email Officiel -->
+            <div class="ecm-info-card">
+                <div class="ecm-card-icon">
+                    <i class="fa-solid fa-envelope-open-text"></i>
+                </div>
+                <div class="ecm-card-body">
+                    <span class="ecm-card-label" data-i18n="c_email">Courriel Officiel</span>
+                    <span class="ecm-card-val">
+                        <a href="mailto:procssentreprise@gmail.com">procssentreprise@gmail.com</a>
+                    </span>
+                    <span class="ecm-card-sub" data-i18n="c_email_sub"><i class="fa-solid fa-bolt"></i> Réponse sous 24h ouvrées</span>
+                </div>
+            </div>
+
+            <!-- 4. Desk WhatsApp Pro -->
+            <div class="ecm-info-card">
+                <div class="ecm-card-icon" style="color: #25d366;">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <div class="ecm-card-body">
+                    <span class="ecm-card-label" data-i18n="qc_desk_wa">Desk WhatsApp Pro</span>
+                    <span class="ecm-card-val">
+                        <a href="https://wa.me/212663449824?text=Bonjour%20PRO%20C2S,%20je%20souhaite%20un%20renseignement%20professionnel." target="_blank" rel="noopener noreferrer">+212 663-449824</a>
+                    </span>
+                    <span class="ecm-card-sub"><i class="fa-solid fa-circle-check"></i> <strong data-i18n="qc_instant_resp">Réponse immédiate garantie</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Main 50/50 Equal Height Grid -->
+        <div class="ecm-main-split">
             
-            <!-- LEFT COLUMN: Eyebrow + Title + Desc + 4 Mini Cards + Map -->
-            <div class="contact-ref-left">
-                <div>
-                    <span class="contact-ref-eyebrow" data-i18n="contact_eyebrow">CONTACTEZ-NOUS</span>
-                    <h2 class="contact-ref-title">
-                        <span data-i18n="contact_title_prefix">Un projet ? Une idée ?</span><br>
-                        <span class="contact-highlight" data-i18n="contact_title_highlight">Parlons-en !</span>
-                    </h2>
-                    <p class="contact-ref-desc" data-i18n="contact_desc">
-                        Nous sommes à votre écoute pour vous accompagner dans tous vos projets. N'hésitez pas à nous contacter.
-                    </p>
-                </div>
-
-                <!-- 4 Mini Info Cards in Row -->
-                <div class="contact-ref-cards-row">
-                    <!-- 1. Adresse -->
-                    <div class="contact-ref-mini-card">
-                        <div class="crm-icon-circle">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </div>
-                        <div class="crm-meta">
-                            <h4 data-i18n="c_addr">Adresse</h4>
-                            <p data-i18n="c_addr_val_short">Imm. 69, Av. Patrice Lumumba, Hassan - Rabat</p>
-                        </div>
+            <!-- LEFT: Interactive Google Maps Showcase -->
+            <div class="ecm-map-card">
+                <div class="ecm-map-header">
+                    <div class="emh-info">
+                        <h3><i class="fa-solid fa-building-flag" style="color:#047857;"></i> <span data-i18n="map_hq_title">Siège Social National PRO C2S</span></h3>
+                        <p data-i18n="c_addr_val">Imm. 69, 4ème Étage, Av. Patrice Lumumba, Hassan - Rabat</p>
                     </div>
-
-                    <!-- 2. Téléphone -->
-                    <div class="contact-ref-mini-card">
-                        <div class="crm-icon-circle">
-                            <i class="fa-solid fa-phone"></i>
-                        </div>
-                        <div class="crm-meta">
-                            <h4 data-i18n="c_phone">Téléphone</h4>
-                            <a href="tel:+212520704830">05 20 70 48 30</a>
-                            <a href="tel:+212663449824">06 63 44 98 24</a>
-                            <span class="crm-subtext" data-i18n="c_phone_hours">Lun - Ven : 08h30 - 18h30</span>
-                        </div>
-                    </div>
-
-                    <!-- 3. Email -->
-                    <div class="contact-ref-mini-card">
-                        <div class="crm-icon-circle">
-                            <i class="fa-solid fa-envelope"></i>
-                        </div>
-                        <div class="crm-meta">
-                            <h4 data-i18n="c_email">Email</h4>
-                            <a href="mailto:procssentreprise@gmail.com">procssentreprise@gmail.com</a>
-                            <span class="crm-subtext" data-i18n="c_email_sub">Réponse sous 24h</span>
-                        </div>
-                    </div>
-
-                    <!-- 4. Site web -->
-                    <div class="contact-ref-mini-card">
-                        <div class="crm-icon-circle">
-                            <i class="fa-solid fa-globe"></i>
-                        </div>
-                        <div class="crm-meta">
-                            <h4 data-i18n="c_website">Site web</h4>
-                            <a href="https://wa.me/212663449824" target="_blank" rel="noopener noreferrer">Desk WhatsApp</a>
-                            <span class="crm-subtext" data-i18n="c_web_sub">www.proc2s.ma</span>
-                        </div>
+                    <div class="emh-status-badge">
+                        <span class="emh-status-dot"></span>
+                        <span data-i18n="map_open_hours">Bureaux Ouverts : 08h30 - 18h30</span>
                     </div>
                 </div>
 
-                <!-- Interactive Google Map Card with Overlaid Floating Review Badge -->
-                <div class="contact-ref-map-box">
-                    <!-- Custom Place Review Badge (Matching Reference Mockup) -->
-                    <div class="map-floating-place-badge">
-                        <div class="mfp-title" data-i18n="map_place_name">PRO C2S Entreprise</div>
-                        <div class="mfp-address" data-i18n="c_addr_val_short">Imm. 69, Av. Patrice Lumumba, Hassan - Rabat</div>
-                        <div class="mfp-rating">
-                            <span>4,9</span>
-                            <span class="stars">★★★★★</span>
-                            <span style="color:#64748b;font-weight:500;" data-i18n="map_reviews_count">38 avis</span>
-                        </div>
-                        <div class="mfp-links">
-                            <a href="https://maps.google.com/?q=Imm+69+Avenue+Patrice+Lumumba+Hassan+Rabat" target="_blank" rel="noopener noreferrer">
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="map_enlarge">Agrandir le plan</span>
-                            </a>
-                            <a href="https://maps.google.com/?q=Imm+69+Avenue+Patrice+Lumumba+Hassan+Rabat" target="_blank" rel="noopener noreferrer">
-                                <i class="fa-solid fa-diamond-turn-right"></i> <span data-i18n="map_directions">Itinéraire</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Embedded Map -->
+                <div class="ecm-map-frame-box">
                     <iframe title="Carte de localisation PRO C2S - Hassan Rabat" 
                         src="https://maps.google.com/maps?q=34.0212008,-6.8354897&hl=fr&z=16&output=embed" 
                         loading="lazy" 
@@ -2071,116 +2073,148 @@
                     </iframe>
                 </div>
 
+                <div class="ecm-map-footer">
+                    <div class="ecm-transit-row">
+                        <div class="ecm-transit-item">
+                            <i class="fa-solid fa-train-subway"></i>
+                            <div>
+                                <strong>Tramway L1 & L2</strong>
+                                <span>Place Al Joulane (250m)</span>
+                            </div>
+                        </div>
+                        <div class="ecm-transit-item">
+                            <i class="fa-solid fa-square-parking"></i>
+                            <div>
+                                <strong>Parking Visiteurs</strong>
+                                <span>Av. Patrice Lumumba</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ecm-map-actions">
+                        <a href="https://maps.google.com/?q=Imm+69+Avenue+Patrice+Lumumba+Hassan+Rabat" target="_blank" rel="noopener noreferrer" class="ecm-btn-gps">
+                            <i class="fa-solid fa-diamond-turn-right"></i> <span data-i18n="map_directions">Itinéraire Google Maps</span>
+                        </a>
+                        <a href="https://waze.com/ul?ll=34.0212008,-6.8354897&navigate=yes" target="_blank" rel="noopener noreferrer" class="ecm-btn-waze">
+                            <i class="fa-brands fa-waze"></i> Waze
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <!-- RIGHT COLUMN: Elevated White Form Card -->
-            <div class="contact-ref-form-card">
-                <span class="crf-eyebrow" data-i18n="crf_eyebrow">ÉCRIVEZ-NOUS</span>
-                <h3 class="crf-title" data-i18n="crf_title">Envoyez-nous un message</h3>
-                <p class="crf-subtitle" data-i18n="crf_subtitle">
-                    Remplissez le formulaire ci-dessous, notre équipe vous répondra dans les plus brefs délais.
-                </p>
-
-                <form class="contact-form" id="contactForm" novalidate>
-                    <div class="crf-fields-grid">
-                        
-                        <!-- Nom complet -->
-                        <div class="crf-field-group">
-                            <input type="text" name="user_name" placeholder="Nom complet *" data-i18n-placeholder="crf_ph_name" required autocomplete="name">
-                            <i class="fa-solid fa-user crf-field-icon"></i>
-                        </div>
-
-                        <!-- Email -->
-                        <div class="crf-field-group">
-                            <input type="email" name="user_email" placeholder="Email *" data-i18n-placeholder="crf_ph_email" required autocomplete="email">
-                            <i class="fa-solid fa-envelope crf-field-icon"></i>
-                        </div>
-
-                        <!-- Téléphone -->
-                        <div class="crf-field-group">
-                            <input type="tel" name="user_phone" placeholder="Téléphone *" data-i18n-placeholder="crf_ph_phone" required autocomplete="tel">
-                            <i class="fa-solid fa-phone crf-field-icon"></i>
-                        </div>
-
-                        <!-- Sujet Dropdown -->
-                        <div class="crf-field-group">
-                            <select name="user_subject" id="contactSubjectSelect" required>
-                                <option value="" disabled selected data-i18n="crf_opt_select">Sujet *</option>
-                                <option value="Recrutement & Délégation d'Intérim Urgent" data-i18n="crf_opt_recrutement">Recrutement & Intérim</option>
-                                <option value="Partenariat Commercial & Grand Compte" data-i18n="crf_opt_partenariat">Partenariat Commercial</option>
-                                <option value="Externalisation RH, Paie & Audit Social" data-i18n="crf_opt_externalisation">Externalisation RH & Paie</option>
-                                <option value="Services Informatiques & Propreté Pro" data-i18n="crf_opt_it">Services IT & Facility</option>
-                                <option value="Autre Demande Spécifique" data-i18n="crf_opt_autre">Autre Demande Spécifique</option>
-                            </select>
-                            <i class="fa-solid fa-list-check crf-field-icon"></i>
-                            <i class="fa-solid fa-chevron-down crf-select-arrow"></i>
-                        </div>
-
-                        <!-- Message -->
-                        <div class="crf-field-group full-width textarea-group">
-                            <textarea name="message" placeholder="Votre message *" data-i18n-placeholder="crf_ph_msg" required></textarea>
-                            <i class="fa-solid fa-comment-dots crf-field-icon"></i>
-                        </div>
-
+            <!-- RIGHT: Executive Contact Form Card -->
+            <div class="ecm-form-card">
+                <div>
+                    <div class="efc-header">
+                        <span class="efc-eyebrow" data-i18n="crf_eyebrow">
+                            <i class="fa-solid fa-envelope"></i> ÉCRIVEZ-NOUS
+                        </span>
+                        <h3 class="efc-title" data-i18n="crf_title">Envoyez-nous un message</h3>
+                        <p class="efc-desc" data-i18n="crf_subtitle">
+                            Remplissez ce formulaire pour échanger avec notre direction ou planifier un rendez-vous.
+                        </p>
                     </div>
 
-                    <!-- Privacy Checkbox -->
-                    <div class="crf-privacy-row">
-                        <input type="checkbox" id="crfPrivacyCheck" required checked>
-                        <label for="crfPrivacyCheck">
-                            <span data-i18n="crf_privacy_agree">J'accepte que mes données soient traitées conformément à la</span> 
-                            <a href="#" id="openPrivacyForm" data-i18n="crf_privacy_link">politique de confidentialité</a>.
-                        </label>
-                    </div>
+                    <form class="contact-form" id="contactForm" novalidate>
+                        <div class="efc-fields-grid">
+                            
+                            <!-- Nom complet -->
+                            <div class="efc-field">
+                                <input type="text" name="user_name" placeholder="Nom complet *" data-i18n-placeholder="crf_ph_name" required autocomplete="name">
+                                <i class="fa-solid fa-user efc-field-icon"></i>
+                            </div>
 
-                    <!-- Submit Button -->
-                    <button type="submit" class="btn-crf-submit" id="contactSubmitBtn">
-                        <i class="fa-solid fa-paper-plane"></i>
-                        <span data-i18n="crf_btn_submit">Envoyer le message</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
+                            <!-- Email -->
+                            <div class="efc-field">
+                                <input type="email" name="user_email" placeholder="Email professionnel *" data-i18n-placeholder="crf_ph_email" required autocomplete="email">
+                                <i class="fa-solid fa-envelope efc-field-icon"></i>
+                            </div>
 
-                    <!-- Candidate Quick Access Pill -->
-                    <div class="crf-candidate-pill">
-                        <span><i class="fa-solid fa-user-tie"></i> <span data-i18n="crf_candidate_q">Vous êtes candidat ?</span></span>
-                        <button type="button" class="btn-crf-cand-trigger" id="openDirectCvModalBtn">
-                            <i class="fa-solid fa-file-arrow-up"></i> <span data-i18n="crf_candidate_btn">Déposez votre CV ici</span>
+                            <!-- Téléphone -->
+                            <div class="efc-field">
+                                <input type="tel" name="user_phone" placeholder="Numéro de téléphone *" data-i18n-placeholder="crf_ph_phone" required autocomplete="tel">
+                                <i class="fa-solid fa-phone efc-field-icon"></i>
+                            </div>
+
+                            <!-- Sujet -->
+                            <div class="efc-field">
+                                <select name="user_subject" id="contactSubjectSelect" required>
+                                    <option value="" disabled selected data-i18n="crf_opt_select">Sujet de votre demande *</option>
+                                    <option value="Recrutement & Délégation d'Intérim Urgent" data-i18n="crf_opt_recrutement">⚡ Recrutement & Intérim Urgent</option>
+                                    <option value="Partenariat Commercial & Grand Compte" data-i18n="crf_opt_partenariat">🤝 Partenariat Commercial</option>
+                                    <option value="Externalisation RH, Paie & Audit Social" data-i18n="crf_opt_externalisation">📑 Externalisation RH & Paie</option>
+                                    <option value="Services Informatiques & Propreté Pro" data-i18n="crf_opt_it">💻 Services IT & Propreté</option>
+                                    <option value="Autre Demande Spécifique" data-i18n="crf_opt_autre">📋 Autre Demande Spécifique</option>
+                                </select>
+                                <i class="fa-solid fa-list-check efc-field-icon"></i>
+                                <i class="fa-solid fa-chevron-down efc-select-chevron"></i>
+                            </div>
+
+                            <!-- Message -->
+                            <div class="efc-field full textarea-field">
+                                <textarea name="message" placeholder="Votre message détaillé..." data-i18n-placeholder="crf_ph_msg" required></textarea>
+                                <i class="fa-solid fa-comment-dots efc-field-icon"></i>
+                            </div>
+
+                        </div>
+
+                        <!-- Privacy -->
+                        <div class="efc-privacy">
+                            <input type="checkbox" id="crfPrivacyCheck" required checked>
+                            <label for="crfPrivacyCheck">
+                                <span data-i18n="crf_privacy_agree">J'accepte que mes données soient traitées conformément à la</span> 
+                                <a href="#" id="openPrivacyForm" data-i18n="crf_privacy_link">politique de confidentialité</a>.
+                            </label>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn-efc-submit" id="contactSubmitBtn">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span data-i18n="crf_btn_submit">Transmettre mon Message à la Direction</span>
+                            <i class="fa-solid fa-arrow-right"></i>
                         </button>
-                    </div>
+                    </form>
+                </div>
 
-                </form>
+                <!-- Candidate Direct Access Pill -->
+                <div class="efc-candidate-pill">
+                    <span><i class="fa-solid fa-user-tie"></i> <span data-i18n="crf_candidate_q">Vous êtes candidat ?</span></span>
+                    <button type="button" class="btn-efc-cand-trigger" id="openDirectCvModalBtn">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> <span data-i18n="crf_candidate_btn">Déposez votre CV ici</span>
+                    </button>
+                </div>
             </div>
 
         </div>
 
-        <!-- BOTTOM TRUST 4 PILLARS (Exact Reference Mockup Match) -->
-        <div class="contact-ref-trust-bar">
+        <!-- 3. Bottom Trust 4 Pillars -->
+        <div class="ecm-trust-bar">
             <!-- Pillar 1 -->
-            <div class="crt-item">
-                <div class="crt-icon"><i class="fa-solid fa-code"></i></div>
+            <div class="ecm-trust-item">
+                <div class="ecm-trust-icon"><i class="fa-solid fa-award"></i></div>
                 <strong data-i18n="trust_exp_title">Expertise reconnue</strong>
                 <span data-i18n="trust_exp_desc">Plus de 10 ans d'excellence au Maroc</span>
             </div>
 
             <!-- Pillar 2 -->
-            <div class="crt-item">
-                <div class="crt-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            <div class="ecm-trust-item">
+                <div class="ecm-trust-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
                 <strong data-i18n="trust_react_title">Réactivité maximale</strong>
                 <span data-i18n="trust_react_desc">Réponse garantie sous 24h ouvrées</span>
             </div>
 
             <!-- Pillar 3 -->
-            <div class="crt-item">
-                <div class="crt-icon"><i class="fa-solid fa-handshake"></i></div>
+            <div class="ecm-trust-item">
+                <div class="ecm-trust-icon"><i class="fa-solid fa-handshake"></i></div>
                 <strong data-i18n="trust_acc_title">Accompagnement dédié</strong>
                 <span data-i18n="trust_acc_desc">Un interlocuteur unique pour votre compte</span>
             </div>
 
             <!-- Pillar 4 -->
-            <div class="crt-item">
-                <div class="crt-icon"><i class="fa-solid fa-shield-heart"></i></div>
-                <strong data-i18n="trust_sat_title">Satisfaction client</strong>
-                <span data-i18n="trust_sat_desc">100% engagés sur la qualité & conformité</span>
+            <div class="ecm-trust-item">
+                <div class="ecm-trust-icon"><i class="fa-solid fa-shield-check"></i></div>
+                <strong data-i18n="trust_sat_title">100% Conformité & Qualité</strong>
+                <span data-i18n="trust_sat_desc">Engagement certifié CNDP & Code du travail</span>
             </div>
         </div>
 
