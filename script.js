@@ -413,7 +413,9 @@ window.showExecutiveConfirmation = function(options) {
         ? "PRO C2S guarantees strict data confidentiality compliant with statutory CNDP privacy guidelines."
         : "PRO C2S garantit la stricte confidentialité de vos données conformément à la loi 09-08 & CNDP.";
 
+    modal.style.display = 'flex';
     modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
 };
 
@@ -421,21 +423,44 @@ window.closeExecutiveConfirmation = function() {
     const modal = document.getElementById("executiveSuccessModal");
     if (modal) {
         modal.classList.remove('open');
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
     }
 };
 
 (function initConfModalEvents() {
-    const closeBtn = document.getElementById("closeExecutiveSuccessModalBtn");
-    const returnBtn = document.getElementById("confReturnBtn");
-    const modal = document.getElementById("executiveSuccessModal");
-    if (closeBtn) closeBtn.addEventListener("click", window.closeExecutiveConfirmation);
-    if (returnBtn) returnBtn.addEventListener("click", window.closeExecutiveConfirmation);
-    if (modal) {
-        modal.addEventListener("click", function(e) {
-            if (e.target === modal) window.closeExecutiveConfirmation();
-        });
+    function setupClose() {
+        const closeBtn = document.getElementById("closeExecutiveSuccessModalBtn");
+        const returnBtn = document.getElementById("confReturnBtn");
+        const modal = document.getElementById("executiveSuccessModal");
+        if (closeBtn) closeBtn.addEventListener("click", window.closeExecutiveConfirmation);
+        if (returnBtn) returnBtn.addEventListener("click", window.closeExecutiveConfirmation);
+        if (modal) {
+            modal.addEventListener("click", function(e) {
+                if (e.target === modal) window.closeExecutiveConfirmation();
+            });
+        }
     }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupClose);
+    } else {
+        setupClose();
+    }
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('#closeExecutiveSuccessModalBtn') || e.target.closest('#confReturnBtn')) {
+            e.preventDefault();
+            window.closeExecutiveConfirmation();
+        }
+        if (e.target.id === 'executiveSuccessModal') {
+            window.closeExecutiveConfirmation();
+        }
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' || e.key === 'Esc') {
+            window.closeExecutiveConfirmation();
+        }
+    });
 })();
 
 })();
@@ -1065,6 +1090,80 @@ document.addEventListener("DOMContentLoaded", function() {
 
         contactForm.addEventListener("submit", function(event) {
             event.preventDefault();
+
+            const isEn = localStorage.getItem("proC2sLang") === "en";
+
+            const nameInput = contactForm.querySelector('input[name="user_name"]');
+            const emailInput = contactForm.querySelector('input[name="user_email"]');
+            const phoneInput = contactForm.querySelector('input[name="user_phone"]');
+            const subjectSelect = contactForm.querySelector('select[name="user_subject"]');
+            const msgArea = contactForm.querySelector('textarea[name="message"]');
+            const privacyCheck = contactForm.querySelector('#crfPrivacyCheck') || contactForm.querySelector('input[type="checkbox"]');
+
+            // Reset previous validation errors
+            [nameInput, emailInput, phoneInput, subjectSelect, msgArea].forEach(el => {
+                if (el) el.classList.remove('input-field-error');
+            });
+
+            const nameVal = nameInput ? nameInput.value.trim() : '';
+            const emailVal = emailInput ? emailInput.value.trim() : '';
+            const phoneVal = phoneInput ? phoneInput.value.trim() : '';
+            const subjectVal = subjectSelect ? subjectSelect.value.trim() : '';
+            const msgVal = msgArea ? msgArea.value.trim() : '';
+            const privacyVal = privacyCheck ? privacyCheck.checked : true;
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!nameVal || nameVal.length < 2) {
+                if (nameInput) {
+                    nameInput.classList.add('input-field-error');
+                    nameInput.focus();
+                }
+                showToast(isEn ? "Please enter your full name." : "Veuillez renseigner votre nom complet.", "error");
+                return;
+            }
+
+            if (!emailVal || !emailRegex.test(emailVal)) {
+                if (emailInput) {
+                    emailInput.classList.add('input-field-error');
+                    emailInput.focus();
+                }
+                showToast(isEn ? "Please enter a valid email address." : "Veuillez saisir une adresse email valide.", "error");
+                return;
+            }
+
+            if (!phoneVal || phoneVal.replace(/\D/g, '').length < 8) {
+                if (phoneInput) {
+                    phoneInput.classList.add('input-field-error');
+                    phoneInput.focus();
+                }
+                showToast(isEn ? "Please enter a valid phone number (at least 8 digits)." : "Veuillez saisir un numéro de téléphone valide.", "error");
+                return;
+            }
+
+            if (!subjectVal) {
+                if (subjectSelect) {
+                    subjectSelect.classList.add('input-field-error');
+                    subjectSelect.focus();
+                }
+                showToast(isEn ? "Please select the subject of your request." : "Veuillez sélectionner l'objet de votre demande.", "error");
+                return;
+            }
+
+            if (!msgVal || msgVal.length < 5) {
+                if (msgArea) {
+                    msgArea.classList.add('input-field-error');
+                    msgArea.focus();
+                }
+                showToast(isEn ? "Please write your message (at least 5 characters)." : "Veuillez rédiger votre message (au moins 5 caractères).", "error");
+                return;
+            }
+
+            if (!privacyVal) {
+                showToast(isEn ? "Please agree to the privacy policy." : "Veuillez accepter la politique de confidentialité.", "error");
+                return;
+            }
+
             const originalText = submitBtn ? submitBtn.innerHTML : "Envoyer";
             if (submitBtn) {
                 submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Transmission...';
@@ -1075,17 +1174,16 @@ document.addEventListener("DOMContentLoaded", function() {
             const msgRecord = {
                 id: 'MSG-' + Date.now(),
                 date: new Date().toLocaleString('fr-FR'),
-                name: fd.get('user_name') || 'N/A',
+                name: nameVal,
                 company: fd.get('user_company') || 'N/A',
-                email: fd.get('user_email') || 'N/A',
-                phone: fd.get('user_phone') || 'N/A',
-                subject: fd.get('user_subject') || 'Partenariat Commercial & Grand Compte',
-                message: fd.get('message') || 'N/A',
+                email: emailVal,
+                phone: phoneVal,
+                subject: subjectVal || 'Partenariat Commercial & Grand Compte',
+                message: msgVal,
                 status: 'Nouveau'
             };
             window.PRO_C2S_DB.saveMessage(msgRecord);
 
-            const isEn = localStorage.getItem("proC2sLang") === "en";
             showToast(isEn ? "Your message has been sent directly to Executive Management! We will respond within 24 business hours." : "Votre message a été transmis directement à la Direction Générale ! Nous vous répondrons sous 24h ouvrées.", "success");
             contactForm.reset();
             if (submitBtn) {
