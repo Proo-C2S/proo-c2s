@@ -609,8 +609,8 @@
             if (!netDict[lang]) return;
             localStorage.setItem("proC2sLang", lang);
             document.documentElement.lang = lang;
-            if (dict.meta_title) document.title = dict.meta_title;
             const dict = netDict[lang];
+            if (dict.meta_title) document.title = dict.meta_title;
 
             document.querySelectorAll('.lang-btn').forEach(b => {
                 if (b.getAttribute('data-lang') === lang) {
