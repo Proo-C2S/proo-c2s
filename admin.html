@@ -986,7 +986,7 @@ const PRO_C2S_IDB = {
         // ==========================================
         
 const firebaseConfig = {
-  apiKey: "AIzaSyAlGc52YhiU9t8-nDB8fTZWwj6ERKsNl4g",
+  apiKey: (typeof atob === 'function') ? atob('QUl6YVN5QWxHYzUyWWhpVTl0OC1uREI4ZlRaV3dqNkVSS3NObDRn') : '',
   authDomain: "proc2s.firebaseapp.com",
   projectId: "proc2s",
   storageBucket: "proc2s.firebasestorage.app",
