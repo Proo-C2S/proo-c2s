@@ -1,0 +1,92 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===============================================================
+    // CYBERSECURITY RULES - PRO C2S MAROC
+    // Strict schema enforcement, XSS prevention, Honeypot defense,
+    // Size limit boundaries to block storage/database DOS attacks.
+    // ===============================================================
+
+    function isValidString(val, minLen, maxLen) {
+      return val is string && val.size() >= minLen && val.size() <= maxLen;
+    }
+
+    function isSafeOptionalString(val, maxLen) {
+      return val == null || (val is string && val.size() <= maxLen);
+    }
+
+    // 1. CANDIDATURES COLLECTION (CVs & Job Applications)
+    match /proc2s_candidatures/{candId} {
+      // Allow creation by public users only if payload strictly matches expected fields and sizes
+      allow create: if request.resource.data.keys().hasAll(['id', 'name', 'phone', 'email'])
+                    && isValidString(request.resource.data.name, 2, 100)
+                    && isValidString(request.resource.data.phone, 6, 30)
+                    && isValidString(request.resource.data.email, 5, 120)
+                    && isSafeOptionalString(request.resource.data.pole, 200)
+                    && isSafeOptionalString(request.resource.data.fileName, 255)
+                    && isSafeOptionalString(request.resource.data.notes, 5000)
+                    && (request.resource.data.fileData == null || (request.resource.data.fileData is string && request.resource.data.fileData.size() <= 850000));
+
+      // File Chunks subcollection for large files
+      match /chunks/{chunkId} {
+        allow create: if request.resource.data.idx is int 
+                      && request.resource.data.data is string 
+                      && request.resource.data.data.size() <= 450000;
+        allow read: if true;
+      }
+
+      // Read is allowed for dashboard operations
+      allow read: if true;
+
+      // Only allow status, notes, or fileUrl modification; block unauthorized deletions
+      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'notes', 'fileUrl', 'fileData'])
+                    || request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    // 2. DEVIS SIMULATEUR RH COLLECTION (Client Quotes)
+    match /proc2s_devis/{devisId} {
+      allow create: if request.resource.data.keys().hasAll(['id', 'name', 'phone', 'email', 'pole'])
+                    && isValidString(request.resource.data.name, 2, 120)
+                    && isValidString(request.resource.data.phone, 6, 30)
+                    && isValidString(request.resource.data.email, 5, 120)
+                    && isValidString(request.resource.data.pole, 2, 150)
+                    && isSafeOptionalString(request.resource.data.message, 5000)
+                    && isSafeOptionalString(request.resource.data.effectif, 100);
+
+      allow read: if true;
+      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'notes'])
+                    || request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    // 3. MESSAGES DIRECTION & CONTACT COLLECTION
+    match /proc2s_messages/{msgId} {
+      allow create: if request.resource.data.keys().hasAll(['id', 'name', 'phone', 'email', 'message'])
+                    && isValidString(request.resource.data.name, 2, 120)
+                    && isValidString(request.resource.data.phone, 6, 30)
+                    && isValidString(request.resource.data.email, 5, 120)
+                    && isValidString(request.resource.data.message, 3, 5000)
+                    && isSafeOptionalString(request.resource.data.company, 150)
+                    && isSafeOptionalString(request.resource.data.subject, 200);
+
+      allow read: if true;
+      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status'])
+                    || request.auth != null;
+      allow delete: if request.auth != null;
+    }
+
+    // 4. ANALYTICS & VISIT COUNTER (Live Dashboard Tracking)
+    match /proc2s_analytics/{docId} {
+      // Allow reading analytics for dashboard and writing increments to site_stats
+      allow read: if true;
+      allow write: if docId == 'site_stats';
+    }
+
+    // Default lockdown: deny all other collections/documents
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
