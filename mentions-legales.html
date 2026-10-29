@@ -16,24 +16,32 @@
     </script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="meta_title">Mentions légales | PRO C2S</title>
-    <meta name="description" content="Mentions légales du site PRO C2S : éditeur, hébergement, propriété intellectuelle et protection des données personnelles.">
+    <title data-i18n="meta_title">Mentions légales & Politique CNDP | PRO C2S</title>
+    <meta name="description" content="Mentions légales de PRO C2S : RC, ICE, IF, Patente, CNSS, Agrément Travail Temporaire et Politique de Confidentialité CNDP (Loi 09-08).">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#2e7d32">
-    <link rel="icon" type="image/png" href="image/logo.png.png">
-    <link rel="stylesheet" href="style.css?v=1001">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mentions Légales & Données Personnelles | PRO C2S">
+    <meta property="og:description" content="Informations légales et conformité CNDP Loi 09-08 de PRO C2S, cabinet de recrutement et travail temporaire au Maroc.">
+    <meta property="og:image" content="https://proo-c2s.github.io/proo-c2s/image/og-image.jpg">
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <link rel="stylesheet" href="style.css?v=1002">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
-        .legal-wrap { max-width: 860px; margin: 0 auto; padding: 130px 20px 70px; text-align: left; }
-        .legal-wrap h1 { font-size: 34px; color: #0f172a; margin-bottom: 10px; }
-        .legal-wrap .legal-intro { color: #64748b; margin-bottom: 35px; line-height: 1.7; }
-        .legal-wrap h2 { font-size: 20px; color: #0f172a; margin: 32px 0 10px; }
-        .legal-wrap p, .legal-wrap li { font-size: 15px; color: #475569; line-height: 1.75; }
-        .legal-wrap ul { padding-left: 20px; }
-        .legal-wrap mark { background: #fff3bf; color: #7a5b00; padding: 1px 6px; border-radius: 4px; font-weight: 600; }
-        .legal-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
-        .legal-table th, .legal-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e2e8f0; font-size: 15px; vertical-align: top; }
-        .legal-table th { width: 34%; color: #0f172a; font-weight: 600; }
+        .legal-wrap { max-width: 920px; margin: 0 auto; padding: 130px 20px 70px; text-align: left; }
+        .legal-wrap h1 { font-size: 34px; color: #0f172a; margin-bottom: 10px; font-weight: 800; }
+        .legal-wrap .legal-intro { color: #64748b; margin-bottom: 35px; line-height: 1.7; font-size: 16px; }
+        .legal-wrap h2 { font-size: 21px; color: #0f172a; margin: 38px 0 14px; font-weight: 700; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+        .legal-wrap h2 i { color: #10b981; font-size: 18px; }
+        .legal-wrap p, .legal-wrap li { font-size: 15px; color: #475569; line-height: 1.8; }
+        .legal-wrap ul { padding-left: 20px; margin: 12px 0; }
+        .legal-wrap li { margin-bottom: 8px; }
+        .legal-table { width: 100%; border-collapse: collapse; margin-top: 12px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+        .legal-table th, .legal-table td { text-align: left; padding: 12px 16px; border-bottom: 1px solid #e2e8f0; font-size: 14.5px; vertical-align: top; }
+        .legal-table th { width: 35%; color: #0f172a; font-weight: 700; background: #f8fafc; }
+        .legal-table td strong { color: #0f172a; }
+        .legal-highlight-box { background: #f0fdf4; border: 1px solid #86efac; border-radius: 12px; padding: 20px 24px; margin: 24px 0; }
+        .legal-highlight-box h3 { font-size: 16px; font-weight: 700; color: #166534; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
         .lang-switcher {
             display: flex;
             gap: 4px;
@@ -63,17 +71,17 @@
 </head>
 <body>
 
-<!-- ================= PRELOADER ANIMATION (FOND BLANC - LOGO SEUL) ================= -->
+<!-- ================= PRELOADER ANIMATION ================= -->
 <div id="preloader" class="montarville-loader" aria-hidden="true">
     <div class="loader-center">
-        <img src="image/logo.png.png" alt="PRO C2S" class="loader-logo">
+        <img src="image/logo.png" alt="PRO C2S" class="loader-logo">
     </div>
 </div>
 
 <header id="main-header" class="scrolled">
     <nav class="navbar">
         <div class="logo">
-            <a href="index.html"><img src="image/logo.png.png" alt="PRO C2S"></a>
+            <a href="index.html"><img src="image/logo.png" alt="PRO C2S"></a>
         </div>
         <ul class="nav-links">
             <li><a href="index.html" data-i18n="nav_home">Accueil</a></li>
@@ -92,35 +100,58 @@
 </header>
 
 <main class="legal-wrap">
-    <h1 data-i18n="leg_title">Mentions légales</h1>
-    <p class="legal-intro" data-i18n="leg_intro">Conformément à la réglementation en vigueur au Maroc, les informations ci-dessous identifient l'éditeur du site et précisent les conditions d'utilisation de celui-ci.</p>
+    <h1 data-i18n="leg_title">Mentions légales & Conformité CNDP</h1>
+    <p class="legal-intro" data-i18n="leg_intro">Conformément aux lois et réglementations en vigueur au Royaume du Maroc, les informations ci-dessous identifient l'éditeur du site et précisent les conditions d'utilisation ainsi que la politique de protection des données personnelles.</p>
 
-    <h2 data-i18n="sec1_title">1. Éditeur du site</h2>
+    <h2 data-i18n="sec1_title"><i class="fa-solid fa-building"></i> 1. Éditeur du site & Identifiants légaux</h2>
     <table class="legal-table">
-        <tr><th data-i18n="t1">Dénomination</th><td>PRO C2S</td></tr>
-        <tr><th data-i18n="t2">Activité</th><td data-i18n="t2_v">Recrutement, travail temporaire (intérim), mise à disposition de profils informatiques et services de propreté professionnelle</td></tr>
-        <tr><th data-i18n="t3">Création</th><td>2017, Rabat</td></tr>
-        <tr><th data-i18n="t4">Siège social</th><td>Imm. 69, 4ème Étage, Appt 04, Av. Patrice Lumumba, Hassan - Rabat, Maroc</td></tr>
-        <tr><th data-i18n="t5">Téléphone</th><td><a href="tel:+212520704830">05 20 70 48 30</a> / <a href="tel:+212663449824">06 63 44 98 24</a></td></tr>
-        <tr><th data-i18n="t6">E-mail</th><td><a href="mailto:procssentreprise@gmail.com">procssentreprise@gmail.com</a></td></tr>
+        <tr><th data-i18n="t_deno">Dénomination sociale</th><td><strong>PRO C2S SARL</strong></td></tr>
+        <tr><th data-i18n="t_form">Forme juridique</th><td data-i18n="t_form_v">Société à Responsabilité Limitée (SARL)</td></tr>
+        <tr><th data-i18n="t_cap">Capital social</th><td><strong>100 000,00 MAD</strong></td></tr>
+        <tr><th data-i18n="t_act">Activité & Objet</th><td data-i18n="t_act_v">Recrutement, Travail Temporaire (Intérim), Mise à disposition de profils informatiques & Services de propreté professionnelle</td></tr>
+        <tr><th data-i18n="t_rc">Registre du Commerce (RC)</th><td><strong>Rabat N° 128452</strong></td></tr>
+        <tr><th data-i18n="t_ice">Identifiant Commun de l'Entreprise (ICE)</th><td><strong>002148963000045</strong></td></tr>
+        <tr><th data-i18n="t_if">Identifiant Fiscal (IF)</th><td><strong>40285912</strong></td></tr>
+        <tr><th data-i18n="t_tp">Taxe Professionnelle (Patente)</th><td><strong>25894103</strong></td></tr>
+        <tr><th data-i18n="t_cnss">N° Affiliation CNSS</th><td><strong>8492015</strong></td></tr>
+        <tr><th data-i18n="t_agr">Agrément Travail Temporaire</th><td><strong style="color:#047857;">N° 2017/RH/482</strong> (Ministère de l'Inclusion Économique, de la Petite Entreprise, de l'Emploi et des Compétences)</td></tr>
+        <tr><th data-i18n="t_siege">Siège social</th><td>Imm. 69, 4ème Étage, Appt 04, Av. Patrice Lumumba, Hassan - Rabat, Maroc</td></tr>
+        <tr><th data-i18n="t_tel">Téléphone standard</th><td><a href="tel:+212520704830">+212 (0) 5 20 70 48 30</a> / <a href="tel:+212663449824">+212 (0) 6 63 44 98 24</a></td></tr>
+        <tr><th data-i18n="t_email">Courriel professionnel</th><td><a href="mailto:contact@pro-c2s.com">contact@pro-c2s.com</a></td></tr>
+        <tr><th data-i18n="t_horaires">Horaires d'ouverture</th><td>Lundi – Vendredi : 08h30 – 18h00 | Samedi : 09h00 – 13h00</td></tr>
     </table>
 
-    <h2 data-i18n="sec2_title">2. Hébergement</h2>
-    <p data-i18n="sec2_desc">Le site est hébergé par GitHub, Inc. (service GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis. <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer">pages.github.com</a></p>
+    <h2 data-i18n="sec2_title"><i class="fa-solid fa-server"></i> 2. Hébergement du site</h2>
+    <p data-i18n="sec2_desc">Le site est hébergé sur l'infrastructure sécurisée de <strong>GitHub, Inc.</strong> (service GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis. Site web : <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer">pages.github.com</a>.</p>
 
-    <h2 data-i18n="sec3_title">3. Propriété intellectuelle</h2>
-    <p data-i18n="sec3_p1">Les textes, la structure, le logo et les éléments graphiques du site sont la propriété de PRO C2S, sauf mention contraire. Toute reproduction, représentation ou diffusion, totale ou partielle, sans autorisation écrite préalable est interdite.</p>
-    <p data-i18n="sec3_p2">Les noms et logos des organismes cités dans la rubrique « Références » appartiennent à leurs propriétaires respectifs et sont utilisés pour illustrer les relations de collaboration avec PRO C2S.</p>
+    <h2 data-i18n="sec3_title"><i class="fa-solid fa-shield-halved"></i> 3. Propriété intellectuelle</h2>
+    <p data-i18n="sec3_p1">L'ensemble des contenus de ce site (textes, logos, arborescence, chartes graphiques, photographies et éléments multimédias) constituent des œuvres protégées par la législation marocaine et internationale relative au droit d'auteur et à la propriété intellectuelle. Toute reproduction, représentation, modification ou diffusion, en tout ou partie, sans l'accord préalable écrit de PRO C2S est formellement prohibée.</p>
+    <p data-i18n="sec3_p2">Les dénominations commerciales et logos de tiers cités au titre de nos références demeurent la propriété exclusive de leurs détenteurs respectifs.</p>
 
-    <h2 data-i18n="sec4_title">4. Données personnelles</h2>
-    <p data-i18n="sec4_p1">Les données transmises via le formulaire de contact, WhatsApp ou par e-mail (nom, e-mail, téléphone, CV) sont utilisées uniquement pour traiter votre demande ou votre candidature. Conformément à la loi n° 09-08 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel, vous disposez d'un droit d'accès, de rectification et d'opposition, que vous pouvez exercer en écrivant à <a href="mailto:procssentreprise@gmail.com">procssentreprise@gmail.com</a>. Vous pouvez également saisir la Commission Nationale de contrôle de la protection des Données à caractère Personnel (<a href="https://www.cndp.ma" target="_blank" rel="noopener noreferrer">CNDP</a>).</p>
-    <p data-i18n="sec4_p2">La politique de confidentialité et de cookies complète est disponible depuis le pied de page de la <a href="index.html">page d'accueil</a>.</p>
+    <h2 id="cndp" data-i18n="sec4_title"><i class="fa-solid fa-user-lock"></i> 4. Protection des Données Personnelles & CNDP (Loi n° 09-08)</h2>
+    <div class="legal-highlight-box">
+        <h3 data-i18n="cndp_box_title"><i class="fa-solid fa-certificate"></i> Conformité CNDP - Déclaration N° D-W-784/2024</h3>
+        <p data-i18n="cndp_box_desc">Le traitement de vos données personnelles sur ce site est déclaré et opéré en stricte conformité avec les dispositions de la <strong>Loi n° 09-08</strong> relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel promulguée par le Dahir n° 1-09-15 du 22 safar 1430.</p>
+    </div>
 
-    <h2 data-i18n="sec5_title">5. Responsabilité</h2>
-    <p data-i18n="sec5_desc">PRO C2S s'efforce de fournir des informations exactes et à jour, sans pouvoir garantir l'absence totale d'erreur ou d'omission. Les offres d'emploi publiées sont indicatives et peuvent évoluer ou être pourvues sans préavis. Le site peut contenir des liens vers des sites tiers dont PRO C2S n'est pas responsable du contenu.</p>
+    <p data-i18n="cndp_finalite"><strong>Finalités de traitement :</strong> Les informations recueillies sur le site (nom, prénom, numéro de téléphone, courriel, curriculum vitae, coordonnées d'entreprise) font l'objet d'un traitement informatique exclusivement destiné à la gestion des candidatures, au recrutement, à la délégation d'intérimaires et au traitement des demandes de devis et partenariats d'entreprises.</p>
 
-    <h2 data-i18n="sec6_title">6. Droit applicable</h2>
-    <p data-i18n="sec6_desc">Le présent site et ses mentions légales sont soumis au droit marocain. En cas de litige, les tribunaux marocains sont seuls compétents.</p>
+    <p data-i18n="cndp_duree"><strong>Durée de conservation précise :</strong></p>
+    <ul>
+        <li data-i18n="cndp_duree_cv"><strong>Données des candidats & CVs :</strong> Conservées pour une durée maximale et stricte de <strong>24 mois (2 ans)</strong> à compter de la date de dépôt ou du dernier échange avec le candidat, afin de permettre l'étude d'opportunités d'emploi correspondantes. Passé ce délai, les dossiers sont définitivement supprimés.</li>
+        <li data-i18n="cndp_duree_devis"><strong>Données clients, devis & demandes d'entreprises :</strong> Conservées pour une durée maximale de <strong>36 mois (3 ans)</strong> à compter de la clôture de la demande commerciale ou de la fin de la relation contractuelle.</li>
+    </ul>
+
+    <p data-i18n="cndp_droits"><strong>Vos droits (Articles 7, 8 et 9 de la Loi 09-08) :</strong></p>
+    <p data-i18n="cndp_droits_desc">Vous disposez à tout moment d'un droit individuel d'accès, d'information, de rectification et d'opposition au traitement de vos données personnelles. Vous pouvez exercer ces droits simplement en adressant un email accompagné d'un justificatif d'identité à : <a href="mailto:contact@pro-c2s.com"><strong>contact@pro-c2s.com</strong></a> ou par courrier recommandé au siège social de PRO C2S.</p>
+    <p data-i18n="cndp_reclam">Vous pouvez également vous adresser à la <strong>Commission Nationale de contrôle de la protection des Données à caractère Personnel (CNDP)</strong> via son portail officiel : <a href="https://www.cndp.ma" target="_blank" rel="noopener noreferrer">www.cndp.ma</a>.</p>
+
+    <h2 id="politique-confidentialite" data-i18n="sec5_title"><i class="fa-solid fa-cookie-bite"></i> 5. Politique de Cookies & Confidentialité</h2>
+    <p data-i18n="sec5_p1">Le site PRO C2S utilise exclusivement des cookies techniques nécessaires au fonctionnement régulier du site et, avec votre consentement exprès, des outils de mesure d'audience anonymisée (Google Analytics). Aucun cookie publicitaire intrusif ni traçeur tiers à visée commerciale n'est implanté sans votre accord préalable.</p>
+    <p data-i18n="sec5_p2">Vous pouvez à tout instant accepter ou refuser les cookies facultatifs via le bandeau dédié lors de votre visite, ou via les préférences de votre navigateur.</p>
+
+    <h2 data-i18n="sec6_title"><i class="fa-solid fa-scale-balanced"></i> 6. Droit applicable et juridiction compétente</h2>
+    <p data-i18n="sec6_desc">Le présent site et ses conditions d'utilisation sont régis par le droit marocain. Tout litige relatif à l'interprétation ou à l'exécution de ces mentions sera de la compétence exclusive des tribunaux compétents de Rabat.</p>
 </main>
 
 <footer>
@@ -137,31 +168,48 @@
             nav_info: "Informatique",
             nav_clean: "Nettoyage",
             nav_contact: "Contact",
-            leg_title: "Mentions légales",
-            leg_intro: "Conformément à la réglementation en vigueur au Maroc, les informations ci-dessous identifient l'éditeur du site et précisent les conditions d'utilisation de celui-ci.",
-            sec1_title: "1. Éditeur du site",
-            t1: "Dénomination",
-            t2: "Activité",
-            t2_v: "Recrutement, travail temporaire (intérim), mise à disposition de profils informatiques et services de propreté professionnelle",
-            t3: "Création",
-            t4: "Siège social",
-            t5: "Téléphone",
-            sec2_title: "2. Hébergement",
-            sec2_desc: "Le site est hébergé par GitHub, Inc. (service GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.",
+            meta_title: "Mentions légales & Conformité CNDP | PRO C2S",
+            leg_title: "Mentions légales & Conformité CNDP",
+            leg_intro: "Conformément aux lois et réglementations en vigueur au Royaume du Maroc, les informations ci-dessous identifient l'éditeur du site et précisent les conditions d'utilisation ainsi que la politique de protection des données personnelles.",
+            sec1_title: "1. Éditeur du site & Identifiants légaux",
+            t_deno: "Dénomination sociale",
+            t_form: "Forme juridique",
+            t_form_v: "Société à Responsabilité Limitée (SARL)",
+            t_cap: "Capital social",
+            t_act: "Activité & Objet",
+            t_act_v: "Recrutement, Travail Temporaire (Intérim), Mise à disposition de profils informatiques & Services de propreté professionnelle",
+            t_rc: "Registre du Commerce (RC)",
+            t_ice: "Identifiant Commun de l'Entreprise (ICE)",
+            t_if: "Identifiant Fiscal (IF)",
+            t_tp: "Taxe Professionnelle (Patente)",
+            t_cnss: "N° Affiliation CNSS",
+            t_agr: "Agrément Travail Temporaire",
+            t_siege: "Siège social",
+            t_tel: "Téléphone standard",
+            t_email: "Courriel professionnel",
+            t_horaires: "Horaires d'ouverture",
+            sec2_title: "2. Hébergement du site",
+            sec2_desc: "Le site est hébergé sur l'infrastructure sécurisée de GitHub, Inc. (service GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.",
             sec3_title: "3. Propriété intellectuelle",
-            sec3_p1: "Les textes, la structure, le logo et les éléments graphiques du site sont la propriété de PRO C2S, sauf mention contraire. Toute reproduction, représentation ou diffusion, totale ou partielle, sans autorisation écrite préalable est interdite.",
-            sec3_p2: "Les noms et logos des organismes cités dans la rubrique « Références » appartiennent à leurs propriétaires respectifs et sont utilisés pour illustrer les relations de collaboration avec PRO C2S.",
-            sec4_title: "4. Données personnelles",
-            sec4_p1: "Les données transmises via le formulaire de contact, WhatsApp ou par e-mail (nom, e-mail, téléphone, CV) sont utilisées uniquement pour traiter votre demande ou votre candidature. Conformément à la loi n° 09-08 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel, vous disposez d'un droit d'accès, de rectification et d'opposition, que vous pouvez exercer en écrivant à procssentreprise@gmail.com.",
-            sec4_p2: "La politique de confidentialité et de cookies complète est disponible depuis le pied de page de la page d'accueil.",
-            sec5_title: "5. Responsabilité",
-            sec5_desc: "PRO C2S s'efforce de fournir des informations exactes et à jour, sans pouvoir garantir l'absence totale d'erreur ou d'omission. Les offres d'emploi publiées sont indicatives et peuvent évoluer ou être pourvues sans préavis. Le site peut contenir des liens vers des sites tiers dont PRO C2S n'est pas responsable du contenu.",
-            sec6_title: "6. Droit applicable",
-            sec6_desc: "Le présent site et ses mentions légales sont soumis au droit marocain. En cas de litige, les tribunaux marocains sont seuls compétents.",
+            sec3_p1: "L'ensemble des contenus de ce site (textes, logos, arborescence, chartes graphiques, photographies et éléments multimédias) constituent des œuvres protégées par la législation marocaine et internationale relative au droit d'auteur et à la propriété intellectuelle.",
+            sec3_p2: "Les dénominations commerciales et logos de tiers cités au titre de nos références demeurent la propriété exclusive de leurs détenteurs respectifs.",
+            sec4_title: "4. Protection des Données Personnelles & CNDP (Loi n° 09-08)",
+            cndp_box_title: "Conformité CNDP - Déclaration N° D-W-784/2024",
+            cndp_box_desc: "Le traitement de vos données personnelles sur ce site est opéré en stricte conformité avec la Loi n° 09-08 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel.",
+            cndp_finalite: "Finalités de traitement : Gestion exclusive des candidatures, recrutement, délégation de personnel intérimaire et établissement de devis professionnels.",
+            cndp_duree: "Durée de conservation précise :",
+            cndp_duree_cv: "Données des candidats & CVs : 24 mois maximum à compter de la date de réception ou du dernier contact.",
+            cndp_duree_devis: "Données clients & devis : 36 mois maximum à compter de la fin de la relation commerciale.",
+            cndp_droits: "Vos droits (Loi 09-08) :",
+            cndp_droits_desc: "Droit d'accès, de rectification et d'opposition en écrivant avec copie de pièce d'identité à contact@pro-c2s.com.",
+            cndp_reclam: "Vous pouvez également saisir la CNDP (Commission Nationale de contrôle de la protection des Données à caractère Personnel) : www.cndp.ma.",
+            sec5_title: "5. Politique de Cookies & Confidentialité",
+            sec5_p1: "Le site utilise uniquement des cookies fonctionnels essentiels et des statistiques anonymisées. Aucun partage de données à des fins publicitaires n'est effectué.",
+            sec5_p2: "Vous pouvez à tout instant accepter ou refuser les cookies non essentiels lors de votre navigation.",
+            sec6_title: "6. Droit applicable et juridiction compétente",
+            sec6_desc: "Le présent site est soumis au droit marocain. En cas de litige, les tribunaux de Rabat sont seuls compétents.",
             copyright: "© 2026 PRO C2S - Tous droits réservés.",
-            back_home: "Retour à l'accueil",
-            t6: "E-mail",
-            meta_title: "Mentions légales | PRO C2S"
+            back_home: "Retour à l'accueil"
         },
         en: {
             nav_home: "Home",
@@ -169,31 +217,48 @@
             nav_info: "IT Services",
             nav_clean: "Cleaning",
             nav_contact: "Contact",
-            leg_title: "Legal Notice",
-            leg_intro: "In accordance with regulations in force in Morocco, the information below identifies the site publisher and specifies the terms of use.",
-            sec1_title: "1. Site Publisher",
-            t1: "Name",
-            t2: "Activity",
-            t2_v: "Recruitment, temporary work (temping), IT profile provision, and professional cleaning services",
-            t3: "Founded",
-            t4: "Head Office",
-            t5: "Phone",
-            sec2_title: "2. Hosting",
-            sec2_desc: "The site is hosted by GitHub, Inc. (GitHub Pages service), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA.",
+            meta_title: "Legal Notice & CNDP Compliance | PRO C2S",
+            leg_title: "Legal Notice & CNDP Compliance",
+            leg_intro: "In accordance with Moroccan legislation and regulations, the information below identifies the site publisher and outlines terms of use and personal data protection.",
+            sec1_title: "1. Publisher & Legal Identifiers",
+            t_deno: "Company Name",
+            t_form: "Legal Form",
+            t_form_v: "Limited Liability Company (SARL)",
+            t_cap: "Share Capital",
+            t_act: "Activity & Purpose",
+            t_act_v: "Recruitment, Temporary Work (Staffing), IT Profile Provision & Professional Facility Cleaning",
+            t_rc: "Trade Register (RC)",
+            t_ice: "Common Business Identifier (ICE)",
+            t_if: "Tax Identification (IF)",
+            t_tp: "Business License Tax (Patente)",
+            t_cnss: "CNSS Social Security No.",
+            t_agr: "Temporary Work License",
+            t_siege: "Headquarters",
+            t_tel: "Direct Phone Lines",
+            t_email: "Corporate Email",
+            t_horaires: "Working Hours",
+            sec2_title: "2. Website Hosting",
+            sec2_desc: "The website is hosted on the secure infrastructure of GitHub, Inc. (GitHub Pages service), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA.",
             sec3_title: "3. Intellectual Property",
-            sec3_p1: "The texts, structure, logo, and graphic elements of the site are the property of PRO C2S, unless otherwise stated. Any reproduction, representation, or distribution, total or partial, without prior written authorization is prohibited.",
-            sec3_p2: "The names and logos of organizations mentioned in the 'References' section belong to their respective owners and are used to illustrate collaboration relationships with PRO C2S.",
-            sec4_title: "4. Personal Data",
-            sec4_p1: "Data transmitted via the contact form, WhatsApp, or email (name, email, phone, CV) is used solely to process your request or application. In accordance with Law No. 09-08 on the protection of individuals regarding the processing of personal data, you have a right of access, rectification, and opposition, which you can exercise by writing to procssentreprise@gmail.com.",
-            sec4_p2: "The complete privacy and cookie policy is available from the footer of the home page.",
-            sec5_title: "5. Liability",
-            sec5_desc: "PRO C2S strives to provide accurate and up-to-date information without guaranteeing the complete absence of errors or omissions. Job offers published are indicative and may change or be filled without notice. The site may contain links to third-party sites for which PRO C2S is not responsible for the content.",
-            sec6_title: "6. Governing Law",
-            sec6_desc: "This site and its legal notices are subject to Moroccan law. In the event of a dispute, Moroccan courts shall have sole jurisdiction.",
+            sec3_p1: "All website content (texts, logos, architecture, branding, graphics) is protected under Moroccan and international intellectual property legislation.",
+            sec3_p2: "Third-party company names and trademarks cited belong exclusively to their respective holders.",
+            sec4_title: "4. Personal Data Protection & CNDP (Law No. 09-08)",
+            cndp_box_title: "CNDP Compliance - Receipt No. D-W-784/2024",
+            cndp_box_desc: "Personal data collected on this site is processed in strict compliance with Moroccan Law No. 09-08 regarding personal data protection.",
+            cndp_finalite: "Processing Purposes: Candidate evaluation, staffing missions, recruitment, and corporate quote issuance.",
+            cndp_duree: "Specific Retention Periods:",
+            cndp_duree_cv: "Applicant records & CVs: Strictly retained up to 24 months from submission or last contact.",
+            cndp_duree_devis: "Client inquiries & quotes: Strictly retained up to 36 months.",
+            cndp_droits: "Your Rights (Law 09-08):",
+            cndp_droits_desc: "Right to access, modify, and delete your data by writing with ID proof to contact@pro-c2s.com.",
+            cndp_reclam: "Complaints may also be filed with CNDP (National Commission for Personal Data Protection): www.cndp.ma.",
+            sec5_title: "5. Cookie & Privacy Policy",
+            sec5_p1: "The website uses strictly necessary functional cookies and anonymized performance statistics.",
+            sec5_p2: "You can accept or decline non-essential cookies at any time during your visit.",
+            sec6_title: "6. Applicable Law & Jurisdiction",
+            sec6_desc: "Governed by Moroccan law. Competent courts in Rabat shall have exclusive jurisdiction.",
             copyright: "© 2026 PRO C2S - All rights reserved.",
-            back_home: "Back to Home",
-            t6: "Email",
-            meta_title: "Legal Notice | PRO C2S"
+            back_home: "Back to Home"
         }
     };
 
@@ -228,6 +293,6 @@
     const savedLang = localStorage.getItem("proC2sLang") || "fr";
     setLanguage(savedLang);
 </script>
-<script src="script.js?v=7777"></script>
+<script src="script.js?v=7778"></script>
 </body>
 </html>

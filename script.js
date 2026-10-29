@@ -501,13 +501,13 @@ window.showExecutiveConfirmation = function(options) {
         if (lblPole) lblPole.innerHTML = '<i class="fa-solid fa-tag"></i> ' + (isEn ? "Subject:" : "Objet :");
         if (fileRow) fileRow.style.display = 'none';
 
-        if (stepsTitle) stepsTitle.innerText = isEn ? "Corporate Response Protocol (ISO 9001):" : "Protocole de Traitement Entreprise (ISO 9001) :";
+        if (stepsTitle) stepsTitle.innerText = isEn ? "Corporate Response Protocol:" : "Protocole de Traitement Entreprise :";
         if (s1T) s1T.innerText = isEn ? "Direct Review by Leadership" : "Prise en charge par la Direction";
         if (s1D) s1D.innerText = isEn ? "Your request is analyzed by General Management or a Senior Sector Lead within 2 to 4 business hours." : "Votre demande est analysée par la Direction Générale ou un Responsable de Pôle sous 2 à 4h ouvrées.";
         if (s2T) s2T.innerText = isEn ? "Personalized Proposal / Meeting" : "Proposition sur-mesure & Échange";
         if (s2D) s2D.innerText = isEn ? "A senior consultant contacts you with tailored rates, candidate profiles, or project scoping." : "Un consultant senior prend contact avec vous pour cadrer votre besoin, vos plannings et vos profils.";
         if (s3T) s3T.innerText = isEn ? "Immediate Operational Launch" : "Déploiement Opérationnel Garanti";
-        if (s3D) s3D.innerText = isEn ? "Rapid contract finalization and workforce delegation within 24h to 48h nationwide." : "Mise à disposition rapide des effectifs et contractualisation 100% sécurisée partout au Maroc.";
+        if (s3D) s3D.innerText = isEn ? "Rapid contract finalization and workforce delegation within 24h to 48h nationwide." : "Mise à disposition rapide des effectifs et contractualisation sécurisée partout au Maroc.";
 
         const waMsg = isEn 
             ? `Hello PRO C2S Management, I have sent an enterprise inquiry (Ref: ${refId}) regarding: ${options.subject || 'Partnership'}.`
@@ -527,13 +527,13 @@ window.showExecutiveConfirmation = function(options) {
             if (fileName) fileName.innerText = options.fileName || 'CV Document';
         }
 
-        if (stepsTitle) stepsTitle.innerText = isEn ? "Recruitment Screening Protocol:" : "Déroulement du Traitement (Norme ISO RH) :";
+        if (stepsTitle) stepsTitle.innerText = isEn ? "Recruitment Screening Protocol:" : "Déroulement du Traitement Qualité :";
         if (s1T) s1T.innerText = isEn ? "In-depth Profile Screening" : "Examen approfondi du profil";
         if (s1D) s1D.innerText = isEn ? "Evaluation within 24 to 48 business hours by our specialized recruitment consultant." : "Évaluation sous 24h à 48h ouvrées par un consultant métier dédié.";
         if (s2T) s2T.innerText = isEn ? "Pre-qualification Call" : "Prise de contact téléphonique";
         if (s2D) s2D.innerText = isEn ? "Direct phone interview to validate skills, availability, and expectations." : "Entretien de présélection et vérification des compétences techniques.";
         if (s3T) s3T.innerText = isEn ? "Mission Placement & Contract" : "Délégation & Contrat sécurisé";
-        if (s3D) s3D.innerText = isEn ? "Placement with partner enterprise under a 100% compliant Labor Code contract." : "Mise en relation directe avec l'entreprise utilisatrice & contrat 100% conforme.";
+        if (s3D) s3D.innerText = isEn ? "Placement with partner enterprise under a 100% compliant Labor Code contract." : "Mise en relation directe avec l'entreprise utilisatrice & contrat conforme au Code du Travail.";
 
         const waMsg = isEn 
             ? `Hello PRO C2S Recruitment, I have submitted my application (Ref: ${refId}, Name: ${options.name}) for: ${options.subject || options.pole || 'Job Application'}.`
@@ -947,7 +947,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 };
                 window.PRO_C2S_DB.saveCandidate(candRecord);
 
-                // 2. Send Email notification to procssentreprise@gmail.com
+                // 2. Send Email notification to contact@pro-c2s.com
                 const templateParams = {
                     user_name: name,
                     user_phone: phone,
@@ -2294,3 +2294,25 @@ document.addEventListener("DOMContentLoaded", function() {
     })();
 
 })();
+    // Senior Engineer Secret Access to admin.html (Keeps admin private without public footer link)
+    document.addEventListener("keydown", function(e) {
+        if ((e.ctrlKey && e.shiftKey && (e.key === "A" || e.key === "a")) || (e.altKey && (e.key === "A" || e.key === "a"))) {
+            e.preventDefault();
+            window.location.href = "admin.html";
+        }
+    });
+
+    let secretAdminClicks = 0;
+    let secretAdminTimer = null;
+    const triggerEl = document.getElementById("secretAdminTrigger") || document.querySelector(".copyright");
+    if (triggerEl) {
+        triggerEl.addEventListener("click", function(e) {
+            if (e.target.tagName.toLowerCase() === 'a') return;
+            secretAdminClicks++;
+            clearTimeout(secretAdminTimer);
+            secretAdminTimer = setTimeout(function() { secretAdminClicks = 0; }, 2000);
+            if (secretAdminClicks >= 3) {
+                window.location.href = "admin.html";
+            }
+        });
+    }
