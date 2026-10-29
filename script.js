@@ -947,7 +947,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 };
                 window.PRO_C2S_DB.saveCandidate(candRecord);
 
-                // 2. Send Email notification to contact@pro-c2s.com
+                // 2. Send Email notification to procssentreprise@gmail.com
                 const templateParams = {
                     user_name: name,
                     user_phone: phone,
