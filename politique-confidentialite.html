@@ -26,11 +26,11 @@
     <meta property="og:url" content="https://proo-c2s.github.io/proo-c2s/politique-confidentialite.html">
     <meta property="og:image" content="https://proo-c2s.github.io/proo-c2s/image/og-image.jpg">
     <link rel="icon" type="image/png" href="image/favicon.png">
-    <link rel="stylesheet" href="style.css?v=3200">
+    <link rel="stylesheet" href="style.css?v=3300">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
         .privacy-wrap { max-width: 960px; margin: 0 auto; padding: 130px 20px 80px; text-align: left; }
-        .privacy-wrap h1 { font-size: 34px; color: #0f172a; margin-bottom: 12px; font-weight: 800; line-height: 1.25; }
+        .privacy-wrap h1 { font-size: 32px; color: #0f172a; margin-bottom: 14px; font-weight: 800; line-height: 1.3; }
         .privacy-wrap .privacy-intro { color: #64748b; margin-bottom: 35px; line-height: 1.75; font-size: 16px; }
         .privacy-wrap h2 { font-size: 21px; color: #0f172a; margin: 38px 0 16px; font-weight: 700; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; display: flex; align-items: center; gap: 10px; }
         .privacy-wrap h2 i { color: #10b981; font-size: 18px; }
@@ -44,17 +44,152 @@
         .privacy-table { width: 100%; border-collapse: collapse; margin-top: 14px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; }
         .privacy-table th, .privacy-table td { text-align: left; padding: 12px 16px; border-bottom: 1px solid #e2e8f0; font-size: 14px; }
         .privacy-table th { background: #f1f5f9; color: #0f172a; font-weight: 700; }
-        .lang-switcher { display: flex; gap: 4px; background: #f1f5f9; padding: 4px; border-radius: 30px; border: 1px solid var(--border-color, #e2e8f0); }
-        .lang-btn { background: transparent; border: none; padding: 6px 14px; border-radius: 20px; font-size: 12.5px; font-weight: 700; color: #64748b; cursor: pointer; transition: all 0.2s ease; }
-        .lang-btn.active { background: #2e7d32; color: #fff; box-shadow: 0 2px 8px rgba(46, 125, 50, 0.2); }
-        .btn-manage-cookies { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 10px; background: #0f172a; color: #ffffff; font-weight: 700; text-decoration: none; font-size: 14px; margin-top: 12px; cursor: pointer; border: none; transition: background 0.2s; }
-        .btn-manage-cookies:hover { background: #1e293b; }
+        
+        /* Cookie Interactive Panel */
+        .cookie-center-card {
+            background: #ffffff;
+            border: 2px solid #10b981;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.08);
+            margin: 24px 0;
+        }
+        .cookie-pref-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            gap: 16px;
+        }
+        .cookie-pref-info { flex: 1; text-align: left; }
+        .cookie-pref-title { font-weight: 700; color: #0f172a; font-size: 15px; margin-bottom: 4px; }
+        .cookie-pref-desc { font-size: 13px; color: #64748b; line-height: 1.5; margin: 0; }
+        
+        .cookie-status-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            padding: 12px 18px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 13.5px;
+            color: #065f46;
+            font-weight: 600;
+        }
+        .cookie-actions-inline {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .btn-save-pref {
+            background: #10b981;
+            color: #ffffff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-save-pref:hover { background: #059669; transform: translateY(-1px); }
+        .btn-reset-pref {
+            background: #f1f5f9;
+            color: #475569;
+            border: 1px solid #cbd5e1;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-reset-pref:hover { background: #e2e8f0; color: #0f172a; }
+        #saveToast {
+            display: none;
+            background: #064e3b;
+            color: #ecfdf5;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 13.5px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .lang-switcher {
+            display: flex;
+            gap: 4px;
+            background: #f1f5f9;
+            padding: 4px;
+            border-radius: 30px;
+            border: 1px solid #e2e8f0;
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .lang-btn.active {
+            background: #2e7d32;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(46, 125, 50, 0.2);
+        }
+        
+        /* Switch Toggle */
+        .switch-toggle {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 26px;
+            flex-shrink: 0;
+        }
+        .switch-toggle input { opacity: 0; width: 0; height: 0; }
+        .switch-toggle .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #cbd5e1;
+            transition: .3s;
+            border-radius: 26px;
+        }
+        .switch-toggle .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
+        .switch-toggle input:checked + .slider { background-color: #10b981; }
+        .switch-toggle input:checked + .slider:before { transform: translateX(22px); }
     </style>
 </head>
 <body>
 
-<header class="header">
-    <nav class="nav container">
+<header id="main-header" class="scrolled">
+    <nav class="navbar">
         <div class="logo">
             <a href="index.html"><img src="image/logo.png" alt="PRO C2S"></a>
         </div>
@@ -63,15 +198,14 @@
             <li><a href="interim.html" data-i18n="nav_interim">Intérim</a></li>
             <li><a href="informatique.html" data-i18n="nav_info">Informatique</a></li>
             <li><a href="nettoyage.html" data-i18n="nav_clean">Nettoyage</a></li>
-            <li><a href="mentions-legales.html" data-i18n="nav_mentions">Mentions Légales</a></li>
+            <li><a href="index.html#carrieres" data-i18n="nav_jobs">Offres d'emploi</a></li>
             <li><a href="index.html#contact" data-i18n="nav_contact">Contact</a></li>
         </ul>
-        <div class="nav-actions">
+        <div class="nav-actions" style="display: flex; align-items: center; gap: 12px;">
             <div class="lang-switcher">
                 <button class="lang-btn active" data-lang="fr">FR</button>
                 <button class="lang-btn" data-lang="en">EN</button>
             </div>
-            <a href="index.html" class="btn" style="background: #2e7d32; color: white;" data-i18n="back_home">Retour à l'accueil</a>
         </div>
     </nav>
 </header>
@@ -85,7 +219,7 @@
     <div class="privacy-box cndp">
         <h3 data-i18n="cndp_banner_title"><i class="fa-solid fa-shield-halved"></i> Conformité CNDP & Cadre Légal Marocain</h3>
         <p data-i18n="cndp_banner_desc">
-            Les traitements de données à caractère personnel mis en œuvre par PRO C2S respectent rigoureusement les dispositions de la <strong>Loi n° 09-08</strong> relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel, promulguée par le Dahir n° 1-09-15 du 22 safar 1430 (18 février 2009), sous le contrôle de la <strong>CNDP (Commission Nationale de contrôle de la protection des Données à caractère Personnel)</strong>.
+            Les traitements de données à caractère personnel mis en œuvre par PRO C2S respectent rigoureusement les dispositions de la <strong>Loi n° 09-08</strong> relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel, sous le contrôle de la <strong>CNDP (Commission Nationale de contrôle de la protection des Données à caractère Personnel)</strong>.
         </p>
     </div>
 
@@ -102,13 +236,12 @@
     <h2><i class="fa-solid fa-folder-open"></i> <span data-i18n="sec2_title">2. Données Personnelles Collectées</span></h2>
     <p data-i18n="sec2_p">Selon la nature de vos interactions avec PRO C2S, nous pouvons être amenés à collecter les catégories de données suivantes :</p>
     <ul>
-        <li><strong data-i18n="sec2_c1_t">Pour les candidats & profils intérimaires :</strong> <span data-i18n="sec2_c1_d">Nom, prénom, date et lieu de naissance, coordonnées téléphoniques, adresse e-mail, ville de résidence, curriculum vitae (CV), parcours professionnel, diplômes, certifications professionnelles, numéro CIN, numéro d'affiliation CNSS (en cas de mission), coordonnées bancaires (RIB pour versement des salaires), permis de conduire (si requis par le poste).</span></li>
-        <li><strong data-i18n="sec2_c2_t">Pour les entreprises & clients donneurs d'ordres :</strong> <span data-i18n="sec2_c2_d">Raison sociale, nom et fonction des interlocuteurs RH / Achats, numéro de téléphone professionnel, adresse e-mail professionnelle, descriptif des postes à pourvoir, spécifications de mission.</span></li>
-        <li><strong data-i18n="sec2_c3_t">Pour les visiteurs du site web :</strong> <span data-i18n="sec2_c3_d">Adresse IP anonymisée, données de navigation (pages consultées, date et heure d'accès), données issues des cookies techniques nécessaires au fonctionnement du site.</span></li>
+        <li><strong data-i18n="sec2_c1_t">Pour les candidats & profils intérimaires :</strong> <span data-i18n="sec2_c1_d">Nom, prénom, coordonnées téléphoniques, adresse e-mail, ville de résidence, curriculum vitae (CV), parcours professionnel, diplômes, certifications, numéro CIN et CNSS (lors des délégations).</span></li>
+        <li><strong data-i18n="sec2_c2_t">Pour les entreprises & clients donneurs d'ordres :</strong> <span data-i18n="sec2_c2_d">Raison sociale, identité et fonction des interlocuteurs RH / Achats, coordonnées professionnelles, descriptif des postes à pourvoir.</span></li>
+        <li><strong data-i18n="sec2_c3_t">Pour les visiteurs du site web :</strong> <span data-i18n="sec2_c3_d">Adresse IP anonymisée, données de navigation techniques nécessaires au bon fonctionnement de la plateforme.</span></li>
     </ul>
 
     <h2><i class="fa-solid fa-bullseye"></i> <span data-i18n="sec3_title">3. Finalités & Bases Légales des Traitements</span></h2>
-    <p data-i18n="sec3_p">Vos données personnelles sont traitées exclusivement pour des objectifs précis et licites :</p>
     <table class="privacy-table">
         <thead>
             <tr>
@@ -118,87 +251,91 @@
         </thead>
         <tbody>
             <tr>
-                <td data-i18n="f1_t">Évaluation des candidatures, matching avec les offres d'emploi et intégration dans notre vivier de talents</td>
+                <td data-i18n="f1_t">Évaluation des candidatures, matching avec les offres d'emploi et vivier de talents</td>
                 <td data-i18n="f1_b">Consentement du candidat et démarches précontractuelles</td>
             </tr>
             <tr>
-                <td data-i18n="f2_t">Établissement et exécution des contrats de travail temporaire (intérim), gestion de la paie, suivi des missions</td>
+                <td data-i18n="f2_t">Établissement et exécution des contrats de travail temporaire (intérim) et gestion de la paie</td>
                 <td data-i18n="f2_b">Exécution contractuelle (Code du Travail marocain)</td>
             </tr>
             <tr>
-                <td data-i18n="f3_t">Déclarations obligatoires aux organismes sociaux et fiscaux (CNSS, AMO, IR, Assurance Accident du Travail)</td>
+                <td data-i18n="f3_t">Déclarations obligatoires aux organismes sociaux et fiscaux (CNSS, AMO, IR, Assurance AT)</td>
                 <td data-i18n="f3_b">Obligation légale et réglementaire marocaine</td>
             </tr>
             <tr>
-                <td data-i18n="f4_t">Traitement des demandes d'informations, élaboration des devis commerciaux pour les entreprises</td>
+                <td data-i18n="f4_t">Traitement des demandes d'informations et élaboration des devis pour les entreprises</td>
                 <td data-i18n="f4_b">Intérêt légitime et démarches précontractuelles</td>
-            </tr>
-            <tr>
-                <td data-i18n="f5_t">Sécurité de la plateforme web, mesure d'audience anonymisée et optimisation de l'expérience utilisateur</td>
-                <td data-i18n="f5_b">Consentement (cookies) et intérêt légitime</td>
             </tr>
         </tbody>
     </table>
 
     <h2><i class="fa-solid fa-clock-rotate-left"></i> <span data-i18n="sec4_title">4. Durée de Conservation des Données</span></h2>
-    <p data-i18n="sec4_p">PRO C2S applique des durées de conservation strictes adaptées aux exigences légales et opérationnelles :</p>
     <ul>
-        <li><strong data-i18n="d1_t">Dossiers de candidature & CVs :</strong> <span data-i18n="d1_d">Conservés pour une durée maximale de 24 mois à compter du dernier contact ou de la mise à jour par le candidat, après quoi les données sont supprimées ou archivées de manière sécurisée.</span></li>
-        <li><strong data-i18n="d2_t">Dossiers de salariés intérimaires (missions réalisées) :</strong> <span data-i18n="d2_d">Les contrats de travail, bulletins de paie et justificatifs sociaux sont conservés pendant 10 ans conformément aux délais de prescription légaux en droit marocain du travail et droit commercial.</span></li>
-        <li><strong data-i18n="d3_t">Données de facturation et dossiers clients :</strong> <span data-i18n="d3_d">Conservés pendant 10 ans à compter de la clôture de l'exercice comptable concerné.</span></li>
-        <li><strong data-i18n="d4_t">Cookies et traceurs :</strong> <span data-i18n="d4_d">Durée maximale de conservation de 13 mois sur le terminal de l'utilisateur.</span></li>
+        <li><strong data-i18n="d1_t">Dossiers de candidature & CVs :</strong> <span data-i18n="d1_d">Conservés 24 mois maximum à compter du dernier contact, après quoi ils sont supprimés.</span></li>
+        <li><strong data-i18n="d2_t">Dossiers de salariés intérimaires :</strong> <span data-i18n="d2_d">Contrats et bulletins de paie archivés 10 ans selon la réglementation marocaine du travail.</span></li>
+        <li><strong data-i18n="d3_t">Dossiers clients & facturation :</strong> <span data-i18n="d3_d">Conservés 10 ans selon les obligations comptables et fiscales.</span></li>
     </ul>
 
-    <h2><i class="fa-solid fa-share-nodes"></i> <span data-i18n="sec5_title">5. Destinataires & Transfert des Données</span></h2>
-    <p data-i18n="sec5_p">Vos données personnelles sont strictement confidentielles. Elles ne font l'objet d'aucune cession, revente ou mise à disposition commerciale à des tiers à des fins publicitaires.</p>
-    <p data-i18n="sec5_sub">Elles sont uniquement accessibles à :</p>
-    <ul>
-        <li data-i18n="dest_1">Nos consultants internes et notre équipe RH pour le recrutement et le suivi administratif ;</li>
-        <li data-i18n="dest_2">Nos entreprises clientes partenaires, uniquement pour les profils présélectionnés dans le cadre précis d'une opportunité d'emploi ou d'une mission d'intérim validée par le candidat ;</li>
-        <li data-i18n="dest_3">Les organismes publics et sociaux marocains légalement habilités (CNSS, Direction Générale des Impôts, compagnies d'assurance accidents du travail) ;</li>
-        <li data-i18n="dest_4">Nos prestataires techniques d'hébergement sécurisé (GitHub Pages) et d'échanges professionnels (EmailJS, WhatsApp Business).</li>
-    </ul>
+    <h2><i class="fa-solid fa-cookie-bite"></i> <span data-i18n="sec7_title">7. Centre de Gestion des Cookies & Consentement</span></h2>
+    <p data-i18n="sec7_intro">Vous pouvez gérer directement et à tout moment vos préférences relatives aux cookies ci-dessous sans quitter cette page. Vos choix sont mémorisés pour une durée de 13 mois.</p>
 
-    <h2><i class="fa-solid fa-lock"></i> <span data-i18n="sec6_title">6. Sécurité des Données</span></h2>
-    <p data-i18n="sec6_p">
-        PRO C2S met en place toutes les mesures techniques, administratives et organisationnelles appropriées pour garantir un niveau de sécurité adapté au risque (chiffrement des transferts via protocole HTTPS/TLS, gestion stricte des droits d'accès internes, serveurs sécurisés, politique de mots de passe renforcée).
-    </p>
+    <!-- Interactive Cookie Management Panel Direct On Page -->
+    <div class="cookie-center-card">
+        <div id="saveToast"><i class="fa-solid fa-circle-check"></i> <span data-i18n="toast_saved">Vos préférences ont été enregistrées avec succès !</span></div>
 
-    <h2><i class="fa-solid fa-cookie-bite"></i> <span data-i18n="sec7_title">7. Gestion des Cookies & Préférences</span></h2>
-    <p data-i18n="sec7_p">
-        Notre site utilise des cookies techniques nécessaires à son bon fonctionnement et, sous réserve de votre consentement, des cookies de mesure d'audience anonymes pour améliorer nos services. Vous pouvez à tout moment accepter, refuser ou personnaliser vos préférences via le bandeau de cookies.
-    </p>
-    <button type="button" class="btn-manage-cookies" onclick="openCookieCustomizer()">
-        <i class="fa-solid fa-sliders"></i> <span data-i18n="btn_pref_cookies">Modifier mes préférences de cookies</span>
-    </button>
+        <div class="cookie-status-bar">
+            <span><i class="fa-solid fa-info-circle"></i> <span data-i18n="status_lbl">Statut actuel :</span> <span id="currentConsentStatus" style="color:#047857;font-weight:700;">Consentement actif</span></span>
+            <span id="consentDateDisplay" style="font-size:12px;color:#047857;"></span>
+        </div>
+
+        <div class="cookie-pref-row">
+            <div class="cookie-pref-info">
+                <div class="cookie-pref-title" data-i18n="c_nec_t">Cookies essentiels (Obligatoires)</div>
+                <p class="cookie-pref-desc" data-i18n="c_nec_d">Indispensables au fonctionnement technique, à la sécurité et à l'enregistrement de vos préférences de consentement.</p>
+            </div>
+            <span style="font-size:12px;font-weight:700;color:#10b981;background:#ecfdf5;padding:6px 12px;border-radius:20px;white-space:nowrap;" data-i18n="c_always_active">Toujours actif</span>
+        </div>
+
+        <div class="cookie-pref-row">
+            <div class="cookie-pref-info">
+                <div class="cookie-pref-title" data-i18n="c_ana_t">Mesure d'audience & Performance (Google Analytics)</div>
+                <p class="cookie-pref-desc" data-i18n="c_ana_d">Permettent de mesurer de manière anonymisée la fréquentation du site pour améliorer son ergonomie.</p>
+            </div>
+            <label class="switch-toggle">
+                <input type="checkbox" id="pageAnalyticsToggle" checked>
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="cookie-pref-row">
+            <div class="cookie-pref-info">
+                <div class="cookie-pref-title" data-i18n="c_srv_t">Services tiers & Candidatures rapides</div>
+                <p class="cookie-pref-desc" data-i18n="c_srv_d">Permettent l'utilisation de WhatsApp et des formulaires de candidature directe en ligne.</p>
+            </div>
+            <label class="switch-toggle">
+                <input type="checkbox" id="pageServicesToggle" checked>
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="cookie-actions-inline">
+            <button type="button" class="btn-reset-pref" id="btnResetConsent" data-i18n="btn_reset_cookies">Réinitialiser mes choix</button>
+            <button type="button" class="btn-save-pref" id="btnSaveConsent"><i class="fa-solid fa-floppy-disk"></i> <span data-i18n="btn_save_cookies">Enregistrer mes préférences</span></button>
+        </div>
+    </div>
 
     <h2><i class="fa-solid fa-user-check"></i> <span data-i18n="sec8_title">8. Vos Droits & Voies de Recours (Loi n° 09-08)</span></h2>
     <p data-i18n="sec8_p">
-        Conformément aux articles de la Loi n° 09-08, vous disposez des droits suivants sur vos données personnelles :
+        Conformément à la Loi n° 09-08, vous disposez d'un droit d'accès, de rectification et d'opposition sur vos données personnelles.
     </p>
-    <ul>
-        <li><strong data-i18n="r1_t">Droit d'accès (Art. 7) :</strong> <span data-i18n="r1_d">Obtenir confirmation que des données vous concernant sont traitées et en recevoir copie.</span></li>
-        <li><strong data-i18n="r2_t">Droit de rectification (Art. 8) :</strong> <span data-i18n="r2_d">Exiger la mise à jour ou la correction de vos données inexactes, incomplètes ou obsolètes.</span></li>
-        <li><strong data-i18n="r3_t">Droit d'opposition (Art. 9) :</strong> <span data-i18n="r3_d">Vous opposer, pour des motifs légitimes, au traitement de vos données personnelles.</span></li>
-        <li><strong data-i18n="r4_t">Droit de suppression :</strong> <span data-i18n="r4_d">Demander le retrait de votre CV de notre vivier de candidats à tout moment.</span></li>
-    </ul>
-
     <div class="privacy-box">
         <h3 data-i18n="how_exercise_title"><i class="fa-solid fa-paper-plane"></i> Comment exercer vos droits ?</h3>
-        <p data-i18n="how_exercise_desc">
-            Pour exercer l'un de ces droits, adressez votre demande accompagnée d'une copie de votre pièce d'identité (CIN ou passeport) :
-        </p>
-        <p>• Par courrier électronique : <a href="mailto:procssentreprise@gmail.com">procssentreprise@gmail.com</a> (Objet : Protection des données personnelles)</p>
-        <p>• Par voie postale : PRO C2S SARL — Délégué à la Protection des Données — Imm. 69, 4ème étage, Appt 04, Avenue Patrice Lumumba, Hassan, Rabat, Maroc.</p>
+        <p>• Par courriel : <a href="mailto:procssentreprise@gmail.com">procssentreprise@gmail.com</a> (avec copie de votre pièce d'identité CIN)</p>
+        <p>• Par courrier : PRO C2S SARL — Imm. 69, 4ème étage, Appt 04, Av. Patrice Lumumba, Hassan, Rabat, Maroc.</p>
         <p style="margin-top: 10px;" data-i18n="cndp_recours">
-            Si vous estimez que vos droits n'ont pas été respectés, vous pouvez déposer une réclamation auprès de la <strong>CNDP</strong> : <a href="https://www.cndp.ma" target="_blank" rel="noopener noreferrer">www.cndp.ma</a>.
+            Réclamation auprès de la CNDP : <a href="https://www.cndp.ma" target="_blank" rel="noopener noreferrer">www.cndp.ma</a>.
         </p>
     </div>
-
-    <h2><i class="fa-solid fa-pen-nib"></i> <span data-i18n="sec9_title">9. Mise à Jour de la Politique</span></h2>
-    <p data-i18n="sec9_p">
-        PRO C2S se réserve le droit d'actualiser la présente Politique de Confidentialité pour refléter l'évolution des pratiques ou du cadre légal. Toute modification substantielle sera publiée sur cette page avec date de mise à jour. Dernière révision : <strong>30 Octobre 2026</strong>.
-    </p>
 </main>
 
 <footer class="footer">
@@ -237,10 +374,10 @@
             nav_interim: "Intérim",
             nav_info: "Informatique",
             nav_clean: "Nettoyage",
+            nav_jobs: "Offres d'emploi",
             nav_mentions: "Mentions Légales",
             nav_privacy: "Politique de Confidentialité",
             nav_contact: "Contact",
-            back_home: "Retour à l'accueil",
             meta_title: "Politique de Confidentialité & Protection des Données | PRO C2S Maroc",
             priv_title: "Politique de Confidentialité & Protection des Données Personnelles",
             priv_intro: "PRO C2S SARL accorde une importance primordiale à la protection de la vie privée et des données personnelles de ses candidats, collaborateurs intérimaires, partenaires commerciaux et visiteurs du site. La présente Politique détaille nos engagements, la nature des données collectées, leurs finalités et vos droits conformément à la législation marocaine (Loi n° 09-08) et aux standards internationaux.",
@@ -251,62 +388,46 @@
             sec2_title: "2. Données Personnelles Collectées",
             sec2_p: "Selon la nature de vos interactions avec PRO C2S, nous pouvons être amenés à collecter les catégories de données suivantes :",
             sec2_c1_t: "Pour les candidats & profils intérimaires :",
-            sec2_c1_d: "Nom, prénom, date et lieu de naissance, coordonnées téléphoniques, adresse e-mail, ville de résidence, curriculum vitae (CV), parcours professionnel, diplômes, certifications professionnelles, numéro CIN, numéro d'affiliation CNSS (en cas de mission), coordonnées bancaires (RIB), permis de conduire.",
+            sec2_c1_d: "Nom, prénom, coordonnées téléphoniques, adresse e-mail, ville de résidence, CV, parcours professionnel, diplômes, certifications, CIN et CNSS.",
             sec2_c2_t: "Pour les entreprises & clients donneurs d'ordres :",
-            sec2_c2_d: "Raison sociale, nom et fonction des interlocuteurs RH / Achats, numéro de téléphone professionnel, adresse e-mail professionnelle, descriptif des postes à pourvoir, spécifications de mission.",
+            sec2_c2_d: "Raison sociale, identité et fonction des interlocuteurs RH / Achats, coordonnées professionnelles, descriptif des postes à pourvoir.",
             sec2_c3_t: "Pour les visiteurs du site web :",
-            sec2_c3_d: "Adresse IP anonymisée, données de navigation (pages consultées, date et heure d'accès), données issues des cookies techniques nécessaires au fonctionnement du site.",
+            sec2_c3_d: "Adresse IP anonymisée, données de navigation techniques nécessaires au bon fonctionnement de la plateforme.",
             sec3_title: "3. Finalités & Bases Légales des Traitements",
-            sec3_p: "Vos données personnelles sont traitées exclusivement pour des objectifs précis et licites :",
             th_finalite: "Finalité du Traitement",
             th_base: "Base Légale",
-            f1_t: "Évaluation des candidatures, matching avec les offres d'emploi et intégration dans notre vivier de talents",
+            f1_t: "Évaluation des candidatures, matching avec les offres d'emploi et vivier de talents",
             f1_b: "Consentement du candidat et démarches précontractuelles",
-            f2_t: "Établissement et exécution des contrats de travail temporaire (intérim), gestion de la paie, suivi des missions",
+            f2_t: "Établissement et exécution des contrats de travail temporaire (intérim) et gestion de la paie",
             f2_b: "Exécution contractuelle (Code du Travail marocain)",
-            f3_t: "Déclarations obligatoires aux organismes sociaux et fiscaux (CNSS, AMO, IR, Assurance Accident du Travail)",
+            f3_t: "Déclarations obligatoires aux organismes sociaux et fiscaux (CNSS, AMO, IR, Assurance AT)",
             f3_b: "Obligation légale et réglementaire marocaine",
-            f4_t: "Traitement des demandes d'informations, élaboration des devis commerciaux pour les entreprises",
+            f4_t: "Traitement des demandes d'informations et élaboration des devis pour les entreprises",
             f4_b: "Intérêt légitime et démarches précontractuelles",
-            f5_t: "Sécurité de la plateforme web, mesure d'audience anonymisée et optimisation de l'expérience utilisateur",
-            f5_b: "Consentement (cookies) et intérêt légitime",
             sec4_title: "4. Durée de Conservation des Données",
-            sec4_p: "PRO C2S applique des durées de conservation strictes adaptées aux exigences légales et opérationnelles :",
             d1_t: "Dossiers de candidature & CVs :",
-            d1_d: "Conservés pour une durée maximale de 24 mois à compter du dernier contact ou de la mise à jour par le candidat, après quoi les données sont supprimées ou archivées de manière sécurisée.",
-            d2_t: "Dossiers de salariés intérimaires (missions réalisées) :",
-            d2_d: "Les contrats de travail, bulletins de paie et justificatifs sociaux sont conservés pendant 10 ans conformément aux délais de prescription légaux en droit marocain du travail et droit commercial.",
-            d3_t: "Données de facturation et dossiers clients :",
-            d3_d: "Conservés pendant 10 ans à compter de la clôture de l'exercice comptable concerné.",
-            d4_t: "Cookies et traceurs :",
-            d4_d: "Durée maximale de conservation de 13 mois sur le terminal de l'utilisateur.",
-            sec5_title: "5. Destinataires & Transfert des Données",
-            sec5_p: "Vos données personnelles sont strictement confidentielles. Elles ne font l'objet d'aucune cession, revente ou mise à disposition commerciale à des tiers à des fins publicitaires.",
-            sec5_sub: "Elles sont uniquement accessibles à :",
-            dest_1: "Nos consultants internes et notre équipe RH pour le recrutement et le suivi administratif ;",
-            dest_2: "Nos entreprises clientes partenaires, uniquement pour les profils présélectionnés dans le cadre précis d'une opportunité d'emploi ou d'une mission d'intérim validée par le candidat ;",
-            dest_3: "Les organismes publics et sociaux marocains légalement habilités (CNSS, Direction Générale des Impôts, assurances accidents du travail) ;",
-            dest_4: "Nos prestataires techniques d'hébergement sécurisé (GitHub Pages) et d'échanges professionnels (EmailJS, WhatsApp Business).",
-            sec6_title: "6. Sécurité des Données",
-            sec6_p: "PRO C2S met en place toutes les mesures techniques, administratives et organisationnelles appropriées pour garantir un niveau de sécurité adapté au risque (chiffrement TLS/HTTPS, accès restreint aux seuls chargés RH habilités, serveurs protégés).",
-            sec7_title: "7. Gestion des Cookies & Préférences",
-            sec7_p: "Notre site utilise des cookies techniques nécessaires à son bon fonctionnement et, sous réserve de votre consentement, des cookies de mesure d'audience anonymes pour améliorer nos services.",
-            btn_pref_cookies: "Modifier mes préférences de cookies",
+            d1_d: "Conservés 24 mois maximum à compter du dernier contact, après quoi ils sont supprimés.",
+            d2_t: "Dossiers de salariés intérimaires :",
+            d2_d: "Contrats et bulletins de paie archivés 10 ans selon la réglementation marocaine du travail.",
+            d3_t: "Dossiers clients & facturation :",
+            d3_d: "Conservés 10 ans selon les obligations comptables et fiscales.",
+            sec7_title: "7. Centre de Gestion des Cookies & Consentement",
+            sec7_intro: "Vous pouvez gérer directement et à tout moment vos préférences relatives aux cookies ci-dessous sans quitter cette page. Vos choix sont mémorisés pour une durée de 13 mois.",
+            toast_saved: "Vos préférences ont été enregistrées avec succès !",
+            status_lbl: "Statut actuel :",
+            c_nec_t: "Cookies essentiels (Obligatoires)",
+            c_nec_d: "Indispensables au fonctionnement technique, à la sécurité et à l'enregistrement de vos préférences de consentement.",
+            c_always_active: "Toujours actif",
+            c_ana_t: "Mesure d'audience & Performance (Google Analytics)",
+            c_ana_d: "Permettent de mesurer de manière anonymisée la fréquentation du site pour améliorer son ergonomie.",
+            c_srv_t: "Services tiers & Candidatures rapides",
+            c_srv_d: "Permettent l'utilisation de WhatsApp et des formulaires de candidature directe en ligne.",
+            btn_reset_cookies: "Réinitialiser mes choix",
+            btn_save_cookies: "Enregistrer mes préférences",
             sec8_title: "8. Vos Droits & Voies de Recours (Loi n° 09-08)",
-            sec8_p: "Conformément à la Loi n° 09-08, vous disposez des droits suivants sur vos données personnelles :",
-            r1_t: "Droit d'accès (Art. 7) :",
-            r1_d: "Obtenir confirmation que des données vous concernant sont traitées et en recevoir copie.",
-            r2_t: "Droit de rectification (Art. 8) :",
-            r2_d: "Exiger la mise à jour ou la correction de vos données inexactes, incomplètes ou obsolètes.",
-            r3_t: "Droit d'opposition (Art. 9) :",
-            r3_d: "Vous opposer, pour des motifs légitimes, au traitement de vos données personnelles.",
-            r4_t: "Droit de suppression :",
-            r4_d: "Demander le retrait de votre CV de notre vivier de candidats à tout moment.",
+            sec8_p: "Conformément à la Loi n° 09-08, vous disposez d'un droit d'accès, de rectification et d'opposition sur vos données personnelles.",
             how_exercise_title: "<i class='fa-solid fa-paper-plane'></i> Comment exercer vos droits ?",
-            how_exercise_desc: "Pour exercer l'un de ces droits, adressez votre demande accompagnée d'une copie de pièce d'identité (CIN ou passeport) :",
-            cndp_recours: "Si vous estimez que vos droits n'ont pas été respectés, vous pouvez déposer une réclamation auprès de la CNDP : www.cndp.ma.",
-            sec9_title: "9. Mise à Jour de la Politique",
-            sec9_p: "PRO C2S se réserve le droit d'actualiser la présente Politique de Confidentialité pour refléter l'évolution des pratiques ou du cadre légal. Dernière révision : 30 Octobre 2026.",
+            cndp_recours: "Réclamation auprès de la CNDP : www.cndp.ma.",
             footer_about: "PRO C2S, cabinet spécialisé en travail temporaire, recrutement et services aux entreprises au Maroc depuis 2017.",
             f_links: "Navigation",
             f_contact: "Contact",
@@ -314,79 +435,63 @@
         },
         en: {
             nav_home: "Home",
-            nav_interim: "Temp Staffing",
+            nav_interim: "Staffing",
             nav_info: "IT Solutions",
-            nav_clean: "Cleaning Services",
+            nav_clean: "Cleaning",
+            nav_jobs: "Job Offers",
             nav_mentions: "Legal Notice",
             nav_privacy: "Privacy Policy",
             nav_contact: "Contact",
-            back_home: "Back to Home",
-            meta_title: "Privacy Policy & Personal Data Protection | PRO C2S Morocco",
+            meta_title: "Privacy Policy & Data Protection | PRO C2S Morocco",
             priv_title: "Privacy Policy & Personal Data Protection",
             priv_intro: "PRO C2S SARL places the highest priority on protecting the privacy and personal data of its candidates, temporary workers, business clients, and website visitors. This Policy outlines our commitments, data collected, processing purposes, and your legal rights in accordance with Moroccan Law No. 09-08 and international privacy standards.",
             cndp_banner_title: "<i class='fa-solid fa-shield-halved'></i> CNDP Compliance & Moroccan Legal Framework",
-            cndp_banner_desc: "All personal data processing activities conducted by PRO C2S strictly adhere to Moroccan Law No. 09-08 on the protection of individuals with regard to personal data processing, under the regulatory supervision of the CNDP (National Commission for Data Protection).",
+            cndp_banner_desc: "All personal data processing activities conducted by PRO C2S strictly adhere to Moroccan Law No. 09-08 on personal data protection, supervised by the CNDP.",
             sec1_title: "1. Data Controller",
             sec1_p: "The legal entity responsible for data processing is:",
             sec2_title: "2. Personal Data Collected",
             sec2_p: "Depending on your interaction with PRO C2S, we may collect the following categories of data:",
             sec2_c1_t: "For job applicants & temporary staff:",
-            sec2_c1_d: "Full name, date and place of birth, telephone numbers, email address, city of residence, resume (CV), professional experience, diplomas, certifications, national ID (CIN), CNSS social security number (for active assignments), bank account details (RIB), driver's license (if required).",
+            sec2_c1_d: "Full name, contact phone, email, city of residence, CV, experience, diplomas, CIN, and CNSS records.",
             sec2_c2_t: "For corporate clients & employers:",
-            sec2_c2_d: "Company name, full name and title of HR/procurement contacts, business phone, corporate email, staffing requirements, job specifications.",
+            sec2_c2_d: "Company name, full name and title of HR/procurement contacts, business phone, corporate email, staffing requirements.",
             sec2_c3_t: "For website visitors:",
-            sec2_c3_d: "Anonymized IP address, technical navigation logs (pages visited, access time), essential cookies required for site operation.",
+            sec2_c3_d: "Anonymized IP address, technical navigation logs essential for secure platform operation.",
             sec3_title: "3. Purposes & Legal Bases of Processing",
-            sec3_p: "Your personal data is processed strictly for legitimate and specified purposes:",
             th_finalite: "Processing Purpose",
             th_base: "Legal Basis",
             f1_t: "Reviewing job applications, matching candidates with job openings, and talent pool management",
             f1_b: "Candidate consent and pre-contractual measures",
-            f2_t: "Execution of temporary employment contracts, payroll administration, and on-site mission tracking",
+            f2_t: "Execution of temporary employment contracts and payroll administration",
             f2_b: "Contractual performance (Moroccan Labor Code)",
-            f3_t: "Mandatory declarations to government and social bodies (CNSS, AMO, Tax Authority, Workplace Accident Insurance)",
+            f3_t: "Mandatory declarations to government and social bodies (CNSS, AMO, Tax, Workplace Accident Insurance)",
             f3_b: "Moroccan legal and regulatory compliance",
             f4_t: "Handling customer inquiries, corporate proposals, and staffing quotes",
             f4_b: "Legitimate interest and pre-contractual requests",
-            f5_t: "Platform security, anonymized analytics, and browsing experience optimization",
-            f5_b: "User consent (cookies) and legitimate interest",
             sec4_title: "4. Data Retention Periods",
-            sec4_p: "PRO C2S enforces strict retention guidelines aligned with statutory Moroccan labor requirements:",
             d1_t: "Job applications & resumes:",
-            d1_d: "Retained for a maximum of 24 months from submission or latest contact, after which files are safely deleted or archived.",
-            d2_t: "Temporary employee files (completed assignments):",
-            d2_d: "Employment contracts, payslips, and social security proofs are archived for 10 years in compliance with Moroccan labor and commercial law statutes.",
+            d1_d: "Retained for a maximum of 24 months from submission or latest contact, then securely deleted.",
+            d2_t: "Temporary employee files:",
+            d2_d: "Contracts and payslips archived for 10 years per statutory Moroccan labor requirements.",
             d3_t: "Corporate billing and client records:",
             d3_d: "Archived for 10 years following the close of the relevant fiscal period.",
-            d4_t: "Cookies and trackers:",
-            d4_d: "Retained for a maximum of 13 months on the user's browser.",
-            sec5_title: "5. Data Recipients & Sharing",
-            sec5_p: "Your data is strictly confidential. Under no circumstances is it sold, rented, or distributed to third parties for commercial or advertising purposes.",
-            sec5_sub: "Access is limited exclusively to:",
-            dest_1: "Internal recruitment consultants and HR administration staff;",
-            dest_2: "Corporate client partners, strictly for candidates pre-selected for specific job vacancies with candidate approval;",
-            dest_3: "Authorized Moroccan public agencies (CNSS, Tax Authority, Workplace Accident Insurers);",
-            dest_4: "Secure technical service providers (GitHub Pages hosting, EmailJS, WhatsApp Business).",
-            sec6_title: "6. Data Security Measures",
-            sec6_p: "PRO C2S enforces industry-standard technical, organizational, and physical safeguards (HTTPS/TLS encryption, role-based access restrictions, firewall-protected hosting).",
-            sec7_title: "7. Cookie Management & Preferences",
-            sec7_p: "Our site uses essential technical cookies and, with your consent, anonymized performance cookies. You can adjust your preferences at any time.",
-            btn_pref_cookies: "Manage My Cookie Preferences",
+            sec7_title: "7. Cookie Management & Consent Center",
+            sec7_intro: "You can manage your cookie preferences directly below at any time without leaving this page. Your choices are retained for 13 months.",
+            toast_saved: "Your preferences were successfully saved!",
+            status_lbl: "Current Status:",
+            c_nec_t: "Essential Cookies (Required)",
+            c_nec_d: "Strictly necessary for site security, navigation, and saving your consent choices.",
+            c_always_active: "Always Active",
+            c_ana_t: "Audience & Performance Analytics (Google Analytics)",
+            c_ana_d: "Anonymously analyze site traffic to enhance usability and service delivery.",
+            c_srv_t: "Third-Party Tools & Applications",
+            c_srv_d: "Enables direct WhatsApp application and quick contact form requests.",
+            btn_reset_cookies: "Reset My Choices",
+            btn_save_cookies: "Save Preferences",
             sec8_title: "8. Your Rights & Recourse (Law No. 09-08)",
-            sec8_p: "Under Moroccan Law No. 09-08, you hold enforceable rights over your data:",
-            r1_t: "Right of access (Art. 7):",
-            r1_d: "Confirm if your data is being processed and obtain a copy.",
-            r2_t: "Right of rectification (Art. 8):",
-            r2_d: "Request timely update or correction of outdated or incorrect information.",
-            r3_t: "Right to object (Art. 9):",
-            r3_d: "Object to processing on legitimate statutory grounds.",
-            r4_t: "Right to erasure:",
-            r4_d: "Request removal of your CV from our candidate talent database at any time.",
+            sec8_p: "Under Moroccan Law No. 09-08, you hold enforceable rights of access, rectification, and objection regarding your data.",
             how_exercise_title: "<i class='fa-solid fa-paper-plane'></i> How to exercise your rights?",
-            how_exercise_desc: "To exercise your rights, email us with a copy of your valid ID (CIN or Passport):",
-            cndp_recours: "If you believe your statutory rights were breached, you may file a complaint with the CNDP at www.cndp.ma.",
-            sec9_title: "9. Policy Updates",
-            sec9_p: "PRO C2S reserves the right to revise this policy in accordance with legal and operational developments. Last revision: October 30, 2026.",
+            cndp_recours: "Complaint with the CNDP: www.cndp.ma.",
             footer_about: "PRO C2S, premier Moroccan agency specializing in temporary staffing, recruitment, and facility services since 2017.",
             f_links: "Navigation",
             f_contact: "Contact",
@@ -394,8 +499,11 @@
         }
     };
 
+    let currentLang = 'fr';
+
     function setLanguage(lang) {
         if (!translations[lang]) return;
+        currentLang = lang;
         localStorage.setItem("proC2sLang", lang);
         document.documentElement.lang = lang;
         if (translations[lang].meta_title) document.title = translations[lang].meta_title;
@@ -418,10 +526,63 @@
     const savedLang = localStorage.getItem("proC2sLang") || "fr";
     if (savedLang) setLanguage(savedLang);
 
-    function openCookieCustomizer() {
-        localStorage.removeItem("proC2sCookieConsent");
-        localStorage.removeItem("proC2sCookiesAccepted");
-        window.location.href = "index.html#cookieConsentBanner";
+    // Cookie Management Logic
+    const analyticsToggle = document.getElementById("pageAnalyticsToggle");
+    const servicesToggle = document.getElementById("pageServicesToggle");
+    const btnSaveConsent = document.getElementById("btnSaveConsent");
+    const btnResetConsent = document.getElementById("btnResetConsent");
+    const statusText = document.getElementById("currentConsentStatus");
+    const dateText = document.getElementById("consentDateDisplay");
+    const saveToast = document.getElementById("saveToast");
+
+    function loadSavedConsent() {
+        const raw = localStorage.getItem("proC2sCookieConsent");
+        if (raw) {
+            try {
+                const c = JSON.parse(raw);
+                if (analyticsToggle && c.analytics !== undefined) analyticsToggle.checked = c.analytics;
+                if (servicesToggle && c.thirdparty !== undefined) servicesToggle.checked = c.thirdparty;
+                if (statusText) statusText.innerText = currentLang === 'en' ? "Preferences Saved" : "Consentement Enregistré";
+                if (dateText && c.timestamp) {
+                    const d = new Date(c.timestamp);
+                    dateText.innerText = "(" + d.toLocaleDateString() + ")";
+                }
+            } catch(e) {}
+        } else {
+            if (statusText) statusText.innerText = currentLang === 'en' ? "Standard (Essential Only)" : "Standard (Essentiels)";
+        }
+    }
+
+    loadSavedConsent();
+
+    if (btnSaveConsent) {
+        btnSaveConsent.addEventListener("click", () => {
+            const consent = {
+                essential: true,
+                analytics: analyticsToggle ? analyticsToggle.checked : false,
+                thirdparty: servicesToggle ? servicesToggle.checked : false,
+                timestamp: new Date().toISOString()
+            };
+            localStorage.setItem("proC2sCookieConsent", JSON.stringify(consent));
+            localStorage.setItem("proC2sCookiesAccepted", "custom");
+            loadSavedConsent();
+            if (saveToast) {
+                saveToast.style.display = "flex";
+                setTimeout(() => { saveToast.style.display = "none"; }, 3500);
+            }
+        });
+    }
+
+    if (btnResetConsent) {
+        btnResetConsent.addEventListener("click", () => {
+            localStorage.removeItem("proC2sCookieConsent");
+            localStorage.removeItem("proC2sCookiesAccepted");
+            if (analyticsToggle) analyticsToggle.checked = false;
+            if (servicesToggle) servicesToggle.checked = false;
+            if (statusText) statusText.innerText = currentLang === 'en' ? "Reset (Pending)" : "Réinitialisé (En attente)";
+            if (dateText) dateText.innerText = "";
+            alert(currentLang === 'en' ? "Cookie preferences have been reset." : "Vos préférences cookies ont été réinitialisées.");
+        });
     }
 </script>
 </body>
