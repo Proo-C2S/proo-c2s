@@ -878,10 +878,7 @@
             <span class="pill-badge green"><i class="fa-solid fa-user-check"></i> <span data-i18n="split_cand_badge">Candidats</span></span>
             <h3 data-i18n="split_cand_title">Trouvez votre prochaine mission</h3>
             <p data-i18n="split_cand_desc">Intérim et missions dans l'industrie, la logistique, le tertiaire et les services dans tout le Maroc.</p>
-            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
-                <a href="offres.html" class="btn-split-green"><i class="fa-solid fa-briefcase"></i> <span data-i18n="split_cand_btn">Consulter les offres</span></a>
-                <button type="button" class="btn-split-white open-direct-cv-btn" onclick="window.openDirectCvModal && window.openDirectCvModal()" style="border:1.5px solid #10b981;color:#10b981;background:#fff;border-radius:12px;padding:12px 18px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;"><i class="fa-solid fa-cloud-arrow-up"></i> <span data-i18n="btn_drop_cv">Déposer mon CV</span></button>
-            </div>
+            <a href="offres.html" class="btn-split-green"><i class="fa-solid fa-briefcase"></i> <span data-i18n="split_cand_btn">Consulter les offres & Postuler</span></a>
         </div>
     </div>
 </section>
@@ -1145,74 +1142,34 @@
 
 <section class="job-section reveal" id="carrieres" style="padding: 70px 0;">
     <div class="section-title">
-        <span data-i18n="jobs_span">ESPACE RECRUTEMENT & CANDIDATURES</span>
-        <h2 data-i18n="jobs_title">Carrières, Missions d'Intérim & Dépôt de CV</h2>
-        <p data-i18n="jobs_desc">Accédez à l'ensemble de nos opportunités professionnelles ou déposez directement votre CV dans notre vivier de recrutement au Maroc.</p>
+        <span data-i18n="jobs_span">ESPACE RECRUTEMENT & CARRIÈRES</span>
+        <h2 data-i18n="jobs_title">Nos Opportunités & Missions d'Intérim</h2>
+        <p data-i18n="jobs_desc">Découvrez nos postes immédiatement disponibles au Maroc avec déclarations CNSS garanties et pré-embauche CDI.</p>
     </div>
 
-    <div class="container" style="max-width: 1160px; margin: 0 auto; padding: 0 20px;">
-        <div class="careers-hub-grid">
-
-            <!-- CARTE 1: PORTAIL DES OFFRES D'EMPLOI -->
-            <div class="careers-hub-card card-portal" style="background: linear-gradient(135deg, #091e14 0%, #0d2818 60%, #064e3b 100%); border: 1.5px solid rgba(16, 185, 129, 0.4); border-radius: 22px; padding: 36px 32px; color: #ffffff; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12); position: relative; overflow: hidden;">
-                <div style="position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, transparent 70%); pointer-events: none;"></div>
-                
-                <div>
-                    <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.4); color: #34d399; font-size: 12px; font-weight: 800; padding: 6px 14px; border-radius: 999px; text-transform: uppercase; margin-bottom: 20px;">
-                        <i class="fa-solid fa-briefcase"></i> <span data-i18n="hub_card1_badge">9 Postes Immédiatement Disponibles</span>
-                    </div>
-                    <h3 style="font-size: 24px; font-weight: 800; margin-bottom: 12px; color: #ffffff; line-height: 1.3;" data-i18n="hub_card1_title">Consultez toutes nos Offres d'Emploi</h3>
-                    <p style="font-size: 15px; color: #cbd5e1; line-height: 1.6; margin-bottom: 24px;" data-i18n="hub_card1_desc">Explorez notre portail interactif avec recherche en direct et filtres par compétences. Missions d'intérim qualifiées avec contrats déclarés CNSS et pré-embauche CDI.</p>
-                    
-                    <ul style="list-style: none; padding: 0; margin: 0 0 28px 0; display: flex; flex-direction: column; gap: 12px;">
-                        <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #e2e8f0;">
-                            <i class="fa-solid fa-circle-check" style="color: #34d399;"></i> <span data-i18n="hub_pole_admin">Administration, RH & Gestion de Paie (3 offres)</span>
-                        </li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #e2e8f0;">
-                            <i class="fa-solid fa-circle-check" style="color: #34d399;"></i> <span data-i18n="hub_pole_tech">Support IT, Informatique & Systèmes (1 offre)</span>
-                        </li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #e2e8f0;">
-                            <i class="fa-solid fa-circle-check" style="color: #34d399;"></i> <span data-i18n="hub_pole_trans">Transport de Personnes & Logistique (1 offre)</span>
-                        </li>
-                        <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #e2e8f0;">
-                            <i class="fa-solid fa-circle-check" style="color: #34d399;"></i> <span data-i18n="hub_pole_sante">Santé, Milieu Hospitalier & Coaching Sportif (3 offres)</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div>
-                    <a href="offres.html" class="btn" style="background: #10b981; color: #ffffff; font-weight: 800; font-size: 15px; padding: 14px 28px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; width: 100%; box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4); transition: all 0.25s;" data-i18n="hub_card1_btn">
-                        <span>Explorer le Portail des Offres (9)</span> <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
+    <div class="container" style="max-width: 900px; margin: 0 auto; padding: 0 20px;">
+        <div class="careers-hub-single" style="background: linear-gradient(135deg, #091e14 0%, #0d2818 60%, #064e3b 100%); border: 1.5px solid rgba(16, 185, 129, 0.4); border-radius: 22px; padding: 42px 36px; color: #ffffff; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12); position: relative; overflow: hidden; text-align: center;">
+            <div style="position: absolute; top: -50px; right: -50px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, transparent 70%); pointer-events: none;"></div>
+            
+            <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.4); color: #34d399; font-size: 12px; font-weight: 800; padding: 6px 16px; border-radius: 999px; text-transform: uppercase; margin-bottom: 18px;">
+                <i class="fa-solid fa-briefcase"></i> <span data-i18n="hub_single_badge">9 Postes Immédiatement Disponibles</span>
+            </div>
+            
+            <h3 style="font-size: 26px; font-weight: 800; margin-bottom: 14px; color: #ffffff; line-height: 1.3;" data-i18n="hub_single_title">Consultez l'ensemble de nos Offres d'Emploi</h3>
+            <p style="font-size: 15px; color: #cbd5e1; line-height: 1.7; max-width: 700px; margin: 0 auto 28px;" data-i18n="hub_single_desc">Explorez notre portail interactif avec moteur de recherche en direct, filtres par métier et dépôt de CV pour chaque poste. Missions qualifiées à Rabat, Casablanca, Tanger et partout au Maroc.</p>
+            
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 32px;">
+                <span style="font-size: 13.5px; color: #e2e8f0; display: inline-flex; align-items: center; gap: 8px;"><i class="fa-solid fa-circle-check" style="color: #34d399;"></i> Administration & RH</span>
+                <span style="font-size: 13.5px; color: #e2e8f0; display: inline-flex; align-items: center; gap: 8px;"><i class="fa-solid fa-circle-check" style="color: #34d399;"></i> Support IT & Systèmes</span>
+                <span style="font-size: 13.5px; color: #e2e8f0; display: inline-flex; align-items: center; gap: 8px;"><i class="fa-solid fa-circle-check" style="color: #34d399;"></i> Transport & Logistique</span>
+                <span style="font-size: 13.5px; color: #e2e8f0; display: inline-flex; align-items: center; gap: 8px;"><i class="fa-solid fa-circle-check" style="color: #34d399;"></i> Santé & Milieu Hospitalier</span>
             </div>
 
-            <!-- CARTE 2: DEPOT DE CV DIRECT -->
-            <div class="careers-hub-card card-cv" style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 22px; padding: 36px 32px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05); position: relative;">
-                <div>
-                    <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(4, 120, 87, 0.1); border: 1px solid rgba(4, 120, 87, 0.25); color: #047857; font-size: 12px; font-weight: 800; padding: 6px 14px; border-radius: 999px; text-transform: uppercase; margin-bottom: 20px;">
-                        <i class="fa-solid fa-cloud-arrow-up"></i> <span data-i18n="hub_card2_badge">Candidature Spontanée</span>
-                    </div>
-                    <h3 style="font-size: 24px; font-weight: 800; margin-bottom: 12px; color: #0f172a; line-height: 1.3;" data-i18n="hub_card2_title">Déposez votre CV en Ligne</h3>
-                    <p style="font-size: 15px; color: #64748b; line-height: 1.6; margin-bottom: 24px;" data-i18n="hub_card2_desc">Vous ne trouvez pas de mission correspondant à votre profil ? Enregistrez directement votre CV dans notre vivier de compétences RH pour nos futurs recrutements au Maroc.</p>
-                    
-                    <div class="cv-dropzone-teaser open-direct-cv-btn" onclick="window.openDirectCvModal && window.openDirectCvModal()" style="border: 2px dashed #10b981; border-radius: 14px; padding: 22px 20px; text-align: center; background: #f0fdf4; cursor: pointer; transition: all 0.22s ease; margin-bottom: 20px;">
-                        <i class="fa-solid fa-file-arrow-up" style="font-size: 32px; color: #10b981; margin-bottom: 8px; display: block;"></i>
-                        <strong style="color: #065f46; font-size: 15px; display: block; margin-bottom: 4px;" data-i18n="hub_drop_title">Cliquez pour déposer votre CV (PDF ou Word)</strong>
-                        <span style="font-size: 12px; color: #64748b;" data-i18n="hub_drop_sub">Enregistrement instantané dans la base de données recrutement</span>
-                    </div>
-                </div>
-
-                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                    <button type="button" class="btn open-direct-cv-btn" onclick="window.openDirectCvModal && window.openDirectCvModal()" style="flex: 1; min-width: 180px; background: #047857; color: #ffffff; font-weight: 800; font-size: 14px; padding: 13px 20px; border-radius: 12px; border: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(4, 120, 87, 0.25);">
-                        <i class="fa-solid fa-cloud-arrow-up"></i> <span data-i18n="hub_card2_btn_cv">Déposer mon CV</span>
-                    </button>
-                    <a href="https://wa.me/212663449824?text=Bonjour%20PRO%20C2S%2C%20je%20souhaite%20d%C3%A9poser%20mon%20CV%20pour%20d'%C3%A9ventuelles%20missions." target="_blank" rel="noopener noreferrer" class="btn" style="background: #25d366; color: #ffffff; font-weight: 800; font-size: 14px; padding: 13px 20px; border-radius: 12px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);">
-                        <i class="fa-brands fa-whatsapp"></i> <span data-i18n="hub_card2_btn_wa">WhatsApp CV</span>
-                    </a>
-                </div>
+            <div>
+                <a href="offres.html" class="btn" style="background: #10b981; color: #ffffff; font-weight: 800; font-size: 15.5px; padding: 15px 36px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; box-shadow: 0 4px 18px rgba(16, 185, 129, 0.4); transition: transform 0.25s;" data-i18n="hub_single_btn">
+                    <span>Explorer le Portail des Offres (9)</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
             </div>
-
         </div>
     </div>
 </section>
@@ -2058,6 +2015,10 @@
     // Dictionnaire de traduction FR/EN complet pour index.html
     const translations = {
         fr: {
+            hub_single_badge: "9 Postes Immédiatement Disponibles",
+            hub_single_title: "Consultez l'ensemble de nos Offres d'Emploi",
+            hub_single_desc: "Explorez notre portail interactif avec moteur de recherche en direct, filtres par métier et dépôt de CV pour chaque poste. Missions qualifiées à Rabat, Casablanca, Tanger et partout au Maroc.",
+            hub_single_btn: "Explorer le Portail des Offres (9)",
             jobs_span: "ESPACE RECRUTEMENT & CANDIDATURES",
             jobs_title: "Carrières, Missions d'Intérim & Dépôt de CV",
             jobs_desc: "Accédez à l'ensemble de nos opportunités professionnelles ou déposez directement votre CV dans notre vivier de recrutement au Maroc.",
@@ -2516,6 +2477,10 @@
         "cookie_link_text": "politique de cookies"
 },
         en: {
+            hub_single_badge: "9 Open Roles Available Now",
+            hub_single_title: "Browse All Job Openings",
+            hub_single_desc: "Explore our interactive portal with live search, sector filters, and CV submission for each position. Qualified assignments in Rabat, Casablanca, Tangier, and nationwide.",
+            hub_single_btn: "Explore All Job Openings (9)",
             jobs_span: "CAREERS & TALENT RECRUITMENT",
             jobs_title: "Careers, Temporary Staffing & CV Submission",
             jobs_desc: "Browse our active job vacancies or submit your CV directly to our Morocco HR talent pool.",

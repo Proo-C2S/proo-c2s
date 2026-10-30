@@ -187,6 +187,19 @@
                         <input type="tel" placeholder="Téléphone portable *" required data-i18n-ph="ph_phone">
                         <input type="email" placeholder="Adresse email *" required data-i18n-ph="ph_email">
                         <input type="text" placeholder="Ville de résidence *" required data-i18n-ph="ph_city">
+                        
+                        <!-- CV File Upload Dropzone -->
+                        <div class="form-group-cv" style="margin-bottom:14px;">
+                            <label style="font-size:12.5px;font-weight:700;color:#334155;display:block;margin-bottom:6px;">
+                                <i class="fa-solid fa-file-pdf" style="color:#ef4444;"></i> <span data-i18n="lbl_cv_attach">Votre CV (PDF ou Word) *</span>
+                            </label>
+                            <div class="offer-cv-dropzone" onclick="this.querySelector('input').click()" style="border: 2px dashed #10b981; border-radius: 12px; padding: 14px; text-align: center; background: #f0fdf4; cursor: pointer; transition: all 0.2s;">
+                                <i class="fa-solid fa-cloud-arrow-up" style="font-size: 24px; color: #10b981; margin-bottom: 4px; display: block;"></i>
+                                <span class="offer-cv-label" style="font-size: 13px; font-weight: 700; color: #065f46; display: block;" data-i18n="ph_cv_drop">Cliquez pour joindre votre CV *</span>
+                                <span style="font-size: 11px; color: #64748b;">Formats acceptés : PDF, DOC, DOCX (Max 10 Mo)</span>
+                                <input type="file" required accept=".pdf,.doc,.docx" class="offer-cv-input" style="display:none;" onchange="const l=this.parentElement.querySelector('.offer-cv-label'); if(this.files[0]) l.innerHTML='<i class=\'fa-solid fa-circle-check\' style=\'color:#10b981;\'></i> ' + this.files[0].name;">
+                            </div>
+                        </div>
                         <textarea rows="3" placeholder="Message ou disponibilités (optionnel)" data-i18n-ph="ph_msg"></textarea>
 
                         <div class="cndp-note">
