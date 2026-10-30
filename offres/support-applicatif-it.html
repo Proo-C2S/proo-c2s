@@ -406,5 +406,103 @@
     });
 </script>
 
+
+<!-- LUXURY EXECUTIVE SUCCESS CONFIRMATION MODAL -->
+<div class="confirmation-modal-overlay" id="executiveSuccessModal" aria-hidden="true" role="dialog" onclick="if(event.target === this) window.closeExecutiveConfirmation && window.closeExecutiveConfirmation()">
+    <div class="confirmation-modal-content">
+        <button class="job-modal-close" id="closeExecutiveSuccessModalBtn" aria-label="Fermer la confirmation" onclick="window.closeExecutiveConfirmation && window.closeExecutiveConfirmation()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="conf-modal-header">
+            <div class="conf-success-icon-wrap">
+                <div class="conf-pulse-ring"></div>
+                <div class="conf-icon-circle">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+            </div>
+            <span class="conf-badge" id="confBadgeText">CONFIRMATION OFFICIELLE PRO C2S</span>
+            <h2 class="conf-title" id="confMainTitle">Candidature Enregistrée avec Succès !</h2>
+            <p class="conf-subtitle" id="confSubTitle">Votre dossier a été transmis directement au Pôle Recrutement & Ressources Humaines.</p>
+        </div>
+
+        <!-- Tracking Reference Bar -->
+        <div class="conf-ref-card">
+            <div class="conf-ref-left">
+                <span class="conf-ref-label" id="confRefLabel">Numéro de Référence Officiel</span>
+                <strong class="conf-ref-code" id="confRefCode">—</strong>
+            </div>
+            <div class="conf-status-pill">
+                <span class="status-dot"></span>
+                <span id="confStatusText">Dossier Actif & Validé</span>
+            </div>
+        </div>
+
+        <!-- Application Summary Card -->
+        <div class="conf-summary-card">
+            <div class="conf-summary-row">
+                <span class="conf-label" id="confLblName"><i class="fa-solid fa-user"></i> Candidat :</span>
+                <strong class="conf-val" id="confCandidateName">—</strong>
+            </div>
+            <div class="conf-summary-row">
+                <span class="conf-label" id="confLblPole"><i class="fa-solid fa-briefcase"></i> Poste / Pôle :</span>
+                <span class="conf-val" id="confCandidatePole">—</span>
+            </div>
+            <div class="conf-summary-row" id="confFileRow">
+                <span class="conf-label"><i class="fa-solid fa-file-pdf"></i> Document CV :</span>
+                <span class="conf-val file-highlight" id="confFileName">CV_Document.pdf</span>
+            </div>
+            <div class="conf-summary-row">
+                <span class="conf-label"><i class="fa-regular fa-clock"></i> Date & Heure :</span>
+                <span class="conf-val" id="confDateTime">—</span>
+            </div>
+        </div>
+
+        <!-- Next Steps Protocol -->
+        <div class="conf-steps-card">
+            <h4 class="conf-steps-title"><i class="fa-solid fa-shield-halved"></i> <span id="confStepsTitle">Déroulement du Traitement (Norme ISO RH) :</span></h4>
+            <div class="conf-steps-list">
+                <div class="conf-step-item">
+                    <div class="step-num">1</div>
+                    <div class="step-text">
+                        <strong id="confStep1T">Examen approfondi du profil</strong>
+                        <span id="confStep1D">Évaluation sous 24h à 48h ouvrées par un consultant métier dédié.</span>
+                    </div>
+                </div>
+                <div class="conf-step-item">
+                    <div class="step-num">2</div>
+                    <div class="step-text">
+                        <strong id="confStep2T">Prise de contact téléphonique</strong>
+                        <span id="confStep2D">Entretien de présélection et vérification des compétences techniques.</span>
+                    </div>
+                </div>
+                <div class="conf-step-item">
+                    <div class="step-num">3</div>
+                    <div class="step-text">
+                        <strong id="confStep3T">Délégation & Contrat sécurisé</strong>
+                        <span id="confStep3D">Mise en relation directe avec l'entreprise utilisatrice & contrat 100% conforme.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="conf-actions-group">
+            <a href="#" id="confWhatsAppAccelerateBtn" target="_blank" rel="noopener noreferrer" class="btn-conf-wa">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span id="confWaBtnText">Accélérer mon dossier via WhatsApp</span>
+            </a>
+            <button type="button" class="btn-conf-close" id="confReturnBtn" onclick="window.closeExecutiveConfirmation && window.closeExecutiveConfirmation()">
+                <span id="confCloseBtnText">Retourner au site</span>
+            </button>
+        </div>
+
+        <div class="conf-footer-guarantee">
+            <i class="fa-solid fa-lock"></i>
+            <span id="confGuaranteeText">PRO C2S garantit la stricte confidentialité de vos données conformément à la loi 09-08 & CNDP.</span>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
