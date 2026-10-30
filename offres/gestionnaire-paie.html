@@ -173,7 +173,7 @@
 
                     <div style="text-align:center;font-size:12px;color:#94a3b8;margin-bottom:16px;" data-i18n="side_or_online">— OU DÉPOSER VOTRE DOSSIER EN LIGNE —</div>
 
-                    <form class="sidebar-form" onsubmit="event.preventDefault(); alert(translations[currentLang].alert_success); this.reset();">
+                    <form class="sidebar-form" id="offerApplicationForm">
                         <input type="text" placeholder="Nom et prénom *" required data-i18n-ph="ph_name">
                         <input type="tel" placeholder="Téléphone portable *" required data-i18n-ph="ph_phone">
                         <input type="email" placeholder="Adresse email *" required data-i18n-ph="ph_email">
@@ -390,5 +390,21 @@
         const savedLang = localStorage.getItem("proC2sLang") || "fr";
         if (savedLang) setLanguage(savedLang);
     </script>
+
+    <!-- Firebase Cloud Database SDKs & Unified Candidate Store -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+    <script src="../cand-db.js"></script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.initOfferApplicationForm) {
+            window.initOfferApplicationForm('#offerApplicationForm', "Gestionnaire de Paie & Administration RH", "Finance & Administration RH");
+        }
+    });
+</script>
+
 </body>
 </html>
