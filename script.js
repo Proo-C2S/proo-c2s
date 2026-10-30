@@ -1420,6 +1420,7 @@ document.addEventListener("DOMContentLoaded", function() {
             document.body.style.overflow = 'hidden';
         }
     }
+    window.openDirectCvModal = openDirectCvModal;
 
     function closeDirectCvModal() {
         if (directCvModal) {
@@ -1427,6 +1428,14 @@ document.addEventListener("DOMContentLoaded", function() {
             document.body.style.overflow = '';
         }
     }
+    window.closeDirectCvModal = closeDirectCvModal;
+
+    document.querySelectorAll('.open-direct-cv-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openDirectCvModal();
+        });
+    });
 
     if (openDirectCvModalBtn) {
         openDirectCvModalBtn.addEventListener('click', openDirectCvModal);
