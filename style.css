@@ -8978,12 +8978,71 @@ header.nav-visible {
   border-color: rgba(255, 255, 255, 0.5);
 }
 
+.btn-cookie-customize {
+  background: transparent;
+  color: #94a3b8;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 12px 20px;
+  border-radius: var(--r-pill, 999px);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.btn-cookie-customize:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.switch-toggle {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.switch-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.switch-toggle .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #cbd5e1;
+  transition: .3s;
+  border-radius: 24px;
+}
+.switch-toggle .slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .3s;
+  border-radius: 50%;
+}
+.switch-toggle input:checked + .slider {
+  background-color: #10b981;
+}
+.switch-toggle input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
 @media (max-width: 768px) {
   .cookie-actions {
     flex-direction: column;
     width: 100%;
+    gap: 8px;
   }
-  .btn-cookie-refuse, .btn-cookie-accept {
+  .btn-cookie-refuse, .btn-cookie-accept, .btn-cookie-customize {
     width: 100%;
     text-align: center;
   }
@@ -9019,4 +9078,18 @@ header.nav-visible {
   color: #10b981;
   text-decoration: underline;
   font-weight: 600;
+}
+
+
+/* About Hero Block Responsive */
+@media (max-width: 900px) {
+  .about-hero-block {
+    grid-template-columns: 1fr !important;
+  }
+  .about-hero-block > div:first-child {
+    min-height: 240px !important;
+  }
+  .about-hero-block > div:last-child {
+    padding: 24px 20px !important;
+  }
 }
