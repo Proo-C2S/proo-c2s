@@ -1713,7 +1713,7 @@
                     return new Promise(function(resolve, reject) {
                         const tx = db.transaction(PRO_C2S_IDB.storeName, 'readonly');
                         const req = tx.objectStore(PRO_C2S_IDB.storeName).get(id);
-                        req.onsuccess = function() { resolve(req.result ? req.result.fileData : null); };
+                        req.onsuccess = function() { resolve(req.result ? (req.result.fileData || req.result.dataUrl) : null); };
                         req.onerror = function() { reject(req.error); };
                     });
                 }).catch(function() { return null; });
@@ -1752,7 +1752,27 @@
                     let fireList = [];
                     snapshot.forEach(function(doc) { fireList.push(doc.data()); });
                     fireList.sort(function(a, b) { return (b.id || '').localeCompare(a.id || ''); });
-                    localStorage.setItem('proc2s_candidatures', JSON.stringify(fireList));
+
+                    try {
+                        let existingList = JSON.parse(localStorage.getItem('proc2s_candidatures') || '[]');
+                        let existingMap = {};
+                        existingList.forEach(function(item) { if (item.id) existingMap[item.id] = item; });
+
+                        fireList.forEach(function(item) {
+                            if (existingMap[item.id]) {
+                                if (!item.fileData && existingMap[item.id].fileData) {
+                                    item.fileData = existingMap[item.id].fileData;
+                                }
+                                if (!item.fileUrl && existingMap[item.id].fileUrl) {
+                                    item.fileUrl = existingMap[item.id].fileUrl;
+                                }
+                            }
+                        });
+                        localStorage.setItem('proc2s_candidatures', JSON.stringify(fireList));
+                    } catch(mergeErr) {
+                        localStorage.setItem('proc2s_candidatures', JSON.stringify(fireList));
+                    }
+
                     if (sessionStorage.getItem(AUTH_KEY) === 'true') {
                         renderCandidats(document.getElementById('searchInput') ? document.getElementById('searchInput').value : '');
                         updateKPIs();
@@ -2632,36 +2652,42 @@
         }
 
         // ==========================================
-        // CV VIEWER MODAL LOGIC
+        // CV VIEWER MODAL LOGIC (BLOB ENGINE)
         // ==========================================
+        let currentCvBlobUrl = null;
+
+        function convertBase64ToBlobUrl(base64Data, contentType) {
+            if (!base64Data) return null;
+            if (base64Data.startsWith('blob:') || base64Data.startsWith('http://') || base64Data.startsWith('https://')) {
+                return base64Data;
+            }
+            let b64 = base64Data;
+            let type = contentType || 'application/pdf';
+            if (base64Data.indexOf(',') !== -1) {
+                const parts = base64Data.split(',');
+                const m = parts[0].match(/:(.*?);/);
+                if (m) type = m[1];
+                b64 = parts[1];
+            }
+            try {
+                const byteChars = atob(b64);
+                const byteNumbers = new Array(byteChars.length);
+                for (let i = 0; i < byteChars.length; i++) {
+                    byteNumbers[i] = byteChars.charCodeAt(i);
+                }
+                const byteArray = new Uint8Array(byteNumbers);
+                const blob = new Blob([byteArray], { type: type });
+                return URL.createObjectURL(blob);
+            } catch(e) {
+                console.warn('convertBase64ToBlobUrl error:', e);
+                return base64Data;
+            }
+        }
+
         async function openCvModal(candId) {
             const list = JSON.parse(localStorage.getItem('proc2s_candidatures') || '[]');
             const c = list.find(item => item.id === candId);
             if (!c) return;
-
-            let activeFileData = c.fileUrl || c.fileData;
-            if (!activeFileData && typeof PRO_C2S_IDB !== 'undefined') {
-                try {
-                    activeFileData = await PRO_C2S_IDB.getFile(candId);
-                } catch(e) {}
-            }
-
-            if (!activeFileData && fbDb) {
-                try {
-                    const snap = await fbDb.collection('proc2s_candidatures').doc(candId).collection('chunks').orderBy('idx').get();
-                    if (!snap.empty) {
-                        let combined = '';
-                        snap.forEach(doc => { combined += (doc.data().data || ''); });
-                        if (combined) {
-                            activeFileData = combined;
-                            c.fileData = combined;
-                            if (typeof PRO_C2S_IDB !== 'undefined') {
-                                PRO_C2S_IDB.saveFile(candId, c.fileName, combined);
-                            }
-                        }
-                    }
-                } catch(cErr) {}
-            }
 
             const overlay = document.getElementById('cvModalOverlay');
             const avatar = document.getElementById('cvModalAvatar');
@@ -2676,6 +2702,60 @@
 
             let cleanPhone = (c.phone || '').replace(/[^0-9]/g, '');
             let cleanWa = cleanPhone.startsWith('0') ? '212' + cleanPhone.substring(1) : cleanPhone;
+
+            let activeFileData = c.fileUrl || c.fileData;
+            if (!activeFileData && typeof PRO_C2S_IDB !== 'undefined') {
+                try {
+                    activeFileData = await PRO_C2S_IDB.getFile(candId);
+                } catch(e) {}
+            }
+
+            if (!activeFileData && fbDb) {
+                bodyEl.innerHTML = `
+                    <div style="text-align:center;padding:50px 20px;">
+                        <i class="fa-solid fa-spinner fa-spin" style="font-size:38px;color:#10b981;margin-bottom:14px;"></i>
+                        <h4 style="font-size:16px;color:#0f172a;margin:0 0 6px 0;">Chargement sécurisé du document CV...</h4>
+                        <p style="font-size:13px;color:#64748b;margin:0;">Veuillez patienter quelques instants.</p>
+                    </div>
+                `;
+                overlay.style.display = 'flex';
+
+                try {
+                    // Check direct doc first in Firestore
+                    const docSnap = await fbDb.collection('proc2s_candidatures').doc(candId).get();
+                    if (docSnap.exists && docSnap.data().fileData) {
+                        activeFileData = docSnap.data().fileData;
+                    } else {
+                        // Check chunks subcollection
+                        const snap = await fbDb.collection('proc2s_candidatures').doc(candId).collection('chunks').orderBy('idx').get();
+                        if (!snap.empty) {
+                            let combined = '';
+                            snap.forEach(doc => { combined += (doc.data().data || ''); });
+                            if (combined) {
+                                activeFileData = combined;
+                            }
+                        }
+                    }
+
+                    if (activeFileData) {
+                        c.fileData = activeFileData;
+                        if (typeof PRO_C2S_IDB !== 'undefined') {
+                            PRO_C2S_IDB.saveFile(candId, c.fileName, activeFileData);
+                        }
+                        try {
+                            localStorage.setItem('proc2s_candidatures', JSON.stringify(list));
+                        } catch(lsErr) {}
+                    }
+                } catch(cErr) {
+                    console.warn('Error fetching cloud chunks:', cErr);
+                }
+            }
+
+            // Cleanup previous blob URL
+            if (currentCvBlobUrl && currentCvBlobUrl.startsWith('blob:')) {
+                try { URL.revokeObjectURL(currentCvBlobUrl); } catch(e) {}
+                currentCvBlobUrl = null;
+            }
 
             let html = `
                 <div class="cv-info-grid">
@@ -2704,8 +2784,21 @@
             `;
 
             if (activeFileData) {
-                const isPdf = (c.fileName && c.fileName.toLowerCase().endsWith('.pdf')) || activeFileData.startsWith('data:application/pdf');
-                const isImage = (c.fileName && c.fileName.toLowerCase().match(/\.(png|jpg|jpeg|webp)$/)) || activeFileData.startsWith('data:image/');
+                // Auto-normalize Base64 header if raw base64 was passed
+                if (typeof activeFileData === 'string' && activeFileData.startsWith('JVBERi')) {
+                    activeFileData = 'data:application/pdf;base64,' + activeFileData;
+                }
+
+                const isPdf = (c.fileName && c.fileName.toLowerCase().endsWith('.pdf')) || 
+                              (typeof activeFileData === 'string' && (activeFileData.startsWith('data:application/pdf') || activeFileData.includes('.pdf')));
+                const isImage = (c.fileName && c.fileName.toLowerCase().match(/\.(png|jpg|jpeg|webp)$/)) || 
+                                (typeof activeFileData === 'string' && activeFileData.startsWith('data:image/'));
+
+                const blobUrl = isPdf 
+                    ? convertBase64ToBlobUrl(activeFileData, 'application/pdf')
+                    : (isImage ? convertBase64ToBlobUrl(activeFileData, 'image/jpeg') : convertBase64ToBlobUrl(activeFileData, 'application/octet-stream'));
+                
+                currentCvBlobUrl = blobUrl;
 
                 html += `
                     <div style="margin-bottom:18px;">
@@ -2714,7 +2807,10 @@
                                 <i class="fa-solid fa-file-pdf" style="color:#ef4444;"></i> Aperçu du CV : ${escapeHtml(c.fileName)}
                             </h4>
                             <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                                <a href="${activeFileData}" download="${escapeHtml(c.fileName || 'CV.pdf')}" class="cv-btn-action primary">
+                                <a href="${blobUrl}" target="_blank" rel="noopener noreferrer" class="cv-btn-action secondary" title="Ouvrir dans un nouvel onglet">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Ouvrir séparément
+                                </a>
+                                <a href="${blobUrl}" download="${escapeHtml(c.fileName || 'CV.pdf')}" class="cv-btn-action primary">
                                     <i class="fa-solid fa-download"></i> Télécharger
                                 </a>
                                 <button type="button" class="cv-btn-action secondary" onclick="printPdfDocument('${c.id}')">
@@ -2726,12 +2822,14 @@
 
                 if (isPdf) {
                     html += `
-                        <iframe id="pdfFrame_${c.id}" src="${activeFileData}#toolbar=1" style="width:100%;height:480px;border:1.5px solid #cbd5e1;border-radius:12px;background:#525659;"></iframe>
+                        <div style="position:relative;width:100%;height:520px;border:1.5px solid #cbd5e1;border-radius:12px;overflow:hidden;background:#525659;">
+                            <iframe id="pdfFrame_${c.id}" src="${blobUrl}" style="width:100%;height:100%;border:none;"></iframe>
+                        </div>
                     `;
                 } else if (isImage) {
                     html += `
                         <div style="text-align:center;background:#0f172a;padding:20px;border-radius:12px;">
-                            <img src="${activeFileData}" style="max-width:100%;max-height:500px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.3);">
+                            <img src="${blobUrl}" style="max-width:100%;max-height:500px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.3);">
                         </div>
                     `;
                 } else {
@@ -2740,7 +2838,7 @@
                             <i class="fa-solid fa-file-word" style="font-size:44px;color:#2563eb;margin-bottom:12px;"></i>
                             <h4 style="margin:0 0 8px 0;font-size:16px;">Document Word / Fichier Joint</h4>
                             <p style="font-size:13px;color:#64748b;margin-bottom:16px;">Ce type de document se consulte directement via téléchargement sécurisé.</p>
-                            <a href="${activeFileData}" download="${escapeHtml(c.fileName)}" class="cv-btn-action primary">
+                            <a href="${blobUrl}" download="${escapeHtml(c.fileName)}" class="cv-btn-action primary">
                                 <i class="fa-solid fa-download"></i> Télécharger ${escapeHtml(c.fileName)}
                             </a>
                         </div>
@@ -2784,6 +2882,13 @@
                     return;
                 } catch(e) {}
             }
+            if (currentCvBlobUrl) {
+                const w = window.open(currentCvBlobUrl);
+                if (w) {
+                    w.onload = function() { w.print(); };
+                    return;
+                }
+            }
             window.print();
         }
 
@@ -2816,8 +2921,13 @@
         }
 
         function closeCvModal() {
+            if (currentCvBlobUrl && currentCvBlobUrl.startsWith('blob:')) {
+                try { URL.revokeObjectURL(currentCvBlobUrl); } catch(e) {}
+                currentCvBlobUrl = null;
+            }
             const overlay = document.getElementById('cvModalOverlay');
             if (overlay) overlay.style.display = 'none';
+        }
         }
 
         // Initialize authentication & dashboard on load

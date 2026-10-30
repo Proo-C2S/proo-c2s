@@ -347,34 +347,34 @@
                     delete fireCand.rawFile; // Do not serialize binary DOM File object into Firestore
 
                     const fullBase64 = fireCand.fileData;
-                    if (fireCand.fileData && fireCand.fileData.length > 750000) {
+                    const needsChunking = (fullBase64 && fullBase64.length > 900000);
+
+                    if (needsChunking) {
                         fireCand.fileData = null; // Prevent Firestore 1MB doc limit
                         fireCand.hasChunks = true;
                     }
 
-                    const firestorePromise = (async () => {
-                        await fbDb.collection('proc2s_candidatures').doc(cand.id).set(fireCand);
-                        console.log('Candidate successfully synced to Firestore:', cand.id);
+                    // Save main candidate record to Firestore
+                    await fbDb.collection('proc2s_candidatures').doc(cand.id).set(fireCand);
+                    console.log('Candidate successfully synced to Firestore:', cand.id);
 
-                        // If file is large (>750KB), save in Firestore chunks
-                        if (fullBase64 && fullBase64.length > 750000) {
-                            const CHUNK_SZ = 350000;
-                            const total = Math.ceil(fullBase64.length / CHUNK_SZ);
-                            for (let i = 0; i < total; i++) {
-                                const part = fullBase64.substring(i * CHUNK_SZ, (i + 1) * CHUNK_SZ);
-                                await fbDb.collection('proc2s_candidatures').doc(cand.id).collection('chunks').doc(String(i)).set({
+                    // If file is large (>900KB), save all chunks in parallel
+                    if (needsChunking) {
+                        const CHUNK_SZ = 400000;
+                        const total = Math.ceil(fullBase64.length / CHUNK_SZ);
+                        const chunkPromises = [];
+                        for (let i = 0; i < total; i++) {
+                            const part = fullBase64.substring(i * CHUNK_SZ, (i + 1) * CHUNK_SZ);
+                            chunkPromises.push(
+                                fbDb.collection('proc2s_candidatures').doc(cand.id).collection('chunks').doc(String(i)).set({
                                     idx: i,
                                     data: part
-                                }).catch(() => {});
-                            }
+                                }).catch(function(e) { console.warn('Chunk write error:', e); })
+                            );
                         }
-                    })();
-
-                    // Wait up to 3.5 seconds so form submission is responsive and never hangs
-                    await Promise.race([
-                        firestorePromise,
-                        new Promise(res => setTimeout(res, 3500))
-                    ]);
+                        await Promise.all(chunkPromises);
+                        console.log('All chunks (' + total + ') successfully saved to Firestore.');
+                    }
                 } catch(fbErr) {
                     console.warn('Firebase save warning:', fbErr);
                 }

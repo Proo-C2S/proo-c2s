@@ -54,7 +54,7 @@ const PRO_C2S_IDB = {
         return this.getDb().then(function(db) {
             return new Promise(function(resolve, reject) {
                 const tx = db.transaction(PRO_C2S_IDB.storeName, 'readwrite');
-                tx.objectStore(PRO_C2S_IDB.storeName).put({ id: id, fileName: fileName, fileData: fileData });
+                tx.objectStore(PRO_C2S_IDB.storeName).put({ id: id, fileName: fileName, fileData: fileData, dataUrl: fileData });
                 tx.oncomplete = function() { resolve(true); };
                 tx.onerror = function() { reject(tx.error); };
             });
@@ -69,7 +69,7 @@ const PRO_C2S_IDB = {
             return new Promise(function(resolve, reject) {
                 const tx = db.transaction(PRO_C2S_IDB.storeName, 'readonly');
                 const req = tx.objectStore(PRO_C2S_IDB.storeName).get(id);
-                req.onsuccess = function() { resolve(req.result ? req.result.fileData : null); };
+                req.onsuccess = function() { resolve(req.result ? (req.result.fileData || req.result.dataUrl) : null); };
                 req.onerror = function() { reject(req.error); };
             });
         }).catch(function() { return null; });
