@@ -1956,49 +1956,51 @@ header.scrolled .navbar {
 
 /* ======================== TÉMOIGNAGES ======================== */
 .testimonials-section {
-  padding: 110px 0;
+  padding: 65px 0;
   background: var(--c-white);
 }
 
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: stretch;
 }
 
 .testimonial-card {
-  background: var(--c-paper);
-  border: 1.5px solid var(--c-mist-dark);
-  border-radius: var(--r-xl);
-  padding: 44px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 22px 22px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transition: all var(--dur-normal) var(--ease-ency);
   position: relative;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
 }
 
 .testimonial-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(16, 185, 129, 0.4);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
-  background: var(--c-white);
+  transform: translateY(-4px);
+  border-color: rgba(16, 185, 129, 0.5);
+  box-shadow: 0 12px 28px rgba(16, 185, 129, 0.08);
+  background: #ffffff;
 }
 
 .t-rating {
   color: #f59e0b;
-  font-size: 15px;
-  margin-bottom: 20px;
+  font-size: 13.5px;
+  margin-bottom: 0;
   display: flex;
-  gap: 4px;
+  gap: 3px;
 }
 
 .testimonial-card p {
-  font-size: 16.5px;
-  color: #334155;
-  line-height: 1.75;
-  margin-bottom: 30px;
-  font-style: italic;
+  font-size: 13.5px;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  font-style: normal;
   flex-grow: 1;
 }
 
@@ -4371,7 +4373,7 @@ body.cursor-glow-active #cursorGlow {
   position: absolute;
   top: 16px;
   right: 24px;
-  font-size: 120px;
+  font-size: 70px;
   font-family: Georgia, serif;
   color: rgba(16, 185, 129, 0.06);
   line-height: 1;
