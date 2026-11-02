@@ -1799,34 +1799,67 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
 
-        // --- Fluid Aurora Waves ---
+        // --- Fluid Aurora Waves (Executive World-Class Silk Waves) ---
         const waves = [
             {
-                baseYRatio: 0.70,
-                amplitude: 42,
-                frequency: 0.0030,
-                speed: 0.0016,
-                colorStart: 'rgba(16, 185, 129, 0.18)',
-                colorEnd: 'rgba(5, 150, 105, 0.02)',
-                stroke: 'rgba(16, 185, 129, 0.45)'
+                baseYRatio: 0.52,
+                amp1: 38,
+                amp2: 24,
+                freq1: 0.0022,
+                freq2: 0.0042,
+                speed: 0.0012,
+                phase: 0.4,
+                colorStart: 'rgba(16, 185, 129, 0.22)',
+                colorEnd: 'rgba(4, 120, 87, 0.01)',
+                stroke: 'rgba(0, 230, 118, 0.70)',
+                glowColor: 'rgba(0, 230, 118, 0.55)',
+                glowBlur: 14,
+                lineWidth: 2.2
             },
             {
-                baseYRatio: 0.78,
-                amplitude: 52,
-                frequency: 0.0022,
-                speed: -0.0019,
-                colorStart: 'rgba(6, 182, 212, 0.16)',
+                baseYRatio: 0.63,
+                amp1: 48,
+                amp2: 30,
+                freq1: 0.0018,
+                freq2: 0.0036,
+                speed: -0.0014,
+                phase: 1.8,
+                colorStart: 'rgba(6, 182, 212, 0.24)',
                 colorEnd: 'rgba(14, 165, 233, 0.01)',
-                stroke: 'rgba(6, 182, 212, 0.40)'
+                stroke: 'rgba(6, 182, 212, 0.80)',
+                glowColor: 'rgba(6, 182, 212, 0.60)',
+                glowBlur: 16,
+                lineWidth: 2.2
             },
             {
-                baseYRatio: 0.86,
-                amplitude: 36,
-                frequency: 0.0038,
-                speed: 0.0024,
-                colorStart: 'rgba(52, 211, 153, 0.22)',
+                baseYRatio: 0.74,
+                amp1: 55,
+                amp2: 34,
+                freq1: 0.0025,
+                freq2: 0.0048,
+                speed: 0.0018,
+                phase: 3.2,
+                colorStart: 'rgba(52, 211, 153, 0.28)',
                 colorEnd: 'rgba(16, 185, 129, 0.02)',
-                stroke: 'rgba(52, 211, 153, 0.50)'
+                stroke: 'rgba(52, 211, 153, 0.90)',
+                glowColor: 'rgba(52, 211, 153, 0.70)',
+                glowBlur: 18,
+                lineWidth: 2.4
+            },
+            {
+                baseYRatio: 0.85,
+                amp1: 44,
+                amp2: 28,
+                freq1: 0.0030,
+                freq2: 0.0054,
+                speed: -0.0020,
+                phase: 4.6,
+                colorStart: 'rgba(16, 185, 129, 0.32)',
+                colorEnd: 'rgba(5, 150, 105, 0.04)',
+                stroke: 'rgba(0, 230, 118, 0.95)',
+                glowColor: 'rgba(0, 230, 118, 0.80)',
+                glowBlur: 22,
+                lineWidth: 2.6
             }
         ];
 
@@ -1835,18 +1868,18 @@ document.addEventListener("DOMContentLoaded", function() {
             ctx.beginPath();
             ctx.moveTo(0, height);
 
-            const step = Math.max(12, Math.floor(width / 75));
+            const step = Math.max(6, Math.floor(width / 150));
             for (let x = 0; x <= width + step; x += step) {
                 let y = baseY + 
-                    Math.sin(x * wConfig.frequency + t * wConfig.speed * 1000) * wConfig.amplitude +
-                    Math.cos(x * wConfig.frequency * 0.55 + t * 0.0012) * (wConfig.amplitude * 0.45);
+                    Math.sin(x * wConfig.freq1 + t * wConfig.speed * 1000) * wConfig.amp1 + 
+                    Math.cos(x * wConfig.freq2 + t * wConfig.speed * 800 + wConfig.phase) * wConfig.amp2;
 
                 if (mouse.intensity > 0.01) {
                     const dx = x - mouse.x;
                     const dy = y - mouse.y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 340) {
-                        const ripple = Math.sin(dist * 0.035 - t * 6) * Math.exp(-dist * 0.008) * (mouse.intensity * 28);
+                    if (dist < 320) {
+                        const ripple = Math.sin(dist * 0.038 - t * 7) * Math.exp(-dist * 0.007) * (mouse.intensity * 36);
                         y += ripple;
                     }
                 }
@@ -1861,15 +1894,19 @@ document.addEventListener("DOMContentLoaded", function() {
             ctx.lineTo(width, height);
             ctx.closePath();
 
-            const grad = ctx.createLinearGradient(0, baseY - wConfig.amplitude, 0, height);
+            const grad = ctx.createLinearGradient(0, baseY - wConfig.amp1 - wConfig.amp2, 0, height);
             grad.addColorStop(0, wConfig.colorStart);
             grad.addColorStop(1, wConfig.colorEnd);
             ctx.fillStyle = grad;
             ctx.fill();
 
+            ctx.save();
+            ctx.shadowColor = wConfig.glowColor;
+            ctx.shadowBlur = wConfig.glowBlur;
             ctx.strokeStyle = wConfig.stroke;
-            ctx.lineWidth = 1.8;
+            ctx.lineWidth = wConfig.lineWidth;
             ctx.stroke();
+            ctx.restore();
         }
 
         // --- Mouse and Parallax Listeners ---
