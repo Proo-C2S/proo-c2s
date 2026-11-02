@@ -1678,7 +1678,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // 3. Executive World-Class Fluid Wave & Interactive Neural Aurora Engine (Stripe/Linear Grade)
     const canvas = document.getElementById('heroParticles');
-    if (canvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (canvas) {
         const ctx = canvas.getContext('2d');
         const heroSection = canvas.closest('.hero') || canvas.parentElement;
 
@@ -1799,80 +1799,87 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
 
-        // --- Fluid Aurora Waves (Executive World-Class Silk Waves) ---
+        // --- Fluid Aurora Waves (Executive World-Class Silk Waves - Fully Mobile Responsive) ---
         const waves = [
             {
                 baseYRatio: 0.52,
+                mobileYRatio: 0.30,
                 amp1: 38,
                 amp2: 24,
                 freq1: 0.0022,
                 freq2: 0.0042,
                 speed: 0.0012,
                 phase: 0.4,
-                colorStart: 'rgba(16, 185, 129, 0.22)',
+                colorStart: 'rgba(16, 185, 129, 0.25)',
                 colorEnd: 'rgba(4, 120, 87, 0.01)',
-                stroke: 'rgba(0, 230, 118, 0.70)',
-                glowColor: 'rgba(0, 230, 118, 0.55)',
+                stroke: 'rgba(0, 230, 118, 0.75)',
+                glowColor: 'rgba(0, 230, 118, 0.60)',
                 glowBlur: 14,
                 lineWidth: 2.2
             },
             {
                 baseYRatio: 0.63,
+                mobileYRatio: 0.46,
                 amp1: 48,
                 amp2: 30,
                 freq1: 0.0018,
                 freq2: 0.0036,
                 speed: -0.0014,
                 phase: 1.8,
-                colorStart: 'rgba(6, 182, 212, 0.24)',
+                colorStart: 'rgba(6, 182, 212, 0.26)',
                 colorEnd: 'rgba(14, 165, 233, 0.01)',
-                stroke: 'rgba(6, 182, 212, 0.80)',
-                glowColor: 'rgba(6, 182, 212, 0.60)',
+                stroke: 'rgba(6, 182, 212, 0.85)',
+                glowColor: 'rgba(6, 182, 212, 0.65)',
                 glowBlur: 16,
                 lineWidth: 2.2
             },
             {
                 baseYRatio: 0.74,
+                mobileYRatio: 0.64,
                 amp1: 55,
                 amp2: 34,
                 freq1: 0.0025,
                 freq2: 0.0048,
                 speed: 0.0018,
                 phase: 3.2,
-                colorStart: 'rgba(52, 211, 153, 0.28)',
+                colorStart: 'rgba(52, 211, 153, 0.30)',
                 colorEnd: 'rgba(16, 185, 129, 0.02)',
-                stroke: 'rgba(52, 211, 153, 0.90)',
-                glowColor: 'rgba(52, 211, 153, 0.70)',
+                stroke: 'rgba(52, 211, 153, 0.95)',
+                glowColor: 'rgba(52, 211, 153, 0.75)',
                 glowBlur: 18,
                 lineWidth: 2.4
             },
             {
                 baseYRatio: 0.85,
+                mobileYRatio: 0.82,
                 amp1: 44,
                 amp2: 28,
                 freq1: 0.0030,
                 freq2: 0.0054,
                 speed: -0.0020,
                 phase: 4.6,
-                colorStart: 'rgba(16, 185, 129, 0.32)',
+                colorStart: 'rgba(16, 185, 129, 0.35)',
                 colorEnd: 'rgba(5, 150, 105, 0.04)',
-                stroke: 'rgba(0, 230, 118, 0.95)',
-                glowColor: 'rgba(0, 230, 118, 0.80)',
+                stroke: 'rgba(0, 230, 118, 1.0)',
+                glowColor: 'rgba(0, 230, 118, 0.85)',
                 glowBlur: 22,
                 lineWidth: 2.6
             }
         ];
 
         function drawAuroraWave(wConfig, t) {
-            const baseY = height * wConfig.baseYRatio;
+            const isMobile = width <= 768;
+            const ratio = isMobile ? wConfig.mobileYRatio : wConfig.baseYRatio;
+            const ampScale = isMobile ? 0.75 : 1.0;
+            const baseY = height * ratio;
             ctx.beginPath();
             ctx.moveTo(0, height);
 
-            const step = Math.max(6, Math.floor(width / 150));
+            const step = Math.max(4, Math.floor(width / (isMobile ? 70 : 150)));
             for (let x = 0; x <= width + step; x += step) {
                 let y = baseY + 
-                    Math.sin(x * wConfig.freq1 + t * wConfig.speed * 1000) * wConfig.amp1 + 
-                    Math.cos(x * wConfig.freq2 + t * wConfig.speed * 800 + wConfig.phase) * wConfig.amp2;
+                    Math.sin(x * wConfig.freq1 + t * wConfig.speed * 1000) * (wConfig.amp1 * ampScale) + 
+                    Math.cos(x * wConfig.freq2 + t * wConfig.speed * 800 + wConfig.phase) * (wConfig.amp2 * ampScale);
 
                 if (mouse.intensity > 0.01) {
                     const dx = x - mouse.x;
@@ -1894,7 +1901,7 @@ document.addEventListener("DOMContentLoaded", function() {
             ctx.lineTo(width, height);
             ctx.closePath();
 
-            const grad = ctx.createLinearGradient(0, baseY - wConfig.amp1 - wConfig.amp2, 0, height);
+            const grad = ctx.createLinearGradient(0, baseY - (wConfig.amp1 + wConfig.amp2) * ampScale, 0, height);
             grad.addColorStop(0, wConfig.colorStart);
             grad.addColorStop(1, wConfig.colorEnd);
             ctx.fillStyle = grad;
@@ -1902,7 +1909,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             ctx.save();
             ctx.shadowColor = wConfig.glowColor;
-            ctx.shadowBlur = wConfig.glowBlur;
+            ctx.shadowBlur = isMobile ? 10 : wConfig.glowBlur;
             ctx.strokeStyle = wConfig.stroke;
             ctx.lineWidth = wConfig.lineWidth;
             ctx.stroke();
@@ -2047,6 +2054,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         resize();
         requestAnimationFrame(render);
+        window.addEventListener('load', resize);
+        setTimeout(resize, 350);
+        setTimeout(resize, 1000);
     }
 
     // 4. Sector Card Modal Activation
