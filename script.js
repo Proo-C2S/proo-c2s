@@ -279,7 +279,11 @@ window.PRO_C2S_DB = {
                     if (cand.rawFile && fbStorage) {
                         const safeFileName = (cand.fileName || 'cv.pdf').replace(/[^a-zA-Z0-9._-]/g, '_');
                         const storageRef = fbStorage.ref('cv_documents/' + cand.id + '_' + safeFileName);
-                        storageRef.put(cand.rawFile).then(function(snapshot) {
+                        const metadata = {
+                            contentType: (cand.rawFile && cand.rawFile.type) ? cand.rawFile.type : 'application/pdf',
+                            contentDisposition: 'inline; filename="' + safeFileName + '"'
+                        };
+                        storageRef.put(cand.rawFile, metadata).then(function(snapshot) {
                             return snapshot.ref.getDownloadURL();
                         }).then(function(downloadUrl) {
                             cand.fileUrl = downloadUrl;

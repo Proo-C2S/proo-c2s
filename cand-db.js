@@ -312,7 +312,11 @@
 
             // 1. IndexedDB save (stores binary dataUrl and fileData for Admin CV viewer)
             if (cand.fileData) {
-                PRO_C2S_IDB.saveFile(cand.id, cand.fileName || 'cv.pdf', cand.fileData);
+                try {
+                    await PRO_C2S_IDB.saveFile(cand.id, cand.fileName || 'cv.pdf', cand.fileData);
+                } catch(idbErr) {
+                    console.warn('IDB save warning:', idbErr);
+                }
             }
 
             // 2. LocalStorage save (immediate local copy for admin / user)
@@ -340,76 +344,92 @@
                 }
             } catch(bcErr) {}
 
-            // 4. Cloud Database push (Firebase Firestore)
-            if (fbDb) {
-                try {
-                    const fireCand = Object.assign({}, cand);
-                    delete fireCand.rawFile; // Do not serialize binary DOM File object into Firestore
-
-                    const fullBase64 = fireCand.fileData;
-                    const needsChunking = (fullBase64 && fullBase64.length > 900000);
-
-                    if (needsChunking) {
-                        fireCand.fileData = null; // Prevent Firestore 1MB doc limit
-                        fireCand.hasChunks = true;
-                    }
-
-                    // Save main candidate record to Firestore
-                    await fbDb.collection('proc2s_candidatures').doc(cand.id).set(fireCand);
-                    console.log('Candidate successfully synced to Firestore:', cand.id);
-
-                    // If file is large (>900KB), save all chunks in parallel
-                    if (needsChunking) {
-                        const CHUNK_SZ = 400000;
-                        const total = Math.ceil(fullBase64.length / CHUNK_SZ);
-                        const chunkPromises = [];
-                        for (let i = 0; i < total; i++) {
-                            const part = fullBase64.substring(i * CHUNK_SZ, (i + 1) * CHUNK_SZ);
-                            chunkPromises.push(
-                                fbDb.collection('proc2s_candidatures').doc(cand.id).collection('chunks').doc(String(i)).set({
-                                    idx: i,
-                                    data: part
-                                }).catch(function(e) { console.warn('Chunk write error:', e); })
-                            );
-                        }
-                        await Promise.all(chunkPromises);
-                        console.log('All chunks (' + total + ') successfully saved to Firestore.');
-                    }
-                } catch(fbErr) {
-                    console.warn('Firebase save warning:', fbErr);
-                }
-
-                // 5. Firebase Cloud Storage Upload (raw binary CV) - Strictly NON-BLOCKING in background
-                if (cand.rawFile && fbStorage) {
+            // 4. Background cloud sync to Firestore & Storage (Non-blocking with fast timeout race)
+            const syncToCloud = async function() {
+                if (fbDb) {
                     try {
-                        const safeFileName = (cand.fileName || 'cv.pdf').replace(/[^a-zA-Z0-9._-]/g, '_');
-                        const storageRef = fbStorage.ref('cv_documents/' + cand.id + '_' + safeFileName);
-                        storageRef.put(cand.rawFile).then(async function(snapshot) {
-                            try {
-                                const downloadUrl = await snapshot.ref.getDownloadURL();
-                                cand.fileUrl = downloadUrl;
-                                if (fbDb) {
-                                    await fbDb.collection('proc2s_candidatures').doc(cand.id).update({ fileUrl: downloadUrl }).catch(() => {});
-                                }
+                        const fireCand = Object.assign({}, cand);
+                        delete fireCand.rawFile;
 
-                                // Update localStorage copy with fileUrl
-                                let list = JSON.parse(localStorage.getItem('proc2s_candidatures') || '[]');
-                                const idx = list.findIndex(x => x.id === cand.id);
-                                if (idx >= 0) {
-                                    list[idx].fileUrl = downloadUrl;
-                                    localStorage.setItem('proc2s_candidatures', JSON.stringify(list));
-                                }
-                                console.log('CV successfully uploaded to Cloud Storage & URL linked:', downloadUrl);
-                            } catch(uErr) {
-                                console.warn('Storage getDownloadURL warning:', uErr);
+                        const fullBase64 = fireCand.fileData;
+                        const needsChunking = (fullBase64 && fullBase64.length > 750000);
+
+                        if (needsChunking) {
+                            fireCand.fileData = null; // Respect Firestore document limit & rules
+                            fireCand.hasChunks = true;
+                        }
+
+                        // Save main record
+                        await fbDb.collection('proc2s_candidatures').doc(cand.id).set(fireCand);
+                        console.log('Candidate successfully synced to Firestore:', cand.id);
+
+                        // Save chunks if file is large
+                        if (needsChunking && fullBase64) {
+                            const CHUNK_SZ = 350000;
+                            const total = Math.ceil(fullBase64.length / CHUNK_SZ);
+                            const chunkPromises = [];
+                            for (let i = 0; i < total; i++) {
+                                const part = fullBase64.substring(i * CHUNK_SZ, (i + 1) * CHUNK_SZ);
+                                chunkPromises.push(
+                                    fbDb.collection('proc2s_candidatures').doc(cand.id).collection('chunks').doc(String(i)).set({
+                                        idx: i,
+                                        data: part
+                                    }).catch(function(e) { console.warn('Chunk write error:', e); })
+                                );
                             }
-                        }).catch(function(uploadErr) {
-                            console.warn('Background Storage upload warning:', uploadErr);
-                        });
-                    } catch(storageInitErr) {
-                        console.warn('Storage reference warning:', storageInitErr);
+                            await Promise.all(chunkPromises);
+                            console.log('All chunks (' + total + ') saved to Firestore.');
+                        }
+                    } catch(fbErr) {
+                        console.warn('Firebase save warning:', fbErr);
+                    }
+
+                    // 5. Firebase Cloud Storage Upload (raw binary CV)
+                    if (cand.rawFile && fbStorage) {
+                        try {
+                            const safeFileName = (cand.fileName || 'cv.pdf').replace(/[^a-zA-Z0-9._-]/g, '_');
+                            const storageRef = fbStorage.ref('cv_documents/' + cand.id + '_' + safeFileName);
+                            const metadata = {
+                                contentType: (cand.rawFile && cand.rawFile.type) ? cand.rawFile.type : 'application/pdf',
+                                contentDisposition: 'inline; filename="' + safeFileName + '"'
+                            };
+                            storageRef.put(cand.rawFile, metadata).then(async function(snapshot) {
+                                try {
+                                    const downloadUrl = await snapshot.ref.getDownloadURL();
+                                    cand.fileUrl = downloadUrl;
+                                    if (fbDb) {
+                                        await fbDb.collection('proc2s_candidatures').doc(cand.id).update({ fileUrl: downloadUrl }).catch(() => {});
+                                    }
+
+                                    // Update localStorage copy with fileUrl
+                                    let list = JSON.parse(localStorage.getItem('proc2s_candidatures') || '[]');
+                                    const idx = list.findIndex(x => x.id === cand.id);
+                                    if (idx >= 0) {
+                                        list[idx].fileUrl = downloadUrl;
+                                        localStorage.setItem('proc2s_candidatures', JSON.stringify(list));
+                                    }
+                                    console.log('CV successfully uploaded to Cloud Storage & URL linked:', downloadUrl);
+                                } catch(uErr) {
+                                    console.warn('Storage getDownloadURL warning:', uErr);
+                                }
+                            }).catch(function(uploadErr) {
+                                console.warn('Background Storage upload warning:', uploadErr);
+                            });
+                        } catch(storageInitErr) {
+                            console.warn('Storage reference warning:', storageInitErr);
+                        }
                     }
                 }
+            };
+
+            // Run cloud sync: wait up to 1200ms so user gets instant confirmation without freeze
+            try {
+                await Promise.race([
+                    syncToCloud(),
+                    new Promise(function(resolve) { setTimeout(resolve, 1200); })
+                ]);
+            } catch(raceErr) {
+                console.warn('Cloud sync race warning:', raceErr);
             }
 
             return { success: true, id: cand.id };
@@ -488,24 +508,32 @@
                 source: offerTitle || 'Offre d\'emploi'
             };
 
-            const result = await window.PRO_C2S_SAVE_CANDIDATE(candRecord);
+            try {
+                const result = await window.PRO_C2S_SAVE_CANDIDATE(candRecord);
 
-            if (submitBtn) {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = origBtnHtml;
-            }
+                if (result && result.success) {
+                    form.reset();
+                    const cvLabel = form.querySelector('.offer-cv-label');
+                    if (cvLabel) {
+                        cvLabel.innerHTML = 'Cliquez pour joindre votre CV *';
+                    }
 
-            if (result && result.success) {
-                form.reset();
-                const cvLabel = form.querySelector('.offer-cv-label');
-                if (cvLabel) {
-                    cvLabel.innerHTML = 'Cliquez pour joindre votre CV *';
+                    // Show luxury green executive confirmation modal ("hadik l5edra")
+                    window.showExecutiveConfirmation(candRecord);
+                } else {
+                    alert('Une erreur est survenue lors de l\'enregistrement. Veuillez réessayer ou postuler directement via WhatsApp.');
                 }
-
-                // Show luxury green executive confirmation modal ("hadik l5edra")
+            } catch(submitErr) {
+                console.error('Submission error:', submitErr);
+                // Graceful fallback: even if unexpected error occurred, show confirmation since local save was attempted
+                form.reset();
                 window.showExecutiveConfirmation(candRecord);
-            } else {
-                alert('Une erreur est survenue lors de l\'enregistrement. Veuillez réessayer ou postuler directement via WhatsApp.');
+            } finally {
+                // Ensure submit button is ALWAYS restored and never left spinning
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = origBtnHtml;
+                }
             }
         });
     };

@@ -2658,29 +2658,36 @@
 
         function convertBase64ToBlobUrl(base64Data, contentType) {
             if (!base64Data) return null;
-            if (base64Data.startsWith('blob:') || base64Data.startsWith('http://') || base64Data.startsWith('https://')) {
+            if (base64Data.startsWith('blob:')) {
+                return base64Data;
+            }
+            if (base64Data.startsWith('http://') || base64Data.startsWith('https://')) {
                 return base64Data;
             }
             let b64 = base64Data;
             let type = contentType || 'application/pdf';
-            if (base64Data.indexOf(',') !== -1) {
-                const parts = base64Data.split(',');
-                const m = parts[0].match(/:(.*?);/);
+            const commaIdx = base64Data.indexOf(',');
+            if (commaIdx !== -1) {
+                const header = base64Data.substring(0, commaIdx);
+                const m = header.match(/:(.*?);/);
                 if (m) type = m[1];
-                b64 = parts[1];
+                b64 = base64Data.substring(commaIdx + 1);
+            }
+            b64 = b64.replace(/\s+/g, '');
+            while (b64.length % 4 !== 0) {
+                b64 += '=';
             }
             try {
                 const byteChars = atob(b64);
-                const byteNumbers = new Array(byteChars.length);
+                const byteArray = new Uint8Array(byteChars.length);
                 for (let i = 0; i < byteChars.length; i++) {
-                    byteNumbers[i] = byteChars.charCodeAt(i);
+                    byteArray[i] = byteChars.charCodeAt(i);
                 }
-                const byteArray = new Uint8Array(byteNumbers);
-                const blob = new Blob([byteArray], { type: type });
+                const blob = new Blob([byteArray], { type: type || 'application/pdf' });
                 return URL.createObjectURL(blob);
             } catch(e) {
                 console.warn('convertBase64ToBlobUrl error:', e);
-                return base64Data;
+                return base64Data.startsWith('data:') ? base64Data : ('data:' + type + ';base64,' + base64Data);
             }
         }
 
@@ -2703,13 +2710,17 @@
             let cleanPhone = (c.phone || '').replace(/[^0-9]/g, '');
             let cleanWa = cleanPhone.startsWith('0') ? '212' + cleanPhone.substring(1) : cleanPhone;
 
-            let activeFileData = c.fileUrl || c.fileData;
+            // 1. Try local memory or localStorage fileData
+            let activeFileData = c.fileData;
+
+            // 2. Try IndexedDB file store (where raw uploaded CVs are persisted in full binary)
             if (!activeFileData && typeof PRO_C2S_IDB !== 'undefined') {
                 try {
                     activeFileData = await PRO_C2S_IDB.getFile(candId);
                 } catch(e) {}
             }
 
+            // 3. Try cloud Firestore if not found locally
             if (!activeFileData && fbDb) {
                 bodyEl.innerHTML = `
                     <div style="text-align:center;padding:50px 20px;">
@@ -2723,17 +2734,22 @@
                 try {
                     // Check direct doc first in Firestore
                     const docSnap = await fbDb.collection('proc2s_candidatures').doc(candId).get();
-                    if (docSnap.exists && docSnap.data().fileData) {
-                        activeFileData = docSnap.data().fileData;
-                    } else {
-                        // Check chunks subcollection
-                        const snap = await fbDb.collection('proc2s_candidatures').doc(candId).collection('chunks').orderBy('idx').get();
-                        if (!snap.empty) {
-                            let combined = '';
-                            snap.forEach(doc => { combined += (doc.data().data || ''); });
-                            if (combined) {
-                                activeFileData = combined;
+                    if (docSnap.exists) {
+                        const d = docSnap.data();
+                        if (d.fileData) {
+                            activeFileData = d.fileData;
+                        } else if (d.hasChunks) {
+                            // Check chunks subcollection
+                            const snap = await fbDb.collection('proc2s_candidatures').doc(candId).collection('chunks').orderBy('idx').get();
+                            if (!snap.empty) {
+                                let combined = '';
+                                snap.forEach(doc => { combined += (doc.data().data || ''); });
+                                if (combined) {
+                                    activeFileData = combined;
+                                }
                             }
+                        } else if (d.fileUrl) {
+                            c.fileUrl = d.fileUrl;
                         }
                     }
 
@@ -2748,6 +2764,26 @@
                     }
                 } catch(cErr) {
                     console.warn('Error fetching cloud chunks:', cErr);
+                }
+            }
+
+            // 4. Try Firebase Cloud Storage URL fallback if no inline base64 exists
+            if (!activeFileData && c.fileUrl) {
+                try {
+                    const resp = await fetch(c.fileUrl);
+                    if (resp.ok) {
+                        const blob = await resp.blob();
+                        const pdfBlob = new Blob([blob], { type: 'application/pdf' });
+                        activeFileData = URL.createObjectURL(pdfBlob);
+                        if (typeof PRO_C2S_IDB !== 'undefined') {
+                            PRO_C2S_IDB.saveFile(candId, c.fileName, activeFileData);
+                        }
+                    } else {
+                        activeFileData = c.fileUrl;
+                    }
+                } catch(fErr) {
+                    console.warn('Fetch fileUrl fallback:', fErr);
+                    activeFileData = c.fileUrl;
                 }
             }
 
@@ -2822,8 +2858,25 @@
 
                 if (isPdf) {
                     html += `
-                        <div style="position:relative;width:100%;height:520px;border:1.5px solid #cbd5e1;border-radius:12px;overflow:hidden;background:#525659;">
-                            <iframe id="pdfFrame_${c.id}" src="${blobUrl}" style="width:100%;height:100%;border:none;"></iframe>
+                        <div style="position:relative;width:100%;height:560px;border:1.5px solid #cbd5e1;border-radius:12px;overflow:hidden;background:#525659;">
+                            <object data="${blobUrl}" type="application/pdf" width="100%" height="100%" style="border:none;display:block;">
+                                <embed src="${blobUrl}" type="application/pdf" width="100%" height="100%">
+                                <iframe id="pdfFrame_${c.id}" src="${blobUrl}" style="width:100%;height:100%;border:none;">
+                                    <div style="padding:40px;text-align:center;color:#ffffff;background:#1e293b;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                                        <i class="fa-solid fa-file-pdf" style="font-size:48px;color:#ef4444;margin-bottom:16px;"></i>
+                                        <h4 style="margin:0 0 8px 0;font-size:16px;color:#ffffff;">Aperçu direct du document</h4>
+                                        <p style="font-size:13px;color:#94a3b8;margin-bottom:18px;">Cliquez sur l'un des boutons pour consulter ou télécharger ce CV :</p>
+                                        <div style="display:flex;gap:10px;justify-content:center;">
+                                            <a href="${blobUrl}" target="_blank" rel="noopener noreferrer" class="cv-btn-action primary">
+                                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Ouvrir séparément
+                                            </a>
+                                            <a href="${blobUrl}" download="${escapeHtml(c.fileName || 'CV.pdf')}" class="cv-btn-action secondary">
+                                                <i class="fa-solid fa-download"></i> Télécharger le CV
+                                            </a>
+                                        </div>
+                                    </div>
+                                </iframe>
+                            </object>
                         </div>
                     `;
                 } else if (isImage) {
