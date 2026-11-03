@@ -344,7 +344,7 @@
                 }
             } catch(bcErr) {}
 
-            // 4. Background cloud sync to Firestore & Storage (Non-blocking with fast timeout race)
+            // 4. Background cloud sync to Firestore (Unified Cloud Store)
             const syncToCloud = async function() {
                 if (fbDb) {
                     try {
@@ -352,20 +352,22 @@
                         delete fireCand.rawFile;
 
                         const fullBase64 = fireCand.fileData;
-                        const needsChunking = (fullBase64 && fullBase64.length > 750000);
+                        const needsChunking = (fullBase64 && fullBase64.length > 800000);
 
                         if (needsChunking) {
-                            fireCand.fileData = null; // Respect Firestore document limit & rules
+                            fireCand.fileData = null; // Stored in chunks subcollection
                             fireCand.hasChunks = true;
+                        } else {
+                            fireCand.hasChunks = false;
                         }
 
-                        // Save main record
+                        // Save main candidate record
                         await fbDb.collection('proc2s_candidatures').doc(cand.id).set(fireCand);
                         console.log('Candidate successfully synced to Firestore:', cand.id);
 
-                        // Save chunks if file is large
+                        // Save chunks if file is large (>800KB)
                         if (needsChunking && fullBase64) {
-                            const CHUNK_SZ = 350000;
+                            const CHUNK_SZ = 380000;
                             const total = Math.ceil(fullBase64.length / CHUNK_SZ);
                             const chunkPromises = [];
                             for (let i = 0; i < total; i++) {
@@ -383,50 +385,15 @@
                     } catch(fbErr) {
                         console.warn('Firebase save warning:', fbErr);
                     }
-
-                    // 5. Firebase Cloud Storage Upload (raw binary CV)
-                    if (cand.rawFile && fbStorage) {
-                        try {
-                            const safeFileName = (cand.fileName || 'cv.pdf').replace(/[^a-zA-Z0-9._-]/g, '_');
-                            const storageRef = fbStorage.ref('cv_documents/' + cand.id + '_' + safeFileName);
-                            const metadata = {
-                                contentType: (cand.rawFile && cand.rawFile.type) ? cand.rawFile.type : 'application/pdf',
-                                contentDisposition: 'inline; filename="' + safeFileName + '"'
-                            };
-                            storageRef.put(cand.rawFile, metadata).then(async function(snapshot) {
-                                try {
-                                    const downloadUrl = await snapshot.ref.getDownloadURL();
-                                    cand.fileUrl = downloadUrl;
-                                    if (fbDb) {
-                                        await fbDb.collection('proc2s_candidatures').doc(cand.id).update({ fileUrl: downloadUrl }).catch(() => {});
-                                    }
-
-                                    // Update localStorage copy with fileUrl
-                                    let list = JSON.parse(localStorage.getItem('proc2s_candidatures') || '[]');
-                                    const idx = list.findIndex(x => x.id === cand.id);
-                                    if (idx >= 0) {
-                                        list[idx].fileUrl = downloadUrl;
-                                        localStorage.setItem('proc2s_candidatures', JSON.stringify(list));
-                                    }
-                                    console.log('CV successfully uploaded to Cloud Storage & URL linked:', downloadUrl);
-                                } catch(uErr) {
-                                    console.warn('Storage getDownloadURL warning:', uErr);
-                                }
-                            }).catch(function(uploadErr) {
-                                console.warn('Background Storage upload warning:', uploadErr);
-                            });
-                        } catch(storageInitErr) {
-                            console.warn('Storage reference warning:', storageInitErr);
-                        }
-                    }
                 }
             };
 
-            // Run cloud sync: wait up to 1200ms so user gets instant confirmation without freeze
+            // Smart timeout: if file has chunks give up to 4500ms, otherwise 1500ms
+            const timeoutMs = (cand.fileData && cand.fileData.length > 800000) ? 4500 : 1500;
             try {
                 await Promise.race([
                     syncToCloud(),
-                    new Promise(function(resolve) { setTimeout(resolve, 1200); })
+                    new Promise(function(resolve) { setTimeout(resolve, timeoutMs); })
                 ]);
             } catch(raceErr) {
                 console.warn('Cloud sync race warning:', raceErr);
@@ -464,6 +431,11 @@
 
             if (!name || !phone || !email) {
                 alert('Veuillez remplir tous les champs obligatoires (Nom, Téléphone, Email).');
+                return;
+            }
+
+            if (file && file.size > 12 * 1024 * 1024) {
+                alert('Le fichier sélectionné dépasse la taille limite autorisée (10 Mo). Votre fichier fait ' + (file.size / (1024 * 1024)).toFixed(1) + ' Mo. Veuillez choisir un document PDF plus léger ou compressé.');
                 return;
             }
 

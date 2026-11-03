@@ -2736,20 +2736,28 @@
                     const docSnap = await fbDb.collection('proc2s_candidatures').doc(candId).get();
                     if (docSnap.exists) {
                         const d = docSnap.data();
+                        if (d.fileUrl) {
+                            c.fileUrl = d.fileUrl;
+                        }
                         if (d.fileData) {
                             activeFileData = d.fileData;
                         } else if (d.hasChunks) {
-                            // Check chunks subcollection
-                            const snap = await fbDb.collection('proc2s_candidatures').doc(candId).collection('chunks').orderBy('idx').get();
-                            if (!snap.empty) {
-                                let combined = '';
-                                snap.forEach(doc => { combined += (doc.data().data || ''); });
-                                if (combined) {
-                                    activeFileData = combined;
+                            // Check chunks subcollection safely without requiring index
+                            try {
+                                const snap = await fbDb.collection('proc2s_candidatures').doc(candId).collection('chunks').get();
+                                if (!snap.empty) {
+                                    const chunkList = [];
+                                    snap.forEach(function(doc) { chunkList.push(doc.data()); });
+                                    chunkList.sort(function(a, b) { return (Number(a.idx) || 0) - (Number(b.idx) || 0); });
+                                    let combined = '';
+                                    chunkList.forEach(function(item) { combined += (item.data || ''); });
+                                    if (combined) {
+                                        activeFileData = combined;
+                                    }
                                 }
+                            } catch(chunkErr) {
+                                console.warn('Error fetching cloud chunks:', chunkErr);
                             }
-                        } else if (d.fileUrl) {
-                            c.fileUrl = d.fileUrl;
                         }
                     }
 
@@ -2763,7 +2771,7 @@
                         } catch(lsErr) {}
                     }
                 } catch(cErr) {
-                    console.warn('Error fetching cloud chunks:', cErr);
+                    console.warn('Error fetching candidate doc:', cErr);
                 }
             }
 
@@ -2857,11 +2865,16 @@
                 `;
 
                 if (isPdf) {
+                    const isRemoteUrl = blobUrl.startsWith('http://') || blobUrl.startsWith('https://');
+                    const viewerSrc = isRemoteUrl 
+                        ? ('https://docs.google.com/viewer?url=' + encodeURIComponent(blobUrl) + '&embedded=true') 
+                        : blobUrl;
+
                     html += `
                         <div style="position:relative;width:100%;height:560px;border:1.5px solid #cbd5e1;border-radius:12px;overflow:hidden;background:#525659;">
-                            <object data="${blobUrl}" type="application/pdf" width="100%" height="100%" style="border:none;display:block;">
-                                <embed src="${blobUrl}" type="application/pdf" width="100%" height="100%">
-                                <iframe id="pdfFrame_${c.id}" src="${blobUrl}" style="width:100%;height:100%;border:none;">
+                            <object data="${viewerSrc}" type="application/pdf" width="100%" height="100%" style="border:none;display:block;">
+                                <embed src="${viewerSrc}" type="application/pdf" width="100%" height="100%">
+                                <iframe id="pdfFrame_${c.id}" src="${viewerSrc}" style="width:100%;height:100%;border:none;">
                                     <div style="padding:40px;text-align:center;color:#ffffff;background:#1e293b;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;">
                                         <i class="fa-solid fa-file-pdf" style="font-size:48px;color:#ef4444;margin-bottom:16px;"></i>
                                         <h4 style="margin:0 0 8px 0;font-size:16px;color:#ffffff;">Aperçu direct du document</h4>
