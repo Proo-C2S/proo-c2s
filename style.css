@@ -9075,7 +9075,12 @@ header.nav-visible {
   font-weight: 700;
   color: #0f172a;
   text-decoration: none;
-  word-break: break-all;
+  white-space: nowrap;
+  word-break: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 100%;
 }
 
 .ecm-email-val a:hover {
